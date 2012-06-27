@@ -1,0 +1,12 @@
+#answers {
+  width: 100%;
+}
+
+#answers textarea {
+  height: 100px;
+}
+
+.remove-answer {
+  display: block;
+  margin-left: .5em;
+}

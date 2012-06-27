@@ -1,0 +1,71 @@
+#email-print-wrapper {
+  font-size: 0.875em;
+}
+h2 {
+  margin-top: 0.58333em;
+}
+p {
+  margin: 0;
+}
+.label {
+  width: 60px;
+  text-align: right;
+  float: left;
+  margin-right: 10px;
+}
+
+/* results table */
+table {
+  margin-top: 0.75em;
+  background: #fff;
+  width: 95%;
+  border: 1px solid #1E3B55;
+  border-bottom: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.question-number {
+  text-align: center;
+}
+th.question-text {
+  text-align: left;
+}
+.question-text dd {
+  font-style: italic;
+  padding-left: 0.75em;
+}
+.question-eval {
+  vertical-align: bottom;
+  text-align: center;
+}
+th {
+  padding: 0.416667em;
+  display: table-cell !important;
+  background-color: #597099;
+  color: white;
+  border-bottom: 2px solid #304a69;
+  border-bottom: 2px solid rgba(30,59,85,0.7);
+  font-weight: bold;
+}
+tr.altrow td {
+  background-color: #f4f6f9;
+  background-color: rgba(203, 210, 228, 0.2);
+}
+td {
+  padding: 0.5em 0.85em;
+  border-bottom: 1px solid #1E3B55;
+}
+#email-print-wrapper title {
+  display: none; /* weird, why is this even showing up? */
+}
+
+/* Dialog message. This may not be the best place for these styles. */
+#dialog-flash {
+  padding: 0.65em;
+  border: 1px solid #f4f6f9;
+  border: 1px solid rgba(203, 210, 228, 0.2);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin-bottom: 0.58333em;
+}

@@ -1,0 +1,72 @@
+@import url("email_print.css");
+
+/* * is dangerous! */
+* {
+  display: none;
+}
+
+html, body, #email-print, #email-print h2, #email-print div, #email-print p {
+  display: block !important;
+}
+
+#email-print table {
+  display: table !important;
+}
+
+#email-print thead {
+  display: table-header-group !important;
+}
+
+#email-print tbody {
+  display: table-row-group !important;
+}
+
+#email-print tr {
+  display: table-row !important;
+}
+
+#email-print td {
+  display: table-cell !important;
+}
+
+#email-print #dialog-flash, #email-print #dialog-flash * {
+  display: none !important;
+}
+
+.ui-widget {
+  background: none !important;
+  left: 0 !important;
+  top: 0 !important;
+  border: 0 !important;
+  color: black !important;
+  font-family: inherit !important;
+}
+
+.ui-dialog {
+  width: 90% !important;
+  height: auto !important;
+}
+
+.ui-dialog-buttonpane {
+  display: none !important;
+}
+
+.ui-resizable-handle {
+  display: none !important;
+}
+
+.ui-dialog-titlebar {
+  display: none !important;
+}
+
+#email-print-wrapper {
+  height: 100% !important;
+}
+
+* { /* I can't find the element that's causing ticket #165, but this fixes it. */
+  overflow: visible !important;
+}
+
+#email-print {
+  height: 90%;
+}

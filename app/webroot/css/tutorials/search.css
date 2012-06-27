@@ -1,0 +1,79 @@
+
+#TutorialSearchTerm {
+/*  float: right;*/
+  font-size: 120%;
+  padding: .3em;
+  margin: 1em .3em 1em 0;
+}
+
+#search-image {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+}
+
+.facet-container {
+  float: right;
+  width: 200px;
+}
+
+#results-container {
+  margin-right: 200px;
+  padding-right: 2em;
+}
+
+.facet {
+  border: 1px solid gray;
+  margin: .5em;
+  padding: .5em;
+}
+
+.facet h5 {
+  border-bottom: 1px solid gray;
+}
+
+.available-facet, .current-facet {
+  display: block;
+  margin: .3em 0;
+}
+
+.current-facets {
+
+}
+
+#sub #content #body #tutorial-list {
+  margin-left: 0;
+  padding-left: 0;
+  border-top: 1px solid gray;
+  padding-top: 1em;
+}
+
+#tutorial-list li {
+  list-style-type: none;
+}
+
+.gray-circle {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  border: 1px solid gray;
+  background-color: gray;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 120% !important;
+  font-family: Arial, sans-serif;
+}
+
+#TutorialTerm {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: .5em;
+  padding: .3em;
+  font-size: 1.2em;
+  width: 80%;
+}
+

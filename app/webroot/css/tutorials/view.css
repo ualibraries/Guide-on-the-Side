@@ -1,0 +1,190 @@
+#site-frame {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  border:none;
+  width: 69%;
+  margin-left: 384px;
+  right: 0;
+  height: 100%;
+}
+
+#tutorial-frame {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  bottom: 0;
+  border:none;
+  height: 80%;
+}
+
+#draggable {
+  z-index: 100;
+  bottom: 0;
+  top: 0;
+  position: absolute;
+  background: #eee;
+  width: 384px;
+  cursor: move;
+}
+
+.docked {
+  -webkit-box-shadow: 5px 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 0 5px rgba(0, 0, 0, 0.3);
+}
+.undocked {
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 1.0);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1.0);
+  border: 1px solid #b7b7b7;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+
+/* contains the heading and the tutorial itself */
+.tutorial-container {
+  padding: 0 0.5em;
+  background: #D5D5D5;
+  background: rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px #eee;
+}
+
+#draggable.ui-draggable-disabled {
+   cursor:auto;
+}
+
+#closed {
+  text-shadow: -1px -1px #FFF, 1px 1px #ccc;
+  display: none;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg); /* IE 9 only. See ie.css for other IEs. */
+  z-index: 102;
+  position: fixed;
+  background-color: #FAFAFA;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: .5em 2em;
+  top: 45%;
+  left: -4em;
+  font-size: 1.5em;
+  -webkit-border-bottom-right-radius: 18px;
+  -webkit-border-bottom-left-radius: 18px;
+  -moz-border-radius-bottomright: 18px;
+  -moz-border-radius-bottomleft: 18px;
+  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+  -webkit-box-shadow:0 0 8px rgba(0, 0, 0, 0.8);
+  box-shadow:0 0 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+#closed:hover {
+  color: #000;
+  background-color: #FDFDFD;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#revision-info {
+  font-size: 80%;
+  padding: 1em;
+  background-color: #697EA2;
+  color: white;
+}
+
+#navbar {
+  clear: both;
+  padding: 5px;
+  border-bottom: 1px solid #8E8E8E;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+.control-buttons {
+  float: right;
+  line-height: 22px;
+}
+.control-buttons a {
+  padding: 3px;
+  margin: 3px;
+}
+
+#dock-image {
+  display: none;
+}
+h1 {
+  font-weight: bold;
+  clear: both;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0.655em;
+}
+h1 a {
+  color: #444;
+}
+h1 a:hover {
+  color: #000;
+}
+
+.correct .ui-widget-header {
+  background-image: none;
+  background: #D8FFA3;
+  color: #2E5B02;
+  border: 1px solid #2E5B02;
+}
+.correct.ui-widget-content {
+  border: 1px solid #2E5B02;
+}
+.incorrect .ui-widget-header {
+  background-image: none;
+  background: #FFC4C1;
+  color: #A40000;
+  border: 1px solid #A40000;
+}
+.incorrect.ui-widget-content {
+  border: 1px solid #A40000;
+}
+#start-link {
+  text-decoration: none;
+}
+
+#table-of-contents {
+  position: relative;
+}
+#table-of-contents a {
+  text-decoration: none;
+  color: #444;
+  padding: 0.25em 0.382em;
+  display: block; 
+}
+#table-of-contents a:hover {
+  background: #E3E5EA;
+  background: rgba(203,210,228, 0.3);
+}
+#table-of-contents > a {
+  float: left;
+  padding: 0 0.655em;
+  border: 1px solid #ccc;
+  -moz-border-radius: 0.2857em;
+  -webkit-border-radius: 0.2857em;
+  border-radius: 0.2857em;
+}
+
+#table-of-contents ul {
+  position: absolute;
+  -moz-border-radius: 0.326em;
+  -webkit-border-radius: 0.326em;
+  border-radius: 0.326em;
+  background: #eee;
+  border: 1px solid #ccc;
+  top: 18px;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  margin-left: 0;
+  padding: 0.655em;
+  font-size: 0.875em;
+}
+#table-of-contents .current-chapter a {
+  background: #DFE2E9;
+  background: rgba(203, 210, 228, 0.4);
+  color: #000;
+}

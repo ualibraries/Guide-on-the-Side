@@ -1,0 +1,28 @@
+body {
+  margin: 2em;
+}
+
+.answer-radio {
+  float: left;
+}
+
+.answer-text {
+  display: block;
+  font-weight: normal;
+  margin-left: 2em;
+  margin-bottom: .6em;
+}
+
+.definition-body {
+  margin: 1em;
+  width: 80%;
+  padding: 1em;
+  border: #597099 1px solid;
+  background-color: #CBD2E4;
+}
+h1 {
+  font-weight: bold;
+}
+h1, h2 {
+  font-size: 120%;
+}

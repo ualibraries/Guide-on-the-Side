@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  font-family: "PT Sans", "Arial", sans-serif;
+}
+
+#branding {
+  background-color: #999999;
+}
+
+#branding img {
+  display: block;
+  margin: 0 auto;
+}
+
+#container {
+  background-color: #6A80A8;
+  width: 950px;
+  margin: 0 auto;
+  -moz-border-radius-bottomright: 5%;
+  -moz-border-radius-bottomleft: 5%;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  padding-bottom: 37px;
+}
+
+#content {
+  width: 802px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 0 37px 37px;
+  -moz-border-radius-bottomright: 5%;
+  -moz-border-radius-bottomleft: 5%;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+}

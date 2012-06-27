@@ -1,0 +1,48 @@
+.field-name {
+  display: table-cell;
+  padding-bottom: .5em;
+  width: 10em;
+}
+
+.field-value {
+  display: table-cell;
+  padding-bottom: .5em;
+/*  padding: 1em;
+  padding-bottom: .5em;*/
+}
+
+.field-container {
+  display: table-row;
+/*  font-size: 90%;*/
+}
+
+#sub #content #body .field-container {
+  font-size: 14px;
+  line-height: 1.2em;
+}
+
+#sub #content #body .tutorial-title {
+  font-weight: normal;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.start-tutorial {
+  font-size: 100%;
+  background-color: #6A80A8;
+  background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#87A3D6), to(#9CBCF7));
+  padding: .5em;
+  width: 7em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 1px solid #6A80A8;
+}
+
+.start-tutorial a {
+  color: white;
+  text-decoration: none;
+}

@@ -1,0 +1,16 @@
+.input label {
+  display: inline-block;
+  width: 9em;
+  text-align: right;
+  vertical-align: top;
+  margin: 0.5em;
+}
+
+.input input, .input textarea {
+  margin: .5em;
+}
+
+.mceEditor {
+  display: inline-block;
+  margin: 0.5em;
+}

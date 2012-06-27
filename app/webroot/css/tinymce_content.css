@@ -1,0 +1,14 @@
+html, body {
+  font-size: 100%;
+}
+
+.heading, .question {
+  display: block;
+  margin: .5em 0;
+}
+
+.definition {
+  display: inline;
+  vertical-align: middle;
+  margin: 0;
+}

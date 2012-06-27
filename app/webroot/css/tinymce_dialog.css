@@ -1,0 +1,18 @@
+textarea {
+  width: 100%;
+  height: 300px;
+}
+
+.text input {
+  width: 100%;
+  font-size: 120%;
+}
+
+.input {
+  margin-bottom: 1em;
+}
+
+.text label, .textarea label {
+  font-weight: bold;
+  font-size: 150%;
+}

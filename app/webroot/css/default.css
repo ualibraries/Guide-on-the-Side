@@ -1,0 +1,229 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  font-family: "PT Sans", "Arial", sans-serif;
+  background-color: #CCCCCC;
+}
+
+h1 {
+  margin: .5em 0 1em;
+}
+
+#branding {
+  background-color: #999999;
+  margin: 0;
+}
+
+#branding img {
+  display: block;
+  margin: 0 auto;
+}
+
+#container {
+  background-color: #6A80A8;
+  width: 950px;
+  margin: 0 auto;
+  -moz-border-radius-bottomright: 5%;
+  -moz-border-radius-bottomleft: 5%;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 18px 0;
+}
+
+#content {
+  width: 802px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 10px 37px 37px 37px;
+  -moz-border-radius-bottomright: 5%;
+  -moz-border-radius-bottomleft: 5%;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+#QuickHelp {
+  position: relative;
+  left: -37px;
+  border: 0;
+}
+
+#userinfo {
+  text-align: right;
+  font-size: 80%;
+  margin-bottom: .8em;
+}
+
+.input {
+  margin: 1em;
+}
+
+.input label {
+  display: inline-block;
+  width: 9em;
+  text-align: right;
+  vertical-align: top;
+  margin: .5em;
+}
+
+.checkbox label {
+  margin-top: 0;
+}
+
+.input input, .input textarea, .input select {
+  margin: .5em;
+}
+
+.field-directions {
+  font-size: 80%;
+  font-style: italic;
+  padding-top: .8em;
+  display: inline-block;
+}
+
+.select .checkbox { /* Multiple checkboxes */
+  margin-left: 10em;
+  text-align: left;
+}
+
+.select .checkbox label { /* Multiple checkboxes */
+  font-size: 80%;
+  width: 25em;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.mceEditor {
+  display: inline-block;
+}
+
+#TutorialContent_parent {
+  display: inline;
+}
+
+.actions {
+  float: right;
+}
+
+.actions .big-button {
+  margin-top: 1em;
+}
+
+.big-button {
+  font-size: 115%;
+  background-color: #6A80A8;
+  background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#87A3D6), to(#9CBCF7));
+  width: 10em;
+  padding: 1em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #6A80A8;
+}
+
+.message {
+  margin: 1em 0;
+  padding: 1em;
+  border: 2px solid #6A80A8;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  background-color: #ECF092;
+}
+
+.page-error {
+  background-color: #E0273F;
+  background: -moz-linear-gradient(65% 65% 270deg, #E0273F, #E0673F);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0273F), to(#E0673F));
+  color: white;
+  border: 2px solid #E0273F;
+}
+
+#authMessage {
+  background-color: #E0273F;
+  background: -moz-linear-gradient(65% 65% 270deg, #E0273F, #E0673F);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0273F), to(#E0673F));
+  color: white;
+  border: 2px solid #E0273F;
+}
+
+#edit {
+  font-size: 115%;
+  background-color: #6A80A8;
+  background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#87A3D6), to(#9CBCF7));
+  width: 10em;
+  padding: .5em;
+  padding-left: 1em;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #6A80A8;
+  font-weight: normal;
+  border-bottom: none;
+  z-index: 10;
+  position: relative;
+}
+
+.paginated-list {
+  background-color: white;
+  padding: 1em;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #6A80A8;
+  position: relative;
+  top: -1.0em;
+  z-index: 5;
+}
+
+.row {
+  border-bottom: 1px solid #6A80A8;
+  padding: .3em;
+}
+
+.row div {
+  display: inline-block;
+}
+
+.row .actions {
+  float: right;
+}
+
+.paginated-list .paging {
+  color: black;
+}
+
+.submit input {
+  margin-top: 2em;
+  margin-left: 12.5em;
+}
+
+/* This is for field-level errors. Need some CSS refactoring to merge with .error and .message above. */
+.error-message {
+  background-color: #E0273F;
+  background: -moz-linear-gradient(65% 65% 270deg, #E0273F, #E0673F);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0273F), to(#E0673F));
+  padding: 1em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #E0273F;
+  margin-left: 10.5em;
+  margin-right: 16em;
+}
+

@@ -1,0 +1,221 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 93%;
+}
+/* link styling */
+a {
+  text-decoration: none;
+  border-bottom: 1px solid;
+  color: #1E3B55;
+}
+a:hover,
+a:focus {
+  color: #597099;
+  border-bottom: 0;
+  outline: 0;
+}
+a:active {
+  color: #5B88C2;
+  border-bottom: 0;
+}
+a:visited {
+  color: #587AB6;
+}
+
+#container, #content {
+  height: 100%;
+}
+
+#scrollable {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 70%;
+  background-color: #F6F6F6;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-shadow: 1px 1px #FFF;
+  -moz-border-radius: 0.5714em;
+  -webkit-border-radius: 0.5714em;
+  border-radius: 0.5714em;
+  margin: 0 0.655em;
+  -webkit-box-shadow: inset 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+}
+.items {
+  width: 20000em;
+  position: absolute;
+  overflow: hidden;
+  padding-bottom: 2em;
+}
+
+#navigation img {
+  border: 0;
+  vertical-align: middle;
+  width: 16px;
+  margin: 0 4px;
+}
+
+#navigation {
+  background: #777;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  width: 285px;
+  margin: 0 auto;
+  padding: 5px 0;
+  -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+#navigation a {
+  width: 24px;
+  height: 21px;
+  background: url(../../img/arrow-sprite.png) no-repeat
+}
+#prev-navigation,
+#next-navigation,
+#progress {
+  float: left;
+}
+#prev-navigation,
+#next-navigation {
+  width: 24px;
+  margin: 5px;
+}
+#prev-navigation a {
+  background-position: 0px 0px;
+}
+#prev-navigation a.disabled {
+  background-position: 0px -58px;
+}
+#prev-navigation a.disabled:hover {
+  cursor: default;
+  background-position: 0px -58px; 
+}
+#prev-navigation a:hover {
+  background-position: 0px -29px;
+}
+#next-navigation a {
+  background-position: 0px -87px;
+}
+#next-navigation a:hover {
+  background-position: 0px -116px;
+}
+#next-navigation a.disabled {
+  background-position: 0px -145px;
+}
+#next-navigation a.disabled:hover {
+  background-position: 0px -145px;
+  cursor: default;
+}
+#progress {
+  width: 213px;
+  margin: 8px 0;
+  height: 18px;
+}
+.acknowledgement {
+  margin-top: 1em;
+  text-align: center;
+  font-size: 65%; 
+}
+#tabs {
+  padding-left: 10px;
+  display: none;
+}
+
+#tabs li {
+  display: block;
+  float: left;
+  background-color: gray;
+  margin: 0 3px;
+  padding: 4px;
+  padding-bottom: 2px;
+  color: white;
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-top-right-radius: 8px;
+  -moz-border-radius-topleft: 8px;
+  -moz-border-radius-topright: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  cursor: pointer;
+}
+
+#start-link {
+  color: white;
+  display: block;
+  margin-top: 1em;
+}
+
+li#tab-1 {
+  background-color: white;
+  color: black;
+}
+
+.step {
+  float: left;
+  width: 308px;
+  padding: 1.06em 1.618em;
+  /*height: 100%;  IE needs a value */
+}
+.step-number {
+  font-style: italic;
+  display: block;
+  margin-top: -1.16777em;
+  margin-bottom: .75em;
+  font-size: 0.875em;
+}
+.question {
+  border-top: 1px solid #DCDCDC;
+  border-top: 1px solid rgba(204,204,204, 0.6);
+  margin: 0.655em 0;
+  padding-top: 0.655em;
+  font-size: 1.168em;
+}
+.question p {
+  margin: 0;
+}
+.answers {
+  margin-top: 0.655em;
+  margin-left: 0.655em;
+}
+.answer-radio {
+  float: left;
+}
+.answer-text {
+  font-weight: normal;
+  display: block;
+  margin-left: 2.618em;
+  margin-bottom: 0.618em;
+}
+.definition-body {
+  margin: 0.655em;
+  padding: 0.382em 0.655em;
+  width: 19.01em;
+  border-left: #cbd2e4 0.3571em solid;
+  border-left: rgb(203, 210, 228) 0.3571em solid;
+  background-color: #EDEEF2;
+  background-color: rgba(203, 210, 228, 0.2);
+  text-shadow: none;
+  color: #333;
+}
+.definition-body p {
+    font-size: 0.85714em;
+}
+.step img {
+  border: 1px solid #CBD2E4;
+  background-color: #EEF0F3;
+  padding: 0.214em;
+  margin: 0.214em;
+}
+#table-of-contents li {
+  margin-bottom: .6em;
+}
+
+#table-of-contents ol {
+  list-style-type: lower-alpha;
+}

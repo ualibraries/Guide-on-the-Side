@@ -1,0 +1,24 @@
+application_title: Guide on the Side
+theme: GuideOnTheSide
+
+database:
+  datasource: Database/Mysql
+  host: localhost
+  login: 
+  password: 
+  database: 
+
+google_analytics:
+  enabled: false
+  account_id: UA-something
+  domain_name: your-domain-name.edu
+
+authentication:
+  # local or shibboleth
+  method: local
+
+# only fill these out if you selected shibboleth above
+shibboleth:
+  login_url:  https://%HOST%/Shibboleth.sso/Login
+  logout_url: https://%HOST%/Shibboleth.sso/Logout?return=https://shibboleth.arizona.edu/cgi-bin/logout.pl
+  username_field: Shib-uid

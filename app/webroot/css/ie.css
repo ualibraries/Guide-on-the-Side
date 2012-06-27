@@ -1,0 +1,24 @@
+body {
+  color: #333;
+}
+#scrollable {
+  border: 2px solid #ccc;
+}
+.undocked {
+  border: 2px solid #666;
+}
+.tooltip {
+  border: 1px solid #AAAFBB;
+}
+#navigation {
+  height: 36px;
+}
+#closed {
+  border: 2px solid #676767;
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  left: 0;
+}
+#table-of-contents {
+  position: relative;
+  z-index: 100;
+}

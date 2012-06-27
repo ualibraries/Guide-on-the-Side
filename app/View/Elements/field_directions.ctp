@@ -1,0 +1,1 @@
+<span class="field-directions"><?php echo $text ?></span>

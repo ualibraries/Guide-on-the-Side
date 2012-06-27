@@ -1,0 +1,164 @@
+ /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* base styles that apply to the tutorial container and the tutorial itself */
+body {
+  font-family: 'Droid Sans', Verdana, sans-serif;
+  font-size: 14px;
+  line-height: 1.38em;
+  color: #444444;
+}
+
+p, ul, ol {
+  margin: 0.655em 0; /* 9.167px */
+}
+
+ul, ol {
+  padding-left: 1em;
+  margin-left: 0.655em;
+}
+
+
+h2 {
+  font-size: 1.714em; /* 24px */
+  line-height: 1.5em; /* 36px */
+  margin-bottom: 0.58333em /* 14px */
+}
+
+/* Text fields that match the jquery_ui styling */
+input[type="text"],
+textarea {
+  -moz-border-radius: 0.618em;
+  -webkit-border-radius: 0.618em;
+  border-radius: 0.618em;
+  padding: 0.405em 0.618em;
+  border: 1px solid lightGrey;
+  color: #555;
+}
+label, .label {
+  font-weight: bold;
+}
+/* Feedback and quiz email forms */
+div.input {
+  margin: 0.655em 0; /* 9.167px */
+}
+div.input label {
+  display: block;
+  padding-left: 0.618em;
+}
+p.field-description {
+    font-size: 0.85714em;
+    padding-left: 1em;
+}
+
+.message {
+  padding: 0.382em 0.655em;
+  margin-bottom: 0.655em;
+  border-left: rgb(203, 210, 228) 0.3571em solid;
+  background-color: #f4f6f9;
+  background-color: rgba(203, 210, 228, 0.2);
+}
+
+.tooltip {
+  display: none;
+  font-size: 0.857em;
+  padding: 0.655em;
+  color: #333;
+  background-color: #D3D9E7;
+  background-color: rgba(203, 210, 228, 0.8);
+  -webkit-box-shadow: 1px 1px 4px rgba(88,122,182, 0.8);
+  box-shadow: 1px 1px 4px rgba(88,122,182, 0.8);
+  -moz-border-radius: 0.405em;
+  -webkit-border-radius: 0.405em;
+  border-radius: 0.405em;
+  z-index: 110;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none; /* TODO: how can I fall back to outline when box-shadow isn't available? */
+  -moz-box-shadow: #597099 0 0 7px 0;
+  -webkit-box-shadow: #597099 0 0 7px 0;
+  -o-box-shadow: #597099 0 0 7px 0;
+  box-shadow: #597099 0 0 7px 0;
+  z-index: 1;
+}
+#feedback-frame {
+  padding: 0;
+  margin: 0;
+}
+#TutorialProvideFeedbackForm {
+  padding: 0.5em;
+}
+
+/* non-semantic helper classes from boilerplate https://github.com/paulirish/html5-boilerplate/blob/master/css/style.css */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+::-moz-selection { background-color: #597099; color: #fff; text-shadow: none; }
+::selection { background-color: #597099; color: #fff; text-shadow: none; }
