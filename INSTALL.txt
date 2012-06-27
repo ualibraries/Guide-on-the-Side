@@ -1,4 +1,3 @@
-
 PLATFORM SUPPORT / DEPENDENCIES
 -------------------------------------------------------------------------------
 Guide on the Side has been tested on the following platforms:
