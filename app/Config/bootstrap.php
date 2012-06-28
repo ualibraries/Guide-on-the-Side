@@ -63,7 +63,6 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
       'qhBtnHeading' => array('img'),
       'qhBtnQuestion' => array('img'),
       'qhBtnDefinition' => array('img'),
-      'cite' => array('cite'),
     );
 
     static $just_tags = array();

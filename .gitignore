@@ -1,3 +1,4 @@
 cake
 lib
 config.yml
+app/tmp/lucene
