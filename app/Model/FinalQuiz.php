@@ -12,7 +12,7 @@ class FinalQuiz extends AppModel {
   public function grade($id = null, $answers = array()) {
     $grades = array();
     if ($id && is_numeric($id)) {
-      $this->Question =& ClassRegistry::init('Question');
+      $this->Question = ClassRegistry::init('Question');
       $all_questions = $this->getQuestionIds($id);
       $grades['total'] = count($all_questions);
       $grades['score'] = 0;

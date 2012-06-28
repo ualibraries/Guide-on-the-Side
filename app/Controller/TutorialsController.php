@@ -1,5 +1,5 @@
 <?php
-App::import('Sanitize');
+App::uses('Sanitize', 'Utility');
 
 App::uses('AppController', 'Controller');
 
@@ -862,21 +862,21 @@ class TutorialsController extends AppController {
   }
 
   function view_certificate() {
-    if (empty($this->params['form'])) {
+    if (empty($this->request->data)) {
       return 'This certificate cannot be generated.';
     } else {
       $is_tutorial = false;
       $is_quiz = false;
-      if (array_key_exists('quiz_id', $this->params['form']) && is_numeric($this->params['form']['quiz_id'])) {
-        $final_quiz = $this->Tutorial->FinalQuiz->read(null, $this->params['form']['quiz_id']);
+      if (array_key_exists('quiz_id', $this->request->data) && is_numeric($this->request->data['quiz_id'])) {
+        $final_quiz = $this->Tutorial->FinalQuiz->read(null, $this->request->data['quiz_id']);
         $data = $final_quiz['FinalQuiz'];
         $is_quiz = true;
         $subject = $final_quiz['Tutorial']['title'] . ' Quiz';
-        if (!isset($this->params['form']['questions'])) {
-          $this->params['form']['questions'] = array();
+        if (!isset($this->request->data['questions'])) {
+          $this->request->data['questions'] = array();
         }
         if($data['certificate_grades']) {
-          $this->set('grades', $this->Tutorial->FinalQuiz->grade($this->params['form']['quiz_id'], $this->params['form']['questions']));
+          $this->set('grades', $this->Tutorial->FinalQuiz->grade($this->request->data['quiz_id'], $this->request->data['questions']));
         }
       }
       // parse supplied email fields
@@ -892,7 +892,7 @@ class TutorialsController extends AppController {
           if (!empty($to_string)) {
             $to_string .= ',';
           }
-          $to_string .= Sanitize::paranoid($this->params['data']['certificate_email'], array('@', '.', ',', '+'));
+          $to_string .= Sanitize::paranoid($this->request->data['certificate_email'], array('@', '.', ',', '+'));
         }
         
         
@@ -909,15 +909,15 @@ class TutorialsController extends AppController {
           $this->Email->sendAs = 'html';
           $this->set('date', date('F j, Y'));
           $this->set('time', date('g:ia'));
-          $this->set('name', Sanitize::paranoid($this->params['data']['certificate_name'], array(' ')));
+          $this->set('name', Sanitize::paranoid($this->request->data['certificate_name'], array(' ')));
           $this->set('title', $subject);
 //          $this->Email->delivery = 'debug';
           $this->Email->template = 'certificate_of_completion';
           $email_success = $this->Email->send() && $email_success;
         }
 
-        $this->viewPath = 'elements/email/html';
-        $this->layout = 'email/html/default';
+        $this->viewPath = 'Emails/html';
+        $this->layout = 'Emails/html/default';
         $this->set('dialog', true);
         $this->set('title', $subject);
         if ($email_success) {
