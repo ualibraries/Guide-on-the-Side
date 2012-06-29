@@ -837,12 +837,17 @@ class TutorialsController extends AppController {
           "<br>Email: " . htmlentities($this->data['Tutorial']['from_email']) .
           "<br><br>" .
           htmlentities($this->data['Tutorial']['comment']);
-        $to_array = array('hagedonm@u.library.arizona.edu',
+        $to_array = array(explode(',',Configure::read('user_config.email.send_all_feedback_to')),
            Sanitize::paranoid($tutorial['Tutorial']['contact_email'], array('@', '.')));
         foreach ($to_array as $to) {
           $this->Email->reset();
           $this->Email->to = $to;
-          $this->Email->from = 'webadmin@u.library.arizona.edu';
+          $from = Configure::read('user_config.email.send_from');
+          $from = explode(',', $from);
+          if (is_array($from)) {
+            $from = $from[0];
+          }
+          $this->Email->from = $from;
           $this->Email->subject = "Feedback for {$tutorial['Tutorial']['title']} tutorial";
           $this->Email->sendAs = 'html';
           $email_success = $this->Email->send($body) && $email_success;
@@ -888,7 +893,7 @@ class TutorialsController extends AppController {
         if (!empty($data['certificate_email'])) {
           $to_string .= $data['certificate_email'];
         }
-        if (!empty($this->params['data']['certificate_email'])) {
+        if (!empty($this->request->data['certificate_email'])) {
           if (!empty($to_string)) {
             $to_string .= ',';
           }
@@ -904,7 +909,12 @@ class TutorialsController extends AppController {
           $this->Email->reset();
 
           $this->Email->to = $to;
-          $this->Email->from = 'webadmin@u.library.arizona.edu';
+          $from = Configure::read('user_config.email.send_from');
+          $from = explode(',', $from);
+          if (is_array($from)) {
+            $from = $from[0];
+          }
+          $this->Email->from = $from;
           $this->Email->subject = "Certificate of Completion for $subject";
           $this->Email->sendAs = 'html';
           $this->set('date', date('F j, Y'));

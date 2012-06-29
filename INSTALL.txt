@@ -28,7 +28,7 @@ INSTALLATION
    you like, but "guide_on_the_side" is probably a good choice. Remember the 
    name you chose, as well as the MySQL username and password.
 3. Copy config.sample.yml to config.yml.
-4. Modify the database information (at least) in config.yml so that it 
+4. Modify the database and email information (at least) in config.yml so that it 
      matches what you created in step 2.
 5. Install the database schema by running the following commands from the 
    guide_on_the_side/app folder:

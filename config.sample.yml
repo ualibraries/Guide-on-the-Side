@@ -8,6 +8,10 @@ database:
   password: 
   database: 
 
+email:
+  send_from:
+  send_all_feedback_to:
+
 google_analytics:
   enabled: false
   account_id: UA-something
