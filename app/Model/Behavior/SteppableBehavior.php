@@ -153,6 +153,7 @@ class SteppableBehavior extends ModelBehavior {
           $question_html .= "<label class='answer-text' for='questions[$question_id]-$radio_value'>{$answer['answer']}</label>";
         }
         $question_html .= "</div>";
+        $question_html = $this->_parseImages($question_html);
         $question_pattern = '/\<img[^>]*class\="question"[^>]*src\="questions\/view_image\/' . $question_id . '"[^>]*\/\>/';
         $step_content = preg_replace($question_pattern, $question_html, $step_content);
       }
