@@ -90,12 +90,12 @@ http://book.cakephp.org/2.0/en/views/themes.html
 
 UPGRADING
 -------------------------------------------------------------------------------
-1. Back up your database!
-2. No really -- back up your database!
+1. Back up your database and application folder!
+2. No really -- back up!
 3. If you've modified the Guide on the Side source code (anything inside the 
    "app" folder), all bets are off on upgrading. You're better off contacting 
    us or submitting patches to make the application more flexible! 
-4. Back up your config.yml file and any themes.
+4. Back up your config.yml file, any themes, and user-uploaded images (app/webroot/uploads).
 5. Download the latest version of Guide on the Side and unzip it into a new 
    location. 
 6. Read any release notes to determine if you need to run database migrations,
