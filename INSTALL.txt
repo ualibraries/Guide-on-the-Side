@@ -10,13 +10,17 @@ PHP must have the following loaded or compiled in:
 package in Ubuntu.
 3. Tidy (--with-tidy) (optional, but highly recommended). This is supplied by 
 the php5-tidy package in Ubuntu.
+4. mbstring (--enable-mbstring) must be installed.
 
 Other requirements:
 1. PHP short tags must be turned off (short_open_tag = Off in php.ini). This 
 feature can cause problems with TinyMCE (the included WYSIWYG editor).
 2. PHP must have the ability to run on the command line during installation 
 and upgrading.
-3. CentOS 5.8 apparently bundles an ancient version of PCRE which prevents the
+3. AllowOverride must be set to "All" in Apache's VirtualHost configuration.
+4. date.timezone must be properly set in php.ini.
+5. The mod_rewrite Apache module must be enabled.
+6. CentOS 5.8 apparently bundles an ancient version of PCRE which prevents the
 CakePHP command-line interface from functioning. If the Cake CLI won't run, 
 please upgrade PCRE. Note: CakePHP 2.1.4 may work around this problem.  
 
@@ -112,4 +116,4 @@ Close, print, dock/undock icons:
 
 Copyright (C) 2011-2012 The Arizona Board of Regents on Behalf of the 
 University of Arizona. Developed by Leslie Sult, Justin Spargur, 
-Gregory Hagedon, and Ginger Bidwell at the University of Arizona Libraries.
+Mike Hagedon, and Ginger Bidwell at the University of Arizona Libraries.
