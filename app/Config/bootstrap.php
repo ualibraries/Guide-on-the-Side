@@ -104,6 +104,11 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
   CakePlugin::loadAll();
   App::uses('FireCake', 'DebugKit.Lib');
 
+  Configure::write('Dispatcher.filters', array(
+      'AssetDispatcher',
+      'CacheDispatcher'
+  ));  
+  
 //  $revision_message = Configure::read('user_config.require_revision_message'); 
   Configure::write('require_revision_message', false);
   Configure::write('GoogleAnalytics.enabled', Configure::read('user_config.google_analytics.enabled'));
