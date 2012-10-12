@@ -58,13 +58,6 @@ class Tutorial extends AppModel {
 				'message' => 'That doesn\'t look like a URL.',
 			),
 		),
-    'contact_phone' => array(
-      'phone' => array(
-        'rule' => 'phone',
-        'allowEmpty' => true,
-        'message' => 'This is not a phone number. Did you include the area code?'
-      )
-    ),
     'contact_email' => array(
       'email' => array(
         'rule' => 'email',
