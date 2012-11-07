@@ -67,8 +67,7 @@
             echo '] ';
           }
           echo '[';
-          echo $this->Html->link('Log out', array('plugin' => 'guard', 
-              'controller' => 'guard', 'action' => 'logout'));
+          echo $this->Html->link('Log out', '/logout');
           echo ']';
         }
 

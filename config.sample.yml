@@ -25,4 +25,5 @@ authentication:
 shibboleth:
   login_url:  https://%HOST%/Shibboleth.sso/Login
   logout_url: https://%HOST%/Shibboleth.sso/Logout
+  login_link_text: Log in via Shibboleth  
   username_field: Shib-uid

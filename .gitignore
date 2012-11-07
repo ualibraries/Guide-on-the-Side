@@ -3,3 +3,4 @@ lib
 config.yml
 app/tmp/lucene
 app/tmp/logs/*.log
+/nbproject/private/

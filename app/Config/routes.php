@@ -28,20 +28,21 @@
  * to use (in this case, /app/views/pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'tutorials', 'action' => 'search'));
-  Router::connect('/login', array('plugin' => 'guard', 'controller' => 'guard', 'action' => 'login'));
-  Router::connect('/logout', array('plugin' => 'guard', 'controller' => 'guard', 'action' => 'logout'));
+	Router::connect('/admin', array('controller' => 'tutorials', 'action' => 'index'));    
+    Router::connect('/login', array('plugin' => 'flex_auth', 'controller' => 'flex_auth', 'action' => 'login'));
+    Router::connect('/logout', array('plugin' => 'flex_auth', 'controller' => 'flex_auth', 'action' => 'logout'));
 
  	Router::connect('/install', array('controller' => 'system', 'action' => 'install'));
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	Router::connect('/tags/:action/*', array('controller' => 'tags'));
 
-  App::uses('SlugRoute', 'Lib/Route');
-  // See http://mark-story.com/posts/view/using-custom-route-classes-in-cakephp
-  Router::connect('/tutorial/:slug', array('controller' => 'tutorials', 'action' => 'view'),
+    App::uses('SlugRoute', 'Lib/Route');
+    // See http://mark-story.com/posts/view/using-custom-route-classes-in-cakephp
+    Router::connect('/tutorial/:slug', array('controller' => 'tutorials', 'action' => 'view'),
     array('routeClass' => 'SlugRoute'));
 
-  /**
-   * Load the CakePHP default routes. Remove this if you do not want to use
-   * the built-in default routes.
-   */
+    /**
+     * Load the CakePHP default routes. Remove this if you do not want to use
+     * the built-in default routes.
+     */
 	require CAKE . 'Config' . DS . 'routes.php';

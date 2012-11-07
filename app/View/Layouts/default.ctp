@@ -60,7 +60,7 @@
       <?php
         if ($this->Session->check('Auth.User.username')) {
           echo "You are logged in as {$this->Session->read('Auth.User.username')}. ";
-          echo '[' . $this->Html->link('Admin index', array('controller' => 'tutorials')) . '] ';
+          echo '[' . $this->Html->link('Admin index', array('controller' => 'tutorials', 'action' => 'index')) . '] ';
           if ($show_password_link) {
             echo '[';
             echo $this->Html->link('Change password', array('controller' => 'users',
@@ -68,8 +68,7 @@
             echo '] ';
           }
           echo '[';
-          echo $this->Html->link('Log out', array('plugin' => 'guard', 
-              'controller' => 'guard', 'action' => 'logout'));
+          echo $this->Html->link('Log out', '/logout');
           echo ']';
         }
 

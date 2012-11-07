@@ -21,15 +21,7 @@ class AppController extends Controller {
   // Really Email is only needed in some parts of TutorialController, but I don't know how to
   //   add components at the controller level without duplicating the list below.
   var $components = array(
-    'Guard.Guard'
-// => array(
-//      'fields' => array(
-//        'username' => 'value',
-//        'password' => 'auth_token',
-//      ),
-//      'loginRedirect' => array('controller' => 'tutorials'),
-//    )
-    ,
+    'FlexAuth.FlexAuth',
     'Session',
     'RequestHandler',
     'Email',
@@ -38,7 +30,7 @@ class AppController extends Controller {
 
   function beforeFilter() {
     $this->helpers[] = 'Js';
-    
+
     // provide the role to all actions
     $role_id = $this->Auth->user('role_id');
     $this->loadModel('Role');
@@ -47,7 +39,7 @@ class AppController extends Controller {
     $this->Session->write('Role', $role['Role']);
 
     $this->set('is_admin', $this->Session->read('Role.name') == 'admin');
-    $this->set('show_password_link', $this->Guard->hasLoginForm());
+    $this->set('show_password_link', !$this->Auth->user('noLoginForm'));
     
     if ($theme = Configure::read('user_config.theme')) {
       $this->theme = $theme;
