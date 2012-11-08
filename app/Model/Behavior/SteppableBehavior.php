@@ -109,6 +109,7 @@ class SteppableBehavior extends ModelBehavior {
                 }
                 $step_content = $this->_parseQuestions($step_content);
                 $step_content = $this->_parseDefinitions($step_content, $display_definition_boxes);
+                $step_content = $this->_parseTextBoxes($step_content);
                 $step_content = $this->_parseImages($step_content);
                 
                 $step_num_within_chapter++;
@@ -223,6 +224,36 @@ class SteppableBehavior extends ModelBehavior {
     return $step_content;
   }
 
+  protected function _parseTextBoxes($step_content) {
+    $text_box_pattern = '/\<img[^>]*class\="text-box"[^>]*src\="tutorials\/view_text_box_image\/([^\/]+)\/([^"]+)"[^>]*>/';
+//    if ($display_definition_boxes) {
+//      $step_content = QH_urldecode(
+//        preg_replace_callback($text_box_pattern, array($this, '_generateDefinitionPrintHTML'), $step_content)
+//      );
+//    } else {
+      $step_content = QH_urldecode(
+        preg_replace_callback($text_box_pattern, array($this, '_generateTextBoxHTML'), $step_content)
+      );
+//    }
+    
+    return $step_content;
+  }
+  
+  protected function _generateTextBoxHTML($matches) {
+    $uuid = $this->uuid();
+    $type = htmlentities($matches[1], ENT_QUOTES, 'UTF-8');
+    $matches[2] = QH_urlencode(strip_tags($matches[2], allowed_tags('strip_tags')));
+    $placeholder = htmlentities($matches[2], ENT_QUOTES, 'UTF-8');
+    if ('one-line' == $type) {
+        return "<input placeholder='$placeholder' />";
+    } elseif ('multi-line' == $type) {
+        return "<textarea placeholder='$placeholder'></textarea>";
+    }
+    
+    return "<a href='#" . QH_urlencode($definition_text) . "' id='definition-link-$uuid' class='definition-link'>$link_text</a>";
+//      "<div id='definition-body-$uuid' class='definition-body'>$definition_text</div>";
+  }  
+  
   // http://www.php.net/manual/en/function.uniqid.php#94959
   // UUID version 4
   protected function uuid() {

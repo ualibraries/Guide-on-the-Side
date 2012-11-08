@@ -36,14 +36,14 @@
 			// Add a node change handler, selects the button in the UI when a image is selected
 			ed.onNodeChange.add(function(ed, cm, n) {
         cm.setActive('phpimage', n.nodeName === 'IMG' && !(n.className == 'heading'
-          || n.className == 'question' || n.className == 'definition'));
+          || n.className == 'question' || n.className == 'definition' || n.className == 'text-box'));
         cm.setDisabled('phpimage', n.nodeName == 'IMG' && (n.className == 'heading'
-          || n.className == 'question' || n.className == 'definition'));
+          || n.className == 'question' || n.className == 'definition' || n.className == 'text-box'));
       });
 
       ed.onDblClick.add(function(ed, e) {
         if (e.target.nodeName=='IMG' && !(e.target.className == 'heading'
-          || e.target.className == 'question' || e.target.className == 'definition')) {
+          || e.target.className == 'question' || e.target.className == 'definition' || e.target.className == 'text-box')) {
           ed.execCommand('mcePhpImage','','');
         }
       });

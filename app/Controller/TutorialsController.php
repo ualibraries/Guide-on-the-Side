@@ -824,6 +824,49 @@ class TutorialsController extends AppController {
     $this->autoRender = false;
   }
 
+  function view_text_box_image($type = 'one-line', $text = '') {
+    $this->layout = 'image';
+
+    $text = QH_urldecode($text);
+    
+    if ($type == 'one-line' || $type == 'multi-line') {
+      $string = ucfirst($type);
+      if (!empty($text)) {
+        $string .= ' free response: ' . $text;
+      }
+    } else {
+      $string = 'Image creation error!';
+    }
+
+    $string = wordwrap(strip_tags($string), $this->number_of_characters, '\n', true);
+
+    $text = explode('\n', $string);
+
+    $number_of_lines = count($text);
+
+    $box_height = $this->padding + ($this->line_height * $number_of_lines);
+    $box_width = $this->padding * 2 + $this->number_of_characters * $this->character_width;
+
+    $image = imagecreatetruecolor($box_width, $box_height);
+
+    $black = imagecolorallocate($image, 0, 0, 0);
+    $white = imagecolorallocate($image, 255, 255, 255);
+    
+    imagefill($image, 0, 0, $white);
+    imagerectangle($image, 0, 0, $box_width - 1, $box_height - 1, $black);
+    
+    $y = $this->padding + $this->character_height;
+    foreach ($text as $line) {
+      imagettftext($image, $this->font_size, 0, $this->padding, $y, $black, APP . 'Lib/unifont_5.1.20080907.ttf', $line);
+      $y += $this->line_height;
+    }
+
+    header("Content-type: image/png");
+    imagepng($image);
+    imagedestroy($image);
+    $this->autoRender = false;
+  }  
+  
   function provide_feedback($id = null) {
     if (!$id || !is_numeric($id))  {
       return false;
