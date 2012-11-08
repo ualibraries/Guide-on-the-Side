@@ -226,16 +226,9 @@ class SteppableBehavior extends ModelBehavior {
 
   protected function _parseTextBoxes($step_content) {
     $text_box_pattern = '/\<img[^>]*class\="text-box"[^>]*src\="tutorials\/view_text_box_image\/([^\/]+)\/([^"]+)"[^>]*>/';
-//    if ($display_definition_boxes) {
-//      $step_content = QH_urldecode(
-//        preg_replace_callback($text_box_pattern, array($this, '_generateDefinitionPrintHTML'), $step_content)
-//      );
-//    } else {
-      $step_content = QH_urldecode(
-        preg_replace_callback($text_box_pattern, array($this, '_generateTextBoxHTML'), $step_content)
-      );
-//    }
-    
+    $step_content = QH_urldecode(
+      preg_replace_callback($text_box_pattern, array($this, '_generateTextBoxHTML'), $step_content)
+    );
     return $step_content;
   }
   
@@ -245,9 +238,9 @@ class SteppableBehavior extends ModelBehavior {
     $matches[2] = QH_urlencode(strip_tags($matches[2], allowed_tags('strip_tags')));
     $placeholder = htmlentities($matches[2], ENT_QUOTES, 'UTF-8');
     if ('one-line' == $type) {
-        return "<input placeholder='$placeholder' />";
+        return "<input placeholder='$placeholder' class='text-box' />";
     } elseif ('multi-line' == $type) {
-        return "<textarea placeholder='$placeholder'></textarea>";
+        return "<textarea placeholder='$placeholder' class='text-box'></textarea>";
     }
     
     return "<a href='#" . QH_urlencode($definition_text) . "' id='definition-link-$uuid' class='definition-link'>$link_text</a>";

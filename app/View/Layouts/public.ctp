@@ -34,7 +34,7 @@
     echo $this->Html->charset('UTF-8');
     
 		//echo $this->Html->meta('icon');
-    
+    echo $this->element('formalize_css');
     echo $this->Html->css('http://fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
 
     echo $this->element('jquery_ui_css');

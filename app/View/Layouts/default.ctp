@@ -39,6 +39,7 @@
     echo $this->element('autoinclude_css');
 
     echo $this->element('jquery');
+    echo $this->element('formalize');
     // jQuery Tools must be loaded first.
     echo $this->Html->script('http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js');
     echo $this->element('jquery_ui');

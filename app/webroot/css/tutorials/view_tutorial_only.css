@@ -204,13 +204,21 @@ li#tab-1 {
   color: #333;
 }
 .definition-body p {
-    font-size: 0.85714em;
+  font-size: 0.85714em;
 }
 .step img {
   border: 1px solid #CBD2E4;
   background-color: #EEF0F3;
   padding: 0.214em;
   margin: 0.214em;
+}
+.step .text-box {
+  font-family: inherit;
+  font-size: inherit;
+}
+.step textarea.text-box {
+  resize: vertical;
+  height: 4.5em;
 }
 #table-of-contents li {
   margin-bottom: .6em;
