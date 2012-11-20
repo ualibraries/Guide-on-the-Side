@@ -824,10 +824,10 @@ class TutorialsController extends AppController {
     $this->autoRender = false;
   }
 
-  function view_text_box_image($type = 'one-line', $text = '') {
+  function view_text_box_image($type = 'one-line', $prompt = '', $placeholder = '') {
     $this->layout = 'image';
 
-    $text = QH_urldecode($text);
+    $text = QH_urldecode($prompt);
     
     if ($type == 'one-line' || $type == 'multi-line') {
       $string = ucfirst($type);
@@ -915,6 +915,23 @@ class TutorialsController extends AppController {
     } else {
       $is_tutorial = false;
       $is_quiz = false;
+      
+      if (array_key_exists('tutorial_id', $this->request->data) && is_numeric($this->request->data['tutorial_id'])) {
+        $tutorial = $this->Tutorial->read(null, $this->request->data['tutorial_id']);
+        $data = $tutorial['Tutorial'];
+        $is_tutorial = true;
+        $subject = $tutorial['Tutorial']['title'];
+        if (!isset($this->request->data['questions'])) {
+          $this->request->data['questions'] = array();
+        }
+        $this->set('tutorial_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['tutorial_id'], $this->request->data['questions']));
+      }
+      
+      if (!isset($this->request->data['free-response'])) {
+        $this->request->data['free-response'] = array();
+      }
+      $this->set('free_responses', $this->request->data['free-response']);
+      
       if (array_key_exists('quiz_id', $this->request->data) && is_numeric($this->request->data['quiz_id'])) {
         $final_quiz = $this->Tutorial->FinalQuiz->read(null, $this->request->data['quiz_id']);
         $data = $final_quiz['FinalQuiz'];
@@ -924,11 +941,11 @@ class TutorialsController extends AppController {
           $this->request->data['questions'] = array();
         }
         if($data['certificate_grades']) {
-          $this->set('grades', $this->Tutorial->FinalQuiz->grade($this->request->data['quiz_id'], $this->request->data['questions']));
+          $this->set('quiz_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['quiz_id'], $this->request->data['questions']));
         }
       }
+      
       // parse supplied email fields
-
       if ($data['certificate']) {
         $email_success = true;
         

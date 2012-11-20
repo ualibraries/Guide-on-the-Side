@@ -25,58 +25,81 @@
   <p><span class="label">Name:</span> <?php echo $name ?> </p>
   <p><span class="label">Date:</span> <?php echo $date ?></p>
   <p><span class="label">Time:</span> <?php echo $time ?></p>
-  <?php if (!empty($grades)) { ?>
-  <p><span class="label">Score:</span>
+  <?php foreach (array($tutorial_grades, $quiz_grades) as $grades) { ?>
+      <?php if (!empty($grades)) { ?>
+      <p><span class="label">Score:</span>
 
-  <?php echo $grades['score'] ?>
+      <?php echo $grades['score'] ?>
 
-  out of
+      out of
 
-  <?php echo $grades['total'] ?>
+      <?php echo $grades['total'] ?>
 
-  (<?php echo round(($grades['score'] / $grades['total']) * 100, 2) ?>%)
-  </p>
-    <?php if ($grades['total'] > 0) { ?>
+      (<?php echo round(($grades['score'] / $grades['total']) * 100, 2) ?>%)
+      </p>
+        <?php if ($grades['total'] > 0) { ?>
+          <table>
+            <thead>
+              <tr>
+                <th class="question-number">#</th>
+                <th class="question-text">Question</th>
+                <th class="question-eval">Correct?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $altrow = 0;
+              foreach($grades as $order => $detail) {
+                if (is_numeric($order)) {
+                  $correct = 'No';
+                  if ($detail['user_correct']) {
+                    $correct = 'Yes';
+                  }
+                  $answer = $detail['user_answer'];
+                  if (empty($detail['user_answer'])) {
+                    $answer = 'nothing';
+                  }
+                  $question_number = $order + 1; 
+                  $altrow_class = '';
+                  if (($altrow % 2) == 1) {
+                    $altrow_class = " class='altrow'";
+                  } ?>
+                  <tr <?php echo $altrow_class ?>>
+                    <td class="question-number"><?php echo $question_number ?></td>
+                    <td class="question-text"><dt><?php echo $detail['question'] ?></dt><dd><?php echo $detail['user_answer'] ?></td>
+                    <td class="question-eval"><?php echo $correct ?></td>
+                  </tr>
+            <?php 
+                  $altrow++;
+                }
+              }
+            ?>
+            </tbody>
+          </table>
+        <?php } ?>
+      <?php } ?>
+  <?php } ?>
+  
+  <?php if (count($free_responses) > 0): ?>
       <table>
         <thead>
           <tr>
-            <th class="question-number">#</th>
-            <th class="question-text">Question</th>
-            <th class="question-eval">Correct?</th>
+            <th class="free-response-prompt">Prompt</th>
+            <th class="free-response-answer">Answer</th>
           </tr>
         </thead>
         <tbody>
-          <?php
-          $altrow = 0;
-          foreach($grades as $order => $detail) {
-            if (is_numeric($order)) {
-              $correct = 'No';
-              if ($detail['user_correct']) {
-                $correct = 'Yes';
-              }
-              $answer = $detail['user_answer'];
-              if (empty($detail['user_answer'])) {
-                $answer = 'nothing';
-              }
-              $question_number = $order + 1; 
-              $altrow_class = '';
-              if (($altrow % 2) == 1) {
-                $altrow_class = " class='altrow'";
-              } ?>
-              <tr <?php echo $altrow_class ?>>
-                <td class="question-number"><?php echo $question_number ?></td>
-                <td class="question-text"><dt><?php echo $detail['question'] ?></dt><dd><?php echo $detail['user_answer'] ?></td>
-                <td class="question-eval"><?php echo $correct ?></td>
-              </tr>
-        <?php 
-              $altrow++;
-            }
-          }
-        ?>
+          <?php foreach($free_responses as $free_response): ?>
+            <?php $prompt = array_keys($free_response) ?>
+            <tr>
+                <td><?php echo $prompt[0] ?></td>
+                <td><?php echo $free_response[$prompt[0]] ?></td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
-    <?php } ?>
-  <?php } ?>
-
+  <?php endif ?>
+      
+      
   </div>
 

@@ -27,7 +27,7 @@ class FinalQuiz extends AppModel {
           $grades[$order]['response'] = $question['Answer'][$answers[$question_id]]['response'];
           $grades[$order]['user_correct'] = ($answers[$question_id] === $question['Question']['correct_answer']);
         } else {
-          $grades[$order]['user_answer'] = "nothing";
+          $grades[$order]['user_answer'] = "no answer given";
           $grades[$order]['response'] = "";
           $grades[$order]['user_correct'] = false;
         }

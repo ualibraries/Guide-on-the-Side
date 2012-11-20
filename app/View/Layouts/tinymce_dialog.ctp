@@ -11,7 +11,7 @@
 
   echo $this->Html->script('/TinyMCE/js/tiny_mce/tiny_mce_popup.js');
   echo $this->element('jquery');
-  echo $this->element('formalize');
+  echo $this->element('formalize_css');
   echo $this->element('jquery_ui');
   echo $this->element('cakephp_js');
   

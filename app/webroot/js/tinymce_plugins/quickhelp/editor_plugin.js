@@ -69,7 +69,7 @@
           //   Definitions are simpler.            
           file : cakephp.webroot + 'text_boxes/add',
           width : 500 + parseInt(ed.getLang('quickhelp.delta_width', 0)),
-          height : 150 + parseInt(ed.getLang('quickhelp.delta_height', 0)),
+          height : 170 + parseInt(ed.getLang('quickhelp.delta_height', 0)),
           inline : 1
         });
       });

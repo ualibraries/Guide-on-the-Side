@@ -102,6 +102,7 @@ $(document).ready(function() {
 
   $('#email_and_print').submit(function() {
     var postData = $(this).serialize();
+    console.log(postData);
     $.post(cakephp.webroot + 'tutorials/view_certificate/', postData, function(returnData) {
       dialog = '<div id="email-print" style="display: none" title="Results">' + returnData + '</div>'
       parent.$('body').append(dialog);

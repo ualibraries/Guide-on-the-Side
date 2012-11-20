@@ -90,7 +90,7 @@ class SteppableBehavior extends ModelBehavior {
                 }
               } else { // it's not a step heading, it's content
                 $step_content = $step_or_heading;
-
+                
                 // invalid HTML caused by splitting the HTML into steps can break QuickHelp, 
                 //   esp. in IE8. Using Tidy is highly recommended to prevent this, 
                 //   but we don't want to prevent people from trying to use it if they're brave.
@@ -189,20 +189,18 @@ class SteppableBehavior extends ModelBehavior {
   // An anonymous function would be cooler, but I'm on PHP 5.2. And create_function() is evil!
   protected function _generateDefinitionHTML($matches) {
     $uuid = $this->uuid();
-    $link_text = htmlentities($matches[1], ENT_QUOTES, 'UTF-8');
+    $link_text = strip_tags(QH_urldecode($matches[1]), allowed_tags('strip_tags'));
     $matches[2] = $this->_parseImages(QH_urldecode($matches[2]));
-    $matches[2] = QH_urlencode(strip_tags($matches[2], allowed_tags('strip_tags')));
-    $definition_text = htmlentities($matches[2], ENT_QUOTES, 'UTF-8');
-    return "<a href='#" . QH_urlencode($definition_text) . "' id='definition-link-$uuid' class='definition-link'>$link_text</a>";
-//      "<div id='definition-body-$uuid' class='definition-body'>$definition_text</div>";
+    $definition_text = strip_tags($matches[2], allowed_tags('strip_tags'));
+    return "<a href='#" . QH_urlencode($definition_text) . "' id='definition-link-$uuid' class='definition-link'>" .
+        "$link_text</a>";
   }
 
   protected function _generateDefinitionPrintHTML($matches) {
     $uuid = $this->uuid();
-    $link_text = htmlentities($matches[1], ENT_QUOTES, 'UTF-8');
+    $link_text = strip_tags($matches[1], allowed_tags('strip_tags'));
     $matches[2] = $this->_parseImages(QH_urldecode($matches[2]));
-    $matches[2] = QH_urlencode(strip_tags($matches[2], allowed_tags('strip_tags')));
-    $definition_text = htmlentities($matches[2], ENT_QUOTES, 'UTF-8');
+    $definition_text = strip_tags($matches[2], allowed_tags('strip_tags'));
     return "<a href='#' id='definition-link-$uuid' class='definition-link'>$link_text</a>" .
       "<div id='definition-body-$uuid' class='definition-body'>$definition_text</div>";
   }
@@ -212,39 +210,36 @@ class SteppableBehavior extends ModelBehavior {
   protected function _parseDefinitions($step_content, $display_definition_boxes = false) {
     $definition_pattern = '/\<img[^>]*class\="definition"[^>]*src\="tutorials\/view_definition_image\/([^\/]+)\/([^"]+)"[^>]*>/';
     if ($display_definition_boxes) {
-      $step_content = QH_urldecode(
-        preg_replace_callback($definition_pattern, array($this, '_generateDefinitionPrintHTML'), $step_content)
-      );
+      $step_content = preg_replace_callback($definition_pattern, array($this, '_generateDefinitionPrintHTML'), 
+          $step_content);
     } else {
-      $step_content = QH_urldecode(
-        preg_replace_callback($definition_pattern, array($this, '_generateDefinitionHTML'), $step_content)
-      );
+      $step_content = preg_replace_callback($definition_pattern, array($this, '_generateDefinitionHTML'), 
+          $step_content);
     }
     
     return $step_content;
   }
 
   protected function _parseTextBoxes($step_content) {
-    $text_box_pattern = '/\<img[^>]*class\="text-box"[^>]*src\="tutorials\/view_text_box_image\/([^\/]+)\/([^"]+)"[^>]*>/';
-    $step_content = QH_urldecode(
-      preg_replace_callback($text_box_pattern, array($this, '_generateTextBoxHTML'), $step_content)
-    );
+    $text_box_pattern = '/\<img[^>]*class\="text-box"[^>]*src\="tutorials\/view_text_box_image\/([^\/]+)\/([^\/]+)\/([^"]+)"[^>]*>/';
+    $step_content = preg_replace_callback($text_box_pattern, array($this, '_generateTextBoxHTML'), $step_content);
     return $step_content;
   }
   
   protected function _generateTextBoxHTML($matches) {
     $uuid = $this->uuid();
     $type = htmlentities($matches[1], ENT_QUOTES, 'UTF-8');
-    $matches[2] = QH_urlencode(strip_tags($matches[2], allowed_tags('strip_tags')));
-    $placeholder = htmlentities($matches[2], ENT_QUOTES, 'UTF-8');
+    $matches[2] = QH_urldecode(strip_tags($matches[2], allowed_tags('strip_tags')));
+    $matches[3] = QH_urldecode(strip_tags($matches[3], allowed_tags('strip_tags')));
+    $prompt = htmlentities($matches[2], ENT_QUOTES, 'UTF-8');
+    $placeholder = htmlentities($matches[3], ENT_QUOTES, 'UTF-8');
+    $name = "free-response[$uuid][$prompt]";
     if ('one-line' == $type) {
-        return "<input placeholder='$placeholder' class='text-box' />";
+        return "<label for='$name'>$prompt<br /><input placeholder='$placeholder' class='text-box' name='$name' /></label>";
     } elseif ('multi-line' == $type) {
-        return "<textarea placeholder='$placeholder' class='text-box'></textarea>";
+        return "<label for='$name'>$prompt<br /><textarea placeholder='$placeholder' " . 
+            "class='text-box' name='$name'></textarea></label>";
     }
-    
-    return "<a href='#" . QH_urlencode($definition_text) . "' id='definition-link-$uuid' class='definition-link'>$link_text</a>";
-//      "<div id='definition-body-$uuid' class='definition-body'>$definition_text</div>";
   }  
   
   // http://www.php.net/manual/en/function.uniqid.php#94959

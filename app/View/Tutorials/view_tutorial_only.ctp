@@ -57,6 +57,7 @@
         }
 
         if ($tutorial['FinalQuiz']['certificate']) {
+          echo "<input value='{$tutorial['Tutorial']['id']}' name='tutorial_id' type='hidden' />";
           echo "<input value='{$tutorial['FinalQuiz']['id']}' name='quiz_id' type='hidden' />";
           echo "<input value='Print / Send email' type='submit' name='submit' />";
         }
