@@ -40,19 +40,25 @@ $(document).ready(function() {
 
   display_remaining($('#TutorialTitle'));
 
-  show_email_fields = function(checkbox) {
-    if(checkbox.is(':checked')) {
-      checkbox.parent().parent().children(':gt(1)').show();
-    } else {
-      checkbox.parent().parent().children(':gt(1)').hide();
-    }
-  };
-
-  show_email_fields($('#FinalQuizCertificate'));
-
-  $('#FinalQuizCertificate').click(function() {
-    show_email_fields($(this));
-  });
+//  show_email_fields = function(checkbox) {
+//    if(checkbox.is(':checked')) {
+//      checkbox.parent().parent().children(':gt(1)').show();
+//    } else {
+//      checkbox.parent().parent().children(':gt(1)').hide();
+//    }
+//  };
+//
+//  show_email_fields($('#FinalQuizCertificate'));
+//
+//  $('#FinalQuizCertificate').click(function() {
+//    show_email_fields($(this));
+//  });
+//
+//  show_email_fields($('#TutorialCertificate'));
+//
+//  $('#TutorialCertificate').click(function() {
+//    show_email_fields($(this));
+//  });
 
   // from http://jqueryui.com/demos/autocomplete/#multiple-remote
   function split( val ) {

@@ -4,9 +4,17 @@
 h2 {
   margin-top: 0.58333em;
 }
+
+h3 {
+  margin: .5em 0;
+  line-height: 1.5em;
+  font-size: 1.3em;
+}
+
 p {
   margin: 0;
 }
+
 .label {
   width: 60px;
   text-align: right;

@@ -30,30 +30,41 @@
     echo $this->element('tutorial_common');
 
     // give up on AJAX link checker for now. May need JSONP or something.
-		echo $this->Form->input('url', array('label' => 'Right frame starting URL: '/*, 'after' => "<span>invalid</span>"*/));
+    echo $this->Form->input('url', array('label' => 'Right frame starting URL: '/*, 'after' => "<span>invalid</span>"*/));
 
     $before_link_toc = $this->Form->label('link_toc', 'Link table of contents?');
-    echo $this->Form->input('link_toc', array('before' => $before_link_toc, 'label' => ''));
+    echo $this->Form->input('link_toc', array('before' => $before_link_toc, 'label' => false));
 
+    echo "<fieldset id='certificate-fields'>";
+    echo '<legend>Certificates</legend>';
+    $before_quiz = $this->Form->label('Tutorial.certificate', 'Include a tutorial certificate?');
+    echo $this->Form->input('Tutorial.certificate', array('label' => false, 'before' => $before_quiz));
+    echo $this->Form->input('Tutorial.id');
     if ($has_quiz) {
-      echo "<fieldset id='quiz-certificate-fields'>";
-      echo '<legend>Quiz fields</legend>';
-      $before_quiz = $this->Form->label('FinalQuiz.certificate', 'Quiz certificate:');
+      $before_quiz = $this->Form->label('FinalQuiz.certificate', 'Include a quiz certificate?');
       echo $this->Form->input('FinalQuiz.certificate', array('label' => '', 'before' => $before_quiz));
       echo $this->Form->input('FinalQuiz.id');
-      echo $this->Form->input('FinalQuiz.certificate_email');
-      $before_quiz_email_self = $this->Form->label('certificate', 'Allow user to email self:');
-      echo $this->Form->input('FinalQuiz.certificate_email_self',
-        array('label' => '', 'before' => $before_quiz_email_self));
-      $before_quiz_grades = $this->Form->label('certificate', 'Include grades?');
-      echo $this->Form->input('FinalQuiz.certificate_grades',
-        array('label' => '', 'before' => $before_quiz_grades));
-      echo "</fieldset>";
-    }
+//      $before_quiz_grades = $this->Form->label('FinalQuiz.certificate_grades', 'Include grades?');
+//      echo $this->Form->input('FinalQuiz.certificate_grades',
+//      array('label' => false, 'before' => $before_quiz_grades));      
+    }    
+    echo "</fieldset>";
+    
+    echo "<fieldset>";
+    echo '<legend>Email settings</legend>';
+    echo $this->Form->input('Tutorial.certificate_email', 
+        array('label' => false, 'before' => 
+        $this->Form->label('Tutorial.certificate_email', 'Send all certificates to:')));
+    $before_quiz_email_self = $this->Form->label('Tutorial.certificate_email_self', 'Allow user to send to additional email addresses?');
+    echo $this->Form->input('Tutorial.certificate_email_self',
+      array('label' => false, 'before' => $before_quiz_email_self));
+
+    echo "</fieldset>";
+    
 
 ?>
 
-<?php echo $this->Form->end(__('Submit'));?>
+<?php echo $this->Form->end(__('Save'));?>
 </div>
 
 <?php

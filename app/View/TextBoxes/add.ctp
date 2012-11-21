@@ -1,4 +1,5 @@
 <?php
+  echo "<p></p>";
   echo $this->Form->create('TextBox');
   echo $this->Form->input('type',
     array(

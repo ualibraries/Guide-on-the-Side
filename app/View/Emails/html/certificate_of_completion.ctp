@@ -16,8 +16,7 @@
   ?>
   <div id="email-print-wrapper">
   <h2>
-    <?php echo $title ?>
-    Completion Certificate
+    Completion Certificate for <?php echo $title ?>
   </h2>
 
 
@@ -25,8 +24,12 @@
   <p><span class="label">Name:</span> <?php echo $name ?> </p>
   <p><span class="label">Date:</span> <?php echo $date ?></p>
   <p><span class="label">Time:</span> <?php echo $time ?></p>
-  <?php foreach (array($tutorial_grades, $quiz_grades) as $grades) { ?>
+  
+  
+  
+    <?php foreach (array('tutorial' => $tutorial_grades, 'quiz' => $quiz_grades) as $type => $grades) { ?>
       <?php if (!empty($grades)) { ?>
+      <h3>Your <?php echo $type ?> results</h3>
       <p><span class="label">Score:</span>
 
       <?php echo $grades['score'] ?>
@@ -81,19 +84,25 @@
   <?php } ?>
   
   <?php if (count($free_responses) > 0): ?>
+      <h3>Your free responses</h3>
       <table>
         <thead>
           <tr>
-            <th class="free-response-prompt">Prompt</th>
-            <th class="free-response-answer">Answer</th>
+            <th class="free-response question-text">Prompt &amp; Answer</th>
           </tr>
         </thead>
         <tbody>
           <?php foreach($free_responses as $free_response): ?>
             <?php $prompt = array_keys($free_response) ?>
             <tr>
-                <td><?php echo $prompt[0] ?></td>
-                <td><?php echo $free_response[$prompt[0]] ?></td>
+                <td class="question-text">
+                  <dt><?php echo $prompt[0] ?></dt>
+                  <dd>
+                    <?php echo 
+                      (!empty($free_response[$prompt[0]])) ? $free_response[$prompt[0]] : "no answer given" 
+                    ?> 
+                  </dd>
+                </td>
             </tr>
           <?php endforeach; ?>
         </tbody>

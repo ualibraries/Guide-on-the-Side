@@ -65,6 +65,7 @@ h1 {
   text-align: right;
   vertical-align: top;
   margin: .5em;
+  margin-top: 0;
 }
 
 .checkbox label {

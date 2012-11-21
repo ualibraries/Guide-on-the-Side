@@ -5,7 +5,7 @@ class FinalQuiz extends AppModel {
 		'tutorial_id' => 'numeric',
 	);
 
-  var $actsAs = array('Steppable');
+  var $actsAs = array('Steppable', 'Containable');
 
 	var $belongsTo = array('Tutorial');
 

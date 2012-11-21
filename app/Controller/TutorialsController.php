@@ -526,7 +526,7 @@ class TutorialsController extends AppController {
     $this->edit($id);
   }
 
-	function edit($id) {
+  function edit($id) {
     if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid tutorial'));
 			$this->redirect(array('action' => 'index'));
@@ -545,7 +545,7 @@ class TutorialsController extends AppController {
         }
       }
 
-			if ($this->Tutorial->saveAll($this->data)) {
+    if ($this->Tutorial->saveAll($this->data)) {
         $this->Tutorial->read();
 				$this->Session->setFlash(__('The tutorial has been saved'));
 				if ($this->Tutorial->data['Tutorial']['tutorial_type_id'] == TUTORIAL_TYPE_SIDEBYSIDE) {
@@ -584,13 +584,13 @@ class TutorialsController extends AppController {
     $this->set('audiences', $this->Tutorial->Audience->find('list'));
     $this->set('subjects', $this->Tutorial->Subject->find('list'));
     $this->set('resourceTypes', $this->Tutorial->ResourceType->find('list'));
-	}
+  }
 
-	function edit_content($id = null) {
-		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid tutorial'));
-			$this->redirect(array('action' => 'index'));
-		}
+  function edit_content($id = null) {
+    if (!$id && empty($this->data)) {
+        $this->Session->setFlash(__('Invalid tutorial'));
+        $this->redirect(array('action' => 'index'));
+    }
 
     if (!empty($this->request->data)) {
       if (Configure::read('require_revision_message') && empty($this->data['Revision']['message'])) {
@@ -915,16 +915,20 @@ class TutorialsController extends AppController {
     } else {
       $is_tutorial = false;
       $is_quiz = false;
+      $this->set('tutorial_grades', array());
+      $this->set('quiz_grades', array());
       
       if (array_key_exists('tutorial_id', $this->request->data) && is_numeric($this->request->data['tutorial_id'])) {
         $tutorial = $this->Tutorial->read(null, $this->request->data['tutorial_id']);
-        $data = $tutorial['Tutorial'];
-        $is_tutorial = true;
-        $subject = $tutorial['Tutorial']['title'];
-        if (!isset($this->request->data['questions'])) {
-          $this->request->data['questions'] = array();
-        }
-        $this->set('tutorial_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['tutorial_id'], $this->request->data['questions']));
+        if ($tutorial['Tutorial']['certificate']) {
+            $is_tutorial = true;
+            $subject = $tutorial['Tutorial']['title'];
+            if (!isset($this->request->data['questions'])) {
+              $this->request->data['questions'] = array();
+            }
+            $this->set('tutorial_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['tutorial_id'], 
+                $this->request->data['questions']));
+        }   
       }
       
       if (!isset($this->request->data['free-response'])) {
@@ -934,24 +938,23 @@ class TutorialsController extends AppController {
       
       if (array_key_exists('quiz_id', $this->request->data) && is_numeric($this->request->data['quiz_id'])) {
         $final_quiz = $this->Tutorial->FinalQuiz->read(null, $this->request->data['quiz_id']);
-        $data = $final_quiz['FinalQuiz'];
-        $is_quiz = true;
-        $subject = $final_quiz['Tutorial']['title'] . ' Quiz';
-        if (!isset($this->request->data['questions'])) {
-          $this->request->data['questions'] = array();
-        }
-        if($data['certificate_grades']) {
-          $this->set('quiz_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['quiz_id'], $this->request->data['questions']));
+        if ($final_quiz['FinalQuiz']['certificate']) {
+            $is_quiz = true;
+            $subject = $final_quiz['Tutorial']['title'];
+            if (!isset($this->request->data['questions'])) {
+              $this->request->data['questions'] = array();
+            }
+            $this->set('quiz_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['quiz_id'], $this->request->data['questions']));
         }
       }
       
       // parse supplied email fields
-      if ($data['certificate']) {
+
+      if ($is_tutorial || $is_quiz) {
         $email_success = true;
-        
         $to_string = '';
-        if (!empty($data['certificate_email'])) {
-          $to_string .= $data['certificate_email'];
+        if (!empty($tutorial['Tutorial']['certificate_email'])) {
+          $to_string .= $tutorial['Tutorial']['certificate_email'];
         }
         if (!empty($this->request->data['certificate_email'])) {
           if (!empty($to_string)) {
@@ -960,27 +963,27 @@ class TutorialsController extends AppController {
           $to_string .= Sanitize::paranoid($this->request->data['certificate_email'], array('@', '.', ',', '+'));
         }
         
-        
+        $this->set('date', date('F j, Y'));
+        $this->set('time', date('g:ia'));
+        $this->set('name', Sanitize::paranoid($this->request->data['certificate_name'], array(' ')));
+        $this->set('title', $subject);
+       
         $to_array = explode(',', $to_string);
-        foreach ($to_array as $to) {
-          if ($to == 'Emailaddresses') {
+        foreach ($to_array as $key => $to) {
+          if ($to == 'Emailaddresses' || empty($to)) {
+            unset($to_array[$key]);
             continue;
           }
           $this->Email->reset();
-
-          $this->Email->to = $to;
+          $this->Email->to = trim($to);
           $from = Configure::read('user_config.email.send_from');
           $from = explode(',', $from);
           if (is_array($from)) {
             $from = $from[0];
           }
-          $this->Email->from = $from;
+          $this->Email->from = trim($from);
           $this->Email->subject = "Certificate of Completion for $subject";
           $this->Email->sendAs = 'html';
-          $this->set('date', date('F j, Y'));
-          $this->set('time', date('g:ia'));
-          $this->set('name', Sanitize::paranoid($this->request->data['certificate_name'], array(' ')));
-          $this->set('title', $subject);
 //          $this->Email->delivery = 'debug';
           $this->Email->template = 'certificate_of_completion';
           $email_success = $this->Email->send() && $email_success;
@@ -989,12 +992,18 @@ class TutorialsController extends AppController {
         $this->viewPath = 'Emails/html';
         $this->layout = 'Emails/html/default';
         $this->set('dialog', true);
-        $this->set('title', $subject);
-        if ($email_success) {
-          $this->Session->setFlash('The following message was sent.');
+
+        if (empty($to_array)) {
+            $this->Session->setFlash('This certificate could not be emailed because no email addresses' . 
+                ' were supplied.');
         } else {
-          $this->Session->setFlash('The following message could <strong>not</strong> be sent.');
+            if ($email_success) {
+              $this->Session->setFlash('The following message was sent.');
+            } else {
+              $this->Session->setFlash('The following message could <strong>not</strong> be sent.');
+            }
         }
+        
         return $this->render('certificate_of_completion');
       } else {
         return 'This certificate cannot be generated.';

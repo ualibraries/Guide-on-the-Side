@@ -41,22 +41,24 @@
         } ?>
       <div class="step">
         <?php
-        if ($tutorial['FinalQuiz']['certificate'] && $tutorial['FinalQuiz']['certificate_email_self']) {
+        if (($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) 
+            && $tutorial['Tutorial']['certificate_email_self']) {
           echo "<p>Please enter your name and email address to retrieve a copy of your completed quiz.</p>";
         }
 
-        if ($tutorial['FinalQuiz']['certificate']) {
+        if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
           echo $this->Form->input('certificate_name', array('label' => 'Your name:',
               'placeholder' => 'Your name', 'class' => 'certificate_name'));
         }
 
-        if ($tutorial['FinalQuiz']['certificate'] && $tutorial['FinalQuiz']['certificate_email_self']) {
+        if (($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate'])
+            && $tutorial['Tutorial']['certificate_email_self']) {
           echo $this->Form->input('certificate_email', array('label' => 'Email address(es):', 
               'placeholder' => 'Email addresses', 'class' => 'certificate_email'));
           echo "<p class='field-description'>You can enter multiple email addresses separated by commas. If you are doing this for a class, you may need to enter your instructor's email address also.</p>";
         }
 
-        if ($tutorial['FinalQuiz']['certificate']) {
+        if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
           echo "<input value='{$tutorial['Tutorial']['id']}' name='tutorial_id' type='hidden' />";
           echo "<input value='{$tutorial['FinalQuiz']['id']}' name='quiz_id' type='hidden' />";
           echo "<input value='Print / Send email' type='submit' name='submit' />";

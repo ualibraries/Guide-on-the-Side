@@ -9,10 +9,11 @@ class Tutorial extends AppModel {
   var $actsAs = array('Steppable', 'Tags.Taggable', //'Search.Searchable',
     'Utils.CsvImport' => array(
       'delimiter' => ','
-    )
+    ),
+    'Containable'
   );
   
-	var $hasMany = array('Revision');
+  var $hasMany = array('Revision');
 
   var $hasOne = array('FinalQuiz', 'SearchIndex');
 
