@@ -18,16 +18,19 @@ function start() {
   }
  
   $('#TextBoxAddForm').submit(function() {
-    console.log('submit');
     type = $('#TextBoxAddForm input:radio:checked').val().QH_encodeURIComponent();
     prompt = $('#TextBoxPrompt').val().QH_encodeURIComponent();
-    placeholder = $('#TextBoxPlaceholder').val().QH_encodeURIComponent();
-    img = "<img class='text-box' src='tutorials/view_text_box_image/" +
-    type  + "/" +
-    prompt  + "/" +
-    placeholder + "' />";
-    tinyMCEPopup.editor.execCommand('mceInsertContent', false, img);
-    tinyMCEPopup.close();
+    if (prompt) {
+        placeholder = $('#TextBoxPlaceholder').val().QH_encodeURIComponent();
+        img = "<img class='text-box' src='tutorials/view_text_box_image/" +
+        type  + "/" +
+        prompt  + "/" +
+        placeholder + "' />";
+        tinyMCEPopup.editor.execCommand('mceInsertContent', false, img);
+        tinyMCEPopup.close();
+    } else {
+        alert('Please fill out the "prompt" field. We need a way to identify the user\'s answer in the certificate.');
+    }
 
     return false;
   });

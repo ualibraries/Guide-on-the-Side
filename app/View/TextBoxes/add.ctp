@@ -12,7 +12,7 @@
       'default' => 'one-line'
     )
   );
-  echo $this->Form->input('prompt', array('label' => 'Prompt: '));
+  echo $this->Form->input('prompt', array('label' => 'Prompt *: '));
   echo $this->Form->input('placeholder', array('label' => 'Initial (placeholder) text: '));
 
   echo $this->element('tinymce_dialog_buttons');

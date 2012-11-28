@@ -221,7 +221,7 @@ class SteppableBehavior extends ModelBehavior {
   }
 
   protected function _parseTextBoxes($step_content) {
-    $text_box_pattern = '/\<img[^>]*class\="text-box"[^>]*src\="tutorials\/view_text_box_image\/([^\/]+)\/([^\/]+)\/([^"]+)"[^>]*>/';
+    $text_box_pattern = '/\<img[^>]*class\="text-box"[^>]*src\="tutorials\/view_text_box_image\/([^\/]+)\/([^\/]+)\/?([^"]+)?"[^>]*>/';
     $step_content = preg_replace_callback($text_box_pattern, array($this, '_generateTextBoxHTML'), $step_content);
     return $step_content;
   }
