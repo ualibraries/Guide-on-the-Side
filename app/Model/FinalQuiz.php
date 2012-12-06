@@ -9,41 +9,6 @@ class FinalQuiz extends AppModel {
 
 	var $belongsTo = array('Tutorial');
 
-  public function grade($id = null, $answers = array()) {
-    $grades = array();
-    if ($id && is_numeric($id)) {
-      $this->Question = ClassRegistry::init('Question');
-      $all_questions = $this->getQuestionIds($id);
-      $grades['total'] = count($all_questions);
-      $grades['score'] = 0;
-      // this assumes that the index of $question['Answer'] matches the answer order. Should be valid based on the
-      //   hasMany between Question and Answer
-      foreach($all_questions as $order => $question_id) {
-        $question = $this->Question->read(null, $question_id);
-        $grades[$order]['question'] = $question['Question']['question'];
-        $grades[$order]['correct_answer'] = $question['Answer'][$question['Question']['correct_answer']]['answer'];
-        if (array_key_exists($question_id, $answers)) {
-          $grades[$order]['user_answer'] = $question['Answer'][$answers[$question_id]]['answer'];
-          $grades[$order]['response'] = $question['Answer'][$answers[$question_id]]['response'];
-          $grades[$order]['user_correct'] = ($answers[$question_id] === $question['Question']['correct_answer']);
-        } else {
-          $grades[$order]['user_answer'] = "no answer given";
-          $grades[$order]['response'] = "";
-          $grades[$order]['user_correct'] = false;
-        }
-        
-        if ($grades[$order]['user_correct']) {
-          $grades['score']++;
-        }
-      }
-      unset($this->Question);
-    } else {
-      $grades = array();
-    }
-
-    return $grades;
-  }
-
   public function afterSave($created) {
     if (!isset($this->data['FinalQuiz']['no_revision']) || !$this->data['FinalQuiz']['no_revision']) { // force tutorial save to trigger revisioning
       $options = array(

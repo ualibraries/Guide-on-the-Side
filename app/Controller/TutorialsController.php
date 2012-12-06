@@ -926,7 +926,7 @@ class TutorialsController extends AppController {
             if (!isset($this->request->data['questions'])) {
               $this->request->data['questions'] = array();
             }
-            $this->set('tutorial_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['tutorial_id'], 
+            $this->set('tutorial_grades', $this->Tutorial->grade($this->request->data['tutorial_id'], 
                 $this->request->data['questions']));
         }   
       }
