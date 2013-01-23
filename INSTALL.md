@@ -43,14 +43,21 @@ Installation procedure
      matches what you created in step 2.
 5. Install the database schema by running the following commands from the 
    guide_on_the_side/app folder:
-   ```../lib/Cake/Console/cake Migrations.migration --plugin Tags all```
-   ```../lib/Cake/Console/cake Migrations.migration all```
+    
+    ../lib/Cake/Console/cake Migrations.migration --plugin Tags all
+
+    ../lib/Cake/Console/cake Migrations.migration all
+
 6. Change permissions of app/tmp to make it and all sub-folders writable by 
    the web server. Example command (for Unix-like systems): 
-    chmod -R 777 app/tmp.
+
+    chmod -R 777 app/tmp
+
 7. Change permissions of app/webroot/uploads to make it and all sub-folders writable by 
    the web server. Example command (for Unix-like systems): 
-    chmod -R 777 app/webroot/uploads.
+
+    chmod -R 777 app/webroot/uploads
+
 8. If all went as planned, the public interface should now be available at 
    http://your.domain/guide_on_the_side/ (assuming the folder you unzipped to 
    in step 1 was in your server web root.)
