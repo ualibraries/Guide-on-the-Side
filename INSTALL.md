@@ -1,30 +1,37 @@
-PLATFORM SUPPORT / DEPENDENCIES
+Installation of Guide on the Side
+=================
+
+Platform support / dependencies
 -------------------------------------------------------------------------------
 Guide on the Side has been tested on the following platforms:
-1. Ubuntu Linux 11.10, MySQL 5.1, Apache 2.2, PHP 5.3
-2. Red Hat Enterprise Linux 5.6, MySQL 5.0, Apache 2.2, PHP 5.2/5.3
+
+* Ubuntu Linux 12.04, MySQL 5.5, Apache 2.2, PHP 5.3
+* Ubuntu Linux 11.10, MySQL 5.1, Apache 2.2, PHP 5.3
+* Red Hat Enterprise Linux 5.6, MySQL 5.0, Apache 2.2, PHP 5.2/5.3
 
 PHP must have the following loaded or compiled in:
-1. GD support (--with-gd). This is supplied by the php5-gd package in Ubuntu.
-2. FreeType (--with-freetype-dir). This is also supplied by the php5-gd 
+
+* GD support (--with-gd). This is supplied by the php5-gd package in Ubuntu.
+* FreeType (--with-freetype-dir). This is also supplied by the php5-gd 
 package in Ubuntu.
-3. Tidy (--with-tidy) (optional, but highly recommended). This is supplied by 
+* Tidy (--with-tidy) (optional, but highly recommended). This is supplied by 
 the php5-tidy package in Ubuntu.
-4. mbstring (--enable-mbstring) must be installed.
+* mbstring (--enable-mbstring) must be installed.
 
 Other requirements:
-1. PHP short tags must be turned off (short_open_tag = Off in php.ini). This 
+
+* PHP short tags must be turned off (short_open_tag = Off in php.ini). This 
 feature can cause problems with TinyMCE (the included WYSIWYG editor).
-2. PHP must have the ability to run on the command line during installation 
+* PHP must have the ability to run on the command line during installation 
 and upgrading.
-3. AllowOverride must be set to "All" in Apache's VirtualHost configuration.
-4. date.timezone must be properly set in php.ini.
-5. The mod_rewrite Apache module must be enabled.
-6. CentOS 5.8 apparently bundles an ancient version of PCRE which prevents the
+* AllowOverride must be set to "All" in Apache's VirtualHost configuration.
+* date.timezone must be properly set in php.ini.
+* The mod_rewrite Apache module must be enabled.
+* CentOS 5.8 apparently bundles an ancient version of PCRE which prevents the
 CakePHP command-line interface from functioning. If the Cake CLI won't run, 
 please upgrade PCRE. Note: CakePHP 2.1.4 may work around this problem.  
 
-INSTALLATION
+Installation procedure
 -------------------------------------------------------------------------------
 1. Download Guide on the Side and unzip it into the appropriate folder on your 
    web server. You should now have a folder called "guide_on_the_side".
@@ -52,7 +59,7 @@ INSTALLATION
    You should change this immediately and, ideally, add some non-admin 
    accounts!
 
-CUSTOMIZATION
+Customization
 -------------------------------------------------------------------------------
 Guide on the Side is an open-source application and, obviously, you have full
 permission to change it however you want.
@@ -92,28 +99,12 @@ wish.
 For more information, see the Themes portion of the CakePHP book:
 http://book.cakephp.org/2.0/en/views/themes.html
 
-UPGRADING
--------------------------------------------------------------------------------
-1. Back up your database and application folder!
-2. No really -- back up!
-3. If you've modified the Guide on the Side source code (anything inside the 
-   "app" folder), all bets are off on upgrading. You're better off contacting 
-   us or submitting patches to make the application more flexible! 
-4. Back up your config.yml file, any themes, and user-uploaded images (app/webroot/uploads).
-5. Download the latest version of Guide on the Side and unzip it into a new 
-   location. 
-6. Read any release notes to determine if you need to run database migrations,
-   or to find out if your themes need to change.
-7. Delete the app and lib folders from the old version.
-8. Copy the new app and lib folders into place.
-9. Test to make sure everything still works.
-
-CREDITS
+Credits
 -------------------------------------------------------------------------------
 Close, print, dock/undock icons:
  - Authored by Mark James - http://famfamfam.com/lab/icons/silk/
  - Used under CC BY 3.0 license - http://creativecommons.org/licenses/by/3.0/
 
-Copyright (C) 2011-2012 The Arizona Board of Regents on Behalf of the 
+Copyright (C) 2011-2013 The Arizona Board of Regents on Behalf of the 
 University of Arizona. Developed by Leslie Sult, Justin Spargur, 
 Mike Hagedon, and Ginger Bidwell at the University of Arizona Libraries.
