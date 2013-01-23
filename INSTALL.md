@@ -43,8 +43,8 @@ Installation procedure
      matches what you created in step 2.
 5. Install the database schema by running the following commands from the 
    guide_on_the_side/app folder:
-    ../lib/Cake/Console/cake Migrations.migration --plugin Tags all
-    ../lib/Cake/Console/cake Migrations.migration all
+   ```../lib/Cake/Console/cake Migrations.migration --plugin Tags all```
+   ```../lib/Cake/Console/cake Migrations.migration all```
 6. Change permissions of app/tmp to make it and all sub-folders writable by 
    the web server. Example command (for Unix-like systems): 
     chmod -R 777 app/tmp.
