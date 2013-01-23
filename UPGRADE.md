@@ -14,10 +14,10 @@ UPGRADING
 
     chmod -R 777 app/tmp
 
-7. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
+8. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
    or to find out if your themes need to change.
-8. Copy your config.yml, themes, and user-uploaded images into the new version.
-9. Run database migrations if necessary. Note: the old version may stop working at this point.
-10. Modify your themes if necessary.
-11. Test to make sure everything still works in the new version.
-12. Archive the old version and move the new version to take its place.
+9. Copy your config.yml, themes, and user-uploaded images into the new version.
+10. Run database migrations if necessary. Note: the old version may stop working at this point.
+11. Modify your themes if necessary.
+12. Test to make sure everything still works in the new version.
+13. Archive the old version and move the new version to take its place.
