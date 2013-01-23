@@ -1,7 +1,7 @@
 Release notes
 =================
 
-Changes between 1.0-beta and 1.0-beta2
+1.0-beta2 (2013-01-23)
 -------------------------------------------------------------------------------
 * The version of CakePHP bundled with GotS (but not in GitHub) has been upgraded to address a security issue.
 * There are NO database schema changes in this version.
