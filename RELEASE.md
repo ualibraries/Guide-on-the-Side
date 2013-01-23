@@ -5,6 +5,7 @@ Release notes
 -------------------------------------------------------------------------------
 * The version of CakePHP bundled with GotS (but not in GitHub) has been upgraded to address a security issue.
 * There are NO database schema changes in this version.
+* There are NO theme changes required by this version.
 * Bug: Uploaded images now work when GotS is installed into the root of a domain. This fixes issue #12.
 * Feature: Text boxes can now be added to tutorials and quizzes. This fixes issue #11.
 * Bug: WYSIWYG buttons now work when using a theme. This fixes issue #15.

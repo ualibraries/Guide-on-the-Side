@@ -9,6 +9,11 @@ UPGRADING
 5. Back up your config.yml file, themes, and user-uploaded images (app/webroot/uploads).
 6. Download the latest version of Guide on the Side and unzip it into a new 
    location. 
+7. As in INSTALL.md, change permissions of app/tmp in the new version to make it and 
+   all sub-folders writable by the web server. Example command (for Unix-like systems): 
+
+    chmod -R 777 app/tmp
+
 7. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
    or to find out if your themes need to change.
 8. Copy your config.yml, themes, and user-uploaded images into the new version.
