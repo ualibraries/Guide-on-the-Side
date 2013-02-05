@@ -40,7 +40,7 @@
 
     echo $this->element('jquery');
     // jQuery Tools must be loaded first.
-    echo $this->Html->script('http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js');
+    echo $this->Html->script('jquery.tools.min.js');
     echo $this->element('jquery_ui');
     echo $this->Html->script('ui_tools_conflict_fix');
 
