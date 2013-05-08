@@ -29,6 +29,10 @@ html, body, #email-print, #email-print h2, #email-print div, #email-print p {
   display: table-cell !important;
 }
 
+#email-print td * {
+  display: block;   
+}
+
 #email-print #dialog-flash, #email-print #dialog-flash * {
   display: none !important;
 }
