@@ -30,6 +30,10 @@ html, body, #email-print, #email-print h2, #email-print div, #email-print p {
 }
 
 #email-print td * {
+  display: inline;   
+}
+
+#email-print td p {
   display: block;   
 }
 
