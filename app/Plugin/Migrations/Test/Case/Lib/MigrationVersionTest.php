@@ -1,4 +1,21 @@
 <?php
+
+/**
+ * MigrationVersion test case.
+ *
+ * Copyright 2009 - 2013, Cake Development Corporation
+ *						1785 E. Sahara Avenue, Suite 490-423
+ *						Las Vegas, Nevada 89104
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright 2009 - 2013, Cake Development Corporation
+ * @link	  http://codaset.com/cakedc/migrations/
+ * @package   plugns.migrations
+ * @license   MIT License (http://www.opensource.org/licenses/mit-license.php)
+ */
+
 App::uses('CakeMigration', 'Migrations.Lib');
 App::uses('MigrationVersion', 'Migrations.Lib');
 
@@ -29,7 +46,7 @@ class MigrationVersionTest extends CakeTestCase {
 			'autoinit' => false
 		));
 
-		App::build(array('plugins' => CakePlugin::path('Migrations') . 'Test' .  DS . 'test_app' . DS . 'Plugin' . DS));
+		App::build(array('plugins' => CakePlugin::path('Migrations') . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS));
 	}
 
 /**
@@ -101,6 +118,13 @@ class MigrationVersionTest extends CakeTestCase {
 				'class' => 'ConvertVersionToClassNames',
 				'type' => 'Migrations',
 				'migrated' => '2011-11-18 13:53:32'
+			),
+			3 => array(
+					'version' => 3,
+					'name' => '003_increase_class_name_length',
+					'class' => 'IncreaseClassNameLength',
+					'type' => 'Migrations',
+					'migrated' => null
 			)
 		);
 		$this->assertEqual($result, $expected);
@@ -186,12 +210,12 @@ class MigrationVersionTest extends CakeTestCase {
 	public function testRun() {
 		$back = $this->Version;
 		$options = array('connection' => 'test');
-		$Version = $this->getMock('MigrationVersion', array('getMapping', 'getMigration', 'getVersion', 'setVersion'), array($options), 'TestMigrationVersionMockMigrationVersion', false); 		
-		
+		$Version = $this->getMock('MigrationVersion', array('getMapping', 'getMigration', 'getVersion', 'setVersion'), array($options), 'TestMigrationVersionMockMigrationVersion', false);
+
 		$Version->expects($this->any())
 			->method('getMigration')
-			->will($this->returnValue(new CakeMigration($options))); 
-			
+			->will($this->returnValue(new CakeMigration($options)));
+
 		$Version->Version = ClassRegistry::init(array(
 			'class' => 'schema_migrations', 'ds' => 'test'));
 

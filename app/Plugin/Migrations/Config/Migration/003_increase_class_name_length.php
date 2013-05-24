@@ -1,5 +1,5 @@
 <?php
-class InitMigrations extends CakeMigration {
+class IncreaseClassNameLength extends CakeMigration {
 
 /**
  * Migration description
@@ -7,7 +7,7 @@ class InitMigrations extends CakeMigration {
  * @var string
  * @access public
  */
-	public $description = 'Init migrations tables';
+	public $description = 'Increase the maximum length of class names.';
 
 /**
  * Actions to be performed
@@ -17,21 +17,17 @@ class InitMigrations extends CakeMigration {
  */
 	public $migration = array(
 		'up' => array(
-			'create_table' => array(
+			'alter_field' => array(
 				'schema_migrations' => array(
-					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
-					'class' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 33),
-					'type' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 50),
-					'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
-					'indexes' => array(
-						'PRIMARY' => array('column' => 'id', 'unique' => 1)
-					)
+					'class' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 255, 'name' => 'class')
 				)
 			)
 		),
 		'down' => array(
-			'drop_table' => array(
-				'schema_migrations'
+			'alter_field' => array(
+				'schema_migrations' => array(
+					'class' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 33, 'name' => 'class')
+				)
 			)
 		)
 	);

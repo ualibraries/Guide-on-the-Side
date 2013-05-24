@@ -57,23 +57,16 @@ class MigrationsPanel extends DebugPanel {
 	public $output = '';
 
 /**
- * startup
- *
- * @return void
- */
-	function startup(&$controller) {
-		return parent::startup($controller);
-	}
-
-/**
  * beforeRender Callback
  *
  * @return array
  */
-	function beforeRender(&$controller) {
+	public function beforeRender(Controller $controller) {
 		$v = new MigrationVersion();
-		$map = array();
-		foreach (App::objects('plugin') as $plugin) {
+		$map = $migrations = array();
+
+		$migrations = Hash::merge(array('app'), CakePlugin::loaded());
+		foreach ($migrations as $plugin) {
 			try {
 				$map[$plugin] = array(
 					'map' => $v->getMapping($plugin),
@@ -85,4 +78,5 @@ class MigrationsPanel extends DebugPanel {
 		}
 		return $map;
 	}
+
 }
