@@ -29,7 +29,10 @@ and upgrading.
 * The mod_rewrite Apache module must be enabled.
 * CentOS 5.8 apparently bundles an ancient version of PCRE which prevents the
 CakePHP command-line interface from functioning. If the Cake CLI won't run, 
-please upgrade PCRE. Note: CakePHP 2.1.4 may work around this problem.  
+please upgrade PCRE.
+* If you are checking out the project from github directly, also download 
+CakePHP 2.2.x (2.3.x and 2.4.x might also work) and place the lib directory 
+alongside Guide on the Side's app directory.
 
 Installation procedure
 -------------------------------------------------------------------------------
