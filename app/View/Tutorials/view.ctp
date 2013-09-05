@@ -11,9 +11,6 @@
   
   ?>
 
-<div id="closed">
-  Display Help
-</div>
 <?php
 if ($revision_id) { ?>
 <div id="revision-info">
@@ -29,29 +26,6 @@ if ($revision_id) { ?>
 <?php } ?>
 <div id="draggable" class="docked">
   <div id="navbar" class="clearfix">
-  <?php if ($link_toc && !empty($chapters)): ?>
-  <div id="table-of-contents">
-    <a href='#'>Contents</a>
-    <ul>
-      <?php
-        foreach ($chapters as $index => $chapter) {
-          echo "<li>";
-          echo "<a href='#' id='step-{$index}' class='toc-entry'>";
-          echo $chapter;
-          echo "</a>";
-          echo "</li>";
-        }
-        if ($has_quiz) {
-          echo "<li>";
-          echo "<a href='#' id='step-{$quiz_index}' class='toc-entry'>";
-          echo "Quiz";
-          echo "</a>";
-          echo "</li>";
-        }
-      ?>
-    </ul>
-  </div>
-  <?php endif ?>
 
   <div class="control-buttons">
     <?php
@@ -68,9 +42,14 @@ if ($revision_id) { ?>
   </div>
   <div class="tutorial-container clearfix">
     <h1 id="title"><a href='#' id="start-link" title="Go to the beginning"><?php echo $title ?></a></h1>
+    <?php echo $this->element('table_of_contents') ?>
     <!-- IE requires frameBorder, and it apparently can't be applied with jQuery. -->
     <iframe id="tutorial-frame" name="tutorial-frame" frameBorder="0" scrolling="no" src="<?php echo $tutorial_url ?>"></iframe>
   </div><!-- end .tutorial-container -->
 </div>
 <iframe id="site-frame" frameBorder="0" name="site-frame" src="<?php echo $site_url ?>"></iframe>
 <iframe id='feedback-frame' frameBorder="0" src='<?php echo $this->Html->url(array('action' => 'provide_feedback', $id)) ?>'></iframe>
+
+<div id="closed">
+    Display Help
+</div>

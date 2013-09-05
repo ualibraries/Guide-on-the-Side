@@ -90,10 +90,15 @@ class TutorialsController extends AppController {
     $this->set('chapters', $this->Tutorial->getChapters($tutorial['Tutorial']['id']));
     $this->set('steps', $this->Tutorial->getStepsWithContent($tutorial['Tutorial']['id'], null, true));
 		$this->set('tutorial', $tutorial);
-    $this->set('has_quiz', !empty($tutorial['FinalQuiz']['id']));
+    $has_quiz = !empty($tutorial['FinalQuiz']['id']);
     $this->set('quiz_steps', $this->Tutorial->FinalQuiz->getStepsWithContent($tutorial['FinalQuiz']['id']));
+    $quiz_index = 0;
+    if ($has_quiz) {
+        $quiz_index = count($this->Tutorial->getStepsWithContent($id));
+    }
+    $link_toc = $tutorial['Tutorial']['link_toc'];
     $title = $tutorial['Tutorial']['title'];
-    $this->set(compact('title'));
+    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz'));
     $this->set('title_for_layout' , $title . ' Print View');
     // This means that GA is not intended to be displayed ever on this page.
     $this->set('noGoogleAnalytics', true);

@@ -220,6 +220,11 @@ li#tab-1 {
   resize: vertical;
   height: 4.5em;
 }
+
+#table-of-contents h2 {
+  font-size: 1em;
+}
+
 #table-of-contents li {
   margin-bottom: .6em;
 }

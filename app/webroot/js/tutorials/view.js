@@ -129,7 +129,7 @@ $(document).ready(function() {
   $('.toc-entry').click(function() {
     id_parts = $(this).attr('id').split('-');
     $('#tutorial-frame');
-    $('#tutorial-frame')[0].contentWindow.api.seekTo(parseInt(id_parts[1]));
+    $('#tutorial-frame')[0].contentWindow.api.seekTo(parseInt(id_parts[2]));
   });
 
   $('#table-of-contents > ul').hide();

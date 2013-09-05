@@ -158,13 +158,14 @@ h1 a:hover {
   background: #E3E5EA;
   background: rgba(203,210,228, 0.3);
 }
-#table-of-contents > a {
+#table-of-contents > h2 {
   float: left;
   padding: 0 0.655em;
   border: 1px solid #ccc;
   -moz-border-radius: 0.2857em;
   -webkit-border-radius: 0.2857em;
   border-radius: 0.2857em;
+  font-size: inherit;
 }
 
 #table-of-contents ul {
