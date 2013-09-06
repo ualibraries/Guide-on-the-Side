@@ -169,10 +169,10 @@ $(document).ready(function() {
     uuid = this_id.replace('definition-link-', '');
 //    $('#definition-body-' + uuid).toggle();
 //    $('.scrollable:visible .items').height($(this).parents('.step:visible').height());
-    body_div = "<div id='definition-body-" + uuid + "' class='definition-body' style='display: none;'>";
+    body_div = "<aside id='definition-body-" + uuid + "' class='definition-body' style='display: none;'>";
     definition_text = $(this).attr('href').substr(1);
     body_div += definition_text.QH_decodeURIComponent();
-    body_div += "</div>";
+    body_div += "</aside>";
     $(this).after($(body_div));
   }
 

@@ -162,3 +162,8 @@ textarea:focus {
 
 ::-moz-selection { background-color: #597099; color: #fff; text-shadow: none; }
 ::selection { background-color: #597099; color: #fff; text-shadow: none; }
+
+/******/
+.definition-link {
+    border-bottom: 1px dotted;
+}
