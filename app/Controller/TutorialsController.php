@@ -73,15 +73,7 @@ class TutorialsController extends AppController {
 	}
 
   function print_view($id = null) {
-    $tutorial = $this->Tutorial->find('undeleted',
-      array(
-        'recursive' => 0,
-        'contains' => array('FinalQuiz'),
-        'conditions' => array('Tutorial.id' => $id),
-        'limit' => 1
-      )
-    );
-    $tutorial = $tutorial[0];
+    $tutorial = $this->getTutorial($id);
     if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
       $this->Session->setFlash(__('Invalid tutorial'));
       $this->redirect(array('action' => 'index'));
@@ -99,9 +91,9 @@ class TutorialsController extends AppController {
     $link_toc = $tutorial['Tutorial']['link_toc'];
     $title = $tutorial['Tutorial']['title'];
     $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz'));
-    $this->set('title_for_layout' , $title . ' Print View');
+    $this->set('title_for_layout' , $title . ' Single-Page View');
     // This means that GA is not intended to be displayed ever on this page.
-    $this->set('noGoogleAnalytics', true);
+    $this->set('noGoogleAnalytics', false);
     $this->layout = 'public';
   }
 
@@ -424,7 +416,7 @@ class TutorialsController extends AppController {
 		}
     $tutorial = $this->getTutorial($id, $revision_id);
 
-   
+
     if (!$tutorial) {
       $this->redirect('/');
     }
@@ -441,7 +433,7 @@ class TutorialsController extends AppController {
     if (!empty($tutorial['Tutorial']['user_url']) && !isset($this->params['slug'])) {
       $this->redirect(array($id)); // the routing system will convert this to the slug URL
     }
-    
+
     if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
       $this->Session->setFlash(__('Invalid tutorial'));
       $this->redirect(array('action' => 'index'));
@@ -451,7 +443,7 @@ class TutorialsController extends AppController {
     $site_url = $tutorial['Tutorial']['url'];
     $title = $tutorial['Tutorial']['title'];
     $meta_description = strip_tags($tutorial['Tutorial']['description']);
-    
+
     $chapters = $this->Tutorial->getChapters($tutorial['Tutorial']['id']);
     $has_quiz = !empty($tutorial['FinalQuiz']['id']);
     $quiz_index = 0;
@@ -459,9 +451,9 @@ class TutorialsController extends AppController {
       $quiz_index = count($this->Tutorial->getStepsWithContent($id));
     }
     $link_toc = $tutorial['Tutorial']['link_toc'];
-    
+
     // just to make sure the id exists in the database
-		$this->set(compact('id', 'site_url', 'title', 'revision_id', 'chapters', 'has_quiz', 'link_toc', 'quiz_index', 
+		$this->set(compact('id', 'site_url', 'title', 'revision_id', 'chapters', 'has_quiz', 'link_toc', 'quiz_index',
       'meta_description'));
     $this->set('title_for_layout' , $title);
     $this->layout = 'public';
