@@ -27,10 +27,9 @@ class SlugRoute extends CakeRoute {
   }
 
   function match($params) {
-    
     if (empty($params) || !isset($params[0])
-      || ($params['controller'] != 'tutorials') || ($params['action'] != 'view')) {
-      return false;
+      || ($params['controller'] != 'tutorials') || (($params['action'] != 'view') && ($params['action'] != 'view_single_page'))) {
+        return false;
     }
 
     // don't rewrite the url for revisions
@@ -46,7 +45,13 @@ class SlugRoute extends CakeRoute {
     ));
 
     if (!empty($tutorial) && !empty($tutorial['Tutorial']['user_url'])) {
-      return 'tutorial/' . $tutorial['Tutorial']['user_url'];
+      if ('view' === $params['action']) {
+        return 'tutorial/' . $tutorial['Tutorial']['user_url'];
+      }
+      if ('view_single_page' === $params['action']) {
+        return 'tutorial/'.$tutorial['Tutorial']['user_url'].'/single-page';
+      }
+
     } else {
       return false;
     }

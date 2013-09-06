@@ -72,13 +72,19 @@ class TutorialsController extends AppController {
 		$this->set('tutorials', $this->paginate());
 	}
 
-  function print_view($id = null) {
+  function view_single_page($id = null) {
     $tutorial = $this->getTutorial($id);
     if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
       $this->Session->setFlash(__('Invalid tutorial'));
       $this->redirect(array('action' => 'index'));
       return;
     }
+
+    // always use the user_url (slug) when viewing
+    if (!empty($tutorial['Tutorial']['user_url']) && !isset($this->params['slug'])) {
+        $this->redirect(array('action' =>'view_single_page', $id)); // the routing system will convert this to the slug URL
+    }
+
     $this->set('chapters', $this->Tutorial->getChapters($tutorial['Tutorial']['id']));
     $this->set('steps', $this->Tutorial->getStepsWithContent($tutorial['Tutorial']['id'], null, true));
 		$this->set('tutorial', $tutorial);
