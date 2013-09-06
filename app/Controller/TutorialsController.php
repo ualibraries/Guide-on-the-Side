@@ -90,8 +90,11 @@ class TutorialsController extends AppController {
     }
     $link_toc = $tutorial['Tutorial']['link_toc'];
     $title = $tutorial['Tutorial']['title'];
-    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz'));
+    $site_url = $tutorial['Tutorial']['url'];
+    $site_title = $tutorial['Tutorial']['url_title'] ? $tutorial['Tutorial']['url_title'] : $site_url;
+    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title'));
     $this->set('title_for_layout' , $title . ' Single-Page View');
+
     // This means that GA is not intended to be displayed ever on this page.
     $this->set('noGoogleAnalytics', false);
     $this->layout = 'public';

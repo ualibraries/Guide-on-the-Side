@@ -1,5 +1,5 @@
 <h1 id="title"><?php echo $title ?></h1>
-
+<div>Start at <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a>.</div>
 <?php echo $this->element('table_of_contents') ?>
 
 <?php echo $this->element('tutorial_content') ?>

@@ -14,14 +14,16 @@
   
     echo $this->element('tutorial_common');
 
-    echo "<fieldset>";
-    echo '<legend>Tutorial information</legend>';
     // give up on AJAX link checker for now. May need JSONP or something.
-		echo $this->Form->input('url', array('label' => 'Right frame starting URL: '/*, 'after' => "<span>invalid</span>"*/));
-    
+    echo "<fieldset>";
+    echo "<legend>Starting location</legend>";
+    echo $this->Form->input('url_title', array('label' => 'Page title: '/*, 'after' => "<span>invalid</span>"*/));
+    echo $this->Form->input('url', array('label' => 'URL: '/*, 'after' => "<span>invalid</span>"*/));
+    echo "</fieldset>";
+
     $before_link_toc = $this->Form->label('link_toc', 'Link table of contents?');
     echo $this->Form->input('link_toc', array('before' => $before_link_toc, 'label' => ''));
-    echo "</fieldset>";
+
     echo $this->Form->hidden('tutorial_type_id', array('value' => TUTORIAL_TYPE_SIDEBYSIDE));
 ?>
 
