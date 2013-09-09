@@ -16,7 +16,24 @@ body {
   margin-left: 2em;
   margin-bottom: .6em;
 }
-
+.correct .ui-widget-header {
+    background-image: none;
+    background: #D8FFA3;
+    color: #2E5B02;
+    border: 1px solid #2E5B02;
+}
+.correct.ui-widget-content {
+    border: 1px solid #2E5B02;
+}
+.incorrect .ui-widget-header {
+    background-image: none;
+    background: #FFC4C1;
+    color: #A40000;
+    border: 1px solid #A40000;
+}
+.incorrect.ui-widget-content {
+    border: 1px solid #A40000;
+}
 .definition-body {
   margin: 1em;
   width: 80%;

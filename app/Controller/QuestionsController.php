@@ -110,23 +110,31 @@ class QuestionsController extends AppController {
             $response = 'That is not correct.';
           }
         }
+        $response_heading = $question['Answer'][$user_answer]['response_heading'];
+        if (empty($response_heading)) {
+          if ($correct) {
+            $response_heading = 'Correct';
+         } else {
+            $response_heading = 'Incorrect';
+         }
+        }
       } else {
         $correct = false;
         $response = "Response could not be retrieved.";
       }
     }
-    echo json_encode(compact('correct', 'response'));
+    echo json_encode(compact('correct', 'response', 'response_heading'));
     exit();
   }
 
   // this is the submit function for edit too.
 	function add() {
 		if (!empty($this->data)) {
-      unset($this->Question->Answer->validate['question_id']); // the cookbook told me to.
+            unset($this->Question->Answer->validate['question_id']); // the cookbook told me to.
 			if ($this->Question->saveAll($this->data)) {
 				echo json_encode($this->Question->id);
-        exit();
-			} else {
+                exit();
+		  	} else {
         $errors = array();
         foreach ($this->Question->validationErrors as $field => $error) {
           if (!is_array($error)) {
@@ -162,7 +170,7 @@ class QuestionsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (empty($this->data)) {
-      // get data for TinyMCE dialog
+            // get data for TinyMCE dialog
 			$this->data = $this->Question->read(null, $id);
 		}
 	}

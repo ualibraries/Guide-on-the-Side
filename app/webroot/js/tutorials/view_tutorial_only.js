@@ -217,7 +217,7 @@ $(document).ready(function() {
     return false;
   });
 
-  response_dialog = "<div id='response-dialog'></div>";
+  var response_dialog = "<div id='response-dialog'></div>";
   parent.$('body').append(response_dialog);
   parent.$('#response-dialog').dialog({
     autoOpen : false,
