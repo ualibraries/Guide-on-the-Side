@@ -24,7 +24,7 @@ class TutorialsController extends AppController {
   function beforeFilter() {
     parent::beforeFilter();
     $this->Auth->allow('view', 'view_tutorial_only', 'public_index',
-      'view_certificate', 'provide_feedback', 'print_view', 'view_information', 'search');
+      'view_certificate', 'provide_feedback', 'view_single_page', 'view_information', 'search');
     $this->helpers[] = 'QuickhelpTinyMce';
     $this->helpers[] = 'Text';
     $this->helpers[] = 'Time';

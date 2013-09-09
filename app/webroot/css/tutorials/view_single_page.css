@@ -2,6 +2,10 @@ body {
   margin: 2em;
 }
 
+#table-of-contents > h2 {
+  text-indent: 0px;
+}
+
 .answer-radio {
   float: left;
 }

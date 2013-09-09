@@ -1,6 +1,6 @@
 <?php if ($link_toc && !empty($chapters)): ?>
     <div id="table-of-contents">
-        <h2>Contents</h2>
+        <h2 class="ir">Contents</h2>
         <ul>
             <?php
             foreach ($chapters as $index => $chapter) {
