@@ -222,7 +222,10 @@ $(document).ready(function() {
   parent.$('#response-dialog').dialog({
     autoOpen : false,
     modal : true,
-    draggable : false
+    draggable : false,
+    close: function (event, ui) {
+      $('#' + parent.$('#response-dialog').data('radio-return')).focus();
+    }
   });
 
   parent.$('#response-dialog').parents('.ui-widget').click(function () {
@@ -231,16 +234,17 @@ $(document).ready(function() {
 
   // Quiz questions don't have pop-ups. Is this being checked at the backend? That could be problematic if
   //   you copy and paste from a tutorial into a quiz.
-  $('#scrollable :not(.no-feedback) > .answers > :radio').click(function() {
+  $('#scrollable :not(.no-feedback) > .answers > :radio').click(function(e) {
     getData = $(this).serialize();
     $.post(cakephp.webroot + 'questions/get_immediate_feedback/' + cakephp.tutorial_id, getData, function(data) {
       parent.$('#response-dialog').html(data.response);
       if (data.correct) {
-        parent.$('#response-dialog').dialog({'dialogClass': 'correct', 'title': 'Correct'});
+        parent.$('#response-dialog').dialog({'dialogClass': 'correct', 'title': data.response_heading});
       } else {
-        parent.$('#response-dialog').dialog({'dialogClass': 'incorrect', 'title': 'Incorrect'});
+        parent.$('#response-dialog').dialog({'dialogClass': 'incorrect', 'title': data.response_heading});
       }
       parent.$('#response-dialog').dialog("open");
+      parent.$('#response-dialog').data('radio-return', $(e.target).attr('id').replace(/(\[|\])/g, '\\$1'));
     }, 'json');
   });
 
