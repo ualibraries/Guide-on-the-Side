@@ -64,7 +64,7 @@
 
 
     <?php
-    echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js');
+    echo $this->element('jquery');
     echo $this->Html->script('jquery_plugins/jquery.doubletap/lib/jquery.doubletap');
     // jQuery Tools must be loaded before jQuery UI.
     echo $this->Html->script('jquery.tools.min.js');

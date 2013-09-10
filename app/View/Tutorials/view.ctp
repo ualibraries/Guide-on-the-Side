@@ -48,7 +48,8 @@ if ($revision_id) { ?>
   </div><!-- end .tutorial-container -->
 </div>
 <iframe id="site-frame" frameBorder="0" name="site-frame" src="<?php echo $site_url ?>"></iframe>
-<iframe id='feedback-frame' frameBorder="0" src='<?php echo $this->Html->url(array('action' => 'provide_feedback', $id)) ?>'></iframe>
+
+<?php echo $this->element('feedback', array('mode' => null)) ?>
 
 <div id="closed">
     Display Help

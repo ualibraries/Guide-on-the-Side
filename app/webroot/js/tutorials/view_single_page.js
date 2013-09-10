@@ -13,6 +13,74 @@ $(document).ready(function() {
 
     $('.definition-link').each(generate_definition_boxes);
 
+    $('#feedback-frame').dialog({
+        autoOpen : false,
+        modal : true,
+        height : 450,
+        title : 'Provide feedback',
+        buttons : {
+            'Send feedback' : function() {
+                var this_element = $('#feedback-frame');
+                var form = this_element.contents().find("#TutorialProvideFeedbackForm");
+                var postData = form.serialize();
+                var action = form.attr('action');
+                $.post(action, postData, function(data) {
+                    if (data == 'success') {
+                        alert('Your feedback has been sent.');
+
+                        this_element.dialog("close");
+                    } else {
+                        this_element.contents().find('form').append(
+                            '<div class="message">Your feedback was <strong>not</strong> sent. Please try again later.</div>'
+                        );
+                    }
+                });
+
+            }
+        }
+    });
+
+    $('#provide-feedback').click(function() {
+        $('#feedback-frame').dialog("open");
+        $('#TutorialFromName', $('#feedback-frame').contents()).focus();
+        return false;
+    });
+
+    $('#email_and_print').submit(function() {
+        var postData = $(this).serialize();
+        console.log(postData);
+        $.post(cakephp.webroot + 'tutorials/view_certificate/', postData, function(returnData) {
+            dialog = '<div id="email-print" style="display: none" title="Results">' + returnData + '</div>'
+            $('body').append(dialog);
+            $('#email-print').dialog({
+                modal : true,
+                autoOpen : false,
+                buttons : {
+                    Print : function() {
+                        window.print();
+                    },
+                    Close : function() {
+                        var this_element = $('#email-print');
+                        this_element.dialog("close");
+                        this_element.dialog("destroy");
+                        this_element.remove();
+                    }
+                },
+                width: 700,
+                height : 'auto',
+                beforeClose : function() {
+                    $('email-print').text();
+                }
+            });
+            $('#email-print').dialog('open');
+            $('#email-print').closest('.ui-dialog').height('90%');
+            $('#email-print-wrapper').height($('#email-print').closest('.ui-dialog').height() - 200);
+            $('#email-print-wrapper').css('overflow-y', 'scroll');
+        });
+
+        return false;
+    });
+
     // @todo Merge the response dialog stuff with view_tutorial_only.js sometime. They're slightly different.
     var response_dialog = "<div id='response-dialog'></div>";
     $('body').append(response_dialog);

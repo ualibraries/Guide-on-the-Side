@@ -6,5 +6,7 @@
 
 <?php echo $this->element('acknowledgement') ?>
 
+<?php echo $this->element('feedback', array('id' => $tutorial['Tutorial']['id'], 'mode' => 'single_page')) ?>
+
 <?php
   echo $this->Html->scriptBlock("cakephp.tutorial_id = {$tutorial['Tutorial']['id']};");

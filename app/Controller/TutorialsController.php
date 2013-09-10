@@ -873,12 +873,17 @@ class TutorialsController extends AppController {
     $this->autoRender = false;
   }  
   
-  function provide_feedback($id = null) {
+  function provide_feedback($id = null, $mode = null) {
     if (!$id || !is_numeric($id))  {
       return false;
     } else {
       $this->Tutorial->recursive = -1;
       $tutorial = $this->Tutorial->read(null, $id);
+
+      $action = 'view';
+      if ('single_page' === $mode) {
+        $action .= '_'.$mode;
+      }
 
       if (!empty($this->data)) {
         $email_success = true;
@@ -886,6 +891,8 @@ class TutorialsController extends AppController {
           "<br>Email: " . htmlentities($this->data['Tutorial']['from_email']) .
           "<br><br>" .
           htmlentities($this->data['Tutorial']['comment']);
+        $tutorialUrl = Router::url(array('action' => $action, $id), true);
+        $body .= "<p>This feedback was sent from $tutorialUrl</p>";
         $to_array = array(explode(',',Configure::read('user_config.email.send_all_feedback_to')),
            Sanitize::paranoid($tutorial['Tutorial']['contact_email'], array('@', '.')));
         foreach ($to_array as $to) {
@@ -910,7 +917,7 @@ class TutorialsController extends AppController {
         }
       } else {
         $this->layout = 'public';
-        $this->set(compact('tutorial'));
+        $this->set(compact('tutorial', 'mode'));
       }
     }
   }

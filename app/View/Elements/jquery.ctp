@@ -1,6 +1,6 @@
 <?php
 
-$jquery_url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js';
+$jquery_url = 'jquery-1.7.2.min.js';
 
 if (!isset($only_urls)) {
   $only_urls = false;
