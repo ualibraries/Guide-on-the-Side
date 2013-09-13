@@ -26,15 +26,19 @@ if ($revision_id) { ?>
 <?php } ?>
 <div id="draggable" class="docked">
   <div id="navbar" class="clearfix">
+    <nav class="mode-switch">
+      <ul>
+        <li class="active">Step-by-step</li>
+        <li><?php echo $this->Html->link('Single page', array('action' => 'view_single_page', $id), array('title' => 'All steps on one page'))?></li>
+      </ul>
+    </nav>
 
-  <div class="control-buttons">
+    <div class="control-buttons">
     <?php
       echo $this->Html->link(
         $this->Html->image("expand-dark.png", array('alt' => 'Undock', 'title' => 'Undock', 'id' => 'undock-image')) .
         $this->Html->image("contract-dark.png", array('alt' => 'Dock', 'title' => 'Dock', 'id' => 'dock-image')),
         '#', array('id' => 'dock-link', 'escape' => false));
-      echo $this->Html->link($this->Html->image("print-dark.png", array('alt' => 'Print', 'title' => 'Print')),
-          array('action' => 'print_view', $id), array('id' => 'print-link', 'escape' => false, 'target' => '_blank'));
       echo $this->Html->link($this->Html->image("cross-dark.png", array('alt' => 'Close', 'title' => 'Close')),
           '#', array('id' => 'close-link', 'escape' => false));
     ?>
