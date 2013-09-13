@@ -55,6 +55,7 @@ $(document).ready(function() {
             $('#email-print').dialog({
                 modal : true,
                 autoOpen : false,
+                draggable : false,
                 buttons : {
                     Print : function() {
                         window.print();

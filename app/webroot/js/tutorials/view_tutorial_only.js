@@ -109,6 +109,7 @@ $(document).ready(function() {
       parent.$('#email-print').dialog({
         modal : true,
         autoOpen : false,
+        draggable : false,
         buttons : {
           Print : function() {
 //            print_style = '<link id="print-certificate" media="print" href="'
