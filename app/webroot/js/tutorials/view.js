@@ -124,7 +124,7 @@ $(document).ready(function() {
     return false;
   });
   
-  $('#start-link').tooltip({ position: 'center right', offset: [0, 10]});
+  $('#start-link').tooltip({ position: { my: 'left', at: 'right+15' } });
   
   $('.toc-entry').click(function() {
     id_parts = $(this).attr('id').split('-');

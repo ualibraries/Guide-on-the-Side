@@ -54,7 +54,7 @@ $(document).ready(function() {
     current_step = this.getIndex();
     $('#table-of-contents li', parent.window.document).each(function() {
       id = $(this).children('a').attr('id').split('-')[1];
-      
+
       if (current_step - 1 >= id) { // the -1 is to deal with the introduction in a separate step at the beginning.
                                     //   We may want to get rid of that extra step.
         $(this).siblings().removeClass('current-chapter');
@@ -64,7 +64,7 @@ $(document).ready(function() {
 
 //    $('#table-of-contents li', parent.window.document).removeClass('current-chapter');
 //    console.log($('#table-of-contents li:eq(' + current_chapter + ')', parent.window.document).addClass('current-chapter'));
-    
+
   });
 
   $('#tab-1').click(function() {
@@ -248,10 +248,10 @@ $(document).ready(function() {
     }, 'json');
   });
 
-  $('a.prev').tooltip();
+  $('a.prev').tooltip( { position: { my: 'center bottom', at: 'center top-15' } } );
 
-  $('a.next').tooltip();
-  
+  $('a.next').tooltip( { position: { my: 'center bottom', at: 'center top-15' } } );
+
   // Use jquery_ui buttons even when buttons aren't part of a dialog
   $( "input:submit" ).button();
 
