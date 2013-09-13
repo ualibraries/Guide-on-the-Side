@@ -167,3 +167,23 @@ textarea:focus {
 .definition-link {
     border-bottom: 1px dotted;
 }
+
+/* Mode switch navigation */
+
+.mode-switch {
+  font-size: 12px;
+}
+.mode-switch ul {
+  margin: 0;
+  padding: 0;
+}
+.mode-switch li {
+  list-style: none;
+  float: left;
+}
+.mode-switch .active {
+  font-weight: bold;
+}
+.mode-switch a {
+  padding: 5px 14px;
+}
