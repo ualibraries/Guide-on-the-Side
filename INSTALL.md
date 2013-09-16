@@ -39,19 +39,6 @@ Apache configuration
   AllowOverride must be set to "FileInfo" in Apache's VirtualHost
   configuration. Be sure to restart Apache after making changes.
 
-MySQL configuation
-------------------
-* Create a MySQL database to hold your tutorials, e.g.:
-
-    mysql> CREATE DATABASE guide_on_the_side;
-
-* Grant permissions to a guide_on_the_side MySQL user, e.g.:
-
-    mysql> GRANT ALL ON guide_on_the_side.*
-                TO gots_user@localhost IDENTIFIED BY 'password';
-
-MySQL database and user name can be whatever you want.
-
 Installation procedure
 -------------------------------------------------------------------------------
 1. Download Guide on the Side and unzip it into the appropriate folder on your 
@@ -61,6 +48,7 @@ Installation procedure
    name you chose, as well as the MySQL username and password. Example:
 
     mysql> CREATE DATABASE guide_on_the_side;
+
     mysql> GRANT ALL ON guide_on_the_side.*
              TO gots_user@localhost IDENTIFIED BY 'password';
 
