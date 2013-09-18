@@ -33,7 +33,7 @@ $(document).ready(function() {
     touch : false
   }).handleSwipes();
 
-  api = $("#scrollable").data("scrollable");
+  var api = $("#scrollable").data("scrollable");
 
   $('#scrollable .items').height($('#scrollable .items .step:nth-child(1)').height());
 
@@ -67,9 +67,8 @@ $(document).ready(function() {
 
   $('#email_and_print').submit(function() {
     var postData = $(this).serialize();
-    console.log(postData);
     $.post(cakephp.webroot + 'tutorials/view_certificate/', postData, function(returnData) {
-      dialog = '<div id="email-print" style="display: none" title="Results">' + returnData + '</div>'
+      var dialog = '<div id="email-print" style="display: none" title="Results">' + returnData + '</div>'
       parent.$('body').append(dialog);
       parent.$('#email-print').dialog({
         modal : true,
@@ -80,7 +79,7 @@ $(document).ready(function() {
             parent.window.print();
           },
           Close : function() {
-            this_element = parent.$('#email-print');
+            var this_element = parent.$('#email-print');
             this_element.dialog("close");
             this_element.dialog("destroy");
             this_element.remove();
@@ -120,13 +119,13 @@ $(document).ready(function() {
 
   $('.definition-body').hide();
 
-  generate_definition_boxes = function () {
+  var generate_definition_boxes = function () {
     var this_id = $(this).attr('id');
     var uuid = this_id.replace('definition-link-', '');
     var body_div = "<aside id='definition-body-" + uuid + "' class='definition-body' style='display: none;'>";
     var definition_text = $(this).attr('href').substr(1);
-    var body_div += definition_text.QH_decodeURIComponent();
-    var body_div += "</aside>";
+    body_div += definition_text.QH_decodeURIComponent();
+    body_div += "</aside>";
     $(this).after($(body_div));
   };
 
