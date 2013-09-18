@@ -113,7 +113,7 @@ $(document).ready(function() {
     $('#draggable').animate({
       left: draggable_close_last_x
     });
-    docked = ($('#dock-image:visible').length == 1) ? false : true;
+    var docked = ($('#dock-image:visible').length == 1) ? false : true;
     if (docked) {
       shrink_site_frame();
     }
