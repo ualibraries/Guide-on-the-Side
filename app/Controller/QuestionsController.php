@@ -85,7 +85,8 @@ class QuestionsController extends AppController {
   function get_immediate_feedback($tutorial_id = null) {
     if (!$tutorial_id || !is_numeric($tutorial_id)) {
       $correct = false;
-      $response = "Response could not be retrieved.";
+      $response_heading = 'Incorrect';
+      $response = "We missed something... did you answer the question?";
     } else {
       if (isset($this->request->data['questions']) && !empty($this->request->data['questions'])) {
         $question_id = array_keys($this->request->data['questions']);
@@ -120,7 +121,8 @@ class QuestionsController extends AppController {
         }
       } else {
         $correct = false;
-        $response = "Response could not be retrieved.";
+        $response_heading = 'Incorrect';
+        $response = "We missed something... did you answer the question?";
       }
     }
     echo json_encode(compact('correct', 'response', 'response_heading'));

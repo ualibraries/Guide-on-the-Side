@@ -127,8 +127,7 @@ $(document).ready(function() {
   $('#start-link').tooltip({ position: { my: 'left', at: 'right+15' } });
   
   $('.toc-entry').click(function() {
-    id_parts = $(this).attr('id').split('-');
-    $('#tutorial-frame');
+    var id_parts = $(this).attr('id').split('-');
     $('#tutorial-frame')[0].contentWindow.api.seekTo(parseInt(id_parts[2]));
   });
 
