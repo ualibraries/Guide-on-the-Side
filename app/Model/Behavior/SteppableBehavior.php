@@ -227,7 +227,7 @@ class SteppableBehavior extends ModelBehavior {
     $link_text = strip_tags(QH_urldecode($matches[1]), allowed_tags('strip_tags'));
     $matches[2] = $this->_parseImages(QH_urldecode($matches[2]));
     $definition_text = strip_tags($matches[2], allowed_tags('strip_tags'));
-    return "<span href='#" . QH_urlencode($definition_text) . "' id='definition-link-$uuid' class='definition-link'>" .
+    return "<span data-content='" . QH_urlencode($definition_text) . "' id='definition-link-$uuid' class='definition-link'>" .
         "$link_text</span>";
   }
 
