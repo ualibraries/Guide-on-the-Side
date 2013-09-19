@@ -1,9 +1,96 @@
+/* http://modularscale.com/scale/?px1=16&px2=23&ra1=1.333&ra2=0 */
+
+body {
+  font-size: 16px;
+  line-height: 1.5em;
+  margin: 1.916em;
+  max-width: 60.31em;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  line-height: inherit;
+}
+h1, h2, h3, h4 {
+
+}
+h1 {
+  margin-top: 12px;
+  font-size: 2.369em;
+  margin: 16px 0 8px 0;
+}
+hgroup h2 {
+  margin: 1em 0;
+  font-size: 1.078em;
+}
+h2 {
+  font-size: 1.77em;
+  margin: 1em 0 0.5em 0;
+}
+h3 {
+  font-size: 1.438em;
+  font-style: italic;
+}
+h5, h6 {
+  font-size: 1.078em;
+  margin-top: 16px;
+  margin-bottom: 12.944px; 
+  font-style: italic;
+}
+#table-of-contents {
+  margin: 12px 0;
+}
+
+
+.step {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+}
+.step:last-child {
+  border-bottom: 0;
+}
+/* The step number information seems confusing without the context of the progress bar */
+.step-number {
+  display: none;
+}
+.step img {
+  border: 1px solid #CBD2E4;
+  background-color: #EEF0F3;
+  padding: 0.214em;
+  margin: 0.214em;
+}
+aside.definition-body {
+  margin: 0.607em 0 0.809em 0;
+  padding: 0 0.809em;
+  border: #597099 1px solid;
+  background-color: #CBD2E4;
+}
+/* Contain floats: h5bp.com/q */
+.step:before, .step:after { content: ""; display: table; }
+.step:after { clear: both; }
+.step { *zoom: 1; }
+
 .mode-switch {
   margin: 10px 0;
 }
 
 #table-of-contents > h2 {
   text-indent: 0px;
+}
+
+div.input * {
+  display: inline;
+}
+div.input label {
+  padding-left: 0;
+}
+p.field-description {
+  padding-left: 0;
+}
+input[type="submit"] {
+  margin-bottom: 1.5em;
+}
+.acknowledgement {
+  font-size: 0.809em;
 }
 
 .answer-radio {
@@ -33,17 +120,4 @@
 }
 .incorrect.ui-widget-content {
     border: 1px solid #A40000;
-}
-.definition-body {
-  margin: 1em;
-  width: 80%;
-  padding: 1em;
-  border: #597099 1px solid;
-  background-color: #CBD2E4;
-}
-h1 {
-  font-weight: bold;
-}
-h1, h2 {
-  font-size: 120%;
 }

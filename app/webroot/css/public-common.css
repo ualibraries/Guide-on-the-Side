@@ -180,10 +180,11 @@ textarea:focus {
 .mode-switch li {
   list-style: none;
   float: left;
+  margin-right: 7px;
 }
 .mode-switch .active {
   font-weight: bold;
 }
 .mode-switch a {
-  padding: 5px 14px;
+
 }
