@@ -33,7 +33,7 @@ $(document).ready(function() {
     touch : false
   }).handleSwipes();
 
-  var api = $("#scrollable").data("scrollable");
+  api = $("#scrollable").data("scrollable");
 
   $('#scrollable .items').height($('#scrollable .items .step:nth-child(1)').height());
 
@@ -188,6 +188,9 @@ $(document).ready(function() {
   // Quiz questions don't have pop-ups. Is this being checked at the backend? That could be problematic if
   //   you copy and paste from a tutorial into a quiz.
   $('#scrollable :not(.no-feedback) > .answers').append("<button type='button'>Check Answer</button>");
+
+  // Since we've inserted HTML, adjust the height
+  $('#scrollable .items').height($('#scrollable .items .step:nth-child(1)').height());
 
   $('#scrollable :not(.no-feedback) > .answers > button').click(function(e) {
     var getData = $(this).parents('.answers').children('input').serialize();
