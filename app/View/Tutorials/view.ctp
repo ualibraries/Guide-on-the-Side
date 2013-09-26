@@ -44,7 +44,7 @@ if ($revision_id) { ?>
     ?>
     </div>
   </div>
-  <div class="tutorial-container clearfix">
+  <div class="tutorial-container clearfix <?php if ($this->element('table_of_contents')) { echo "with-toc"; } ?>">
     <h1 id="title"><a href='#' id="start-link" title="Go to the beginning"><?php echo $title ?></a></h1>
     <?php echo $this->element('table_of_contents') ?>
     <!-- IE requires frameBorder, and it apparently can't be applied with jQuery. -->
