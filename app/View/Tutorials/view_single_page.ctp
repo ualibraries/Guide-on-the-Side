@@ -2,7 +2,7 @@
   <nav class="mode-switch">
     <ul>
       <li><?php echo $this->Html->link('Step-by-step', array('action' => 'view', $tutorial['Tutorial']['id']), array('title' => 'One step per page'))?></li>
-      <li class="active">Single page</li>
+      <li class="active">Single-page view</li>
     </ul>
   </nav>
 </div>

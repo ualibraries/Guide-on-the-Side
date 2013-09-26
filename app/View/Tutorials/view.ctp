@@ -29,7 +29,7 @@ if ($revision_id) { ?>
     <nav class="mode-switch">
       <ul>
         <li class="active">Step-by-step</li>
-        <li><?php echo $this->Html->link('Single page', array('action' => 'view_single_page', $id), array('title' => 'All steps on one page'))?></li>
+        <li><?php echo $this->Html->link('Single-page view', array('action' => 'view_single_page', $id), array('title' => 'All steps on one page'))?></li>
       </ul>
     </nav>
 

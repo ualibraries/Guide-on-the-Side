@@ -146,7 +146,7 @@ h1 a:hover {
 }
 h1#title {
   float: left;
-  margin: 0.75em 0px 0.75em 52px;
+  margin: 0.75em 0px 0.75em 12px;
 }
 #table-of-contents {
   position: relative;
@@ -170,7 +170,7 @@ h1#title {
   border-radius: 0.2857em;
   font-size: inherit;
   position: absolute;
-  left: 12px;
+  right: 12px;
   top: 4px;
   height: 22px;
   width: 22px;
@@ -190,7 +190,7 @@ h1#title {
   background: #eee;
   border: 1px solid #ccc;
   top: 30px;
-  left: 12px;
+  right: 12px;
   z-index: 10;
   margin: 0;
   padding: 0;
