@@ -37,49 +37,42 @@ class Tutorial extends AppModel {
     'keyword' => array('type' => 'uuid')
   );
 
-  var $validate = array(
-		'title' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'Tutorials must have titles!',
-			),
-      'checkTitleLength' => array(
-				'rule' => array(
-          'checkTitleLength',
-          'sidebyside' => 75, // tutorial type character limits
-          'external' => 255,
+    var $validate = array(
+        'title' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Tutorials must have titles!',
+            ),
+            'checkTitleLength' => array(
+                'rule' => array(
+                    'checkTitleLength',
+                    'sidebyside' => 75, // tutorial type character limits
+                    'external' => 255,
+                ),
+                'last' => true,
+            ),
         ),
-        'last' => true,
-      ),
-		),
-		'url' => array(
-   		'url' => array(
-				'rule' => array('url'),
-        'allowEmpty' => true,
-				'message' => 'That doesn\'t look like a URL.',
-			),
-		),
-    'contact_email' => array(
-      'email' => array(
-        'rule' => 'email',
-        'allowEmpty' => true,
-        'message' => 'This is not an email address.'
-      )
-    ),
-		'published' => 'boolean',
-		'deleted' => 'boolean',
-    'user_url' => array(
-      'isUnique' => array(
-        'message' => 'Tutorial URL must be unique.',
-        'rule' => 'isUnique',
-        'allowEmpty' => true,
-      ),
-      'lowerAlphaNumericDashes' => array(
-        'rule' => 'lowerAlphaNumericDashes',
-        'message' => 'Tutorial URL may only contain lowercase letters, numbers, and dashes.'
-      )
-    ),
-	);
+        'contact_email' => array(
+            'email' => array(
+                'rule' => 'email',
+                'allowEmpty' => true,
+                'message' => 'This is not an email address.'
+            )
+        ),
+        'published' => 'boolean',
+        'deleted' => 'boolean',
+        'user_url' => array(
+            'isUnique' => array(
+                'message' => 'Tutorial URL must be unique.',
+                'rule' => 'isUnique',
+                'allowEmpty' => true,
+            ),
+            'lowerAlphaNumericDashes' => array(
+                'rule' => 'lowerAlphaNumericDashes',
+                'message' => 'Tutorial URL may only contain lowercase letters, numbers, and dashes.'
+            )
+        ),
+    );
 
   function checkTitleLength($check, $sidebysideLimit, $externalLimit) {
     $value = array_shift($check);
