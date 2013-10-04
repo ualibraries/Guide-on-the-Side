@@ -118,17 +118,6 @@ p.field-description {
   z-index: 110;
 }
 
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none; /* TODO: how can I fall back to outline when box-shadow isn't available? */
-  -moz-box-shadow: #597099 0 0 7px 0;
-  -webkit-box-shadow: #597099 0 0 7px 0;
-  -o-box-shadow: #597099 0 0 7px 0;
-  box-shadow: #597099 0 0 7px 0;
-  z-index: 1;
-}
 #feedback-frame {
   padding: 0;
   margin: 0;
@@ -162,3 +151,30 @@ textarea:focus {
 
 ::-moz-selection { background-color: #597099; color: #fff; text-shadow: none; }
 ::selection { background-color: #597099; color: #fff; text-shadow: none; }
+
+
+/******/
+.definition-link {
+    border-bottom: 1px dotted;
+}
+
+/* Mode switch navigation */
+
+.mode-switch {
+  font-size: 12px;
+}
+.mode-switch ul {
+  margin: 0;
+  padding: 0;
+}
+.mode-switch li {
+  list-style: none;
+  float: left;
+  margin-right: 7px;
+}
+.mode-switch .active {
+  font-weight: bold;
+}
+.mode-switch a {
+
+}

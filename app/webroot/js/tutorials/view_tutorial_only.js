@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   $('#progress').progressbar();
 
-  size_scrollable = function() {
+  var size_scrollable = function() {
     $('#scrollable').height($('body').height() - $('#progress').outerHeight(true) - $('#tab-1').height());
     $('#scrollable-quiz').height($('body').height() - $('#progress').outerHeight(true) - $('#tab-1').height());
   };
@@ -41,7 +41,7 @@ $(document).ready(function() {
     if ($('#scrollable:visible').length != 0) {
       $('#scrollable').scrollTop(0);
       $('#scrollable .items').height($('#scrollable .items .step:nth-child(' + (this.getIndex() + 1) + ')').height());
-      new_value = 100 * (this.getIndex() / (this.getSize() - 1));
+      var new_value = 100 * (this.getIndex() / (this.getSize() - 1));
       $('#progress').progressbar("option", "value", new_value);
       if (this.getIndex() == 0) {
         $('#tabs').children(':not(:first)').css('background-color', 'gray').css('color', 'white');
@@ -51,78 +51,38 @@ $(document).ready(function() {
         $('#tabs :eq(1)').css('background-color', 'white').css('color', 'black');
       }
     }
-    current_step = this.getIndex();
+    var current_step = this.getIndex();
     $('#table-of-contents li', parent.window.document).each(function() {
-      id = $(this).children('a').attr('id').split('-')[1];
-      
+      var id = $(this).children('a').attr('id').split('-')[1];
+
       if (current_step - 1 >= id) { // the -1 is to deal with the introduction in a separate step at the beginning.
                                     //   We may want to get rid of that extra step.
         $(this).siblings().removeClass('current-chapter');
         $(this).addClass('current-chapter');
       }
     });
-
-//    $('#table-of-contents li', parent.window.document).removeClass('current-chapter');
-//    console.log($('#table-of-contents li:eq(' + current_chapter + ')', parent.window.document).addClass('current-chapter'));
-    
   });
 
-  $('#tab-1').click(function() {
-    $("#scrollable").show();
-    $("#scrollable-quiz").hide();
-    api.begin();
-  });
 
-  $('#tab-2').click(function() {
-    $("#scrollable").show();
-    $("#scrollable-quiz").hide();
-    api.seekTo(1);
-  });
-
-//  $("#scrollable-quiz").scrollable();
-
-//  var api_quiz = $("#scrollable-quiz").data("scrollable");
-
-  $('#tab-3').click(function() {
-    $("#scrollable").hide();
-    $("#scrollable-quiz").show();
-    api_quiz.begin();
-  });
-
-//  api_quiz.onSeek(function() {
-//    if ($('#scrollable-quiz:visible').length != 0) {
-//      $('#scrollable-quiz').scrollTop(0);
-//      $('#scrollable-quiz .items').height($('#scrollable-quiz .items .step:nth-child(' + (this.getIndex() + 1) + ')').height());
-//      new_value = 100 * (this.getIndex() / (this.getSize() - 1));
-//      $('#progress').progressbar("option", "value", new_value);
-//      $('#tabs').children(':not(:last)').css('background-color', 'gray').css('color', 'white');
-//      $('#tabs :last').css('background-color', 'white').css('color', 'black');
-//    }
-//  });
 
   $('#email_and_print').submit(function() {
     var postData = $(this).serialize();
-    console.log(postData);
     $.post(cakephp.webroot + 'tutorials/view_certificate/', postData, function(returnData) {
-      dialog = '<div id="email-print" style="display: none" title="Results">' + returnData + '</div>'
+      var dialog = '<div id="email-print" style="display: none" title="Results">' + returnData + '</div>'
       parent.$('body').append(dialog);
       parent.$('#email-print').dialog({
         modal : true,
         autoOpen : false,
+        draggable : false,
         buttons : {
           Print : function() {
-//            print_style = '<link id="print-certificate" media="print" href="'
-//              + cakephp.webroot + 'css/print_certificate.css" type="text/css" rel="stylesheet" />';
-//            parent.$('head').append(print_style);
             parent.window.print();
-            //parent.$('#print-certificate').remove();
           },
           Close : function() {
-            this_element = parent.$('#email-print');
+            var this_element = parent.$('#email-print');
             this_element.dialog("close");
             this_element.dialog("destroy");
             this_element.remove();
-            //parent.$('#print-certificate').remove(); // I don't think this is called when the 'x' or Esc is used to close
           }
         },
         width: 700,
@@ -135,11 +95,6 @@ $(document).ready(function() {
       parent.$('#email-print').closest('.ui-dialog').height('90%');
       parent.$('#email-print-wrapper').height(parent.$('#email-print').closest('.ui-dialog').height() - 200);
       parent.$('#email-print-wrapper').css('overflow-y', 'scroll');
-//      parent.$('#email-print').closest('.ui-dialog').css('overflow', 'scroll');
-//      parent.$('#email-print').height($('#email-print').closest('.ui-dialog').height() -
-//        $('#email-print').siblings('.ui-dialog-titlebar').outerHeight() -
-//        $('#email-print').siblings('.ui-dialog-buttonpane').outerHeight());
-//      parent.$('#email-print-wrapper').height($('#email-print').height() - 40);
     });
 
     return false;
@@ -164,23 +119,21 @@ $(document).ready(function() {
 
   $('.definition-body').hide();
 
-  generate_definition_boxes = function () {
-    this_id = $(this).attr('id');
-    uuid = this_id.replace('definition-link-', '');
-//    $('#definition-body-' + uuid).toggle();
-//    $('.scrollable:visible .items').height($(this).parents('.step:visible').height());
-    body_div = "<div id='definition-body-" + uuid + "' class='definition-body' style='display: none;'>";
-    definition_text = $(this).attr('href').substr(1);
+  var generate_definition_boxes = function () {
+    var this_id = $(this).attr('id');
+    var uuid = this_id.replace('definition-link-', '');
+    var body_div = "<aside id='definition-body-" + uuid + "' class='definition-body' style='display: none;'>";
+    var definition_text = $(this).data('content');
     body_div += definition_text.QH_decodeURIComponent();
-    body_div += "</div>";
+    body_div += "</aside>";
     $(this).after($(body_div));
-  }
+  };
 
   $('.definition-link').each(generate_definition_boxes);
 
   $('.definition-link').click(function() {
-    this_id = $(this).attr('id');
-    uuid = this_id.replace('definition-link-', '');
+    var this_id = $(this).attr('id');
+    var uuid = this_id.replace('definition-link-', '');
     $('#definition-body-' + uuid).toggle();
     $('#scrollable .items').height($(this).parents('.step:visible').height());
   });
@@ -192,10 +145,10 @@ $(document).ready(function() {
       title : 'Provide feedback',
       buttons : {
           'Send feedback' : function() {
-            this_element = parent.$('#feedback-frame');
-            form = this_element.contents().find("#TutorialProvideFeedbackForm");
-            postData = form.serialize();
-            action = form.attr('action');
+            var this_element = parent.$('#feedback-frame');
+            var form = this_element.contents().find("#TutorialProvideFeedbackForm");
+            var postData = form.serialize();
+            var action = form.attr('action');
             $.post(action, postData, function(data) {
               if (data == 'success') {
                 alert('Your feedback has been sent.');
@@ -217,12 +170,15 @@ $(document).ready(function() {
     return false;
   });
 
-  response_dialog = "<div id='response-dialog'></div>";
+  var response_dialog = "<div id='response-dialog'></div>";
   parent.$('body').append(response_dialog);
   parent.$('#response-dialog').dialog({
     autoOpen : false,
     modal : true,
-    draggable : false
+    draggable : false,
+    close: function (event, ui) {
+      $('#' + parent.$('#response-dialog').data('radio-return')).focus();
+    }
   });
 
   parent.$('#response-dialog').parents('.ui-widget').click(function () {
@@ -231,23 +187,29 @@ $(document).ready(function() {
 
   // Quiz questions don't have pop-ups. Is this being checked at the backend? That could be problematic if
   //   you copy and paste from a tutorial into a quiz.
-  $('#scrollable :not(.no-feedback) > .answers > :radio').click(function() {
-    getData = $(this).serialize();
+  $('#scrollable :not(.no-feedback) > .answers').append("<button type='button'>Check Answer</button>");
+
+  // Since we've inserted HTML, adjust the height
+  $('#scrollable .items').height($('#scrollable .items .step:nth-child(1)').height());
+
+  $('#scrollable :not(.no-feedback) > .answers > button').click(function(e) {
+    var getData = $(this).parents('.answers').children('input').serialize();
     $.post(cakephp.webroot + 'questions/get_immediate_feedback/' + cakephp.tutorial_id, getData, function(data) {
       parent.$('#response-dialog').html(data.response);
       if (data.correct) {
-        parent.$('#response-dialog').dialog({'dialogClass': 'correct', 'title': 'Correct'});
+        parent.$('#response-dialog').dialog({'dialogClass': 'correct', 'title': data.response_heading});
       } else {
-        parent.$('#response-dialog').dialog({'dialogClass': 'incorrect', 'title': 'Incorrect'});
+        parent.$('#response-dialog').dialog({'dialogClass': 'incorrect', 'title': data.response_heading});
       }
       parent.$('#response-dialog').dialog("open");
+      parent.$('#response-dialog').data('radio-return', $(e.target).attr('id').replace(/(\[|\])/g, '\\$1'));
     }, 'json');
   });
 
-  $('a.prev').tooltip();
+  $('a.prev').tooltip( { position: { my: 'center bottom', at: 'center top-15' } } );
 
-  $('a.next').tooltip();
-  
+  $('a.next').tooltip( { position: { my: 'center bottom', at: 'center top-15' } } );
+
   // Use jquery_ui buttons even when buttons aren't part of a dialog
   $( "input:submit" ).button();
 

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  revision_info_height = $('#revision-info').outerHeight();
+  var revision_info_height = $('#revision-info').outerHeight();
 
   $('#site-frame').css('top', revision_info_height);
   $('#draggable').css('top', revision_info_height);
@@ -11,7 +11,7 @@ $(document).ready(function() {
     $('#draggable').css('top', 0);
   });
 
-  tutorial_width = parseInt($('#draggable').outerWidth(true));
+  var tutorial_width = parseInt($('#draggable').outerWidth(true));
 
   // IE needs the following
   $('#tutorial-frame').attr('allowTransparency', 'true');
@@ -20,7 +20,7 @@ $(document).ready(function() {
   $('#site-frame').width($(window).width() - tutorial_width);
   $('#site-frame').css('margin-left', tutorial_width);
 
-  size_tutorial_frame = function() {
+  var size_tutorial_frame = function() {
     $('#tutorial-frame').height($('#draggable').height() - $('#tutorial-frame').position().top);
   };
 
@@ -37,28 +37,28 @@ $(document).ready(function() {
     }
   });
 
-  draggable_dock_last_x = 30;
-  draggable_dock_last_y = 30;
+  var draggable_dock_last_x = 30;
+  var draggable_dock_last_y = 30;
 
-  draggable_close_last_x = 30;
-  draggable_close_last_y = 30;
+  var draggable_close_last_x = 30;
+  var draggable_close_last_y = 30;
 
   $('#draggable').draggable({
     iframeFix : true,
     cursor : 'crosshair',
     containment : 'window',
     disabled : true,
-    cancel : '#dock-link, #close-link'
+    cancel : '#dock-link, #close-link, .mode-switch a, #table-of-contents h2, #table-of-contents ul, #title a'
   });
 
-  expand_site_frame = function() {
+  var expand_site_frame = function() {
     $('#site-frame').animate({
       width : '100%',
       'margin-left' : 0
     });
   };
 
-  shrink_site_frame = function() {
+  var shrink_site_frame = function() {
     $('#site-frame').animate({
       width : $(window).width() - tutorial_width,
       'margin-left' : tutorial_width
@@ -113,7 +113,7 @@ $(document).ready(function() {
     $('#draggable').animate({
       left: draggable_close_last_x
     });
-    docked = ($('#dock-image:visible').length == 1) ? false : true;
+    var docked = ($('#dock-image:visible').length == 1) ? false : true;
     if (docked) {
       shrink_site_frame();
     }
@@ -124,12 +124,11 @@ $(document).ready(function() {
     return false;
   });
   
-  $('#start-link').tooltip({ position: 'center right', offset: [0, 10]});
+  $('#start-link').tooltip({ position: { my: 'left', at: 'right+8' } });
   
   $('.toc-entry').click(function() {
-    id_parts = $(this).attr('id').split('-');
-    $('#tutorial-frame');
-    $('#tutorial-frame')[0].contentWindow.api.seekTo(parseInt(id_parts[1]));
+    var id_parts = $(this).attr('id').split('-');
+    $('#tutorial-frame')[0].contentWindow.api.seekTo(parseInt(id_parts[2]));
   });
 
   $('#table-of-contents > ul').hide();
@@ -138,7 +137,7 @@ $(document).ready(function() {
     $('#table-of-contents > ul').toggle();
   });
 
-  current_chapter = 0;
+  var current_chapter = 0;
   
   $('#table-of-contents ul li:eq(' + current_chapter + ')').addClass('current-chapter');
   

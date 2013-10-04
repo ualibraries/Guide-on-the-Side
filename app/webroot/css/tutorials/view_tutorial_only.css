@@ -192,6 +192,9 @@ li#tab-1 {
   margin-left: 2.618em;
   margin-bottom: 0.618em;
 }
+.definition-link {
+  cursor: pointer;
+}
 .definition-body {
   margin: 0.655em;
   padding: 0.382em 0.655em;
@@ -220,6 +223,11 @@ li#tab-1 {
   resize: vertical;
   height: 4.5em;
 }
+
+#table-of-contents h2 {
+  font-size: 1em;
+}
+
 #table-of-contents li {
   margin-bottom: .6em;
 }

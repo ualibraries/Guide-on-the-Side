@@ -7,37 +7,51 @@ Guide on the Side has been tested on the following platforms:
 
 * Ubuntu Linux 12.04, MySQL 5.5, Apache 2.2, PHP 5.3
 * Ubuntu Linux 11.10, MySQL 5.1, Apache 2.2, PHP 5.3
+* Red Hat Enterprise Linux 6.3, MySQL 5.1, Apache 2.2, PHP 5.3
 * Red Hat Enterprise Linux 5.6, MySQL 5.0, Apache 2.2, PHP 5.2/5.3
 
 PHP must have the following loaded or compiled in:
 
-* GD support (--with-gd). This is supplied by the php5-gd package in Ubuntu.
+* GD support (--with-gd). This is supplied by the php5-gd package in Ubuntu
+  and Red Hat Linux.
 * FreeType (--with-freetype-dir). This is also supplied by the php5-gd 
-package in Ubuntu.
+  package in Ubuntu and Red Hat Linux.
 * Tidy (--with-tidy) (optional, but highly recommended). This is supplied by 
-the php5-tidy package in Ubuntu.
-* mbstring (--enable-mbstring) must be installed.
+  the php5-tidy package in Ubuntu and Red Hat Linux.
+* mbstring (--enable-mbstring) must be installed. This is supplied
+  by the php-mbstring package in Red Hat Linux.
 
 Other requirements:
 
 * PHP short tags must be turned off (short_open_tag = Off in php.ini). This 
-feature can cause problems with TinyMCE (the included WYSIWYG editor).
-* PHP must have the ability to run on the command line during installation 
-and upgrading.
-* AllowOverride must be set to "All" in Apache's VirtualHost configuration.
+  feature can cause problems with TinyMCE (the included WYSIWYG editor).
 * date.timezone must be properly set in php.ini.
-* The mod_rewrite Apache module must be enabled.
-* CentOS 5.8 apparently bundles an ancient version of PCRE which prevents the
-CakePHP command-line interface from functioning. If the Cake CLI won't run, 
-please upgrade PCRE. Note: CakePHP 2.1.4 may work around this problem.  
+* PHP must have the ability to run on the command line during installation
+  and upgrading.
+* If you are checking out the project from github directly, also download
+  CakePHP 2.2.x (2.3.x and 2.4.x might also work) and place the lib directory
+  alongside Guide on the Side's app directory.
+
+Apache configuration
+--------------------
+* In order for the Guide on the Side .htaccess file rewrite directives
+  to work, the Apache mod_rewrite module must be enabled and
+  AllowOverride must be set to "FileInfo" in Apache's VirtualHost
+  configuration. Be sure to restart Apache after making changes.
 
 Installation procedure
 -------------------------------------------------------------------------------
 1. Download Guide on the Side and unzip it into the appropriate folder on your 
    web server. You should now have a folder called "guide_on_the_side".
 2. Create a MySQL database to hold your tutorials. You may call it whatever
-   you like, but "guide_on_the_side" is probably a good choice. Remember the 
-   name you chose, as well as the MySQL username and password.
+   you like, but "guide_on_the_side" is probably a good choice. Remember the
+   name you chose, as well as the MySQL username and password. Example:
+
+    mysql> CREATE DATABASE guide_on_the_side;
+
+    mysql> GRANT ALL ON guide_on_the_side.*
+             TO gots_user@localhost IDENTIFIED BY 'password';
+
 3. Copy config.sample.yml to config.yml.
 4. Modify the database and email information (at least) in config.yml so that it 
      matches what you created in step 2.
@@ -53,18 +67,40 @@ Installation procedure
 
     chmod -R 777 app/tmp
 
+   You're encouraged to make the permissions more restrictive than this example.
+
 7. Change permissions of app/webroot/uploads to make it and all sub-folders writable by 
    the web server. Example command (for Unix-like systems): 
 
     chmod -R 777 app/webroot/uploads
 
+   You're encouraged to make the permissions more restrictive than this example.
+
 8. If all went as planned, the public interface should now be available at 
    http://your.domain/guide_on_the_side/ (assuming the folder you unzipped to 
    in step 1 was in your server web root.)
 9. You may log in at http://your.domain/guide_on_the_side/login to begin creating
-   tutorials. The default username / password is admin / GuideOnTheSideAdmin#1.
-   You should change this immediately and, ideally, add some non-admin 
+   tutorials. The default username / password is:
+
+    admin / GuideOnTheSideAdmin#1
+
+   You should change this immediately and, ideally, add some non-admin
    accounts!
+
+Support and Debugging
+---------------------
+If you run into problems, check out the Guide on the Side discussion at:
+
+    https://groups.google.com/forum/#!forum/gots-discuss
+
+and the issues list at:
+
+    https://github.com/ualibraries/Guide-on-the-Side/issues
+
+If you get errors *after* installation, in addition to checking the Apache error
+log also look at the messages in the Guide on the Side error log:
+
+        ./guide_on_the_side/app/tmp/logs/error.log
 
 Customization
 -------------------------------------------------------------------------------

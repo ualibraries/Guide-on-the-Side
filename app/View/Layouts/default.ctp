@@ -17,20 +17,25 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo __('Guide on the Side: '); ?>
-		<?php echo $title_for_layout; ?>
-	</title>
+  <title>
+    <?php
+        $user_title = Configure::read('user_config.application_title');
+        if (!empty($user_title)) {
+            echo $user_title . ': ';
+        }
+    ?>
+	<?php echo $title_for_layout; ?>
+  </title>
   <base href="<?php echo $this->Html->url('/', true) ?>" />
 	<?php
     echo $this->Html->charset('UTF-8');
 		//echo $this->Html->meta('icon');
     
-    echo $this->Html->css('http://fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
+    echo $this->Html->css('//fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
 
     echo $this->element('jquery_ui_css');
 

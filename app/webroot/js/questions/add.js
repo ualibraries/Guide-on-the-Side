@@ -12,7 +12,7 @@ function add_start() {
     update: update_order
   });
 
-  add_edit_form_submit = function() {
+  var add_edit_form_submit = function() {
     tinyMCE.triggerSave(); // put the text back into the textareas
     var postData = $(this).serialize();
     $.post(cakephp.webroot + 'questions/add', postData, function(data) {
@@ -50,8 +50,8 @@ function add_start() {
     new_row.find('input').attr('name', function (index, attr) {
       return attr.replace('0', number_of_rows);
     });
+    new_row.find('input').val(''); // text box and radio button
     new_row.find('input[type=radio]').attr('checked', false);
-    new_row.find('input').val(number_of_rows); // text box and radio button
     new_row.find('textarea').attr('id', function(index, attr) {
       return attr.replace('0', number_of_rows);
     })

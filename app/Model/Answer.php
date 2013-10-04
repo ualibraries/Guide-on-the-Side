@@ -14,9 +14,10 @@ class Answer extends AppModel {
   function beforeSave() {
     $this->data['Answer']['answer'] =
       strip_tags($this->data['Answer']['answer'], allowed_tags('strip_tags'));
+    $this->data['Answer']['response_heading'] =
+      strip_tags($this->data['Answer']['response_heading'], allowed_tags('strip_tags'));
     $this->data['Answer']['response'] =
       strip_tags($this->data['Answer']['response'], allowed_tags('strip_tags'));
     return true;
   }
 }
-?>

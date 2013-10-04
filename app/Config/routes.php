@@ -36,10 +36,16 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	Router::connect('/tags/:action/*', array('controller' => 'tags'));
 
+
     App::uses('SlugRoute', 'Lib/Route');
     // See http://mark-story.com/posts/view/using-custom-route-classes-in-cakephp
+    Router::connect('/tutorial/:slug/single-page', array('controller' => 'tutorials', 'action' => 'view_single_page'),
+        array('routeClass' => 'SlugRoute'));
     Router::connect('/tutorial/:slug', array('controller' => 'tutorials', 'action' => 'view'),
-    array('routeClass' => 'SlugRoute'));
+        array('routeClass' => 'SlugRoute'));
+
+    // Preserve the old "print_view" URL
+    Router::connect('/tutorials/print_view/*', array('controller' => 'tutorials', 'action' => 'view_single_page'));
 
     /**
      * Load the CakePHP default routes. Remove this if you do not want to use

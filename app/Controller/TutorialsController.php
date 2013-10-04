@@ -24,7 +24,7 @@ class TutorialsController extends AppController {
   function beforeFilter() {
     parent::beforeFilter();
     $this->Auth->allow('view', 'view_tutorial_only', 'public_index',
-      'view_certificate', 'provide_feedback', 'print_view', 'view_information', 'search');
+      'view_certificate', 'provide_feedback', 'view_single_page', 'view_information', 'search');
     $this->helpers[] = 'QuickhelpTinyMce';
     $this->helpers[] = 'Text';
     $this->helpers[] = 'Time';
@@ -72,31 +72,37 @@ class TutorialsController extends AppController {
 		$this->set('tutorials', $this->paginate());
 	}
 
-  function print_view($id = null) {
-    $tutorial = $this->Tutorial->find('undeleted',
-      array(
-        'recursive' => 0,
-        'contains' => array('FinalQuiz'),
-        'conditions' => array('Tutorial.id' => $id),
-        'limit' => 1
-      )
-    );
-    $tutorial = $tutorial[0];
+  function view_single_page($id = null) {
+    $tutorial = $this->getTutorial($id);
     if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
       $this->Session->setFlash(__('Invalid tutorial'));
       $this->redirect(array('action' => 'index'));
       return;
     }
+
+    // always use the user_url (slug) when viewing
+    if (!empty($tutorial['Tutorial']['user_url']) && !isset($this->params['slug'])) {
+        $this->redirect(array('action' =>'view_single_page', $id)); // the routing system will convert this to the slug URL
+    }
+
     $this->set('chapters', $this->Tutorial->getChapters($tutorial['Tutorial']['id']));
     $this->set('steps', $this->Tutorial->getStepsWithContent($tutorial['Tutorial']['id'], null, true));
 		$this->set('tutorial', $tutorial);
-    $this->set('has_quiz', !empty($tutorial['FinalQuiz']['id']));
+    $has_quiz = !empty($tutorial['FinalQuiz']['id']);
     $this->set('quiz_steps', $this->Tutorial->FinalQuiz->getStepsWithContent($tutorial['FinalQuiz']['id']));
+    $quiz_index = 0;
+    if ($has_quiz) {
+        $quiz_index = count($this->Tutorial->getStepsWithContent($id));
+    }
+    $link_toc = $tutorial['Tutorial']['link_toc'];
     $title = $tutorial['Tutorial']['title'];
-    $this->set(compact('title'));
-    $this->set('title_for_layout' , $title . ' Print View');
+    $site_url = $tutorial['Tutorial']['url'];
+    $site_title = $tutorial['Tutorial']['url_title'] ? $tutorial['Tutorial']['url_title'] : $site_url;
+    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title'));
+    $this->set('title_for_layout' , $title . ' Single-Page View');
+
     // This means that GA is not intended to be displayed ever on this page.
-    $this->set('noGoogleAnalytics', true);
+    $this->set('noGoogleAnalytics', false);
     $this->layout = 'public';
   }
 
@@ -419,7 +425,7 @@ class TutorialsController extends AppController {
 		}
     $tutorial = $this->getTutorial($id, $revision_id);
 
-   
+
     if (!$tutorial) {
       $this->redirect('/');
     }
@@ -436,7 +442,7 @@ class TutorialsController extends AppController {
     if (!empty($tutorial['Tutorial']['user_url']) && !isset($this->params['slug'])) {
       $this->redirect(array($id)); // the routing system will convert this to the slug URL
     }
-    
+
     if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
       $this->Session->setFlash(__('Invalid tutorial'));
       $this->redirect(array('action' => 'index'));
@@ -446,7 +452,7 @@ class TutorialsController extends AppController {
     $site_url = $tutorial['Tutorial']['url'];
     $title = $tutorial['Tutorial']['title'];
     $meta_description = strip_tags($tutorial['Tutorial']['description']);
-    
+
     $chapters = $this->Tutorial->getChapters($tutorial['Tutorial']['id']);
     $has_quiz = !empty($tutorial['FinalQuiz']['id']);
     $quiz_index = 0;
@@ -454,9 +460,9 @@ class TutorialsController extends AppController {
       $quiz_index = count($this->Tutorial->getStepsWithContent($id));
     }
     $link_toc = $tutorial['Tutorial']['link_toc'];
-    
+
     // just to make sure the id exists in the database
-		$this->set(compact('id', 'site_url', 'title', 'revision_id', 'chapters', 'has_quiz', 'link_toc', 'quiz_index', 
+		$this->set(compact('id', 'site_url', 'title', 'revision_id', 'chapters', 'has_quiz', 'link_toc', 'quiz_index',
       'meta_description'));
     $this->set('title_for_layout' , $title);
     $this->layout = 'public';
@@ -867,12 +873,17 @@ class TutorialsController extends AppController {
     $this->autoRender = false;
   }  
   
-  function provide_feedback($id = null) {
+  function provide_feedback($id = null, $mode = null) {
     if (!$id || !is_numeric($id))  {
       return false;
     } else {
       $this->Tutorial->recursive = -1;
       $tutorial = $this->Tutorial->read(null, $id);
+
+      $action = 'view';
+      if ('single_page' === $mode) {
+        $action .= '_'.$mode;
+      }
 
       if (!empty($this->data)) {
         $email_success = true;
@@ -880,6 +891,8 @@ class TutorialsController extends AppController {
           "<br>Email: " . htmlentities($this->data['Tutorial']['from_email']) .
           "<br><br>" .
           htmlentities($this->data['Tutorial']['comment']);
+        $tutorialUrl = Router::url(array('action' => $action, $id), true);
+        $body .= "<p>This feedback was sent from $tutorialUrl</p>";
         $to_array = array(explode(',',Configure::read('user_config.email.send_all_feedback_to')),
            Sanitize::paranoid($tutorial['Tutorial']['contact_email'], array('@', '.')));
         foreach ($to_array as $to) {
@@ -904,7 +917,7 @@ class TutorialsController extends AppController {
         }
       } else {
         $this->layout = 'public';
-        $this->set(compact('tutorial'));
+        $this->set(compact('tutorial', 'mode'));
       }
     }
   }

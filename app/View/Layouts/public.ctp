@@ -17,8 +17,8 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -35,7 +35,7 @@
     
 		//echo $this->Html->meta('icon');
     echo $this->element('formalize_css');
-    echo $this->Html->css('http://fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
+    echo $this->Html->css('//fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
 
     echo $this->element('jquery_ui_css');
 
@@ -64,7 +64,7 @@
 
 
     <?php
-    echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js');
+    echo $this->element('jquery');
     echo $this->Html->script('jquery_plugins/jquery.doubletap/lib/jquery.doubletap');
     // jQuery Tools must be loaded before jQuery UI.
     echo $this->Html->script('jquery.tools.min.js');
