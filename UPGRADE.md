@@ -9,7 +9,7 @@ UPGRADING
 5. Back up your config.yml file, themes, and user-uploaded images (app/webroot/uploads).
 6. Download the latest version of Guide on the Side and unzip it into a new 
    location. 
-7. As in INSTALL.md, change permissions of app/tmp in the new version to make it and 
+7. As in README.md, change permissions of app/tmp in the new version to make it and
    all sub-folders writable by the web server. Example command (for Unix-like systems): 
 
     chmod -R 777 app/tmp

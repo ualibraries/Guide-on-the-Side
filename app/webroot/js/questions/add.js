@@ -1,7 +1,7 @@
 // can't use $(document).ready() here for some reason. tinyMCEPopup.onInit.add() works, though.
 function add_start() {
 
-  update_order = function() {
+  var update_order = function() {
     $('#answers > tbody > tr').each(function(index) {
       $(this).find('[id$=Order]').val(index);
     });
@@ -16,14 +16,14 @@ function add_start() {
     tinyMCE.triggerSave(); // put the text back into the textareas
     var postData = $(this).serialize();
     $.post(cakephp.webroot + 'questions/add', postData, function(data) {
-      result = tinyMCE.util.JSON.parse(data);
+      var result = tinyMCE.util.JSON.parse(data);
       if (parseInt(result) > 0) {
-        img = "<img class='question' src='questions/view_image/" + result + "' />";
+        var img = "<img class='question' src='questions/view_image/" + result + "' />";
         tinyMCEPopup.editor.execCommand('mceInsertContent', false, img);
         tinyMCEPopup.close();
       } else {
         var errors_display = '';
-        for (error in result) {
+        for (var error in result) {
           errors_display += error + ': ' + result[error] + '\n';
         }
         alert(errors_display);
@@ -36,11 +36,11 @@ function add_start() {
 
   $('#add-answers').click(function() {
     // figure out the number of rows, clone the first row, modify it, and append it
-    number_of_rows = $('#answers > tbody > tr').size();
+    var number_of_rows = $('#answers > tbody > tr').size();
 //    $('#answers > tbody > tr:first textarea').each(function(index, element) {
 //      tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
 //    });
-    new_row = $('#answers > tbody > tr:first').clone();
+    var new_row = $('#answers > tbody > tr:first').clone();
 //    $('#answers > tbody > tr:first textarea').each(function(index, element) {
 //      tinyMCE.execCommand('mceAddControl', false, $(this).attr('id'));
 //    });
@@ -76,7 +76,7 @@ function add_start() {
     return false;
   });
 
-  remove_answer = function() {
+  var remove_answer = function() {
     // we must leave two answers.
     if ($(this).parent().parent().parent().children('tr:visible').length > 2) {
       $(this).parent().parent().remove();

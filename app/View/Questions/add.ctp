@@ -5,7 +5,8 @@
     array(
       'type' => 'textarea',
       'between' => ': ',
-      'class' => 'mceQuickHelpSimple'
+      'class' => 'mceQuickHelpSimple',
+      'required' => false, // TinyMCE doesn't work with HTML5 required attribute.
     )
   );
 
