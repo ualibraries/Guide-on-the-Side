@@ -50,7 +50,7 @@ class ZendSearchLuceneSource extends DataSource {
 		$this->_startLog();
 		
 		try {
-			$items = $this->__readData(&$model, $queryData);
+			$items = $this->__readData($model, $queryData);
 			if ($items) {
 				$items = $this->__getPage($items, $queryData);
 				$this->numRows = count($items);
