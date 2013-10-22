@@ -8,7 +8,7 @@
 </div>
 
 <h1 id="title"><?php echo $title ?></h1>  
-<p>Start at <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a>.</p>
+<p>Open <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a> in another browser window to work through this tutorial side by side.</p>
 
 <?php echo $this->element('table_of_contents') ?>
 
