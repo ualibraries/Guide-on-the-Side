@@ -7,10 +7,9 @@
   </nav>
 </div>
 
-<hgroup>
-  <h1 id="title"><?php echo $title ?></h1>  
-  <h2>Start at <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a>.</h2>
-</hgroup>
+<h1 id="title"><?php echo $title ?></h1>  
+<p>Open <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a> in another browser window to work through this tutorial side by side.</p>
+
 <?php echo $this->element('table_of_contents') ?>
 
 <?php echo $this->element('tutorial_content') ?>
