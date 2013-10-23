@@ -147,6 +147,7 @@ h1 a:hover {
 h1#title {
   float: left;
   margin: 0.75em 0px 0.75em 12px;
+  padding-right: 50px;
 }
 #table-of-contents {
   position: relative;
