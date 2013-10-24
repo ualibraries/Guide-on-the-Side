@@ -13,6 +13,8 @@ http://www.library.arizona.edu/applications/quickHelp/tutorial/searching-the-ua-
 Please join the discussion of Guide on the Side on our
 [Google Group](https://groups.google.com/forum/?fromgroups#!forum/gots-discuss)!
 
+More information can be found on the [Guide on the Side website](http://code.library.arizona.edu/gots).
+
 Platform support / dependencies
 -------------------------------------------------------------------------------
 Guide on the Side has been tested on the following platforms:
@@ -21,6 +23,7 @@ Guide on the Side has been tested on the following platforms:
 * Ubuntu Linux 11.10, MySQL 5.1, Apache 2.2, PHP 5.3
 * Red Hat Enterprise Linux 6.3, MySQL 5.1, Apache 2.2, PHP 5.3
 * Red Hat Enterprise Linux 5.6, MySQL 5.0, Apache 2.2, PHP 5.2/5.3
+* Additionally, we've done some basic testing with PHP 5.4 and 5.5.
 
 PHP must have the following loaded or compiled in:
 
@@ -28,7 +31,7 @@ PHP must have the following loaded or compiled in:
   and Red Hat Linux.
 * FreeType (--with-freetype-dir). This is also supplied by the php5-gd
   package in Ubuntu and Red Hat Linux.
-* Tidy (--with-tidy) (optional, but highly recommended). This is supplied by
+* Tidy (--with-tidy). This is supplied by
   the php5-tidy package in Ubuntu and Red Hat Linux.
 * mbstring (--enable-mbstring) must be installed. This is supplied
   by the php-mbstring package in Red Hat Linux.
@@ -36,8 +39,10 @@ PHP must have the following loaded or compiled in:
 Other requirements:
 
 * date.timezone must be properly set in php.ini.
-* PHP must have the ability to run on the command line during installation
-  and upgrading.
+* PHP should have the ability to run on the command line during installation
+  and upgrading. This is used to install the database schema. If you don't 
+  have access to PHP at the command line, you can try using the SQL migration 
+  app/Config/Migration/sql/install.sql.  
 
 Apache configuration
 --------------------
@@ -75,6 +80,8 @@ Installation procedure (if you're using the pre-built package)
     ../lib/Cake/Console/cake Migrations.migration run all --plugin Tags
 
     ../lib/Cake/Console/cake Migrations.migration run all
+
+   Alternatively, there is an SQL schema available in app/Config/Migration/sql/install.sql.
 
 6. Change permissions of app/tmp to make it and all sub-folders writable by
    the web server. Example command (for Unix-like systems):
@@ -139,7 +146,7 @@ and the issues list at:
 If you get errors *after* installation, in addition to checking the Apache error
 log also look at the messages in the Guide on the Side error log:
 
-        ./guide_on_the_side/app/tmp/logs/error.log
+    ./guide_on_the_side/app/tmp/logs/error.log
 
 Customization
 -------------------------------------------------------------------------------
