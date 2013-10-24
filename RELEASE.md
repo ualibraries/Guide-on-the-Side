@@ -1,7 +1,7 @@
 Release notes
 =================
 
-1.0-beta3 (2013-10-09)
+1.0-beta3 (2013-10-23)
 -------------------------------------------------------------------------------
 * Feature: Introduced an accessible "single-page view" that is intended for screen readers and mouse-less users. This fixes issue #30.
   * There's a control at the top of the step-by-step view and the single-page view to switch between the views.
