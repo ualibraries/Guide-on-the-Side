@@ -65,6 +65,7 @@ $(document).ready(function() {
                         this_element.dialog("close");
                         this_element.dialog("destroy");
                         this_element.remove();
+                        $('body').removeClass('print-certificate');
                     }
                 },
                 width: 700,
@@ -73,6 +74,7 @@ $(document).ready(function() {
                     $('email-print').text();
                 }
             });
+            $('body').addClass('print-certificate');
             $('#email-print').dialog('open');
             $('#email-print').closest('.ui-dialog').height('90%');
             $('#email-print-wrapper').height($('#email-print').closest('.ui-dialog').height() - 200);

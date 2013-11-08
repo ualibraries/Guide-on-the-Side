@@ -51,14 +51,12 @@
     <![endif]-->
     
     <?php
-    if ($this->action != 'print_view') {
-      echo $this->Html->css('print_certificate', 'stylesheet',
-        array('media' => 'print', 'id' => 'print-certificate'));
-      echo "<!--[if IE 7]>";
-      echo $this->Html->css('print_certificate_ie', 'stylesheet',
-        array('media' => 'print', 'id' => 'print-certificate')); 
-      echo "<![endif]-->";
-    }
+    echo $this->Html->css('print_certificate', 'stylesheet',
+      array('media' => 'print', 'id' => 'print-certificate'));
+    echo "<!--[if IE 7]>";
+    echo $this->Html->css('print_certificate_ie', 'stylesheet',
+      array('media' => 'print', 'id' => 'print-certificate'));
+    echo "<![endif]-->";
     ?>
 
 

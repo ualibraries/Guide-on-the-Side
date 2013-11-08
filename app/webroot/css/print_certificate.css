@@ -1,11 +1,11 @@
 @import url("email_print.css");
 
 /* * is dangerous! */
-* {
+.print-certificate * {
   display: none;
 }
 
-html, body, #email-print, #email-print h2, #email-print div, #email-print p {
+.print-certificate body, #email-print, #email-print h2, #email-print div, #email-print p {
   display: block !important;
 }
 
@@ -41,7 +41,7 @@ html, body, #email-print, #email-print h2, #email-print div, #email-print p {
   display: none !important;
 }
 
-.ui-widget {
+.print-certificate .ui-widget {
   background: none !important;
   left: 0 !important;
   top: 0 !important;
@@ -50,20 +50,20 @@ html, body, #email-print, #email-print h2, #email-print div, #email-print p {
   font-family: inherit !important;
 }
 
-.ui-dialog {
+.print-certificate .ui-dialog {
   width: 90% !important;
   height: auto !important;
 }
 
-.ui-dialog-buttonpane {
+.print-certificate .ui-dialog-buttonpane {
   display: none !important;
 }
 
-.ui-resizable-handle {
+.print-certificate .ui-resizable-handle {
   display: none !important;
 }
 
-.ui-dialog-titlebar {
+.print-certificate .ui-dialog-titlebar {
   display: none !important;
 }
 
@@ -71,7 +71,7 @@ html, body, #email-print, #email-print h2, #email-print div, #email-print p {
   height: 100% !important;
 }
 
-* { /* I can't find the element that's causing ticket #165, but this fixes it. */
+.print-certificate * { /* I can't find the element that's causing ticket #165, but this fixes it. */
   overflow: visible !important;
 }
 
