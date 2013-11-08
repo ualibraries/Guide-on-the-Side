@@ -1,9 +1,9 @@
 Release notes
 =================
 
-1.0-beta3 (2013-10-23)
+1.0-beta3 (2013-11-08)
 -------------------------------------------------------------------------------
-* The version of CakePHP bundled with GotS (but not in GitHub) has been upgraded.
+* The version of CakePHP bundled with GotS has been upgraded.
 * There ARE database schema changes in this version. You'll need to run migrations.
 * Feature: Introduced an accessible "single-page view" that is intended for screen readers and mouse-less users. This fixes issue #30.
   * There's a control at the top of the step-by-step view and the single-page view to switch between the views.
@@ -20,6 +20,7 @@ Release notes
 * Technical: jQuery CDN is now used with a local fallback. This fixes issue #32.
 * Technical: GotS can now run over HTTPS. This fixes issue #32. Thanks @LunkRat!
 * Documentation: Improved install documentation thanks to @michaeldoran. This fixes issue #4. Again.
+* The sample tutorial has been replaced. Only those doing a fresh install will get it.
 
 1.0-beta2 (2013-01-23)
 -------------------------------------------------------------------------------
