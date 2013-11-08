@@ -182,76 +182,55 @@ class M4db71ff537bc4ee397642a369ab05d96 extends AppMigration {
       $Tutorial = $this->generateModel('Tutorial');
       $tutorial = array(
         'id' => 1,
-        'user_url' => 'a-sample-tutorial',
-        'title' => 'A Sample Tutorial',
-        'url'   => 'http://www.library.arizona.edu/',
-        'description' => '<p>This tutorial will demonstrate all of the functionality available to creators of Guide on the Side tutorials.</p>',
-        'content' => '<p><img class="heading" src="tutorials/view_heading_image/chapter/Introduction" alt="" /></p>
-<p>This tutorial will demonstrate all of the functionality of the Guide on the Side tutorial creation software.<img class="heading" src="tutorials/view_heading_image/chapter/Add%20and%20format%20text" alt="" /></p>
-<p>Type or copy and paste text straight into the text box.</p>
-<p>The editor allows you to:</p>
-<ul>
-<li><strong>bold</strong></li>
-<li><em>italicize</em></li>
-<li>undo &amp; redo</li>
-<li>insert &amp; remove a hyperlink</li>
-<li>add bullets</li>
-<ul>
-<li>indent any text you type in the box.</li>
-</ul>
-<li>outdent any text you type in the box</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>For example:</strong></p>
-<p>Using the library homepage to your right, place your cursor over the <strong>Search &amp; Find</strong> tab and click <strong>Library Catalog</strong>.</p>
-<p>You are now in the <em>Library Catalog.</em></p>
-<p>&nbsp;</p>
-<p><img class="heading" src="tutorials/view_heading_image/chapter/Adding%20an%20image" alt="" /></p>
-<p>This is an image of the UAL catalog.</p>
-<p><img title="UAL catalog" src="uploads/images/6_28_2012_2_08_47_PM.jpg" alt="UAL catalog" width="300" height="229" /></p>
-<p><img class="heading" src="tutorials/view_heading_image/chapter/Adding%20a%20page%20break" alt="" /></p>
-<p>A page break allows you to divide content into different pages which helps minimize scrolling.</p>
+        'user_url' => 'wikipedia-demo',
+        'title' => 'Wikipedia - demo',
+        'url'   => 'http://www.wikipedia.org/',
+        'description' => '<p>In this tutorial, you will learn how to find resources using <em>Wikipedia</em>. <em>Wikipedia </em>is a free online encyclopedia with access to over 4,000,000 articles.</p>',
+        'content' => '<p>In this tutorial, you will learn how to find resources using <em>Wikipedia</em>.
+<em>Wikipedia </em>is a free online encyclopedia with access to over 4,000,000 articles.</p>
+<p>Use the arrows below to navigate through the tutorial</p>
+<p><img class="heading" src="tutorials/view_heading_image/chapter/About%20Wikipedia" alt="" /></p>
+<p>Anyone can contribute to a <em>Wikipedia</em> article, so you need to use critical thinking skills when selecting articles. However, it can be a great place to gather background information on a topic that may be unfamiliar to you.</p>
+<p><img class="heading" src="tutorials/view_heading_image/chapter/Search%20Wikipedia" alt="" /></p>
+<p>You search Wikipedia by using <img class="definition" src="tutorials/view_definition_image/keywords/%3Cp%3EKeywords%20are%20important%20words%20or%20phrases%20that%20describe%20your%20research%20topic%20and%20will%20help%20you%20find%20relevant%20articles.%3C%5B%7C%5Bp%3E" alt="" />.</p>
+<p>Search for&nbsp;<strong>photography</strong>.&nbsp;</p>
 <p><img class="heading" src="tutorials/view_heading_image/step/" alt="" /></p>
-<p>This is some more text to show what a page break does.</p>
-<p><img class="heading" src="tutorials/view_heading_image/chapter/Inserting%20a%20question" alt="" /></p>
+<p>You are now at the <em>Wikipedia</em> page for <strong>Photography</strong></p>
+<p>Locate the <strong>Contents</strong> section on the left side of the page. This is the table of contents for the <em>Wikipedia</em> article.</p>
+<p>Select: <strong>2 History and evolution</strong></p>
 <p><img class="question" src="questions/view_image/1" alt="" /></p>
-<p>&nbsp;<img class="heading" src="tutorials/view_heading_image/chapter/Inserting%20a%20definition%20box" alt="" /></p>
-<p>Definition boxes are a useful way to provide additional information without taking up screen space.</p>
-<p><img class="definition" src="tutorials/view_definition_image/This%20is%20what%20a%20definition%20box%20looks%20like/%3Cp%3EA%20definition%20box%20allows%20you%20to%20add%20additional%20information%20while%20minimizing%20the%20amount%20of%20room%20you%20use%20on%20the%20screen%20as%20well%20as%20the%20amount%20of%20reading%20that%20students%20have%20to%20do.%3C%5B%7C%5Bp%3E" alt="" /></p>
-<p><img class="heading" src="tutorials/view_heading_image/chapter/Previewing%20your%20tutorial" alt="" /></p>
-<p>Previewing allows you to see how the tutorial will look to your students and allows you to make sure your questions, definition boxes, and images are working the way that you want them to work.</p>
-<p>&nbsp;<img title="Preview" src="uploads/images/6_28_2012_12_56_42_PM.jpg" alt="Preview" width="300" height="175" /></p>
+<p><img class="heading" src="tutorials/view_heading_image/chapter/Thinking%20critically%20in%20Wikipedia" alt="" /></p>
+<p>One way to determine the validity of what you\'ve found is to check the <em>Wikipedia</em> citations. Use the superscript number to access information about the source.</p>
+<p><img src="uploads/images/superscript_link.png" alt="example superscript link" width="300" height="139" /></p>
+<p><img class="heading" src="tutorials/view_heading_image/step/" alt="" />Scroll to the <strong>Camera development</strong> section of the page and take a look at the different cameras.</p>
+<p><img class="text-box" src="tutorials/view_text_box_image/multi-line/Which%20of%20these%20cameras%20would%20be%20the%20most%20fun%20to%20use%7C%24%7C/I%7C%7D%7Cd%20most%20like%20to%20use%20the..." alt="" /></p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>',
         'contact_name' => 'Librarian',
-        'contact_email' => 'librarian@library.lib',
+        'contact_email' => 'librarian@example.com',
         'contact_phone' => '555-555-5555',
-        'created' => '2012-06-29 12:56:27',
-        'modified' => '2011-06-29 12:56:27',
+        'created' => '2013-10-24 12:06:23',
+        'modified' => '2013-10-30 14:51:03',
         'published' => 1,
         'deleted' => 0,
         'in_index' => 1,
         'link_toc' => 1,
       );
-      $this->output('insert_data', 'a sample tutorial');
+      $this->output('insert_data', 'sample tutorial');
       $Tutorial->save($tutorial);
 
       $Question = $this->generateModel('Question');
       $questions = array(
         array(
           'id' => 1,
-          'question' => '<p>Does my dog look like he is having fun?<img style="float: right;" title="Caesar in the woods" src="uploads/images/c_dognov11_2.jpg" alt="Caesar in the woods" width="150" height="200" data-mce-src="uploads/images/c_dognov11_2.jpg" data-mce-style="float: right;"></p>',
-          'correct_answer' => 0
-        ),
-        array(
-          'id' => 2,
-          'question' => '<p>You want to locate a book on gardening in Tucson; what would be the best keyword search to do for this?</p>',
+          'question' => '<p>What are the names of the Greek mathematicians that described a pinhole camera?</p>',
           'correct_answer' => 1,
         ),
         array(
-          'id' => 3,
-          'question' => "<p>Use the Library Catalog to locate the book, <strong>Yard Full of Sun: The Story of a Gardener's Obsession that Got a Little out of Hand</strong> by Scott Calhoun. Where is this book located?</p>",
-          'correct_answer' => 0,
+          'id' => 2,
+          'question' => '<p>What is a good use for <em>Wikipedia</em>?</p>',
+          'correct_answer' => 1,
         ),
       );
       $this->output('insert_data', 'sample questions');
@@ -261,74 +240,46 @@ class M4db71ff537bc4ee397642a369ab05d96 extends AppMigration {
       $answers = array(
         array(
           'id' => 1,
-          'answer' => 'Yes',
-          'response' => 'Yes - he loves to run around in the woods!',
+          'answer' => 'Thelma and Louise',
+          'response' => 'This is not correct. Please go back and read the first sentence under Precursor technologies.',
           'order' => 0,
           'question_id' => 1
         ),
         array(
           'id' => 2,
-          'answer' => 'No',
-          'response' => 'This is not correct, please review the image and try again.',
+          'answer' => 'Aristotle and Euclid',
+          'response' => 'Good work! This is the correct answer.',
           'order' => 1,
           'question_id' => 1
         ),
         array(
           'id' => 3,
-          'answer' => '"Tucson gardening"',
-          'response' => 'This is not correct, please go back and try again.',
-          'order' => 0,
-          'question_id' => 2
+          'answer' => 'Fred and Barney',
+          'response' => 'This is not correct. Please go back and read the first sentence under Precursor technologies.',
+          'order' => 2,
+          'question_id' => 1
         ),
         array(
           'id' => 4,
-          'answer' => 'Gardening and Tucson',
-          'response' => 'Good work - this is the correct answer',
-          'order' => 1,
+          'answer' => 'To keep up with celebrity gossip',
+          'response' => '',
+          'order' => 0,
           'question_id' => 2
         ),
         array(
           'id' => 5,
-          'answer' => 'Tucson and gardening and guide',
-          'response' => 'This is not correct, please go back and try again.',
-          'order' => 2,
+          'answer' => 'To gather background information on an unfamiliar topic',
+          'response' => '',
+          'order' => 1,
           'question_id' => 2
         ),
         array(
           'id' => 6,
-          'answer' => '"Gardening in Tucson"',
-          'response' => 'This is not correct, please go back and try again.',
-          'order' => 3,
-          'question_id' => 2
-        ),      
-        array(
-          'id' => 7,
-          'answer' => 'Special Collections',
-          'response' => '',
-          'order' => 0,
-          'question_id' => 3
-        ),           
-        array(
-          'id' => 8,
-          'answer' => 'Main Library',
-          'response' => '',
-          'order' => 1,
-          'question_id' => 3
-        ),         
-        array(
-          'id' => 9,
-          'answer' => 'Science and Engineering Library',
+          'answer' => 'To learn about cameras',
           'response' => '',
           'order' => 2,
-          'question_id' => 3
-        ),         
-        array(
-          'id' => 10,
-          'answer' => 'Ebook Format',
-          'response' => '',
-          'order' => 3,
-          'question_id' => 3
-        ),         
+          'question_id' => 2
+        ),
       );
       $this->output('insert_data', 'sample answers');
       $Answer->saveAll($answers);
@@ -336,18 +287,13 @@ class M4db71ff537bc4ee397642a369ab05d96 extends AppMigration {
       $FinalQuiz = $this->generateModel('FinalQuiz');
       $finalQuiz = array(
         'id' => 1,
-        'content' => '
-          <p>Welcome!</p>
-          <p>Click the Right Arrow below to begin the quiz</p>
-          <p><img class="heading" src="tutorials/view_heading_image/chapter/Question%201" alt="" /></p>
-          <p><img class="question" src="questions/view_image/2" alt="" /></p>
-          <p><img class="heading" src="tutorials/view_heading_image/chapter/Question%202" alt="" /></p>
-          <p><img class="question" src="questions/view_image/3" alt="" /></p>
-         ',
+        'content' => '<p>Take this final quiz.<img class="question" src="questions/view_image/2" alt="" /></p>',
         'certificate' => true,
         'certificate_email_self' => true,
         'certificate_grades' => true,
         'tutorial_id' => 1,
+        'created' => '2013-10-30 14:22:42',
+        'modified' => '2013-10-30 14:49:14',
       );
       $this->output('insert_data', 'sample quiz');
       $FinalQuiz->saveAll($finalQuiz);
