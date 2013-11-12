@@ -54,7 +54,7 @@ Apache configuration
   AllowOverride must have the additional value "AuthConfig". So the whole
   directive would look like:
 
-   AllowOverride FileInfo Option AuthConfig
+   AllowOverride FileInfo Options AuthConfig
 
   Be sure to restart Apache after making changes.
 
