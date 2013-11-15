@@ -33,15 +33,17 @@ PHP must have the following loaded or compiled in:
   package in Ubuntu and Red Hat Linux.
 * Tidy (--with-tidy). This is supplied by
   the php5-tidy package in Ubuntu and Red Hat Linux.
-* mbstring (--enable-mbstring) must be installed. This is supplied
+* mbstring (--enable-mbstring). This is supplied
   by the php-mbstring package in Red Hat Linux.
+* JSON support. Some Linux distributions removed JSON support from their
+  PHP 5.5 packages. This is supplied by the php5-json package in Ubuntu. 
 
 Other requirements:
 
 * date.timezone must be properly set in php.ini.
 * PHP should have the ability to run on the command line during installation
   and upgrading. This is used to install the database schema. If you don't 
-  have access to PHP at the command line, you can try using the SQL migration 
+  have access to PHP at the command line, you can try using the SQL migration at
   app/Config/Migration/sql/install.sql.  
 
 Apache configuration
