@@ -38,6 +38,10 @@ PHP must have the following loaded or compiled in:
 
 Other requirements:
 
+* For email to work, your system (if Unix-like) needs to have a Mail Transport
+  Agent (MTA) like Postfix or Sendmail. Installations running on Windows
+  may be able to use SMTP by reconfiguring PHP:
+  http://php.net/manual/en/mail.configuration.php.
 * date.timezone must be properly set in php.ini.
 * PHP should have the ability to run on the command line during installation
   and upgrading. This is used to install the database schema. If you don't 
