@@ -88,7 +88,7 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
   }
 
   // Per http://jamienay.com/2010/01/zend_search_lucene-datasource-for-cakephp/
-  ini_set('include_path', ini_get('include_path') . ':' . APP . 'Vendor' . DS);
+  ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . APP . 'Vendor' . DS);
   function __autoload($path) {
     if (substr($path, 0, 5) == 'Zend_') {
       include str_replace('_', '/', $path) . '.php';
