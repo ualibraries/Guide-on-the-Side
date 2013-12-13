@@ -86,8 +86,10 @@ $(document).ready(function() {
             parent.$('body').removeClass('print-certificate');
           }
         },
-        width: 700,
-        height : 'auto',
+        width: (parent.cakephp.popup) ? $(window).width() : 700,
+        height : (parent.cakephp.popup) ? $(window).height() : 'auto',
+        left: (parent.cakephp.popup) ? '0px' : 'auto',
+        top: (parent.cakephp.popup) ? '0px' : 'auto',
         beforeClose : function() {
           parent.$('email-print').text();
         }
