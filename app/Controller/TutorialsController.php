@@ -462,7 +462,7 @@ class TutorialsController extends AppController {
     $link_toc = $tutorial['Tutorial']['link_toc'];
     $title_for_layout = $title;
     $navbar = true;
-    $popup = true;
+    $popup = $tutorial['Tutorial']['popup'];
     if ($popup) {
         $this->layout = 'default';
     } else {
