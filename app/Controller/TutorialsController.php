@@ -464,7 +464,7 @@ class TutorialsController extends AppController {
     $navbar = true;
     $popup = $tutorial['Tutorial']['popup'];
     if ($popup) {
-        $this->layout = 'default';
+        $this->layout = 'popup';
     } else {
         $this->layout = 'public';
     }

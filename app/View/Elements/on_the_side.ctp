@@ -1,5 +1,4 @@
 <div id="draggable" class="docked">
-    <?php if ($navbar): ?>
     <div id="navbar" class="clearfix">
         <nav class="mode-switch">
             <ul>
@@ -7,7 +6,7 @@
                 <li><?php echo $this->Html->link('Single-page view', array('action' => 'view_single_page', $id), array('title' => 'All steps on one page'))?></li>
             </ul>
         </nav>
-
+        <?php if (!$popup): ?>
         <div class="control-buttons">
             <?php
             echo $this->Html->link(
@@ -18,8 +17,8 @@
                 '#', array('id' => 'close-link', 'escape' => false));
             ?>
         </div>
+        <?php endif ?>
     </div>
-    <?php endif ?>
     <div class="tutorial-container clearfix <?php if ($this->element('table_of_contents')) { echo "with-toc"; } ?>">
         <h1 id="title"><a href='#' id="start-link" title="Go to the beginning"><?php echo $title ?></a></h1>
         <?php echo $this->element('table_of_contents') ?>

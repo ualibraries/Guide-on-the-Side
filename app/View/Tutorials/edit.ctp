@@ -35,6 +35,8 @@
     echo $this->Form->input('url_title', array('label' => 'Page title: '/*, 'after' => "<span>invalid</span>"*/));
     echo $this->Form->input('url', array('label' => 'URL: '/*, 'after' => "<span>invalid</span>"*/));
     echo "</fieldset>";
+    $before_popup = $this->Form->label('popup', 'Popup mode (to manage framebusting)');
+    echo $this->Form->input('popup', array('before' => $before_popup, 'label' => false));
     $before_link_toc = $this->Form->label('link_toc', 'Link table of contents?');
     echo $this->Form->input('link_toc', array('before' => $before_link_toc, 'label' => false));
 

@@ -12,7 +12,7 @@ $tutorial_url = $this->Html->url(
   )
 );
 
-echo $this->element('on_the_side', compact('id', 'tutorial_url'));
+echo $this->element('on_the_side', compact('id', 'tutorial_url', 'popup'));
 
 echo $this->Html->script('tutorials/view', array('inline' => false));
 echo $this->Html->css('tutorials/view', array('inline' => false));

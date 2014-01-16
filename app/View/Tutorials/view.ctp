@@ -1,7 +1,10 @@
 <?php if ($popup): ?>
+<h1><?php echo $title?></h1>
 <h3>One quick thing...</h3>
-<p>This website can't be embedded in Guide on the Side, so we need to put your tutorial in a popup. You may want to arrange your windows side by side to easily reference the tutorial and the site. [image]</p>
-<p><a id="popup-link" class="simple-button" href="<?php echo $site_url ?>">Launch <em><?php echo $title ?></em></a></p>
+
+    <p>The tutorial is going to pop up on the left, so you'll need to make some room by resizing your current window.</p>
+    [image]
+    <p><a id="popup-link" class="simple-button" href="<?php echo $site_url ?>">Start tutorial</a></p>
 
    <?php
   echo $this->Html->scriptBlock(
