@@ -1,7 +1,8 @@
 <?php if ($popup): ?>
-Sorry about that. This site will not allow us to embed it, so we'll need to open your tutorial in a new window.
-You literally have to <a id="popup-link" href="<?php echo $site_url ?>">click here</a>, but we shouldn't say that.
-Do we let tutorial authors control this page? An image showing the user how to set up their windows might be nice.
+<h3>One quick thing...</h3>
+<p>This website can't be embedded in Guide on the Side, so we need to put your tutorial in a popup. You may want to arrange your windows side by side to easily reference the tutorial and the site. [image]</p>
+<p><a id="popup-link" class="simple-button" href="<?php echo $site_url ?>">Launch <em><?php echo $title ?></em></a></p>
+
    <?php
   echo $this->Html->scriptBlock(
     "cakephp.site_url = '{$site_url}';" .

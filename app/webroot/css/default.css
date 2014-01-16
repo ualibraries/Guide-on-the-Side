@@ -42,6 +42,15 @@ h1 {
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
 }
+/* Seems we don't have a general clearfix currently */
+#content:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
+}
+
 
 #QuickHelp {
   position: relative;
@@ -124,6 +133,15 @@ h1 {
   text-decoration: none;
   display: block;
   border: 2px solid #6A80A8;
+}
+
+.simple-button {
+  background-color: #475671;
+  color: white;
+  padding: 7px 14px;
+  text-decoration: none;
+  display: block;
+  float: left;
 }
 
 .message {
@@ -227,4 +245,3 @@ h1 {
   margin-left: 10.5em;
   margin-right: 16em;
 }
-
