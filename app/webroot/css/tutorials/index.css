@@ -1,3 +1,136 @@
-#tutorial-list {
-  width: 85%;
+* related to form layout - used on the edit tutorial information page */
+.input {
+  margin: 1em;
+}
+
+.input label {
+  display: inline-block;
+  width: 9em;
+  text-align: right;
+  vertical-align: top;
+  margin: .5em;
+  margin-top: 0;
+}
+
+.checkbox label {
+  margin-top: 0;
+}
+
+.input input, .input textarea, .input select {
+  margin: .5em;
+}
+
+/* not sure where .field-directions is used */
+.field-directions {
+  font-size: 80%;
+  font-style: italic;
+  padding-top: .8em;
+  display: inline-block;
+}
+
+.select .checkbox { /* Multiple checkboxes */
+  margin-left: 10em;
+  text-align: left;
+}
+
+.select .checkbox label { /* Multiple checkboxes */
+  font-size: 80%;
+  width: 25em;
+  text-align: left;
+  vertical-align: middle;
+}
+/* save */
+.submit input {
+  margin-top: 2em;
+  margin-left: 12.5em;
+}
+
+/* Tutorial create and edit pages */
+.mceEditor {
+  display: inline-block;
+}
+
+#TutorialContent_parent {
+  display: inline;
+}
+
+/* Publish/unpublish, Edit information, Preview, Edit Quiz */
+.actions {
+  float: right;
+}
+
+.actions .big-button {
+  margin-top: 1em;
+}
+
+.big-button {
+  font-size: 115%;
+  background-color: #6A80A8;
+  background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#87A3D6), to(#9CBCF7));
+  width: 10em;
+  padding: 1em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #6A80A8;
+}
+
+
+ #edit {
+  font-size: 115%;
+  background-color: #6A80A8;
+  background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#87A3D6), to(#9CBCF7));
+  width: 10em;
+  padding: .5em;
+  padding-left: 1em;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #6A80A8;
+  font-weight: normal;
+  border-bottom: none;
+  z-index: 10;
+  position: relative;
+}
+
+.paginated-list {
+  background-color: white;
+  padding: 1em;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #6A80A8;
+  position: relative;
+  top: -1.0em;
+  z-index: 5;
+}
+
+.row {
+  border-bottom: 1px solid #6A80A8;
+  padding: .3em;
+}
+
+.row div {
+  display: inline-block;
+}
+
+.row .actions {
+  float: right;
+}
+
+.paginated-list .paging {
+  color: black;
 }
