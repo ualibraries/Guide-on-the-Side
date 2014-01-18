@@ -6,15 +6,6 @@ body {
   font-family: "PT Sans", "Arial", sans-serif;
 }
 
-#branding {
-  background-color: #999999;
-}
-
-#branding img {
-  display: block;
-  margin: 0 auto;
-}
-
 #container {
   background-color: #6A80A8;
   width: 950px;
