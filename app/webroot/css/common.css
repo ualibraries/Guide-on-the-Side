@@ -6,24 +6,24 @@ body {
   font-family: "PT Sans", "Arial", sans-serif;
 }
 
+/* Layout - for some reason, repeated in default.css */
 #container {
-  background-color: #6A80A8;
-  width: 950px;
+  width: 75%;
   margin: 0 auto;
-  -moz-border-radius-bottomright: 5%;
-  -moz-border-radius-bottomleft: 5%;
-  border-bottom-left-radius: 5%;
-  border-bottom-right-radius: 5%;
-  padding-bottom: 37px;
+  padding: 1em;
+  border: 1px solid black;
+  background-color: #6A80A8;
+}
+#content {
+  padding: 1.438em;
+  background-color: white;
 }
 
-#content {
-  width: 802px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 0 37px 37px;
-  -moz-border-radius-bottomright: 5%;
-  -moz-border-radius-bottomleft: 5%;
-  border-bottom-left-radius: 5%;
-  border-bottom-right-radius: 5%;
+/* Seems we don't have a general clearfix currently */
+#content:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
 }

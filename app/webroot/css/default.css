@@ -11,28 +11,19 @@ h1 {
   margin: .5em 0 1em;
 }
 
-/* Main wrapper */
+/* Layout - for some reason, repeated in common.css */
 #container {
-  background-color: #6A80A8;
-  width: 950px;
+  width: 75%;
   margin: 0 auto;
-  -moz-border-radius-bottomright: 5%;
-  -moz-border-radius-bottomleft: 5%;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  padding: 18px 0;
+  padding: 1em;
+  border: 1px solid black;
+  background-color: #6A80A8;
+}
+#content {
+  padding: 1.438em;
+  background-color: white;
 }
 
-#content {
-  width: 802px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 10px 37px 37px 37px;
-  -moz-border-radius-bottomright: 5%;
-  -moz-border-radius-bottomleft: 5%;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
 /* Seems we don't have a general clearfix currently */
 #content:after {
   visibility: hidden;
@@ -40,13 +31,6 @@ h1 {
   content: "";
   clear: both;
   height: 0;
-}
-
-/* Guide on the Side banner */
-#QuickHelp {
-  position: relative;
-  left: -37px;
-  border: 0;
 }
 
 /* Signed in users name and also links */
