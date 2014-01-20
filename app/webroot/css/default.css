@@ -14,7 +14,7 @@ h1 {
 
 /* Layout - for some reason, repeated in common.css */
 #container {
-  width: 72%;
+  width: 87%;
   margin: 0 auto;
   padding: 1.438em;
   background-color: #6A80A8;
@@ -26,6 +26,28 @@ h1 {
   background-color: white;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
+}
+@media (max-width: 400px) {
+  #container {
+    width: auto;
+    padding: 0.25em;
+  }
+}
+
+@media (max-width: 680px) {
+  #container {
+    width: auto;
+  }
+}
+@media (min-width: 980px) {
+  #container {
+    width: 74%;
+  }
+}
+@media (min-width: 1200px) {
+  #container {
+    width: 70%;
+  }
 }
 
 /* Seems we don't have a general clearfix currently */
