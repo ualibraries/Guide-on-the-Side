@@ -5,6 +5,7 @@ html, body {
 body {
   font-family: "PT Sans", "Arial", sans-serif;
   background-color: #CCCCCC;
+  padding-bottom: 2em;
 }
 
 h1 {
@@ -13,14 +14,18 @@ h1 {
 
 /* Layout - for some reason, repeated in common.css */
 #container {
-  width: 75%;
+  width: 72%;
   margin: 0 auto;
-  padding: 1em;
+  padding: 1.438em;
   background-color: #6A80A8;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
 }
 #content {
-  padding: 1.438em;
+  padding:  0 1.438em 1.438em;
   background-color: white;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
 }
 
 /* Seems we don't have a general clearfix currently */
@@ -35,7 +40,6 @@ h1 {
 /* banner */
 
 .banner {
-  padding: 5px 0;
   background-color: #6A80A8;
   box-shadow: 1.438em 0 0 0px #6A80A8, -1.438em 0 0 0px #6A80A8;
 }
@@ -55,7 +59,7 @@ h1 {
 #userinfo {
   text-align: right;
   font-size: 80%;
-  margin-bottom: .8em;
+  padding: .8em 0;
 }
 
 /* Messages and errors */
