@@ -135,6 +135,18 @@ h1 {
   text-decoration: none;
   display: block;
   float: left;
+  margin: 1em 0;
+  border-radius: 3px;
+}
+.simple-button:hover {
+  background-color: #2C3445;
+}
+.simple-button:active {
+  position: relative;
+  top: 1px;
+}
+.simple-button:after {
+  content: " →";
 }
 
 /* Admin styles */

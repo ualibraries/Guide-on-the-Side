@@ -146,7 +146,7 @@ endif ?>
 <?php endif ?>
 
 <div class="start-tutorial">
-  <?php echo $this->Html->link('Start tutorial >> ', $url) ?>
+  <?php echo $this->Html->link('Start tutorial', $url, array('class' => 'simple-button')) ?>
 </div>
 
 <?php if (isset($tutorial['Tutorial']['accessible_version_url']) &&
