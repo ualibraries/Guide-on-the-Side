@@ -2,5 +2,8 @@ cake
 lib
 config.yml
 app/tmp/lucene
+app/tmp/cache
 app/tmp/logs/*.log
+app/webroot/uploads
 /nbproject/private/
+.idea
