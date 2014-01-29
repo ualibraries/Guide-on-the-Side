@@ -12,26 +12,6 @@ function add_start() {
     update: update_order
   });
 
-  var add_edit_form_submit = function() {
-    tinyMCE.triggerSave(); // put the text back into the textareas
-    var postData = $(this).serialize();
-    $.post(cakephp.webroot + 'questions/add', postData, function(data) {
-      var result = tinyMCE.util.JSON.parse(data);
-      if (parseInt(result) > 0) {
-        var img = "<img class='question' src='questions/view_image/" + result + "' />";
-        tinyMCEPopup.editor.execCommand('mceInsertContent', false, img);
-        tinyMCEPopup.close();
-      } else {
-        var errors_display = '';
-        for (var error in result) {
-          errors_display += error + ': ' + result[error] + '\n';
-        }
-        alert(errors_display);
-      }
-    });
-    return false;
-  };
-
   $('#QuestionAddForm').submit(add_edit_form_submit);
 
   $('#add-answers').click(function() {
@@ -59,9 +39,6 @@ function add_start() {
       return attr.replace('0', number_of_rows);
     });
     new_row.find('textarea').val('');
-    new_row.find('label').attr('id', function(index, attr) {
-      return attr.replace('0', number_of_rows);
-    });
     // bind the click handler to the new remove link
     new_row.find('.remove-answer').click(remove_answer);
 
@@ -72,6 +49,8 @@ function add_start() {
 //    new_row.appendTo('#answers > tbody').find('textarea').each(function(index, element) {
 //      tinyMCE.execCommand('mceAddControl', true, $(this).attr('id'));
 //    });
+
+    update_order();
 
     return false;
   });
@@ -94,6 +73,26 @@ function add_start() {
   });
 
 }
+
+var add_edit_form_submit = function() {
+  tinyMCE.triggerSave(); // put the text back into the textareas
+  var postData = $(this).serialize();
+  $.post(cakephp.webroot + 'questions/add', postData, function(data) {
+    var result = tinyMCE.util.JSON.parse(data);
+    if (parseInt(result) > 0) {
+      var img = "<img class='question' src='questions/view_image/" + result + "' />";
+      tinyMCEPopup.editor.execCommand('mceInsertContent', false, img);
+      tinyMCEPopup.close();
+    } else {
+      var errors_display = '';
+      for (var error in result) {
+        errors_display += error + ': ' + result[error] + '\n';
+      }
+      alert(errors_display);
+    }
+  });
+  return false;
+};
 
 tinyMCEPopup.onInit.add(add_start);
 

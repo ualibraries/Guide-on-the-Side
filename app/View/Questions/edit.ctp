@@ -27,7 +27,7 @@
       // value 0 is not obvious, I know. Because the radio is split, I had to trick Cake into not creating hidden radio
       //   fields. According to the cookbook, setting value does it.
       $this->Form->radio('correct_answer', array($i => ''),
-        array('value' => 0, 'legend' => false, 'checked' => $checked)),
+        array('value' => 0, 'legend' => false, 'checked' => $checked, 'label' => false)),
       $this->Form->input("Answer.$i.response_heading", array('label' => false, 'div' => false, 'placeholder' => 'Response heading'/*, 'class' => 'mceQuickHelpSimple'*/)).
       $this->Form->input("Answer.$i.response", array('label' => false, 'div' => false, 'placeholder' => 'Response text')),
       $this->Html->link('&nbsp;', '#', array('class' => 'ui-icon ui-icon-circle-close remove-answer')),
