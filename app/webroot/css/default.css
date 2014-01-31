@@ -78,6 +78,15 @@ h1 {
   margin: 0;
 }
 
+/* Popup mode */
+h1.banner {
+  margin: 0;
+  padding: 0.25em 0;
+  letter-spacing: normal;
+  text-transform: none;
+  font-weight: 400;
+}
+
 /* Signed in users name and also links */
 #userinfo {
   text-align: right;
