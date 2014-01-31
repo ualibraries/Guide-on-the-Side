@@ -165,26 +165,37 @@ h1.banner {
 .input {
   margin: 1em 0;
 }
-
+fieldset {
+  margin: 1em 0;
+}
+.required label:before {
+  content: "*";
+  color: #A90000;
+  padding: 0px 3px;
+  font-weight: normal;
+}
 .input label {
   font-weight: bold;
-  margin-right: 0.5em;
+  margin-right: 4px;
+  
 }
-.checkbox label {
-  margin-top: 0;
+.field-description {
+  font-size: smaller;
+  margin-left: 8px;
+  display: inline;
+  }
+.textarea label {
+  display: block;
+  margin: 0.5em 0;
+}
+.text label {
+  width: 200px;
+  }
+#TutorialUserUrl {
+  width: 30%;
 }
 
-.input input, .input textarea, .input select {
-  margin: .5em;
-}
 
-/* not sure where .field-directions is used */
-.field-directions {
-  font-size: 80%;
-  font-style: italic;
-  padding-top: .8em;
-  display: inline-block;
-}
 
 .select .checkbox { /* Multiple checkboxes */
   margin-left: 10em;

@@ -20,7 +20,7 @@
         'between' => '/tutorial/',
         'label' => 'Published URL: ',
         'disabled' => $user_url_disabled,
-        'after' => $user_url_after,
+        'after' => '<p class="field-description">' . $user_url_after . '</p>',
       )
     );
 
