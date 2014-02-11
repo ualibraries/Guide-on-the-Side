@@ -167,6 +167,7 @@ h1.banner {
 }
 fieldset {
   margin: 1em 0;
+  border: 1px solid #ccc;
 }
 .required label:before {
   content: "*";
@@ -180,20 +181,29 @@ fieldset {
   
 }
 .field-description {
-  font-size: smaller;
-  margin-left: 8px;
+  font-size: 80%;
+  margin-left: 1em;
   display: inline;
   }
 .textarea label {
   display: block;
   margin: 0.5em 0;
 }
+.input.text input {
+  margin-left: 4px;
+  }
+.input.text.required{
+  text-indent: -12px;
+}
+.input.checkbox input {
+   margin-right: 4px;
+ }
+ .input.checkbox label {
+   margin-left: 4px;
+ }
 .text label {
   width: 200px;
   }
-#TutorialUserUrl {
-  width: 30%;
-}
 
 
 
