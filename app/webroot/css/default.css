@@ -203,20 +203,13 @@ fieldset {
  }
 .text label {
   width: 200px;
-  }
-
-
-
-.select .checkbox { /* Multiple checkboxes */
-  margin-left: 10em;
-  text-align: left;
+ }
+/* Multiple checkboxes */
+.select .checkbox {
+  margin: 5px 0;
 }
-
-.select .checkbox label { /* Multiple checkboxes */
-  font-size: 80%;
-  width: 25em;
-  text-align: left;
-  vertical-align: middle;
+.select label {
+  margin: 10px 0;
 }
 /* save */
 .submit input {

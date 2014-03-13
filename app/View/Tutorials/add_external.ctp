@@ -15,8 +15,8 @@ echo $this->Form->create('Tutorial');
   echo "<fieldset>";
   echo '<legend>Non-QuickHelp tutorial information</legend>';
   echo $this->Form->input('dot_source_path', array('label' => 'Source path: ', 'size' => '40'));
-  echo $this->Form->input('dot_creation_timestamp', array('label' => 'Tutorial creation time'));
-  echo $this->Form->input('dot_last_revision_timestamp', array('label' => 'Tutorial last revised time'));
+  echo $this->Form->input('dot_creation_timestamp', array('label' => 'Tutorial creation time:'));
+  echo $this->Form->input('dot_last_revision_timestamp', array('label' => 'Tutorial last revised time:'));
   echo '</fieldset>';
 
   echo $this->element('tutorial_metadata');
