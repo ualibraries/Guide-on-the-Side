@@ -21,7 +21,7 @@
     echo $this->Form->input('url', array('label' => 'URL: ', 'size' => '40'/*, 'after' => "<span>invalid</span>"*/));
     echo "</fieldset>";
 
-    echo $this->Form->input('link_toc', array('label' => 'Link table of contents'));
+    echo $this->Form->input('link_toc', array('label' => 'Include table of contents'));
 
     echo $this->Form->hidden('tutorial_type_id', array('value' => TUTORIAL_TYPE_SIDEBYSIDE));
 ?>
