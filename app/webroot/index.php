@@ -18,6 +18,15 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
+/**
+ * If we are behind a front-end proxy like Nginx or Varnish, enable HTTPS if the forwarded 
+ * protocol is https.
+ */
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
 /**
  * Use the DS to separate the directories in other defines
  */
