@@ -7,20 +7,32 @@ class FinalQuiz extends AppModel {
 
   var $actsAs = array('Steppable', 'Containable');
 
-	var $belongsTo = array('Tutorial');
+  var $belongsTo = array('Tutorial');
 
-  public function afterSave($created) {
-    if (!isset($this->data['FinalQuiz']['no_revision']) || !$this->data['FinalQuiz']['no_revision']) { // force tutorial save to trigger revisioning
-      $options = array(
-        'conditions' => array(
-          'id' => $this->data['FinalQuiz']['tutorial_id']
-        )
-      );
-      $tutorial = $this->Tutorial->find('undeleted', $options);
-      if ($tutorial) {
-        $this->Tutorial->save($tutorial['0']);
+  public function afterSave($created, $options = array()) {
+      $this->forceRevision();
+  }
+
+  public function afterDelete() {
+      // Calling forceRevision() from here produces a corrupt revision, which is worse than no revision at all.
+      //$this->forceRevision();
+
+      return true;
+  }
+
+  protected function forceRevision() {
+      if (!isset($this->data['FinalQuiz']['no_revision']) || !$this->data['FinalQuiz']['no_revision']) { // force tutorial save to trigger revisioning
+          $options = array(
+              'conditions' => array(
+                  'id' => $this->data['FinalQuiz']['tutorial_id']
+              )
+          );
+          $tutorial = $this->Tutorial->find('undeleted', $options);
+
+          if ($tutorial) {
+              $this->Tutorial->save($tutorial['0']);
+          }
       }
-    }
   }
 
 //  public function afterSave($created) {

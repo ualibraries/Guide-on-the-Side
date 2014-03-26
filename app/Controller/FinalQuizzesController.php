@@ -59,14 +59,17 @@ class FinalQuizzesController extends AppController {
     function delete($id = null) {
         if (!$id) {
             $this->Session->setFlash(__('Invalid id for final quiz'));
-            $this->redirect(array('action'=>'index'));
+            $this->redirect(array('controller' => 'tutorials', 'action' => 'index'));
         }
+        $this->data = $this->FinalQuiz->read(null, $id);
+        $tutorial_id = $this->data['FinalQuiz']['tutorial_id'];
+
         if ($this->FinalQuiz->delete($id)) {
             $this->Session->setFlash(__('Final quiz deleted'));
-            $this->redirect(array('action'=>'index'));
+        } else {
+            $this->Session->setFlash(__('Final quiz was not deleted'));
         }
-        $this->Session->setFlash(__('Final quiz was not deleted'));
-        $this->redirect(array('action' => 'index'));
+
+        $this->redirect(array('controller' => 'tutorials', 'action'=>'edit_content', $tutorial_id));
     }
 }
-?>
