@@ -15,7 +15,7 @@ UPGRADING
 7. As in README.md, change permissions of app/tmp in the new version to make it and
    all sub-folders writable by the web server. Example command (for Unix-like systems): 
 
-    chmod -R 777 app/tmp
+        chmod -R 777 app/tmp
 
 8. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
    or to find out if your themes need to change.
@@ -23,7 +23,7 @@ UPGRADING
    access, run the following command from the app folder to determine whether database upgrades are required.
    This will compare the current version to the latest version.
 
-       ../lib/Cake/Console/cake Migrations.migration status
+        ../lib/Cake/Console/cake Migrations.migration status
 
 9. Copy your config.yml, themes, and user-uploaded images into the new version.
 10. Run database migrations if necessary. If you don't have command-line access, 
