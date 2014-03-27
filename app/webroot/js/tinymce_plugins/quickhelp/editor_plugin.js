@@ -74,6 +74,17 @@
                 });
             });
 
+            ed.addCommand('qhBackreference', function() {
+                ed.windowManager.open({
+                    // i didn't bother to make a separate edit action like i did with question.
+                    //   Definitions are simpler.
+                    file : cakephp.webroot + 'backreferences/add',
+                    width : 277 + parseInt(ed.getLang('quickhelp.delta_width', 0)),
+                    height : 240 + parseInt(ed.getLang('quickhelp.delta_height', 0)),
+                    inline : 1
+                });
+            });
+
             // Register quickhelp inline quiz button
             ed.addButton('qhBtnQuestion', {
                 title : 'Insert question',
@@ -99,6 +110,12 @@
                 image : url + 'text-box-button.png'
             });
 
+            ed.addButton('qhBtnBackreference', {
+                title : 'Jump to page',
+                cmd : 'qhBackreference',
+                image : url + 'back-reference.png'
+            });
+
             // Add a node change handler, selects the button in the UI when a image is selected
             ed.onNodeChange.add(function(ed, cm, n) {
                 cm.setActive('qhBtnQuestion', n.nodeName == 'IMG' && n.className == 'question');
@@ -112,6 +129,9 @@
 
                 cm.setActive('qhBtnTextBox', n.nodeName == 'IMG' && n.className == 'text-box');
                 cm.setDisabled('qhBtnTextBox', n.nodeName == 'IMG' && n.className != 'text-box');
+
+                cm.setActive('qhBtnBackreference', n.nodeName == 'IMG' && n.className == 'backreference');
+                cm.setDisabled('qhBtnBackreference', n.nodeName == 'IMG' && n.className != 'backreference');
 
                 cm.setDisabled('image', n.nodeName == 'IMG' && (n.className == 'heading'
                     || n.className == 'question' || n.className == 'definition' || n.className == 'text-box'));
@@ -129,6 +149,9 @@
                 }
                 if (e.target.nodeName=='IMG' && e.target.className == 'text-box') {
                     ed.execCommand('qhTextBox','','');
+                }
+                if (e.target.nodeName=='IMG' && e.target.className == 'backreference') {
+                    ed.execCommand('qhBackreference','','');
                 }
             });
 

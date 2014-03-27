@@ -37,7 +37,7 @@ public function beforeRender() {
       'plugins' => $common_configs['plugins'] . ',-quickhelp,',
       'editor_selector' => 'mceQuickHelp',
       'theme_advanced_buttons2' => $common_configs['theme_advanced_buttons2'] .
-        ',qhBtnHeading,qhBtnQuestion,qhBtnDefinition,qhBtnTextBox',
+        ',qhBtnHeading,qhBtnQuestion,qhBtnDefinition,qhBtnTextBox,qhBtnBackreference',
     );
 
     $simple_configs = array(

@@ -215,4 +215,11 @@ $(document).ready(function() {
   // Use jquery_ui buttons even when buttons aren't part of a dialog
   $( "input:submit" ).button();
 
+  // Backreference Event to jump back or forward
+  $('a.backreference-jump').click(function(){
+    var page = parseInt( $(this).attr('data-page') );
+    $("#scrollable").data("scrollable").seekTo((page-1), 200);
+  });
+
+
 });
