@@ -1,7 +1,7 @@
 <?php
 
-class FlexAuthController extends FlexAuthAppController{
-    
+class FlexAuthController extends FlexAuthAppController {
+
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow();
@@ -31,7 +31,7 @@ class FlexAuthController extends FlexAuthAppController{
         
         if ($this->Auth->isLoginDataAvailable()) {
             if ($this->Auth->login()) {
-                $this->redirect($this->Auth->redirect());
+                $this->redirect($this->Auth->redirectUrl());
             } else {
                 $this->Session->setFlash(__('Login failed! Please try again.'));
             }
@@ -44,4 +44,3 @@ class FlexAuthController extends FlexAuthAppController{
     }
     
 }
-

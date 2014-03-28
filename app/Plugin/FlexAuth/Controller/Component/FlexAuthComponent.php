@@ -6,7 +6,11 @@ class FlexAuthComponent extends AuthComponent {
     
     // Why isn't this available somewhere?
     public $pluginName = 'FlexAuth';
-    
+
+    // Default to /admin after login unless they were trying to go somewhere
+    //   else, like an unpublished tutorial.
+    public $loginRedirect = '/admin';
+
     function initialize($controller, $settings=array()) {
         $controller->Auth = $this; 
         
