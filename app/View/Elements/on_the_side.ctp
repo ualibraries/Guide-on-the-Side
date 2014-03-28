@@ -3,7 +3,19 @@
         <nav class="mode-switch">
             <ul>
                 <li class="active">Step-by-step</li>
-                <li><?php echo $this->Html->link('Single-page view', array('action' => 'view_single_page', $id), array('title' => 'All steps on one page'))?></li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
+                        'Single-page view',
+                        array(
+                            'action' => 'view_single_page',
+                            $id,
+                            'popup' => isset($popup) ? $popup : '0',
+                        ),
+                        array('title' => 'All steps on one page')
+                    );
+                    ?>
+                </li>
             </ul>
         </nav>
         <?php if (!$popup): ?>

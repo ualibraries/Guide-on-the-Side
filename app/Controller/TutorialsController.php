@@ -72,7 +72,7 @@ class TutorialsController extends AppController {
 		$this->set('tutorials', $this->paginate());
 	}
 
-  function view_single_page($id = null) {
+  function view_single_page($id = nul) {
     $tutorial = $this->getTutorial($id);
     if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
       $this->Session->setFlash(__('Invalid tutorial'));
@@ -98,7 +98,10 @@ class TutorialsController extends AppController {
     $title = $tutorial['Tutorial']['title'];
     $site_url = $tutorial['Tutorial']['url'];
     $site_title = $tutorial['Tutorial']['url_title'] ? $tutorial['Tutorial']['url_title'] : $site_url;
-    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title'));
+    if (isset($this->params['named']['popup'])) {
+      $popup = $this->params['named']['popup'];
+    }
+    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title', 'popup'));
     $this->set('title_for_layout' , $title . ' Single-Page View');
 
     // This means that GA is not intended to be displayed ever on this page.
