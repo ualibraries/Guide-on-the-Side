@@ -63,7 +63,12 @@ $(document).ready(function() {
     });
   });
 
-
+  if (top.cakephp.popup) {
+    $('a[target=site-frame]').click(function(e) {
+      e.preventDefault();
+      top.window.opener.location = e.target.href;
+    });
+  }
 
   $('#email_and_print').submit(function() {
     var postData = $(this).serialize();
