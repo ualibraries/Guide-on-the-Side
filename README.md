@@ -79,7 +79,16 @@ Installation procedure (if you're using the pre-built package)
 
 3. Copy config.sample.yml to config.yml.
 4. Modify the database and email information (at least) in config.yml so that it
-     matches what you created in step 2.
+     matches what you created in step 2. If you'd like to track tutorial usage with 
+     Google Analytics, you can also fill out the google_analytics section like so:
+      
+      ```
+      google_analytics:
+        enabled: true
+        account_id: <your GA account number>
+        domain_name: <your domain name>
+      ```
+
 5. Install the database schema by running the following commands from the
    guide_on_the_side/app folder:
 
