@@ -189,10 +189,10 @@ fieldset {
   display: block;
   margin: 0.5em 0;
 }
-.input.text input {
+.input input {
   margin-left: 4px;
   }
-.input.text.required{
+.input.required{
   text-indent: -12px;
 }
 .input.checkbox input {
