@@ -189,8 +189,9 @@ fieldset {
   display: block;
   margin: 0.5em 0;
 }
-.input input {
+div.input input {
   margin-left: 4px;
+  margin-right: 4px;
   }
 .input.required{
   text-indent: -12px;
@@ -209,7 +210,8 @@ fieldset {
   margin: 5px 0;
 }
 .select label {
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 /* save */
 .submit input {
