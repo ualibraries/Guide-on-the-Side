@@ -72,7 +72,7 @@ class TutorialsController extends AppController {
 		$this->set('tutorials', $this->paginate());
 	}
 
-  function view_single_page($id = nul) {
+  function view_single_page($id = null) {
     $tutorial = $this->getTutorial($id);
     if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
       $this->Session->setFlash(__('Invalid tutorial'));
