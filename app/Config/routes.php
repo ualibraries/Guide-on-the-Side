@@ -41,6 +41,8 @@
     // See http://mark-story.com/posts/view/using-custom-route-classes-in-cakephp
     Router::connect('/tutorial/:slug/single-page', array('controller' => 'tutorials', 'action' => 'view_single_page'),
         array('routeClass' => 'SlugRoute'));
+    Router::connect('/tutorial/:slug/single-page/:popup', array('controller' => 'tutorials', 'action' => 'view_single_page'),
+        array('routeClass' => 'SlugRoute'));
     Router::connect('/tutorial/:slug', array('controller' => 'tutorials', 'action' => 'view'),
         array('routeClass' => 'SlugRoute'));
 

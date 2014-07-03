@@ -98,8 +98,8 @@ class TutorialsController extends AppController {
     $title = $tutorial['Tutorial']['title'];
     $site_url = $tutorial['Tutorial']['url'];
     $site_title = $tutorial['Tutorial']['url_title'] ? $tutorial['Tutorial']['url_title'] : $site_url;
-    if (isset($this->params['named']['popup'])) {
-      $popup = $this->params['named']['popup'];
+    if (isset($this->params['popup'])) {
+      $popup = $this->params['popup'];
     }
     $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title', 'popup'));
     $this->set('title_for_layout' , $title . ' Single-Page View');
