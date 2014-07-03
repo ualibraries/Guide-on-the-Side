@@ -18,8 +18,10 @@
   </nav>
 </div>
 
-<h1 id="title"><?php echo $title ?></h1>  
-<p>Open <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a> in another browser window to work through this tutorial side by side.</p>
+<h1 id="title"><?php echo $title ?></h1>
+<?php if (!$popup): ?>
+    <p>Open <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a> in another browser window to work through this tutorial side by side.</p>
+<?php endif ?>
 
 <?php echo $this->element('table_of_contents') ?>
 
