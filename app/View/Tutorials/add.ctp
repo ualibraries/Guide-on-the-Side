@@ -20,7 +20,7 @@
     echo $this->Form->input('url_title', array('label' => 'Page title: ', 'size' => '40'/*, 'after' => "<span>invalid</span>"*/));
     echo $this->Form->input('url', array('label' => 'URL: ', 'size' => '40'/*, 'after' => "<span>invalid</span>"*/));
     echo "</fieldset>";
-
+    echo $this->Form->input('popup', array('label' => 'Popup mode', 'after' => '<p class="field-description">Use popup mode to work around sites that refuse to be embedded</p>'));
     echo $this->Form->input('link_toc', array('label' => 'Include table of contents'));
 
     echo $this->Form->hidden('tutorial_type_id', array('value' => TUTORIAL_TYPE_SIDEBYSIDE));
