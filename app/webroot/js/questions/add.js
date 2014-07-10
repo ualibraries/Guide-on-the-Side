@@ -55,7 +55,6 @@ function add_start() {
     new_row.find('input[type=radio]')
       .attr('checked', false)
       .val(number_of_rows);
-    console.log(new_row.find('input[name~=correct_answer]'));
     new_row.find('textarea').attr('id', function(index, attr) {
       return attr.replace('0', number_of_rows);
     })
