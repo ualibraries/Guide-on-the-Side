@@ -973,7 +973,10 @@ class TutorialsController extends AppController {
           if (!empty($to_string)) {
             $to_string .= ',';
           }
-          $to_string .= Sanitize::paranoid($this->request->data['certificate_email'], array('@', '.', ',', '+'));
+          $to_string .= Sanitize::paranoid(
+              $this->request->data['certificate_email'],
+              array('@', '.', ',', '+', '-')
+          );
         }
         
         $this->set('date', date('F j, Y'));
