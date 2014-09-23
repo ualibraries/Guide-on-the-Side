@@ -31,7 +31,10 @@ function add_start() {
       return attr.replace('0', number_of_rows);
     });
     new_row.find('input').val(''); // text box and radio button
-    new_row.find('input[type=radio]').attr('checked', false);
+    // correct answer
+    new_row.find('input[type=radio]')
+      .attr('checked', false)
+      .val(number_of_rows);
     new_row.find('textarea').attr('id', function(index, attr) {
       return attr.replace('0', number_of_rows);
     })
@@ -39,6 +42,10 @@ function add_start() {
       return attr.replace('0', number_of_rows);
     });
     new_row.find('textarea').val('');
+    new_row.find('label').attr('id', function(index, attr) {
+      return attr.replace('0', number_of_rows);
+    });
+
     // bind the click handler to the new remove link
     new_row.find('.remove-answer').click(remove_answer);
 
@@ -49,6 +56,7 @@ function add_start() {
 //    new_row.appendTo('#answers > tbody').find('textarea').each(function(index, element) {
 //      tinyMCE.execCommand('mceAddControl', true, $(this).attr('id'));
 //    });
+    update_order();
 
     update_order();
 

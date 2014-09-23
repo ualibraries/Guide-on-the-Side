@@ -80,18 +80,7 @@
 
       ?>
       </div>
-      <div class="banner">
-	      <h1>
-	      <?php
-	        echo $this->Html->link(
-	          'Guide on the Side',
-	          array('controller' => 'tutorials', 'action' => 'index'),
-	          array('escape' => false)
-	        );
-	      ?>
-	      </h1>
-      </div>
-      <?php 
+      <?php
 			  echo $this->Session->flash();
 			  echo $content_for_layout;
       ?>

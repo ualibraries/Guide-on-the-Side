@@ -20,7 +20,8 @@
         'between' => '/tutorial/',
         'label' => 'Published URL: ',
         'disabled' => $user_url_disabled,
-        'after' => $user_url_after,
+        'size' => '40',
+        'after' => '<p class="field-description">' . $user_url_after . '</p>',
       )
     );
 
@@ -32,36 +33,25 @@
     // give up on AJAX link checker for now. May need JSONP or something.
     echo "<fieldset>";
     echo "<legend>Starting location</legend>";
-    echo $this->Form->input('url_title', array('label' => 'Page title: '/*, 'after' => "<span>invalid</span>"*/));
-    echo $this->Form->input('url', array('label' => 'URL: '/*, 'after' => "<span>invalid</span>"*/));
+    echo $this->Form->input('url_title', array('label' => 'Page title: ', 'size' => '40'/*, 'after' => "<span>invalid</span>"*/));
+    echo $this->Form->input('url', array('label' => 'URL: ', 'size' => '40'/*, 'after' => "<span>invalid</span>"*/));
     echo "</fieldset>";
-    $before_link_toc = $this->Form->label('link_toc', 'Link table of contents?');
-    echo $this->Form->input('link_toc', array('before' => $before_link_toc, 'label' => false));
+    echo $this->Form->input('popup', array('label' => 'Popup mode', 'after' => '<p class="field-description">Use popup mode to work around sites that refuse to be embedded</p>'));
+    echo $this->Form->input('link_toc', array('label' => 'Link table of contents'));
 
     echo "<fieldset id='certificate-fields'>";
     echo '<legend>Certificates</legend>';
-    $before_quiz = $this->Form->label('Tutorial.certificate', 'Include a tutorial certificate?');
-    echo $this->Form->input('Tutorial.certificate', array('label' => false, 'before' => $before_quiz));
+    echo $this->Form->input('Tutorial.certificate', array('label' => 'Include a tutorial certificate'));
     echo $this->Form->input('Tutorial.id');
     if ($has_quiz) {
-      $before_quiz = $this->Form->label('FinalQuiz.certificate', 'Include a quiz certificate?');
-      echo $this->Form->input('FinalQuiz.certificate', array('label' => '', 'before' => $before_quiz));
+      echo $this->Form->input('FinalQuiz.certificate', array('label' => 'Include a quiz certificate'));
       echo $this->Form->input('FinalQuiz.id');
 //      $before_quiz_grades = $this->Form->label('FinalQuiz.certificate_grades', 'Include grades?');
 //      echo $this->Form->input('FinalQuiz.certificate_grades',
 //      array('label' => false, 'before' => $before_quiz_grades));      
-    }    
-    echo "</fieldset>";
-    
-    echo "<fieldset>";
-    echo '<legend>Email settings</legend>';
-    echo $this->Form->input('Tutorial.certificate_email', 
-        array('label' => false, 'before' => 
-        $this->Form->label('Tutorial.certificate_email', 'Send all certificates to:')));
-    $before_quiz_email_self = $this->Form->label('Tutorial.certificate_email_self', 'Allow user to send to additional email addresses?');
-    echo $this->Form->input('Tutorial.certificate_email_self',
-      array('label' => false, 'before' => $before_quiz_email_self));
-
+    }
+    echo $this->Form->input('Tutorial.certificate_email_self', array('label' => 'Allow user to send to additional email addresses'));
+    echo $this->Form->input('Tutorial.certificate_email', array('label' => 'Send all certificates to: ', 'size' => '40'));
     echo "</fieldset>";
     
 

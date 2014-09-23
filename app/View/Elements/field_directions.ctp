@@ -1,1 +1,1 @@
-<span class="field-directions"><?php echo $text ?></span>
+<p class="field-description"><?php echo $text ?></p>

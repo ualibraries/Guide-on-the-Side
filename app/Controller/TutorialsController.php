@@ -23,7 +23,7 @@ class TutorialsController extends AppController {
 
   function beforeFilter() {
     parent::beforeFilter();
-    $this->Auth->allow('view', 'view_tutorial_only', 'public_index',
+    $this->Auth->allow('view', 'view_tutorial_only', 'public_index', 'view_step_by_step_only',
       'view_certificate', 'provide_feedback', 'view_single_page', 'view_information', 'search');
     $this->helpers[] = 'QuickhelpTinyMce';
     $this->helpers[] = 'Text';
@@ -98,7 +98,10 @@ class TutorialsController extends AppController {
     $title = $tutorial['Tutorial']['title'];
     $site_url = $tutorial['Tutorial']['url'];
     $site_title = $tutorial['Tutorial']['url_title'] ? $tutorial['Tutorial']['url_title'] : $site_url;
-    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title'));
+    if (isset($this->params['popup'])) {
+      $popup = $this->params['popup'];
+    }
+    $this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title', 'popup'));
     $this->set('title_for_layout' , $title . ' Single-Page View');
 
     // This means that GA is not intended to be displayed ever on this page.
@@ -460,14 +463,37 @@ class TutorialsController extends AppController {
       $quiz_index = count($this->Tutorial->getStepsWithContent($id));
     }
     $link_toc = $tutorial['Tutorial']['link_toc'];
+    $title_for_layout = $title;
+    $navbar = true;
+    $popup = $tutorial['Tutorial']['popup'];
+    if ($popup) {
+        $this->layout = 'popup';
+    } else {
+        $this->layout = 'public';
+    }
 
     // just to make sure the id exists in the database
-		$this->set(compact('id', 'site_url', 'title', 'revision_id', 'chapters', 'has_quiz', 'link_toc', 'quiz_index',
-      'meta_description'));
-    $this->set('title_for_layout' , $title);
+    if (!empty($this->request->params['requested'])) {
+      return compact('id', 'site_url', 'title', 'revision_id', 'chapters', 'has_quiz', 'link_toc', 'quiz_index',
+        'meta_description', 'title_for_layout', 'popup');
+    } else {
+      $this->set(compact('id', 'site_url', 'title', 'revision_id', 'chapters', 'has_quiz', 'link_toc', 'quiz_index',
+        'meta_description', 'title_for_layout', 'navbar', 'popup'));
+    }
+
+  }
+
+  /**
+   * View the step-by-step mode by itself to support popup view.
+   *
+   * @param integer $id
+   */
+  function view_step_by_step_only($id = null) {
     $this->layout = 'public';
-//    Configure::write('debug', 0);
-	}
+    $tutorial_data = $this->requestAction(array('action' => 'view', $id));
+    $tutorial_data['navbar'] = false;
+    $this->set($tutorial_data);
+  }
 
   // TODO: DRY this action up (see view)
   function view_tutorial_only($id = null, $revision_id = null) {
@@ -1026,8 +1052,4 @@ class TutorialsController extends AppController {
       }
     }
   }
-
 }
-
-
-?>

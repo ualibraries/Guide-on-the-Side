@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+  $('#popup-link').click(function(e) {
+      e.preventDefault();
+      var tutorial_window = window.open(cakephp.tutorial_url, "tutorial_window", "width=384,height=636,left=0,top=0");
+      if (tutorial_window) {
+          window.location = cakephp.site_url;
+      }
+  });
+
   var revision_info_height = $('#revision-info').outerHeight();
 
   $('#site-frame').css('top', revision_info_height);

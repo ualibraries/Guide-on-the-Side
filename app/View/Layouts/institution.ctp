@@ -74,12 +74,18 @@
 
       ?>
       </div>
-      <?php
-        echo $this->Html->link(
-          $this->Html->image('gots-banner.jpg', array('alt' => 'Guide on the Side', 'id' => 'QuickHelp')),
-          array('controller' => 'tutorials', 'action' => 'index'),
-          array('escape' => false)
-        );
+      <div class="banner">
+	      <h1>
+	      <?php
+	        echo $this->Html->link(
+	          'Guide on the Side',
+	          array('controller' => 'tutorials', 'action' => 'index'),
+	          array('escape' => false)
+	        );
+	      ?>
+	      </h1>
+      </div>
+      <?php 
 			  echo $this->Session->flash();
 			  echo $content_for_layout;
       ?>

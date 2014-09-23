@@ -1,3 +1,19 @@
+<?php if ($popup): ?>
+<h1 class="banner"><?php echo $title?></h1>
+<h2>One quick thing...</h2>
+
+    <p>The tutorial is going to pop up on the left, so you'll need to make some room by resizing your current window.</p>
+    <div><?php echo $this->Html->image("popup-illustration.gif", array('alt' => 'Please resize your window', 'title' => 'Popup illustration', 'id' => 'popup-illustration')) ?></div>
+    <p><a id="popup-link" class="simple-button" href="<?php echo $site_url ?>">Start tutorial</a></p>
+
+   <?php
+  echo $this->Html->scriptBlock(
+    "cakephp.site_url = '{$site_url}';" .
+    "cakephp.tutorial_url = '".$this->Html->url(array('action' => 'view_step_by_step_only', $id))."';"
+  );
+?>
+<?php else: ?>
+
 <?php
   $tutorial_url = $this->Html->url(
     array(
@@ -24,37 +40,12 @@ if ($revision_id) { ?>
 
 </div>
 <?php } ?>
-<div id="draggable" class="docked">
-  <div id="navbar" class="clearfix">
-    <nav class="mode-switch">
-      <ul>
-        <li class="active">Step-by-step</li>
-        <li><?php echo $this->Html->link('Single-page view', array('action' => 'view_single_page', $id), array('title' => 'All steps on one page'))?></li>
-      </ul>
-    </nav>
 
-    <div class="control-buttons">
-    <?php
-      echo $this->Html->link(
-        $this->Html->image("expand-dark.png", array('alt' => 'Undock', 'title' => 'Undock', 'id' => 'undock-image')) .
-        $this->Html->image("contract-dark.png", array('alt' => 'Dock', 'title' => 'Dock', 'id' => 'dock-image')),
-        '#', array('id' => 'dock-link', 'escape' => false));
-      echo $this->Html->link($this->Html->image("cross-dark.png", array('alt' => 'Close', 'title' => 'Close')),
-          '#', array('id' => 'close-link', 'escape' => false));
-    ?>
-    </div>
-  </div>
-  <div class="tutorial-container clearfix <?php if ($this->element('table_of_contents')) { echo "with-toc"; } ?>">
-    <h1 id="title"><a href='#' id="start-link" title="Go to the beginning"><?php echo $title ?></a></h1>
-    <?php echo $this->element('table_of_contents') ?>
-    <!-- IE requires frameBorder, and it apparently can't be applied with jQuery. -->
-    <iframe id="tutorial-frame" name="tutorial-frame" frameBorder="0" scrolling="no" src="<?php echo $tutorial_url ?>"></iframe>
-  </div><!-- end .tutorial-container -->
-</div>
+<?php echo $this->element('on_the_side', compact('id', 'tutorial_url')) ?>
+
 <iframe id="site-frame" frameBorder="0" name="site-frame" src="<?php echo $site_url ?>"></iframe>
-
-<?php echo $this->element('feedback', array('mode' => null)) ?>
 
 <div id="closed">
     Display Help
 </div>
+<?php endif ?>

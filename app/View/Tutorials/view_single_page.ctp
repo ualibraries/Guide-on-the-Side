@@ -1,14 +1,27 @@
 <div id="navbar" class="clearfix">
   <nav class="mode-switch">
     <ul>
-      <li><?php echo $this->Html->link('Step-by-step', array('action' => 'view', $tutorial['Tutorial']['id']), array('title' => 'One step per page'))?></li>
+      <li>
+        <?php
+        echo $this->Html->link(
+          'Step-by-step',
+          array(
+            'action' => $popup ? 'view_step_by_step_only' : 'view',
+            $tutorial['Tutorial']['id']
+          ),
+          array('title' => 'One step per page')
+        );
+        ?>
+      </li>
       <li class="active">Single-page view</li>
     </ul>
   </nav>
 </div>
 
-<h1 id="title"><?php echo $title ?></h1>  
-<p>Open <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a> in another browser window to work through this tutorial side by side.</p>
+<h1 id="title"><?php echo $title ?></h1>
+<?php if (!$popup): ?>
+    <p>Open <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a> in another browser window to work through this tutorial side by side.</p>
+<?php endif ?>
 
 <?php echo $this->element('table_of_contents') ?>
 

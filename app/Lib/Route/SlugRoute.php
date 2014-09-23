@@ -49,7 +49,11 @@ class SlugRoute extends CakeRoute {
         return 'tutorial/' . $tutorial['Tutorial']['user_url'];
       }
       if ('view_single_page' === $params['action']) {
-        return 'tutorial/'.$tutorial['Tutorial']['user_url'].'/single-page';
+        $url = 'tutorial/'.$tutorial['Tutorial']['user_url'].'/single-page';
+        if ($params['popup']) {
+            $url .= '/1'; // popup mode
+        }
+        return $url;
       }
 
     } else {

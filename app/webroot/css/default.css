@@ -5,127 +5,96 @@ html, body {
 body {
   font-family: "PT Sans", "Arial", sans-serif;
   background-color: #CCCCCC;
+  padding-bottom: 2em;
 }
 
 h1 {
   margin: .5em 0 1em;
 }
 
-#branding {
-  background-color: #999999;
+/* Layout - for some reason, repeated in common.css */
+#container {
+  width: 87%;
+  margin: 0 auto;
+  padding: 1.438em;
+  background-color: #6A80A8;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+#content {
+  padding:  0 1.438em 1.438em;
+  background-color: white;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+@media (max-width: 400px) {
+  #container {
+    width: auto;
+    padding: 0.25em;
+  }
+}
+
+@media (max-width: 680px) {
+  #container {
+    width: auto;
+  }
+}
+@media (min-width: 980px) {
+  #container {
+    width: 74%;
+  }
+}
+@media (min-width: 1200px) {
+  #container {
+    width: 70%;
+  }
+}
+
+/* Seems we don't have a general clearfix currently */
+#content:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
+}
+
+/* banner */
+
+.banner {
+  background-color: #6A80A8;
+  box-shadow: 1.438em 0 0 0px #6A80A8, -1.438em 0 0 0px #6A80A8;
+  color: white;
+}
+.banner a {
+  text-decoration: none;
+  font-family: "Crimson Text", serif;
+  font-style: italic;
+  color: white;
+}
+.banner h1 {
+  font-size: 1.8em;
+  font-weight: 400;
   margin: 0;
 }
 
-#branding img {
-  display: block;
-  margin: 0 auto;
+/* Popup mode */
+h1.banner {
+  margin: 0;
+  padding: 0.25em 0;
+  letter-spacing: normal;
+  text-transform: none;
+  font-weight: 400;
 }
 
-#container {
-  background-color: #6A80A8;
-  width: 950px;
-  margin: 0 auto;
-  -moz-border-radius-bottomright: 5%;
-  -moz-border-radius-bottomleft: 5%;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  padding: 18px 0;
-}
-
-#content {
-  width: 802px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 10px 37px 37px 37px;
-  -moz-border-radius-bottomright: 5%;
-  -moz-border-radius-bottomleft: 5%;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-
-#QuickHelp {
-  position: relative;
-  left: -37px;
-  border: 0;
-}
-
+/* Signed in users name and also links */
 #userinfo {
   text-align: right;
   font-size: 80%;
-  margin-bottom: .8em;
+  padding: .8em 0;
 }
 
-.input {
-  margin: 1em;
-}
-
-.input label {
-  display: inline-block;
-  width: 9em;
-  text-align: right;
-  vertical-align: top;
-  margin: .5em;
-  margin-top: 0;
-}
-
-.checkbox label {
-  margin-top: 0;
-}
-
-.input input, .input textarea, .input select {
-  margin: .5em;
-}
-
-.field-directions {
-  font-size: 80%;
-  font-style: italic;
-  padding-top: .8em;
-  display: inline-block;
-}
-
-.select .checkbox { /* Multiple checkboxes */
-  margin-left: 10em;
-  text-align: left;
-}
-
-.select .checkbox label { /* Multiple checkboxes */
-  font-size: 80%;
-  width: 25em;
-  text-align: left;
-  vertical-align: middle;
-}
-
-.mceEditor {
-  display: inline-block;
-}
-
-#TutorialContent_parent {
-  display: inline;
-}
-
-.actions {
-  float: right;
-}
-
-.actions .big-button {
-  margin-top: 1em;
-}
-
-.big-button {
-  font-size: 115%;
-  background-color: #6A80A8;
-  background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#87A3D6), to(#9CBCF7));
-  width: 10em;
-  padding: 1em;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  display: block;
-  border: 2px solid #6A80A8;
-}
-
+/* Messages and errors */
 .message {
   margin: 1em 0;
   padding: 1em;
@@ -151,7 +120,140 @@ h1 {
   border: 2px solid #E0273F;
 }
 
-#edit {
+/* This is for field-level errors. Need some CSS refactoring to merge with .error and .message above. */
+/* missing from this section is .error - a 404 would display that. */
+.error-message {
+  background-color: #E0273F;
+  background: -moz-linear-gradient(65% 65% 270deg, #E0273F, #E0673F);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0273F), to(#E0673F));
+  padding: 1em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #E0273F;
+  margin-left: 10.5em;
+  margin-right: 16em;
+}
+
+/* Simple buttons are for the public side tutorial info page and popup page */
+.simple-button {
+  background-color: #475671;
+  color: white;
+  padding: 7px 14px;
+  text-decoration: none;
+  display: block;
+  float: left;
+  margin: 1em 0;
+  border-radius: 3px;
+}
+.simple-button:hover {
+  background-color: #2C3445;
+}
+.simple-button:active {
+  position: relative;
+  top: 1px;
+}
+.simple-button:after {
+  content: " →";
+}
+
+/* Admin styles */
+/* form layout used on the edit tutorial information page */
+
+.input {
+  margin: 1em 0;
+}
+fieldset {
+  margin: 1em 0;
+  border: 1px solid #ccc;
+}
+.required label:before {
+  content: "*";
+  color: #A90000;
+  padding: 0px 3px;
+  font-weight: normal;
+}
+.input label {
+  font-weight: bold;
+  margin-right: 4px;
+  
+}
+.field-description {
+  font-size: 80%;
+  margin-left: 1em;
+  display: inline;
+  }
+.textarea label {
+  display: block;
+  margin: 0.5em 0;
+}
+div.input input {
+  margin-left: 4px;
+  margin-right: 4px;
+  }
+.input.required{
+  text-indent: -12px;
+}
+.input.checkbox input {
+   margin-right: 4px;
+ }
+ .input.checkbox label {
+   margin-left: 4px;
+ }
+.text label {
+  width: 200px;
+ }
+/* Multiple checkboxes */
+.select .checkbox {
+  margin: 5px 0;
+}
+.select label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* save */
+.submit input {
+  margin-top: 2em;
+  margin-left: 12.5em;
+}
+
+/* Tutorial create and edit pages */
+.mceEditor {
+  display: inline-block;
+}
+
+#TutorialContent_parent {
+  display: inline;
+}
+
+/* Publish/unpublish, Edit information, Preview, Edit Quiz */
+.actions {
+  float: right;
+}
+
+.actions .big-button {
+  margin-top: 1em;
+}
+
+.big-button {
+  font-size: 115%;
+  background-color: #6A80A8;
+  background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#87A3D6), to(#9CBCF7));
+  width: 10em;
+  padding: 1em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #6A80A8;
+}
+
+
+ #edit {
   font-size: 115%;
   background-color: #6A80A8;
   background: -moz-linear-gradient(65% 65% 270deg,#87A3D6, #9CBCF7);
@@ -206,25 +308,3 @@ h1 {
 .paginated-list .paging {
   color: black;
 }
-
-.submit input {
-  margin-top: 2em;
-  margin-left: 12.5em;
-}
-
-/* This is for field-level errors. Need some CSS refactoring to merge with .error and .message above. */
-.error-message {
-  background-color: #E0273F;
-  background: -moz-linear-gradient(65% 65% 270deg, #E0273F, #E0673F);
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0273F), to(#E0673F));
-  padding: 1em;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  display: block;
-  border: 2px solid #E0273F;
-  margin-left: 10.5em;
-  margin-right: 16em;
-}
-
