@@ -197,7 +197,7 @@ that you find inside of app/View or app/webroot can now be overridden by
 placing an identically named file inside your new theme. For example, if
 you'd like to override the main public index of Guide on the Side, copy
 app/View/Tutorials/search.ctp into
-themes/Themed/<your_theme>/Tutorials/search.ctp and then modify as you
+themes/Themed/[your_theme]/Tutorials/search.ctp and then modify as you
 wish. (See app/Config/routes.php for a list of non-obvious routes.)
 
 For more information, see the Themes portion of the CakePHP book:
