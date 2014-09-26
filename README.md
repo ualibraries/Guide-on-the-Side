@@ -196,9 +196,9 @@ new folder as the value for the theme parameter (e.g., "theme: UAL"). Any file
 that you find inside of app/View or app/webroot can now be overridden by
 placing an identically named file inside your new theme. For example, if
 you'd like to override the main public index of Guide on the Side, copy
-app/View/Tutorials/public_index.ctp into
-themes/Themed/<your_theme>/Tutorials/public_index.ctp and then modify as you
-wish.
+app/View/Tutorials/search.ctp into
+themes/Themed/<your_theme>/Tutorials/search.ctp and then modify as you
+wish. (See app/Config/routes.php for a list of non-obvious routes.)
 
 For more information, see the Themes portion of the CakePHP book:
 http://book.cakephp.org/2.0/en/views/themes.html
