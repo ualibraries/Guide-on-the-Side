@@ -15,7 +15,7 @@ google_analytics:
 
 piwik_analytics:
   enabled: false
-  piwik_server: piwik.server.com # Your Piwik server address (now leading http:///https://)
+  piwik_server: piwik.server.com # Your Piwik server address (no leading http:///https://)
   site_id: 99                    # Number provided by Piwik
 
 authentication:
