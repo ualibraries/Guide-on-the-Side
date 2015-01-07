@@ -3,8 +3,10 @@
 <h2>One quick thing...</h2>
 
     <p>The tutorial is going to pop up on the left, so you'll need to make some room by resizing your current window.</p>
+    <h3>Step 1</h3>
     <p>Go to the upper right corner of your browser and resize this window.</p>
     <div><?php echo $this->Html->image("resize.jpg", array('alt' => 'Please resize your window', 'title' => 'Resize your window', 'id' => 'resize-screenshot')) ?></div>
+    <h3>Step 2</h3>
     <p><a id="popup-link" class="simple-button" href="<?php echo $site_url ?>">Start tutorial</a></p>
 
    <?php
