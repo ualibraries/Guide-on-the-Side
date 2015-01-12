@@ -46,7 +46,7 @@ class ZendSearchLuceneSource extends DataSource {
 		parent::__construct($config);
     }
 
-	public function read(&$model, $queryData = array()) {
+	public function read(Model $model, $queryData = array(), $recursive = null) {
 		$this->_startLog();
 		
 		try {
@@ -69,7 +69,7 @@ class ZendSearchLuceneSource extends DataSource {
 		return $items;
 	}
 
-	public function delete(&$model, $id = null) {
+	public function delete(Model $model, $conditions = null) {
 		$id = current((array)$id);
 		if (!$id) {
 			return false;
@@ -82,7 +82,7 @@ class ZendSearchLuceneSource extends DataSource {
 		return $this->__delete();
 	}
 
-	public function create(&$model, $fields = array(), $values = array()) {
+	public function create(Model $model, $fields = null, $values = null) {
 		$count = $this->__index->count();
 		
 		foreach ($fields as $i => $field) {
@@ -114,11 +114,11 @@ class ZendSearchLuceneSource extends DataSource {
 	
 	}
 	
-	public function describe(&$model) {
+	public function describe($model) {
 		return $this->_schema;
 	}
 	
-	public function listSources() {
+	public function listSources($data = null) {
 		return $this->sources;
 	}
 	
