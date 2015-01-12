@@ -6,7 +6,8 @@
   list-style-type: none;
 }
 
-.gray-circle {
+.gray-circle:link,
+.gray-circle:visited {
   display: inline-block;
   height: 20px;
   width: 20px;
