@@ -71,7 +71,17 @@ class ZendSearchLuceneSource extends DataSource {
 
 	public function delete(Model $model, $conditions = null) {
 		$conditions = current((array)$conditions);
-		if (!$conditions) {
+    
+		/**
+		* This function may return Boolean FALSE, but may also return a non-Boolean 
+		* value which evaluates to FALSE. Please read the section on Booleans for more 
+		* information. Use the === operator for testing the return value of this 
+		* function.
+		*
+		* - http://php.net/current
+		*/
+
+		if ($conditions === false) {
 			return false;
 		}
 		
@@ -238,12 +248,29 @@ class ZendSearchLuceneSource extends DataSource {
 	}
 	
 	private function __delete($index = null) {
-		if (!$index) {
+		if ($index === FALSE) {
 			return $this->__createIndex($this->indexDirectory . $this->indexFile);
 		} else {
-			return $this->__index->delete($index);
+			$success = false;
+      
+			/**
+			* Zend_Search_Lucene_Proxy's delete function confusingly returns the
+			* value of its call to Zend_Search_Lucene's delete function.  The
+			* problem is that Zend_Search_Lucene's delete function doesn't return
+			* a value, so you always get null back.  A try/catch block should be
+			* used instead to determine the success of the delete call as both
+			* functions will throw exceptions if failure occurs.
+			*/
+
+			try{
+				$this->__index->delete($index);
+				$success = true;
+			}catch(Exception $e){
+				$this->error = $e->getMessage();
+			}
+      			return $success;
 		}
-		
+
 		return false;
 	}
 	
