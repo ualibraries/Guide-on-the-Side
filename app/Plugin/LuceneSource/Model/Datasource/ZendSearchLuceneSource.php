@@ -152,31 +152,61 @@ class ZendSearchLuceneSource extends DataSource {
 //			$limit = $queryData['limit'];
 //		}
 
-    	$query = $this->__parseQuery($queryData);
-
-		Zend_Search_Lucene::setResultSetLimit($limit);
-
-		$hits = $this->__index->find($query);
-
-		$data = array();
-		foreach ($hits as $i => $hit) {
-			$fields = $this->__getFieldInfo($hit->getDocument());
-			
-			$returnArray = array();
-			foreach ($fields as $field) {
-				if ($highlight && $field->isIndexed == 1) {
-					$returnArray[$field->name] = $query->htmlFragmentHighlightMatches($hit->{$field->name});
-				} else {
-					$returnArray[$field->name] = $hit->{$field->name};
-				}
-			}
-			
-			$returnArray['id'] = $hit->id;
-			$returnArray['score'] = $hit->score;
-
-			$data[$i][$model->alias] = $returnArray;
+		/**
+		 * The ZendSearchLucene queries cannot query based upon the internal document
+		 * id.  This is a workaround that involves directly calling getDocument if
+		 * an id is specified in a query.
+		 */
+		$docData = array();
+		if(isset($queryData['conditions']['id']) && is_numeric($queryData['conditions']['id'])){
+			$id = $queryData['conditions']['id'];
+			$doc = $this->__index->getDocument($id);
+			$docData = $this->__documentToArray($doc);
+			unset($queryData['conditions']['id']);
 		}
-		return $data;
+
+		$hitData = array();
+		if(!empty($queryData)){
+			$query = $this->__parseQuery($queryData);
+
+			Zend_Search_Lucene::setResultSetLimit($limit);
+
+			$hits = $this->__index->find($query);
+
+			foreach ($hits as $i => $hit) {
+				$returnArray = $this->__documentToArray($hit->getDocument());
+				$returnArray['id'] = $hit->id;
+				$returnArray['score'] = $hit->score;
+				$hitData[$i][$model->alias] = $returnArray;
+			}
+		}
+		$data = $docData + $hitData;
+	  return $data;
+	}
+
+	/**
+	 * __documentToArray
+	 * 
+	 * @param Zend_Search_Lucene_Document $doc -- A Zend_Search_Lucene_Docment
+	 * instance.
+	 *
+	 * @return An array with the field names of the $doc as keys and the field
+	 * values of $doc as values.
+	 */
+	private function __documentToArray(Zend_Search_Lucene_Document $doc){
+		$fields = $this->__getFieldInfo($doc);
+		//$fields = $this->__getFieldInfo($hit->getDocument());
+		
+		$returnArray = array();
+		foreach ($fields as $field) {
+			if ($highlight && $field->isIndexed == 1) {
+				$returnArray[$field->name] = $query->htmlFragmentHighlightMatches($doc->{$field->name});
+			} else {
+				$returnArray[$field->name] = $doc->{$field->name};
+			}
+		}
+
+		return $returnArray;
 	}
 	
 	private function __parseQuery($queryData) {
