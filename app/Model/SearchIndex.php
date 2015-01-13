@@ -1,7 +1,7 @@
 <?php
 
 class SearchIndex extends AppModel {
-
+	public $useDbConfig = 'zendSearchLucene';
 /**
  * Removes record for given ID. If no ID is given, the current ID is used.
  * Returns true on success.  This function has been modified to reflect the fact
