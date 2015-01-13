@@ -70,12 +70,12 @@ class ZendSearchLuceneSource extends DataSource {
 	}
 
 	public function delete(Model $model, $conditions = null) {
-		$id = current((array)$id);
-		if (!$id) {
+		$conditions = current((array)$conditions);
+		if (!$conditions) {
 			return false;
 		}
 		
-		return $this->__delete($id);
+		return $this->__delete($conditions);
 	}
 	
 	public function deleteAll() {
