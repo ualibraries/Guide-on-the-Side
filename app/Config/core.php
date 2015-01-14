@@ -229,7 +229,10 @@
  * Uncomment this line and correct your server timezone to fix 
  * any date & time related errors.
  */
-	//date_default_timezone_set('UTC');
+if (!ini_get('date.timezone')) {
+	// Set the default timezone to UTC if it was not set via php.ini
+	date_default_timezone_set('UTC');
+}
 
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
