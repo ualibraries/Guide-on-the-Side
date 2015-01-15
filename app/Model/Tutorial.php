@@ -502,13 +502,14 @@ class Tutorial extends AppModel {
     }
 
     // update Lucene index
+    $indexing_success = true;
     $boolean_query = new Zend_Search_Lucene_Search_Query_Boolean();
     $lucene_term = new Zend_Search_Lucene_Index_Term($this->id, 'tutorial_id');
     $lucene_query = new Zend_Search_Lucene_Search_Query_Term($lucene_term);
     $boolean_query->addSubquery($lucene_query, true);
     $hits = $this->SearchIndex->find('all', array('conditions' => array('query' => $boolean_query)));
     foreach ($hits as $hit) {
-      $this->SearchIndex->delete($hit['SearchIndex']['id']);
+      $indexing_success = $indexing_success && $this->SearchIndex->delete($hit['SearchIndex']['id']);
     }
     $saveData = array('SearchIndex' => array(
       'document' => array(
@@ -549,7 +550,10 @@ class Tutorial extends AppModel {
         ),
       )
     ));
-    $this->SearchIndex->save($saveData);
+    $indexing_success = $indexing_success && $this->SearchIndex->save($saveData);
+    if($indexing_success === false){
+	    throw new InternalErrorException('An error occured while indexing your tutorial for searching.');
+    }
   }
 
 }
