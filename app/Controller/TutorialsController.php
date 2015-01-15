@@ -535,7 +535,7 @@ class TutorialsController extends AppController {
 			if ($this->Tutorial->save($this->data)) {
 				$this->Session->setFlash(__('The tutorial has been saved'));
 				if ($this->data['Tutorial']['tutorial_type_id'] == TUTORIAL_TYPE_SIDEBYSIDE) {
-							$this->redirect(array('action' => 'edit_content', $this->Tutorial->id));
+					$this->redirect(array('action' => 'edit_content', $this->Tutorial->id));
 				} elseif ($this->data['Tutorial']['tutorial_type_id'] == TUTORIAL_TYPE_EXTERNAL) {
 					$this->redirect(array('action' => 'edit_external', $this->Tutorial->id));
 				}
