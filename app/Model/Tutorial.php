@@ -511,46 +511,49 @@ class Tutorial extends AppModel {
 		foreach ($hits as $hit) {
 			$indexing_success = $indexing_success && $this->SearchIndex->delete($hit['SearchIndex']['id']);
 		}
-		$saveData = array('SearchIndex' => array(
-			'document' => array(
-				array(
-					'key' => 'tutorial_id',
-					'value' => $tutorial['Tutorial']['id'],
-					'type' => 'Keyword'
-				),
-				array(
-					'key' => 'title',
-					'value' => $tutorial['Tutorial']['title'],
-					'type' => 'Text'
-				),
-				array(
-					'key' => 'description',
-					'value' => $tutorial['Tutorial']['description'],
-					'type' => 'Text'
-				),
-				array(
-					'key' => 'tags',
-					'value' => $tutorial['Tutorial']['tags'],
-					'type' => 'Text'
-				),
-				array(
-					'key' => 'learning_goal',
-					'value' => join(' ', Set::extract('/id', $tutorial['LearningGoal'])),
-					'type' => 'Text'
-				),
-				array(
-					'key' => 'resource_type',
-					'value' => join(' ', Set::extract('/id', $tutorial['ResourceType'])),
-					'type' => 'Text'
-				),
-				array(
-					'key' => 'keyword',
-					'value' => join(' ', Set::extract('/id', $tutorial['Tag'])),
-					'type' => 'Text'
-				),
-			)
-		));
-		$indexing_success = $indexing_success && $this->SearchIndex->save($saveData);
+		// Don't reindex Tutorials that have been "soft" deleted.
+		if(!$tutorial['Tutorial']['deleted']){
+			$saveData = array('SearchIndex' => array(
+				'document' => array(
+					array(
+						'key' => 'tutorial_id',
+						'value' => $tutorial['Tutorial']['id'],
+						'type' => 'Keyword'
+					),
+					array(
+						'key' => 'title',
+						'value' => $tutorial['Tutorial']['title'],
+						'type' => 'Text'
+					),
+					array(
+						'key' => 'description',
+						'value' => $tutorial['Tutorial']['description'],
+						'type' => 'Text'
+					),
+					array(
+						'key' => 'tags',
+						'value' => $tutorial['Tutorial']['tags'],
+						'type' => 'Text'
+					),
+					array(
+						'key' => 'learning_goal',
+						'value' => join(' ', Set::extract('/id', $tutorial['LearningGoal'])),
+						'type' => 'Text'
+					),
+					array(
+						'key' => 'resource_type',
+						'value' => join(' ', Set::extract('/id', $tutorial['ResourceType'])),
+						'type' => 'Text'
+					),
+					array(
+						'key' => 'keyword',
+						'value' => join(' ', Set::extract('/id', $tutorial['Tag'])),
+						'type' => 'Text'
+					),
+				)
+			));
+			$indexing_success = $indexing_success && $this->SearchIndex->save($saveData);
+		}
 		if($indexing_success === false){
 			throw new InternalErrorException('An error occured while indexing your tutorial for searching.');
 		}
