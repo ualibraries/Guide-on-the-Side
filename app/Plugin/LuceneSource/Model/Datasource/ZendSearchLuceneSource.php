@@ -165,16 +165,18 @@ class ZendSearchLuceneSource extends DataSource {
 		* id.  This is a workaround that involves directly calling getDocument if
 		* an id is specified in a query.
 		*/
+		$hitData = array();
 		$docData = array();
+		$id = null;
 		if(isset($queryData['conditions']['id']) && is_numeric($queryData['conditions']['id'])){
 			$id = $queryData['conditions']['id'];
 			$doc = $this->__index->getDocument($id);
 			$docData = $this->__documentToArray($doc);
-			unset($queryData['conditions']['id']);
+			$docData['id'] = $id;
+			$hitData = array($docData);
 		}
 
-		$hitData = array();
-		if(!empty($queryData)){
+		if(!empty($queryData) && $id === null){
 			$query = $this->__parseQuery($queryData);
 
 			Zend_Search_Lucene::setResultSetLimit($limit);
@@ -188,8 +190,7 @@ class ZendSearchLuceneSource extends DataSource {
 				$hitData[$i][$model->alias] = $returnArray;
 			}
 		}
-		$data = $docData + $hitData;
-		return $data;
+		return $hitData;
 	}
 
 	/**
