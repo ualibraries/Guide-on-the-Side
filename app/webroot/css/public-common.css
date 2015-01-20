@@ -155,7 +155,7 @@ p.field-description {
 
 /******/
 .definition-link {
-    border-bottom: 1px dotted;
+    border-bottom: 1px solid;
 }
 
 /* Mode switch navigation */
