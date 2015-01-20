@@ -251,7 +251,6 @@
 include('./classes/class.upload.php');
 if (isset($_POST['action']) && $_POST['action'] == 'image') 
 {
-	include('./config.php');
 	$handle = new upload($_FILES['image_field'], $language);
 	include('./config.php');
 	$handle->Process($server_image_directory);
