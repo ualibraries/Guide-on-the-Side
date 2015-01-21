@@ -4,9 +4,9 @@ theme: GuideOnTheSide
 database:
   datasource: Database/Mysql
   host: localhost
-  login: 
-  password: 
-  database: 
+  login:
+  password:
+  database:
 
 email:
   send_from:
@@ -23,12 +23,21 @@ piwik_analytics:
   site_id: 99                    # Number provided by Piwik
 
 authentication:
-  # local or shibboleth
+  # local, shibboleth, or cas
   method: local
 
 # only fill these out if you selected shibboleth above
 shibboleth:
   login_url:  https://%HOST%/Shibboleth.sso/Login
   logout_url: https://%HOST%/Shibboleth.sso/Logout
-  login_link_text: Log in via Shibboleth  
+  login_link_text: Log in via Shibboleth
   username_field: Shib-uid
+
+# To make use of CAS, set authentication.method to cas and fill in these values
+# The following sample configuration would work if your CAS login url is https://cas.example.com/cas/login
+# Enable force_ssl_redirect if your CAS server requires SSL.
+cas:
+  hostname: cas.example.com
+  port: 443
+  uri: cas
+  force_ssl_redirect: false
