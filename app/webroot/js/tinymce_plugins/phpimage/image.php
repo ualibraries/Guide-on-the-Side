@@ -253,12 +253,21 @@ if (isset($_POST['action']) && $_POST['action'] == 'image')
 {
 	$handle = new upload($_FILES['image_field'], $language);
 	include('./config.php');
-	$handle->Process($server_image_directory);
+	if($handle->image_resize === true){
+		$handle->Process($server_thumbnail_directory);
+		$handle->image_resize = false;
+		$path = $url_thumbnail_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
+		$handle->Process($server_image_directory);
+	}else{
+		$handle->Process($server_image_directory);
+		$path = $url_image_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
+	}
+
 	if ($handle->uploaded) 
 	{
 		if ($handle->processed) 
 		{
-			echo "<script>setTimeout(\"document.getElementById('src').value='".$url_image_directory."/".$handle->file_dst_name."'\", 200)</script>";
+			echo "<script>setTimeout(\"document.getElementById('src').value='$path'\", 200)</script>";
 			echo "<script>setTimeout(\"ImageDialog.showPreviewImage(document.getElementById('src').value)\", 400)</script>";
 		} 
 		else 
