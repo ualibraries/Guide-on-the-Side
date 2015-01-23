@@ -8,6 +8,9 @@ database:
   password: 
   database: 
 
+lucene:
+  enabled: false
+
 email:
   send_from:
   send_all_feedback_to:
