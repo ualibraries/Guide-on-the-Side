@@ -3,6 +3,8 @@ App::uses('Sanitize', 'Utility');
 
 App::uses('AppController', 'Controller');
 
+App::uses('CakeEmail', 'Network/Email');
+
 class TutorialsController extends AppController {
 
   var $paginate =
@@ -919,28 +921,27 @@ class TutorialsController extends AppController {
           htmlentities($this->data['Tutorial']['comment']);
         $tutorialUrl = Router::url(array('action' => $action, $id), true);
         $body .= "<p>This feedback was sent from $tutorialUrl</p>";
-        $to_array = array(explode(',',Configure::read('user_config.email.send_all_feedback_to')),
-           Sanitize::paranoid($tutorial['Tutorial']['contact_email'], array('@', '.')));
+        
+        $message = new CakeEmail('default');
+        $message->subject("Feedback for {$tutorial['Tutorial']['title']} tutorial");
+        $message->emailFormat('html');
+          
+        $to_array = explode(',', Configure::read('user_config.email.send_all_feedback_to'));
+        $to_array[] = $tutorial['Tutorial']['contact_email'];
+
         foreach ($to_array as $to) {
-          $this->Email->reset();
-          $this->Email->to = $to;
-          $from = Configure::read('user_config.email.send_from');
-          $from = explode(',', $from);
-          if (is_array($from)) {
-            $from = $from[0];
-          }
-          $this->Email->from = $from;
-          $this->Email->subject = "Feedback for {$tutorial['Tutorial']['title']} tutorial";
-          $this->Email->sendAs = 'html';
-          $email_success = $this->Email->send($body) && $email_success;
+            $message->addBcc($to);
         }
-        if ($email_success) {
-          echo 'success';
-          exit();
-        } else {
-          echo 'failure';
-          exit();
-        }
+        
+        try {
+            $message->send($body);
+            echo "success";
+            exit();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            exit();    
+        } 
+                
       } else {
         $this->layout = 'public';
         $this->set(compact('tutorial', 'mode'));
@@ -990,7 +991,6 @@ class TutorialsController extends AppController {
       // parse supplied email fields
 
       if ($is_tutorial || $is_quiz) {
-        $email_success = true;
         $to_string = '';
         if (!empty($tutorial['Tutorial']['certificate_email'])) {
           $to_string .= $tutorial['Tutorial']['certificate_email'];
@@ -999,37 +999,35 @@ class TutorialsController extends AppController {
           if (!empty($to_string)) {
             $to_string .= ',';
           }
-          $to_string .= Sanitize::paranoid(
-              $this->request->data['certificate_email'],
-              array('@', '.', ',', '+', '-')
-          );
+          $to_string .= $this->request->data['certificate_email'];
         }
         
         $this->set('date', date('F j, Y'));
         $this->set('time', date('g:ia'));
         $this->set('name', Sanitize::paranoid($this->request->data['certificate_name'], array(' ')));
         $this->set('title', $subject);
-       
+              
+        $message = new CakeEmail('default');
+        $message->subject("Certificate of Completion for $subject");
+        $message->template('certificate_of_completion');
+        $message->emailFormat('html');
+        $message->viewVars($this->viewVars);
+        
         $to_array = explode(',', $to_string);
         foreach ($to_array as $key => $to) {
           if ($to == 'Emailaddresses' || empty($to)) {
             unset($to_array[$key]);
             continue;
           }
-          $this->Email->reset();
-          $this->Email->to = trim($to);
-          $from = Configure::read('user_config.email.send_from');
-          $from = explode(',', $from);
-          if (is_array($from)) {
-            $from = $from[0];
-          }
-          $this->Email->from = trim($from);
-          $this->Email->subject = "Certificate of Completion for $subject";
-          $this->Email->sendAs = 'html';
-//          $this->Email->delivery = 'debug';
-          $this->Email->template = 'certificate_of_completion';
-          $email_success = $this->Email->send() && $email_success;
+          $message->addBcc($to);
         }
+
+        try {
+            $message->send();
+            $email_success = true;
+        } catch (Exception $e) {
+            $email_success = $e->getMessage();
+        } 
 
         $this->viewPath = 'Emails/html';
         $this->layout = 'Emails/html/default';
@@ -1039,7 +1037,7 @@ class TutorialsController extends AppController {
             $this->Session->setFlash('This certificate could not be emailed because no email addresses' . 
                 ' were supplied.');
         } else {
-            if ($email_success) {
+            if (true === $email_success) {
               $this->Session->setFlash('The following message was sent.');
             } else {
               $this->Session->setFlash('The following message could <strong>not</strong> be sent.');

@@ -18,13 +18,10 @@ class AppController extends Controller {
     $this->line_height = $this->character_height + 8;
   }
 
-  // Really Email is only needed in some parts of TutorialController, but I don't know how to
-  //   add components at the controller level without duplicating the list below.
   var $components = array(
     'FlexAuth.FlexAuth',
     'Session',
     'RequestHandler',
-    'Email',
 //    'Search.Prg',
   );
 
