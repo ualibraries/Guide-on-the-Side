@@ -39,32 +39,32 @@
  */
 class EmailConfig {
 
-	public $default = array();
+    public $default = array();
 
-	public function __construct() {
-		$transport = Configure::read('user_config.email.transport');
-		if (!$transport) {
-			// SMTP will probably provide a better experience, but php mail() was the default previously.
-		    $transport = 'php';	
+    public function __construct() {
+        $transport = Configure::read('user_config.email.transport');
+        if (!$transport) {
+            // SMTP will probably provide a better experience, but php mail() was the default previously.
+            $transport = 'php';	
         }
 
-		$from = Configure::read('user_config.email.send_from');
+        $from = Configure::read('user_config.email.send_from');
         $from = explode(',', $from);
         if (is_array($from)) {
             $from = $from[0];
         }
-		
-		$this->default = array(
+
+        $this->default = array(
             'from' => $from,
             'sender' => $from,
             'log' => Configure::read('user_config.email.log'),
-		);
-		
-		if ('php' === $transport) {
-			$this->default['transport'] = 'Mail';
+        );
+
+        if ('php' === $transport) {
+            $this->default['transport'] = 'Mail';
         } elseif ('smtp' === $transport) {
-		    $this->default = array_merge($this->default, 
-		        array(
+            $this->default = array_merge($this->default, 
+                array(
                     'transport' => 'Smtp',
                     'from' => $from,
                     'sender' => $from,
@@ -73,19 +73,19 @@ class EmailConfig {
                     'password' => Configure::read('user_config.smtp.password'),
                     'timeout' => Configure::read('user_config.smtp.timeout'),
                 )
-			);
-			$host = Configure::read('user_config.smtp.host');
+            );
+            $host = Configure::read('user_config.smtp.host');
             switch (Configure::read('user_config.smtp.encryption')) {
-				case 'ssl':
-			   	    $this->default['host'] = 'ssl://'.$host;
-			   	    break;			   	
-			   	case 'tls':
-			   	    $this->default['host'] = $host;
-			   	    $this->default['tls'] = true;
-			   	    break;
-			   	default:
-			   	    $this->default['host'] = $host;
-			}
+                case 'ssl':
+                    $this->default['host'] = 'ssl://'.$host;
+                    break;			   	
+                case 'tls':
+                    $this->default['host'] = $host;
+                    $this->default['tls'] = true;
+                    break;
+                default:
+                    $this->default['host'] = $host;
+            }
         }
-	}
+    }
 }
