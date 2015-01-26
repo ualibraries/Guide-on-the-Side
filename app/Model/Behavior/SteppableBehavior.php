@@ -111,6 +111,7 @@ class SteppableBehavior extends ModelBehavior {
                 $step_content = $this->_parseDefinitions($step_content, $display_definition_boxes);
                 $step_content = $this->_parseTextBoxes($step_content);
                 $step_content = $this->_parseImages($step_content);
+                $step_content = $this->_parseImageLinks($step_content);
                 
                 $step_num_within_chapter++;
                 
@@ -218,6 +219,13 @@ class SteppableBehavior extends ModelBehavior {
     $step_content = preg_replace($image_pattern, $replacement_pattern, $step_content, -1, $count);
 //    debug($step_content);
 //    debug($count);
+    return $step_content;
+  }
+
+  protected function _parseImageLinks($step_content) {
+    $image_links_pattern = '/(\<a[^>]*href\=")(uploads\/(images|thumbnails)\/[^\"]*"[^>]*\>)/';
+    $replacement_pattern = '$1' . Router::url('/') . '$2';
+    $step_content = preg_replace($image_links_pattern, $replacement_pattern, $step_content, -1, $count);
     return $step_content;
   }
 
