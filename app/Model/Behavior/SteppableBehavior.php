@@ -211,7 +211,7 @@ class SteppableBehavior extends ModelBehavior {
   }
 
   protected function _parseImages($step_content) {
-    $image_pattern = '/(\<img[^>]*src\=")(uploads\/images\/[^\"]*"[^>]*\>)/';
+    $image_pattern = '/(\<img[^>]*src\=")(uploads\/(images|thumbnails)\/[^\"]*"[^>]*\>)/';
     // The following is the only way I could figure out to get the webroot from the model.
     //   It assumes this is being called from index.php.
     $replacement_pattern = '$1' . Router::url('/') . '$2';
