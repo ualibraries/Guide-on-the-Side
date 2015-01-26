@@ -70,3 +70,4 @@
         ?>
     </div>
 </form>
+<?php echo $this->Html->script('tutorials/modal_image'); ?>
