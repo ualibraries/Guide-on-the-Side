@@ -1,9 +1,10 @@
 $(document).ready(function() {
+	parent.$('body').append('<div id="gots_modal_image_box"></div>');
 	$('.gots_thumbnail_link').click(function(e){
 		e.preventDefault();
+		parent.$('#gots_modal_image_box').empty();
 		modal_image = '<img src="' + $(this).attr('href') + '">';
-		modal_image_box = '<div id="gots_modal_image_box">' + modal_image + '</div>';
-		parent.$('body').append(modal_image_box);
+		parent.$('#gots_modal_image_box').append(modal_image);
 		parent.$('#gots_modal_image_box').dialog({
 				modal: true,
 				resizeable: false,
