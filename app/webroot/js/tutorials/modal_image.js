@@ -13,8 +13,7 @@ $(document).ready(function() {
 				resizeable: false,
 				draggable: false,
 				width: 'auto',
-				left: 0,
-				top: 0,
+				dialogClass: 'gots_modal_image_dialog',
 				title: $(this).children('img').attr('title')
 		});
 	});

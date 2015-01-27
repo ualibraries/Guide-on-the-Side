@@ -214,3 +214,7 @@ h1#title {
   width: 100%;
   height: auto;
 }
+
+.gots_modal_image_dialog {
+  max-width: 60%;
+}
