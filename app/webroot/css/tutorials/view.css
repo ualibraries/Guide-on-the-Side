@@ -206,6 +206,11 @@ h1#title {
   color: #000;
 }
 .gots_modal_image_box img {
+  display: none;
+}
+
+.gots_modal_image_box .gots_modal_image{
+  display: inline;
   width: 100%;
   height: auto;
 }
