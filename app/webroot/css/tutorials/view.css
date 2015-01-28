@@ -211,8 +211,7 @@ h1#title {
 
 .gots_modal_image_box .gots_modal_image{
   display: inline;
-  width: 100%;
-  height: auto;
+  max-width: 100%;
 }
 
 .gots_modal_image_dialog {
