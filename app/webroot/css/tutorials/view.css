@@ -205,15 +205,3 @@ h1#title {
   background: rgba(203, 210, 228, 0.4);
   color: #000;
 }
-.gots_modal_image_box img {
-  display: none;
-}
-
-.gots_modal_image_box .gots_modal_image{
-  display: inline;
-  max-width: 100%;
-}
-
-.gots_modal_image_dialog {
-  max-width: 60%;
-}
