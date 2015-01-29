@@ -9,9 +9,22 @@ database:
   database:
 
 email:
-  send_from:
-  send_all_feedback_to:
-
+  # smtp (recommended) or php
+  transport: smtp
+  send_from: 
+  send_all_feedback_to: 
+  log: false
+  
+# only if you chose smtp above
+smtp:
+  host: 
+  port: 587
+  username: 
+  password: 
+  timeout: 30
+  # none, ssl, or tls
+  encryption: tls
+  
 google_analytics:
   enabled: false
   account_id: UA-something
