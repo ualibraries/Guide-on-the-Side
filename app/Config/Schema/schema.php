@@ -197,6 +197,8 @@ class AppSchema extends CakeSchema {
 		'for_credit' => array('type' => 'boolean', 'null' => false, 'default' => null),
 		'url_title' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'popup' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
+		'custom_feedback_link_text' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'show_feedback_link' => array('type' => 'boolean', 'null' => false, 'default' => '1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
