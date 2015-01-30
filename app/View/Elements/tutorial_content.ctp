@@ -63,10 +63,12 @@
             echo "<input value='Print / Send email' type='submit' name='submit' />";
         }
 
-        echo "<p>";
-        echo $this->Html->link('What did you think of this tutorial?', array('action' => 'provide_feedback',
+	if($tutorial['Tutorial']['show_feedback_link']){
+          echo "<p>";
+          echo $this->Html->link($tutorial['Tutorial']['custom_feedback_link_text'], array('action' => 'provide_feedback',
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
-        echo "</p>";
+          echo "</p>";
+	}
         ?>
     </div>
 </form>

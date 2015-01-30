@@ -38,6 +38,28 @@
     echo "</fieldset>";
     echo $this->Form->input('popup', array('label' => 'Popup mode', 'after' => '<p class="field-description">Use popup mode to work around sites that refuse to be embedded</p>'));
     echo $this->Form->input('link_toc', array('label' => 'Link table of contents'));
+?>
+<fieldset>
+  <legend>Feedback link</legend>
+<?php
+    echo $this->Form->input(
+	    'show_feedback_link',
+	    array(
+		    'label' => 'Show feedback link',
+	    )
+    );
+    echo $this->Form->input(
+            'custom_feedback_link_text',
+	    array(
+		    'label' => 'Feedback link text:',
+		    'size' => '40'
+	    )
+    );
+
+    echo $this->Form->hidden('tutorial_type_id', array('value' => TUTORIAL_TYPE_SIDEBYSIDE));
+?>
+</fieldset>
+<?php
 
     echo "<fieldset id='certificate-fields'>";
     echo '<legend>Certificates</legend>';
