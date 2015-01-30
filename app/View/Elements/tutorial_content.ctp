@@ -6,7 +6,7 @@
             if (!empty($step['chapter'])) {
                 if (!empty($step['chapter'])) {
                     echo "<h2>" . $step['chapter'] . "</h2>";
-                    if ($step['total_steps_in_chapter'] > 1) {
+                    if ($step['total_steps_in_chapter'] > 1 && $tutorial['Tutorial']['show_chapter_progress']) {
                         echo "<span class='step-number'>" . $step['step_num_within_chapter'] . ' of ' . $step['total_steps_in_chapter'] . "</span>";
                     }
                 }
