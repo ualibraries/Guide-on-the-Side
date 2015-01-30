@@ -31,18 +31,13 @@ a:visited {
 
 #scrollable {
   position: relative;
+  height: 70%;
+  margin: 0 0.655em;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 70%;
   background-color: #F6F6F6;
   background-color: rgba(255, 255, 255, 0.8);
-  text-shadow: 1px 1px #FFF;
-  -moz-border-radius: 0.5714em;
-  -webkit-border-radius: 0.5714em;
-  border-radius: 0.5714em;
-  margin: 0 0.655em;
-  -webkit-box-shadow: inset 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 0.5714em 0.5714em;
 }
 .items {
   width: 20000em;
@@ -59,33 +54,57 @@ a:visited {
 }
 
 #navigation {
-  background: #777;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  width: 285px;
-  margin: 0 auto;
-  padding: 5px 0;
-  -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+  margin: 0 0.655em;
+  padding: 1.06em 0 5px 0;
+  text-align: center;
+  border-radius: 0.5714em 0.5714em 0 0;
+  background: rgba(255, 255, 255, 0.8);
 }
 #navigation a {
-  width: 24px;
-  height: 21px;
-  background: url(../../img/arrow-sprite.png) no-repeat
+  position: relative;
+  width: 16px;
+  height: 14px;
+  top: 3px;
+  margin: 0;
+  background: #ccc;
+  overflow: visible;
+}
+#navigation a:hover {
+  background: #bbb;
+}
+#navigation a.prev:hover:before{
+  border-right-color: #bbb;
+}
+#navigation a.next:hover:before{
+  border-left-color: #bbb;
+}
+#navigation a:before{
+  content:'';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  margin-top: -12px;
+  border: solid 12px #ccc;
+}
+#navigation a.prev:before{
+  right: 100%;
+  border-color: transparent #ccc transparent transparent;
+}
+#navigation a.next:before{
+  left: 100%;
+  border-color: transparent transparent transparent #ccc;
 }
 #prev-navigation,
 #next-navigation,
 #progress {
-  float: left;
+  display: inline-block;
+  vertical-align: top;
 }
 #prev-navigation,
 #next-navigation {
-  width: 24px;
-  margin: 5px;
+
 }
 #prev-navigation a {
   background-position: 0px 0px;
@@ -95,7 +114,7 @@ a:visited {
 }
 #prev-navigation a.disabled:hover {
   cursor: default;
-  background-position: 0px -58px; 
+  background-position: 0px -58px;
 }
 #prev-navigation a:hover {
   background-position: 0px -29px;
@@ -115,13 +134,22 @@ a:visited {
 }
 #progress {
   width: 213px;
-  margin: 8px 0;
   height: 18px;
+  margin: 0 5px;
+  border-radius: 0;
+  border-color: #ddd;
+}
+.ui-progressbar .ui-progressbar-value{
+  border: 0;
+  margin: 0;
+  background: #ddd;
+  border-radius: 0;
+  transition: width 0.3s ease;
 }
 .acknowledgement {
   margin-top: 1em;
   text-align: center;
-  font-size: 65%; 
+  font-size: 65%;
 }
 #tabs {
   padding-left: 10px;
