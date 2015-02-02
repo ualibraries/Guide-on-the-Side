@@ -51,8 +51,9 @@
     echo $this->Form->input(
             'custom_feedback_link_text',
 	    array(
-		    'label' => 'Feedback link text:',
-		    'size' => '40'
+		    'label' => 'Custom feedback link text:',
+		    'size' => '40',
+		    'after' => '<p class="field-description">Optional.  If left blank, the default text "'.Configure::read('user_config.feedback_link_text').'" will appear.</p>'
 	    )
     );
 

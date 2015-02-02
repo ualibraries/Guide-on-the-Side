@@ -72,15 +72,8 @@ class Tutorial extends AppModel {
                 'message' => 'Tutorial URL may only contain lowercase letters, numbers, and dashes.'
             )
 	),
-	'custom_feedback_link_text'=>array(
-	    'rule' => array('allowEmptyFeedbackLinkIfHidden'),
-            'message' => "You must specify text for the feedback link."
-	)
     );
 
-  function allowEmptyFeedbackLinkIfHidden($check){
-    return $this->data['Tutorial']['show_feedback_link'] === '0' || !empty($check) ;
-  }
 
   function checkTitleLength($check, $sidebysideLimit, $externalLimit) {
     $value = array_shift($check);

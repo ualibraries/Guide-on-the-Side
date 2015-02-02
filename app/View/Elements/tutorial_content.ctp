@@ -64,8 +64,11 @@
         }
 
 	if($tutorial['Tutorial']['show_feedback_link']){
+	  $feedback_text = $tutorial['Tutorial']['custom_feedback_link_text'];
+	  if(empty($feedback_text))
+	    $feedback_text = Configure::read('user_config.feedback_link_text');
           echo "<p>";
-          echo $this->Html->link($tutorial['Tutorial']['custom_feedback_link_text'], array('action' => 'provide_feedback',
+          echo $this->Html->link($feedback_text, array('action' => 'provide_feedback',
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
           echo "</p>";
 	}
