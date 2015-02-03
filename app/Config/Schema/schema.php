@@ -31,8 +31,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $audiences_tutorials = array(
-		'audience_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'audience_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -66,8 +66,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $learning_goals_tutorials = array(
-		'learning_goal_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'learning_goal_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -94,8 +94,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $resource_types_tutorials = array(
-		'resource_type_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'resource_type_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -135,8 +135,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $subjects_tutorials = array(
-		'subject_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'subject_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -208,7 +208,7 @@ class AppSchema extends CakeSchema {
 		'username' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'comment' => 'user name (sometimes)', 'charset' => 'utf8'),
 		'role_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'password' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'comment' => 'password', 'charset' => 'utf8'),
-		'deleted' => array('type' => 'boolean', 'null' => false, 'default' => null),
+		'deleted' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
