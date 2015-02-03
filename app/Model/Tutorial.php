@@ -516,8 +516,11 @@ class Tutorial extends AppModel {
 			foreach ($hits as $hit) {
 				$indexing_success = $indexing_success && $this->SearchIndex->delete($hit['SearchIndex']['id']);
 			}
-			// Don't reindex Tutorials that have been "soft" deleted.
-			if(!$tutorial['Tutorial']['deleted']){
+			/*
+			 * Don't reindex Tutorials that have been "soft" deleted
+			 * or are not published.
+			 */
+			if(!$tutorial['Tutorial']['deleted'] && $tutorial['Tutorial']['published']){
 				$saveData = array('SearchIndex' => array(
 					'document' => array(
 						array(
