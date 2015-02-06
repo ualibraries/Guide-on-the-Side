@@ -139,16 +139,14 @@ class QuestionsController extends AppController {
 		  	} else {
         $errors = array();
         foreach ($this->Question->validationErrors as $field => $error) {
-          if (!is_array($error)) {
-            $key = Inflector::humanize($field);
-            $errors[$key] = $error;
-          } else {
-            $model = $error;
-            $error = '';
-            foreach ($model as $record) {
-              foreach ($record as $field => $error) {
-                $key = Inflector::humanize($field);
-                $errors[$key] = $error;
+          foreach($error as $key => $value){
+            if(!is_array($value)){
+              $key = Inflector::humanize($this->Question->name);
+              $errors[$key][] = $value;
+            }else{
+              foreach($value as $model=>$messages){
+                $key = Inflector::humanize($model);
+                $errors[$key] = $messages;
               }
             }
           }
