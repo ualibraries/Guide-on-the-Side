@@ -24,7 +24,16 @@ smtp:
   timeout: 30
   # none, ssl, or tls
   encryption: tls
-  
+
+# Settings for Universal Analytics accounts
+universal_analytics:
+  enabled: false
+  account_id: UA-something
+
+
+# Settings for Classic Google Analytics accounts
+# If you're unsure if you're using Classic Google Analytics or Universal
+# Analytics, see: https://support.google.com/analytics/answer/4457764?hl=en
 google_analytics:
   enabled: false
   account_id: UA-something
