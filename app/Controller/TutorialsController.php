@@ -937,7 +937,11 @@ class TutorialsController extends AppController {
 				}
 				
 				try {
-						$message->send($body);
+						// haddress ("Honeypot address") is the honeypot field.
+						// If it's filled out, pretend to send, but don't really.
+						if (empty($this->data['Tutorial']['haddress'])) {
+								$message->send($body);
+						}
 						echo "success";
 						exit();
 				} catch (Exception $e) {
