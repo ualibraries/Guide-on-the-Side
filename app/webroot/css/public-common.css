@@ -188,3 +188,18 @@ p.field-description {
 .gots_modal_image_dialog {
   max-width: 60%;
 }
+
+.gots_thumbnail_link {
+  border-bottom: none;
+}
+
+.gots_thumbnail_link img {
+  transition: all 0.2s ease-in-out 0s;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+}
+
+.gots_thumbnail_link img:hover {
+  border-color: #08C;
+  box-shadow: 0px 1px 4px rgba(0, 105, 214, 0.25);
+}
