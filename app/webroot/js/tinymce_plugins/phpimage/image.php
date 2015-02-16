@@ -256,13 +256,16 @@ if (isset($_POST['action']) && $_POST['action'] == 'image')
 {
 	$handle = new upload($_FILES['image_field'], $language);
 	include('./config.php');
-	if($handle->image_resize === true){
+	if($handle->image_resize === true)
+	{
 		$handle->Process($server_thumbnail_directory);
 		$thumbnail_path = $url_thumbnail_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
 		$handle->image_resize = false;
 		$handle->Process($server_image_directory);
 		$image_path = $url_image_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
-	}else{
+	}
+	else
+	{
 		$handle->Process($server_image_directory);
 		$path = $url_image_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
 	}

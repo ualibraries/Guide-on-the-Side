@@ -71,9 +71,9 @@
     </div>
 </form>
 <?php
-	if($tutorial['Tutorial']['popup']){
+	if ($tutorial['Tutorial']['popup']) {
 		echo $this->Html->script('tutorials/popup_image');
-	}else{
+	} else {
 		echo $this->Html->script('tutorials/modal_image');
 	}
 ?>

@@ -19,7 +19,7 @@ var ImageDialog = {
 		TinyMCE_EditableSelects.init();
 
 		parentLink = n.parentNode;
-		if(parentLink.nodeName == 'A'){
+		if (parentLink.nodeName == 'A') {
 			nl.original_src.value = dom.getAttrib(parentLink, 'href');
 		}
 
