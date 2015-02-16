@@ -6,9 +6,11 @@ $(document).ready(function() {
 		$('.gots_modal_image_box').append(popup_image);
 	});
 	$('.gots_thumbnail_link').click(function(e){
-		width = $('img[src="'+ $(this).attr('href')+'"]').width();
-		height = $('img[src="'+ $(this).attr('href')+'"]').height();
+		href = $(this).attr('href');
+		width = $('img[src$="'+ href +'"]').width();
+		height = $('img[src$="'+ href +'"]').height();
 		aspectRatio = width/height;
+
 		if(height > 600 || width > (600*aspectRatio)){
 			height = 600;
 			width = height * aspectRatio;
