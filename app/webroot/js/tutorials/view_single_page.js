@@ -17,7 +17,7 @@ $(document).ready(function() {
         autoOpen : false,
         modal : true,
         height : 450,
-        title : 'Provide feedback',
+        title : $('#provide-feedback').text(),
         buttons : {
             'Send feedback' : function() {
                 var this_element = $('#feedback-frame');
