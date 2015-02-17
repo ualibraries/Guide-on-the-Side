@@ -15,7 +15,7 @@
 	    array(
 		    'label' => 'Custom feedback link text:',
 		    'size' => '40',
-		    'after' => '<p class="field-description">Optional.  If left blank, the default text "'.Configure::read('user_config.feedback_link.default_text').'" will appear.</p>'
+		    'after' => '<p class="field-description">Optional. If left blank, the default text "'.Configure::read('user_config.feedback_link.default_text').'" will appear.</p>'
 	    )
     );
 ?>
