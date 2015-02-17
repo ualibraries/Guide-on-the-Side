@@ -5,9 +5,9 @@ $(document).ready(function() {
 	});
 
 	function toggleFeedbackLinkTextDisabledProperty(){
-		if($("#TutorialShowFeedbackLink").attr('checked')){
+		if ($("#TutorialShowFeedbackLink").attr('checked')) {
 			$('#TutorialCustomFeedbackLinkText').prop('disabled', false);
-		}else{
+		} else {
 			$('#TutorialCustomFeedbackLinkText').prop('disabled', true);
 		}
 	}

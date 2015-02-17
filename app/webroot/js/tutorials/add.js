@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $('#TutorialShowFeedbackLink').click(function(){
-    if($(this).attr('checked')){
+    if ($(this).attr('checked')) {
       $('#TutorialCustomFeedbackLinkText').prop('disabled', false);
-    }else{
+    } else {
       $('#TutorialCustomFeedbackLinkText').prop('disabled', true);
     }
   });
