@@ -1,8 +1,8 @@
 <?php
 class Revision extends AppModel {
-	var $name = 'Revision';
+	public $name = 'Revision';
 
-  var $belongsTo = array('Tutorial', 'User');
+	public $belongsTo = array('Tutorial', 'User');
 	public $validate = array(
 		'operation' => array(
 			'rule' => 'notEmpty',
