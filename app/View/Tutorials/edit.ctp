@@ -37,6 +37,13 @@
     echo $this->Form->input('url', array('label' => 'URL: ', 'size' => '40'/*, 'after' => "<span>invalid</span>"*/));
     echo "</fieldset>";
     echo $this->Form->input('popup', array('label' => 'Popup mode', 'after' => '<p class="field-description">Use popup mode when your right frame starting URL is not working</p>'));
+    echo $this->Form->input(
+	    'show_chapter_progress',
+	    array(
+		    'label' => 'Show Chapter Progress',
+		    'after' => '<p class="field-description">Show how far a user is in a chapter (e.g. "2 of 3")</p>'
+	    )
+    );
     echo $this->Form->input('link_toc', array('label' => 'Link table of contents'));
 
     echo "<fieldset id='certificate-fields'>";
