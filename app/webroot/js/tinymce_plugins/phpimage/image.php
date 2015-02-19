@@ -43,8 +43,11 @@
 								<td class="column1"><label id="srclabel" for="src">{#phpimage_dlg.src}</label></td>
 								<td colspan="2"><table border="0" cellspacing="0" cellpadding="0">
 									<tr> 
-									  <td><input name="src" type="text" id="src" value="" onchange="ImageDialog.showPreviewImage(this.value);" /></td> 
-									  <td id="srcbrowsercontainer">&nbsp;</td>
+										<td>
+											<input name="src" type="text" id="src" value="" />
+											<input name="original_src" type="hidden" id="original_src" value="" />
+										</td>
+										<td id="srcbrowsercontainer">&nbsp;</td>
 									</tr>
 								  </table></td>
 							</tr>
@@ -251,16 +254,29 @@
 include('./classes/class.upload.php');
 if (isset($_POST['action']) && $_POST['action'] == 'image') 
 {
-	include('./config.php');
 	$handle = new upload($_FILES['image_field'], $language);
 	include('./config.php');
-	$handle->Process($server_image_directory);
+	if($handle->image_resize === true)
+	{
+		$handle->Process($server_thumbnail_directory);
+		$thumbnail_path = $url_thumbnail_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
+		$handle->image_resize = false;
+		$handle->Process($server_image_directory);
+		$image_path = $url_image_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
+	}
+	else
+	{
+		$handle->Process($server_image_directory);
+		$path = $url_image_directory . DIRECTORY_SEPARATOR . $handle->file_dst_name;
+	}
+
 	if ($handle->uploaded) 
 	{
 		if ($handle->processed) 
 		{
-			echo "<script>setTimeout(\"document.getElementById('src').value='".$url_image_directory."/".$handle->file_dst_name."'\", 200)</script>";
-			echo "<script>setTimeout(\"ImageDialog.showPreviewImage(document.getElementById('src').value)\", 400)</script>";
+			echo "<script>setTimeout(\"document.getElementById('src').value='$thumbnail_path'\", 200)</script>";
+			echo "<script>setTimeout(\"document.getElementById('original_src').value='$image_path'\", 400)</script>";
+			echo "<script>setTimeout(\"ImageDialog.showPreviewImage(document.getElementById('src').value)\", 600)</script>";
 		} 
 		else 
 		{

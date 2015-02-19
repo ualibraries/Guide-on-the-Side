@@ -21,9 +21,6 @@ a:active {
   color: #5B88C2;
   border-bottom: 0;
 }
-a:visited {
-  color: #587AB6;
-}
 
 #container, #content {
   height: 100%;

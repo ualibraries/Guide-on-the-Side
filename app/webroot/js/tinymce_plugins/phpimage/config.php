@@ -17,6 +17,10 @@ $language						= 'en_EN';
 $server_image_directory		= '../../../uploads/images';  //e.g. '/home/user/public_html/uploads';
 // URL directory to stored images (relative or absoulte) - IMPORTANT CHANGE PATH TO SUIT YOUR NEEDS!!!
 $url_image_directory			= 'uploads/images';
+// server file directory to store thumbnails - IMPORTANT CHANGE PATH TO SUIT YOUR NEEDS!!!
+$server_thumbnail_directory		= '../../../uploads/thumbnails';  //e.g. '/home/user/public_html/uploads';
+// URL directory to stored thumbnails (relative or absoulte) - IMPORTANT CHANGE PATH TO SUIT YOUR NEEDS!!!
+$url_thumbnail_directory			= 'uploads/thumbnails';
 // file_safe_name formats the filename (spaces changed to _) (default: true)
 $handle->file_safe_name 	= true;
 # file_auto_rename automatically renames file if it already exists (default: true)

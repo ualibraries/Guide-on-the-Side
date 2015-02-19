@@ -18,6 +18,11 @@ var ImageDialog = {
 		this.fillFileList('out_list', 'tinyMCEImageList');
 		TinyMCE_EditableSelects.init();
 
+		parentLink = n.parentNode;
+		if (parentLink.nodeName == 'A') {
+			nl.original_src.value = dom.getAttrib(parentLink, 'href');
+		}
+
 		if (n.nodeName == 'IMG') {
 			nl.src.value = dom.getAttrib(n, 'src');
 			nl.width.value = dom.getAttrib(n, 'width');
@@ -116,7 +121,7 @@ var ImageDialog = {
 	},
 
 	insertAndClose : function() {
-		var ed = tinyMCEPopup.editor, f = document.forms[0], nl = f.elements, v, args = {}, el;
+		var ed = tinyMCEPopup.editor, f = document.forms[0], nl = f.elements, v, args = {}, el, link_args = {};
 
 		tinyMCEPopup.restoreSelection();
 
@@ -156,6 +161,11 @@ var ImageDialog = {
 			longdesc : nl.longdesc.value
 		});
 
+		tinymce.extend(link_args,{
+			href: nl.original_src.value,
+			'class': 'gots_thumbnail_link'
+		});
+
 		args.onmouseover = args.onmouseout = '';
 
 		if (f.onmousemovecheck.checked) {
@@ -171,7 +181,9 @@ var ImageDialog = {
 		if (el && el.nodeName == 'IMG') {
 			ed.dom.setAttribs(el, args);
 		} else {
-			ed.execCommand('mceInsertContent', false, '<img id="__mce_tmp" />', {skip_undo : 1});
+			ed.execCommand('mceInsertContent', false, '<a id="__mce_tmp_link"><img id="__mce_tmp" /></a>', {skip_undo : 1});
+			ed.dom.setAttribs('__mce_tmp_link', link_args);
+			ed.dom.setAttrib('__mce_tmp_link', 'id', '');
 			ed.dom.setAttribs('__mce_tmp', args);
 			ed.dom.setAttrib('__mce_tmp', 'id', '');
 			ed.undoManager.add();

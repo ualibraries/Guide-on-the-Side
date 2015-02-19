@@ -76,3 +76,10 @@
         ?>
     </div>
 </form>
+<?php
+	if ($tutorial['Tutorial']['popup']) {
+		echo $this->Html->script('tutorials/popup_image');
+	} else {
+		echo $this->Html->script('tutorials/modal_image');
+	}
+?>

@@ -155,7 +155,7 @@ p.field-description {
 
 /******/
 .definition-link {
-    border-bottom: 1px dotted;
+    border-bottom: 1px solid;
 }
 
 /* Mode switch navigation */
@@ -175,6 +175,31 @@ p.field-description {
 .mode-switch .active {
   font-weight: bold;
 }
-.mode-switch a {
 
+.gots_modal_image_box img {
+  display: none;
+}
+
+.gots_modal_image_box .gots_modal_image{
+  display: inline;
+  max-width: 100%;
+}
+
+.gots_modal_image_dialog {
+  max-width: 60%;
+}
+
+.gots_thumbnail_link {
+  border-bottom: none;
+}
+
+.gots_thumbnail_link img {
+  transition: all 0.2s ease-in-out 0s;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+}
+
+.gots_thumbnail_link img:hover {
+  border-color: #08C;
+  box-shadow: 0px 1px 4px rgba(0, 105, 214, 0.25);
 }
