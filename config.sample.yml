@@ -1,6 +1,10 @@
 application_title: Guide on the Side
 theme: GuideOnTheSide
 
+feedback_link:
+  enabled: true
+  default_text: "What did you think of this tutorial?"
+
 database:
   datasource: Database/Mysql
   host: localhost

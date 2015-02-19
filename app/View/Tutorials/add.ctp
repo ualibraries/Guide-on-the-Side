@@ -30,9 +30,10 @@
 	    )
     );
     echo $this->Form->input('link_toc', array('label' => 'Include table of contents'));
-
+    echo $this->element('tutorial_feedback_link', array("checked"=>true));
     echo $this->Form->hidden('tutorial_type_id', array('value' => TUTORIAL_TYPE_SIDEBYSIDE));
 ?>
+</fieldset>
 
 <?php echo $this->Form->end(__('Create'));?>
 </div>

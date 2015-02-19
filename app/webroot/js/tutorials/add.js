@@ -1,5 +1,11 @@
 $(document).ready(function() {
-
+  $('#TutorialShowFeedbackLink').click(function(){
+    if ($(this).attr('checked')) {
+      $('#TutorialCustomFeedbackLinkText').prop('disabled', false);
+    } else {
+      $('#TutorialCustomFeedbackLinkText').prop('disabled', true);
+    }
+  });
   max_chars = parseInt($('#after-title').text());
 
   in_index_original_value = $('#TutorialInIndex').is(':checked');

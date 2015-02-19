@@ -45,6 +45,11 @@
 	    )
     );
     echo $this->Form->input('link_toc', array('label' => 'Link table of contents'));
+    echo $this->element('tutorial_feedback_link');
+    echo $this->Form->hidden('tutorial_type_id', array('value' => TUTORIAL_TYPE_SIDEBYSIDE));
+?>
+</fieldset>
+<?php
 
     echo "<fieldset id='certificate-fields'>";
     echo '<legend>Certificates</legend>';

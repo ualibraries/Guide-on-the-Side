@@ -63,10 +63,16 @@
             echo "<input value='Print / Send email' type='submit' name='submit' />";
         }
 
-        echo "<p>";
-        echo $this->Html->link('What did you think of this tutorial?', array('action' => 'provide_feedback',
+	$feedback_enabled = Configure::read('user_config.feedback_link.enabled');
+	if($tutorial['Tutorial']['show_feedback_link'] && $feedback_enabled){
+	  $feedback_text = $tutorial['Tutorial']['custom_feedback_link_text'];
+	  if(empty($feedback_text))
+	    $feedback_text = Configure::read('user_config.feedback_link.default_text');
+          echo "<p>";
+          echo $this->Html->link($feedback_text, array('action' => 'provide_feedback',
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
-        echo "</p>";
+          echo "</p>";
+	}
         ?>
     </div>
 </form>
