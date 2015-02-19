@@ -112,4 +112,5 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
 //  $revision_message = Configure::read('user_config.require_revision_message'); 
   Configure::write('require_revision_message', false);
   Configure::write('GoogleAnalytics.enabled', Configure::read('user_config.google_analytics.enabled'));
+  Configure::write('UniversalAnalytics.enabled', Configure::read('user_config.universal_analytics.enabled'));
   Configure::write('PiwikAnalytics.enabled', Configure::read('user_config.piwik_analytics.enabled'));
