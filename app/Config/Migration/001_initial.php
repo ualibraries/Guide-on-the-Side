@@ -158,6 +158,7 @@ class M4db71ff537bc4ee397642a369ab05d96 extends AppMigration {
           'username' => 'admin',
           'password' => Security::hash('GuideOnTheSideAdmin#1', null, true),
           'role_id' => 2,
+          'deleted' => 0
         )
       );
       $this->output('insert_data', 'admin user');

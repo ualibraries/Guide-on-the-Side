@@ -31,8 +31,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $audiences_tutorials = array(
-		'audience_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'audience_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -66,8 +66,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $learning_goals_tutorials = array(
-		'learning_goal_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'learning_goal_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -94,8 +94,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $resource_types_tutorials = array(
-		'resource_type_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'resource_type_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -105,7 +105,7 @@ class AppSchema extends CakeSchema {
 	public $revisions = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'content' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'content' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'operation' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 40, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'timestamp' => array('type' => 'datetime', 'null' => true, 'default' => null),
@@ -135,8 +135,8 @@ class AppSchema extends CakeSchema {
 	);
 
 	public $subjects_tutorials = array(
-		'subject_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'subject_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'tutorial_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),
@@ -167,24 +167,24 @@ class AppSchema extends CakeSchema {
 		'user_url' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'title' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'url' => array('type' => 'string', 'null' => true, 'length' => 1024, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'content' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'content' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'certificate' => array('type' => 'boolean', 'null' => false, 'default' => '1'),
 		'certificate_email' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'certificate_email_self' => array('type' => 'boolean', 'null' => false, 'default' => '1'),
 		'contact_name' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'contact_email' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'contact_phone' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'published' => array('type' => 'boolean', 'null' => false, 'default' => null),
+		'published' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'deleted' => array('type' => 'boolean', 'null' => false, 'default' => null),
+		'deleted' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'in_index' => array('type' => 'boolean', 'null' => false, 'default' => '1'),
 		'link_toc' => array('type' => 'boolean', 'null' => false, 'default' => '1'),
 		'description' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'dot_creation_timestamp' => array('type' => 'datetime', 'null' => false, 'default' => null),
-		'dot_last_revision_timestamp' => array('type' => 'datetime', 'null' => false, 'default' => null),
-		'licensing' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 40, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'dot_source_path' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 2048, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'dot_creation_timestamp' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'dot_last_revision_timestamp' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'licensing' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 40, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'dot_source_path' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 2048, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'tutorial_type_id' => array('type' => 'integer', 'null' => false, 'default' => '1'),
 		'external_identifier' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'author' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -194,7 +194,7 @@ class AppSchema extends CakeSchema {
 		'update_notes' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'accessible_version_url' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'accessible_version_format' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'for_credit' => array('type' => 'boolean', 'null' => false, 'default' => null),
+		'for_credit' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'url_title' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'popup' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'show_chapter_progress' => array('type' => 'boolean', 'null' => false, 'default' => '1'),
@@ -210,8 +210,8 @@ class AppSchema extends CakeSchema {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'username' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'comment' => 'user name (sometimes)', 'charset' => 'utf8'),
 		'role_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'password' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'comment' => 'password', 'charset' => 'utf8'),
-		'deleted' => array('type' => 'boolean', 'null' => false, 'default' => null),
+		'password' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 1024, 'collate' => 'utf8_general_ci', 'comment' => 'password', 'charset' => 'utf8'),
+		'deleted' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
