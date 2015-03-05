@@ -37,6 +37,8 @@ $(document).ready(function() {
 
   $('#scrollable .items').height($('#scrollable .items .step:nth-child(1)').height());
 
+  $('#prev-navigation').hide();
+
   api.onSeek(function() {
     if ($('#scrollable:visible').length != 0) {
       $('#scrollable').scrollTop(0);
