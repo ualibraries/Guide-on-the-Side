@@ -105,10 +105,6 @@ a:visited {
 
 }
 
-#prev-navigation {
-  float: left;
-}
-
 #prev-navigation a {
   background-position: 0px 0px;
 }
@@ -121,10 +117,6 @@ a:visited {
 }
 #prev-navigation a:hover {
   background-position: 0px -29px;
-}
-
-#next-navigation {
-  float: right;
 }
 
 #next-navigation a {
