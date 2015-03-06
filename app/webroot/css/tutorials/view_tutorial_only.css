@@ -100,10 +100,6 @@ a:visited {
   display: inline-block;
   vertical-align: top;
 }
-#prev-navigation,
-#next-navigation {
-
-}
 
 #prev-navigation a {
   background-position: 0px 0px;
