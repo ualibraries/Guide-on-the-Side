@@ -51,6 +51,10 @@
     } ?>
     <div class="step">
         <?php
+        if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
+            echo "<h2>Certificate</h2>";
+        }
+
         if (($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate'])
             && $tutorial['Tutorial']['certificate_email_self']) {
             echo "<p>Please enter your name and email address to retrieve a copy of your completed quiz.</p>";
@@ -74,7 +78,7 @@
             echo "<input value='Print / Send email' type='submit' name='submit' />";
         }
 
-        echo "<p>";
+        echo "<p><h2>Feedback</h2>";
         echo $this->Html->link('What did you think of this tutorial?', array('action' => 'provide_feedback',
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
         echo "</p>";
