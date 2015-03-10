@@ -95,7 +95,42 @@ Installation procedure (if you're using the pre-built package)
     password: my_password
     database: guide_on_the_side
   ```
-5. Install the database schema by running the following commands from the
+5. Configure your email settings in config.yml.  Guide on the Side supports two
+   options for sending email: using an external SMTP server or sending email
+   directly from the application server hosting your Guide on the Side 
+   installation.
+
+   Using an external SMTP server is recommended in most cases.  To configure
+   Guide on the Side to use an external SMTP server, edit your config.yml
+   like so:
+
+   ```
+  email:
+    # smtp (recommended) or php 
+    transport: smtp
+    send_from: no-reply@example.com
+    send_all_feedback_to: admin@example.com 
+    log: false
+    
+# only if you chose smtp above
+  smtp:
+    host: smtpgate.email.example.com 
+    port: 587
+    username: 
+    password: 
+    timeout: 30
+    # none, ssl, or tls
+    encryption: tls
+    ```
+    Contact your SMTP server administrator for the correct host, ports,
+    credentials, and other information.  Note that some SMTP servers do not
+    require login credentials, so it's possible that you may need to leave the
+    `username` and `password` fields blank.
+
+    If you can't or don't want to use an external SMTP server, you can skip the
+    `smtp` section and just fill out the `email` section, making sure that you
+    have `transport` set to `php`.
+6. Install the database schema by running the following commands from the
    guide_on_the_side/app folder:
     ```
     ../lib/Cake/Console/cake Migrations.migration run all --plugin Tags
@@ -104,24 +139,24 @@ Installation procedure (if you're using the pre-built package)
   ```
    Alternatively, there is an SQL schema available in app/Config/Migration/sql/install.sql.
 
-6. Change permissions of app/tmp to make it and all sub-folders writable by
+7. Change permissions of app/tmp to make it and all sub-folders writable by
    the web server. Example command (for Unix-like systems):
   ```
     chmod -R 777 app/tmp
   ```
    You're encouraged to make the permissions more restrictive than this example.
 
-7. Change permissions of app/webroot/uploads to make it and all sub-folders writable by
+8. Change permissions of app/webroot/uploads to make it and all sub-folders writable by
    the web server. Example command (for Unix-like systems):
   ```
     chmod -R 777 app/webroot/uploads
   ```
    You're encouraged to make the permissions more restrictive than this example.
 
-8. If all went as planned, the public interface should now be available at
+9. If all went as planned, the public interface should now be available at
    http://your.domain/guide_on_the_side/ (assuming the folder you unzipped to
    in step 1 was in your server web root.)
-9. You may log in at http://your.domain/guide_on_the_side/login to begin creating
+10. You may log in at http://your.domain/guide_on_the_side/login to begin creating
    tutorials. The default username / password is:
 
     admin / GuideOnTheSideAdmin#1
