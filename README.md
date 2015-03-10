@@ -196,6 +196,15 @@ pulling from GitHub if you install that way.
   
 4. Now follow the pre-built package instructions starting at step 2.
 
+User Feedback
+-------------
+At the end of each tutorial, Guide on the Side gives users the ability to give feedback by displaying a link that reads "What did you think of this tutorial?".  When clicked, the link will open a modal popup that will allow the user to send feedback to the tutorial's creator.  The text of this link can be changed and the link itself can be suppressed entirely by editing the `feeback_link` section of config.yml, e.g.
+```
+feedback_link:
+  enabled: true
+  default_text: "My custom feedback text"
+```
+
 External Authentication Services (CAS, Shibboleth)
 --------------------------------------------------
 By default, Guide on the Side uses a local authentication system, but it can be easily configured to use CAS or Shibboleth instead.
