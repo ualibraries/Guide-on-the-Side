@@ -65,8 +65,9 @@ Apache configuration
   AllowOverride must have the additional value "AuthConfig". So the whole
   directive would look like:
 
+  ```
    AllowOverride FileInfo Options AuthConfig
-
+  ```
   Be sure to restart Apache after making changes.
 
 Installation procedure (if you're using the pre-built package)
@@ -76,12 +77,12 @@ Installation procedure (if you're using the pre-built package)
 2. Create a MySQL database to hold your tutorials. You may call it whatever
    you like, but "guide_on_the_side" is probably a good choice. Remember the
    name you chose, as well as the MySQL username and password. Example:
-
+  ```
     mysql> CREATE DATABASE guide_on_the_side;
 
     mysql> GRANT ALL ON guide_on_the_side.*
              TO gots_user@localhost IDENTIFIED BY 'password';
-
+  ```
 3. Copy config.sample.yml to config.yml.
 4. Modify the database and email information (at least) in config.yml so that it
      matches what you created in step 2. If you'd like to track tutorial usage with 
@@ -96,25 +97,25 @@ Installation procedure (if you're using the pre-built package)
 
 5. Install the database schema by running the following commands from the
    guide_on_the_side/app folder:
-
+    ```
     ../lib/Cake/Console/cake Migrations.migration run all --plugin Tags
 
     ../lib/Cake/Console/cake Migrations.migration run all
-
+  ```
    Alternatively, there is an SQL schema available in app/Config/Migration/sql/install.sql.
 
 6. Change permissions of app/tmp to make it and all sub-folders writable by
    the web server. Example command (for Unix-like systems):
-
+  ```
     chmod -R 777 app/tmp
-
+  ```
    You're encouraged to make the permissions more restrictive than this example.
 
 7. Change permissions of app/webroot/uploads to make it and all sub-folders writable by
    the web server. Example command (for Unix-like systems):
-
+  ```
     chmod -R 777 app/webroot/uploads
-
+  ```
    You're encouraged to make the permissions more restrictive than this example.
 
 8. If all went as planned, the public interface should now be available at
@@ -138,19 +139,23 @@ pulling from GitHub if you install that way.
 1. Clone Guide on the Side from GitHub into the appropriate folder on your web
    server. Example command:
 
+  ```
    git clone https://github.com/ualibraries/Guide-on-the-Side.git guide_on_the_side
-
+  ```
 2. Check out the latest tag. To see a list of tags, run git tag. Example
    command:
 
+  ```
    git checkout 1.0-beta3
-
+  ```
 3. CakePHP is not included in our GitHub repository, so download it and place
    the lib folder into your Guide on the Side root. CakePHP 2.4.x is known to
    work. Example command:
 
+  ```
    mv <unzipped_cakephp_folder>/lib guide_on_the_side/
-
+  ```
+  
 4. Now follow the pre-built package instructions starting at step 2.
 
 Support and Debugging
