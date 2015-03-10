@@ -147,7 +147,7 @@ UNLOCK TABLES;
 CREATE TABLE `revisions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tutorial_id` int(11) NOT NULL,
-  `content` text NOT NULL,
+  `content` text,
   `user_id` int(11) NOT NULL,
   `operation` varchar(40) NOT NULL,
   `timestamp` datetime DEFAULT NULL,
@@ -187,7 +187,7 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES (1,'InitMigrations','Migrations','2013-10-16 14:18:45'),(2,'ConvertVersionToClassNames','Migrations','2013-10-16 14:18:45'),(3,'IncreaseClassNameLength','Migrations','2013-10-16 14:18:45'),(4,'M49ac311a54844a9d87o822502jedc423','Tags','2013-10-16 14:18:48'),(5,'M4c0d42bcd12c4db099c105f40e8f3d6d','Tags','2013-10-16 14:18:48'),(6,'M8d01880f01c11e0be500800200c9a66','Tags','2013-10-16 14:18:49'),(53,'M4db71ff537bc4ee397642a369ab05d96','app','2013-11-07 16:43:52'),(54,'M4db9fcc4348449dca1d756749ab05d96','app','2013-11-07 16:46:46'),(55,'M4dc06554e16c485ba235279a9ab05d96','app','2013-11-07 16:46:47'),(56,'M4dc07e32c360433493032b1a9ab05d96','app','2013-11-07 16:46:47'),(57,'M4dc4641c2c4c472fb06a0df79ab05d96','app','2013-11-07 16:46:47'),(58,'M4dd563a0aeb04a66969139aa9ab05d96','app','2013-11-07 16:46:47'),(59,'M4de9564c6f104137b35e11d39ab05d96','app','2013-11-07 16:46:50'),(60,'RemoveIntroductionField','app','2013-11-07 16:46:50'),(61,'MigrateEmailAddresses','app','2013-11-07 16:46:50'),(62,'AddTitleForStartingLocation','app','2013-11-08 11:50:22'),(63,'AddResponseHeadingColumn','app','2013-11-08 11:50:22');
+INSERT INTO `schema_migrations` VALUES (1,'InitMigrations','Migrations','2015-03-10 09:43:19'),(2,'ConvertVersionToClassNames','Migrations','2015-03-10 09:43:19'),(3,'IncreaseClassNameLength','Migrations','2015-03-10 09:43:20'),(4,'M49ac311a54844a9d87o822502jedc423','Tags','2015-03-10 09:43:20'),(5,'M4c0d42bcd12c4db099c105f40e8f3d6d','Tags','2015-03-10 09:43:20'),(6,'M8d01880f01c11e0be500800200c9a66','Tags','2015-03-10 09:43:21'),(7,'M4db71ff537bc4ee397642a369ab05d96','app','2015-03-10 09:43:26'),(8,'M4db9fcc4348449dca1d756749ab05d96','app','2015-03-10 09:43:27'),(9,'M4dc06554e16c485ba235279a9ab05d96','app','2015-03-10 09:43:27'),(10,'M4dc07e32c360433493032b1a9ab05d96','app','2015-03-10 09:43:28'),(11,'M4dc4641c2c4c472fb06a0df79ab05d96','app','2015-03-10 09:43:28'),(12,'M4dd563a0aeb04a66969139aa9ab05d96','app','2015-03-10 09:43:28'),(13,'M4de9564c6f104137b35e11d39ab05d96','app','2015-03-10 09:43:29'),(14,'RemoveIntroductionField','app','2015-03-10 09:43:29'),(15,'MigrateEmailAddresses','app','2015-03-10 09:43:29'),(16,'AddTitleForStartingLocation','app','2015-03-10 09:43:29'),(17,'AddResponseHeadingColumn','app','2015-03-10 09:43:29'),(18,'AddPopupField','app','2015-03-10 09:43:29'),(19,'AddShowChapterProgressToTutorials','app','2015-03-10 09:43:29'),(20,'AddTutorialFeedbackLinkOptions','app','2015-03-10 09:43:30'),(21,'AddNonNullDefaultsToTutorials','app','2015-03-10 09:43:30'),(22,'AddDefaultValueUsersDeletedColumn','app','2015-03-10 09:43:30'),(23,'MakeTutorialsAndRevisionsColumnsNullable','app','2015-03-10 09:43:31'),(24,'MakeUserPasswordNotNullable','app','2015-03-10 09:43:31');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -292,24 +292,24 @@ CREATE TABLE `tutorials` (
   `user_url` varchar(255) DEFAULT NULL,
   `title` varchar(1024) NOT NULL,
   `url` varchar(1024) DEFAULT '',
-  `content` text NOT NULL,
+  `content` text,
   `certificate` tinyint(1) NOT NULL DEFAULT '1',
   `certificate_email` varchar(255) DEFAULT NULL,
   `certificate_email_self` tinyint(1) NOT NULL DEFAULT '1',
   `contact_name` varchar(255) DEFAULT NULL,
   `contact_email` varchar(255) DEFAULT NULL,
   `contact_phone` varchar(255) DEFAULT NULL,
-  `published` tinyint(1) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '0',
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
-  `deleted` tinyint(1) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `in_index` tinyint(1) NOT NULL DEFAULT '1',
   `link_toc` tinyint(1) NOT NULL DEFAULT '1',
   `description` text,
-  `dot_creation_timestamp` datetime NOT NULL,
-  `dot_last_revision_timestamp` datetime NOT NULL,
-  `licensing` varchar(40) NOT NULL,
-  `dot_source_path` varchar(2048) NOT NULL,
+  `dot_creation_timestamp` datetime DEFAULT NULL,
+  `dot_last_revision_timestamp` datetime DEFAULT NULL,
+  `licensing` varchar(40) DEFAULT NULL,
+  `dot_source_path` varchar(2048) DEFAULT NULL,
   `tutorial_type_id` int(11) NOT NULL DEFAULT '1',
   `external_identifier` text,
   `author` varchar(1024) DEFAULT NULL,
@@ -319,15 +319,19 @@ CREATE TABLE `tutorials` (
   `update_notes` text,
   `accessible_version_url` varchar(1024) DEFAULT NULL,
   `accessible_version_format` varchar(255) DEFAULT NULL,
-  `for_credit` tinyint(1) NOT NULL,
+  `for_credit` tinyint(1) NOT NULL DEFAULT '0',
   `url_title` varchar(1024) DEFAULT NULL,
+  `popup` tinyint(1) NOT NULL DEFAULT '0',
+  `custom_feedback_link_text` varchar(255) DEFAULT NULL,
+  `show_feedback_link` tinyint(1) NOT NULL DEFAULT '1',
+  `show_chapter_progress` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `tutorials` WRITE;
 /*!40000 ALTER TABLE `tutorials` DISABLE KEYS */;
-INSERT INTO `tutorials` VALUES (1,'wikipedia-demo','Wikipedia - demo','http://www.wikipedia.org/','<p>In this tutorial, you will learn how to find resources using <em>Wikipedia</em>.\n<em>Wikipedia </em>is a free online encyclopedia with access to over 4,000,000 articles.</p>\n<p>Use the arrows below to navigate through the tutorial</p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/chapter/About%20Wikipedia\" alt=\"\" /></p>\n<p>Anyone can contribute to a <em>Wikipedia</em> article, so you need to use critical thinking skills when selecting articles. However, it can be a great place to gather background information on a topic that may be unfamiliar to you.</p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/chapter/Search%20Wikipedia\" alt=\"\" /></p>\n<p>You search Wikipedia by using <img class=\"definition\" src=\"tutorials/view_definition_image/keywords/%3Cp%3EKeywords%20are%20important%20words%20or%20phrases%20that%20describe%20your%20research%20topic%20and%20will%20help%20you%20find%20relevant%20articles.%3C%5B%7C%5Bp%3E\" alt=\"\" />.</p>\n<p>Search for&nbsp;<strong>photography</strong>.&nbsp;</p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/step/\" alt=\"\" /></p>\n<p>You are now at the <em>Wikipedia</em> page for <strong>Photography</strong></p>\n<p>Locate the <strong>Contents</strong> section on the left side of the page. This is the table of contents for the <em>Wikipedia</em> article.</p>\n<p>Select: <strong>2 History and evolution</strong></p>\n<p><img class=\"question\" src=\"questions/view_image/1\" alt=\"\" /></p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/chapter/Thinking%20critically%20in%20Wikipedia\" alt=\"\" /></p>\n<p>One way to determine the validity of what you\'ve found is to check the <em>Wikipedia</em> citations. Use the superscript number to access information about the source.</p>\n<p><img src=\"uploads/images/superscript_link.png\" alt=\"example superscript link\" width=\"300\" height=\"139\" /></p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/step/\" alt=\"\" />Scroll to the <strong>Camera development</strong> section of the page and take a look at the different cameras.</p>\n<p><img class=\"text-box\" src=\"tutorials/view_text_box_image/multi-line/Which%20of%20these%20cameras%20would%20be%20the%20most%20fun%20to%20use%7C%24%7C/I%7C%7D%7Cd%20most%20like%20to%20use%20the...\" alt=\"\" /></p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>',1,NULL,1,'Librarian','librarian@example.com','555-555-5555',1,'2013-10-24 12:06:23','2013-10-30 14:51:03',0,1,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','','',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL);
+INSERT INTO `tutorials` VALUES (1,'wikipedia-demo','Wikipedia - demo','http://www.wikipedia.org/','<p>In this tutorial, you will learn how to find resources using <em>Wikipedia</em>.\n<em>Wikipedia </em>is a free online encyclopedia with access to over 4,000,000 articles.</p>\n<p>Use the arrows below to navigate through the tutorial</p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/chapter/About%20Wikipedia\" alt=\"\" /></p>\n<p>Anyone can contribute to a <em>Wikipedia</em> article, so you need to use critical thinking skills when selecting articles. However, it can be a great place to gather background information on a topic that may be unfamiliar to you.</p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/chapter/Search%20Wikipedia\" alt=\"\" /></p>\n<p>You search Wikipedia by using <img class=\"definition\" src=\"tutorials/view_definition_image/keywords/%3Cp%3EKeywords%20are%20important%20words%20or%20phrases%20that%20describe%20your%20research%20topic%20and%20will%20help%20you%20find%20relevant%20articles.%3C%5B%7C%5Bp%3E\" alt=\"\" />.</p>\n<p>Search for&nbsp;<strong>photography</strong>.&nbsp;</p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/step/\" alt=\"\" /></p>\n<p>You are now at the <em>Wikipedia</em> page for <strong>Photography</strong></p>\n<p>Locate the <strong>Contents</strong> section on the left side of the page. This is the table of contents for the <em>Wikipedia</em> article.</p>\n<p>Select: <strong>2 History and evolution</strong></p>\n<p><img class=\"question\" src=\"questions/view_image/1\" alt=\"\" /></p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/chapter/Thinking%20critically%20in%20Wikipedia\" alt=\"\" /></p>\n<p>One way to determine the validity of what you\'ve found is to check the <em>Wikipedia</em> citations. Use the superscript number to access information about the source.</p>\n<p><img src=\"uploads/images/superscript_link.png\" alt=\"example superscript link\" width=\"300\" height=\"139\" /></p>\n<p><img class=\"heading\" src=\"tutorials/view_heading_image/step/\" alt=\"\" />Scroll to the <strong>Camera development</strong> section of the page and take a look at the different cameras.</p>\n<p><img class=\"text-box\" src=\"tutorials/view_text_box_image/multi-line/Which%20of%20these%20cameras%20would%20be%20the%20most%20fun%20to%20use%7C%24%7C/I%7C%7D%7Cd%20most%20like%20to%20use%20the...\" alt=\"\" /></p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>',1,NULL,1,'Librarian','librarian@example.com','555-555-5555',1,'2013-10-24 12:06:23','2013-10-30 14:51:03',0,1,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','','',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,1,1);
 /*!40000 ALTER TABLE `tutorials` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -336,8 +340,8 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(1024) NOT NULL COMMENT 'user name (sometimes)',
   `role_id` int(11) NOT NULL,
-  `password` varchar(1024) DEFAULT NULL COMMENT 'password',
-  `deleted` tinyint(1) NOT NULL,
+  `password` varchar(1024) NOT NULL COMMENT 'password',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
