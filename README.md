@@ -40,9 +40,14 @@ PHP must have the following loaded or compiled in:
 
 Other requirements:
 
-* For email to work, your system (if Unix-like) needs to have a Mail Transport
-  Agent (MTA) like Postfix or Sendmail. Installations running on Windows
-  may be able to use SMTP by reconfiguring PHP:
+* Guide on the Side supports two methods for sending email: you can either
+  change the configuration settings to use an external SMTP server or send
+  emails directly from the application server hosting your Guide on the Side
+  installation.  If you're running a UNIX-like operating system and wish to send
+  emails directly from the application server, you will need a Mail Transport
+  Agent (MTA) like Postfix or Sendmail.  If you're running a Windows server, you
+  may be able to use SMTP to send emails directly from the application server by
+  reconfiguring PHP:
   http://php.net/manual/en/mail.configuration.php.
 * date.timezone must be properly set in php.ini.
 * PHP should have the ability to run on the command line during installation
