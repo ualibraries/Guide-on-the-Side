@@ -81,20 +81,20 @@ Installation procedure (if you're using the pre-built package)
     mysql> CREATE DATABASE guide_on_the_side;
 
     mysql> GRANT ALL ON guide_on_the_side.*
-             TO gots_user@localhost IDENTIFIED BY 'password';
-  ```
+             TO gots_user@localhost IDENTIFIED BY 'my_password';
+```
 3. Copy config.sample.yml to config.yml.
-4. Modify the database and email information (at least) in config.yml so that it
-     matches what you created in step 2. If you'd like to track tutorial usage with 
-     Google Analytics, you can also fill out the google_analytics section like so:
-      
-      ```
-      google_analytics:
-        enabled: true
-        account_id: <your GA account number>
-        domain_name: <your domain name>
-      ```
+4. Open config.yml in a text editor.  Change the `database` settings to match
+   your credentials from step 2, for example:
 
+ ```
+   database:
+    datasource: Database/Mysql
+    host: localhost
+    login: gots_user
+    password: my_password
+    database: guide_on_the_side
+  ```
 5. Install the database schema by running the following commands from the
    guide_on_the_side/app folder:
     ```
