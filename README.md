@@ -196,6 +196,25 @@ pulling from GitHub if you install that way.
   
 4. Now follow the pre-built package instructions starting at step 2.
 
+External Authentication Services (CAS, Shibboleth)
+--------------------------------------------------
+By default, Guide on the Side uses a local authentication system, but it can be easily configured to use CAS or Shibboleth instead.
+
+To use an external authentication service, open config.yml in a text editor and find the `authentication` section.  Change `method` to the appropriate value for your authentication service and add the correct configuration options to the corresponding section.  For example, to enable Shibboleth, you'd want to do something like this:
+
+```
+authentication:
+  # local, shibboleth, or cas
+  method: shibboleth
+
+# only fill these out if you selected shibboleth above
+shibboleth:
+  login_url:  https://example.com/Shibboleth.sso/Login
+  logout_url: https://example.com/Shibboleth.sso/Logout
+  login_link_text: Log in via Shibboleth
+  username_field: Shib-uid
+```
+
 Support and Debugging
 ---------------------
 If you run into problems, check out the Guide on the Side discussion at:
