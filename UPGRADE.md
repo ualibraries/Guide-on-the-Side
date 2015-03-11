@@ -8,9 +8,7 @@ UPGRADING
    us or submitting patches to make the application more flexible! 
 5. Back up your config.yml file, themes, and user-uploaded images (app/webroot/uploads).
 6. Download the latest version of Guide on the Side and unzip it into a new 
-   location. Alternatively, if you have 1.0-beta2 and command line access to Git, 
-   you can run git pull --tags and then git checkout <tag_name> to get the latest code.
-   You may want to do this in a copy of the application as it may stop working until you 
+   location. Alternatively, if you have a previous release checked out (1.0-beta2, 1.0-beta3, etc) and command line   access to Git, you can run git pull --tags and then git checkout <tag_name> to get the latest code.  You may want to do this in a copy of the application as it may stop working until you 
    run any database migrations.
 7. As in README.md, change permissions of app/tmp in the new version to make it and
    all sub-folders writable by the web server. Example command (for Unix-like systems): 
