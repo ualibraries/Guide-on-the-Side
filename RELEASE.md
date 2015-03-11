@@ -1,6 +1,31 @@
 Release notes
 =================
 
+1.0-beta4 (TBA)
+-------------------------------------------------------------------------------
+* The version of CakePHP bundled with the pre-built package has been updated to version 2.6.2.
+* There ARE database schema changes in this version.  You'll need to run migrations to upgrade an existing installation.  If you don't have command line access to PHP, you can use app/Config/Migration/sql/upgrade_1.0-beta3_to_1.0-beta4.sql to make the appropriate schema changes.
+* There have been a number of changes to config.sample.yml.  You may want to consider backing up your existing config.yml file, copying the new config.sample.yml to config.yml, and then manually migrating your configuration settings to avoid missing any of the new directives.
+* Feature: The chapter progress text (e.g. “Step x of y”) can be hidden. Fixes issue #93.
+* Feature: Popup mode.  Tutorials can be opened in popup windows instead of iframes.  Fixes issue #50.
+* Feature: Users can click on images in tutorials to view a larger version of them.  Fixes issue #75.
+* Feature: New styles, including improved placement of forward and back arrows for tutorials.  Fixes issue #91.
+* Feature: SMTP support has been added.
+* Feature: Piwik support has been added.  Thanks, @a-sassmannshausen!
+* Feature: Added configuration option to disable Lucene.  Thanks, @jaronkk!
+* Feature: CAS support has been added.  Thanks, @jaronkk !
+* Bug: The feedback form has no spam protection.  Fixes issue #113.
+* Bug: Empty alert box appears when you attempt to save an empty question.  Fixes issue #110.
+* Bug: Unpublished tutorials are still index.  Fixes issue #109.
+* Bug: Tutorials indexed multiple times or not at all.
+* Bug: Creators cannot delete quizzes.  Fixes issues #91 and #20.
+* Bug: Describe database migration procedure in UPGRADE.md.  Fixes issue #70.
+* Bug: Links set to open in the right frame are broken in popup mode.  Fixes issue #61.
+* Bug: Tutorial creator can't add question answers and responses in IE, Chrome.  Fixes issue #35.
+* Technical: Reworked database default values to make more sense.  Fixes issue #25.
+
+
+
 1.0-beta3 (2013-11-08)
 -------------------------------------------------------------------------------
 * The version of CakePHP bundled with GotS has been upgraded.
