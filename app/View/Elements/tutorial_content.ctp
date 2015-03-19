@@ -94,5 +94,10 @@
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
         echo "</p>";
         ?>
+        <div id="navigation" class="clearfix">
+          <div id="prev-navigation">
+            <a href="#" class="prev browse left ir" title="Previous">Previous</a>
+          </div>
+        </div>
     </div>
 </form>
