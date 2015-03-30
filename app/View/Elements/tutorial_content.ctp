@@ -12,6 +12,17 @@
                 }
             }
             echo $step['content'];
+    ?>
+    <div id="navigation" class="clearfix">
+      <div id="prev-navigation">
+        <a href="#" class="prev browse left ir" title="Previous">Previous</a>
+      </div>
+      <div id="next-navigation">
+        <a href="#" class="next browse right ir" title="Next">Next</a>
+    </div>
+  <!--    Section X of Y -->
+    </div>
+    <?php
             echo "</div>";
         }
     }
@@ -35,11 +46,26 @@
             }
             echo "</h2>";
             echo $step['content'];
+?>
+    <div id="navigation" class="clearfix">
+      <div id="prev-navigation">
+        <a href="#" class="prev browse left ir" title="Previous">Previous</a>
+      </div>
+      <div id="next-navigation">
+        <a href="#" class="next browse right ir" title="Next">Next</a>
+    </div>
+  <!--    Section X of Y -->
+    </div>
+<?php
             echo "</div>";
         }
     } ?>
     <div class="step">
         <?php
+        if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
+            echo "<h2>Certificate</h2>";
+        }
+
         if (($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate'])
             && $tutorial['Tutorial']['certificate_email_self']) {
             echo "<p>Please enter your name and email address to retrieve a copy of your completed quiz.</p>";
@@ -63,17 +89,22 @@
             echo "<input value='Print / Send email' type='submit' name='submit' />";
         }
 
-	$feedback_enabled = Configure::read('user_config.feedback_link.enabled');
-	if($tutorial['Tutorial']['show_feedback_link'] && $feedback_enabled){
-	  $feedback_text = $tutorial['Tutorial']['custom_feedback_link_text'];
-	  if(empty($feedback_text))
-	    $feedback_text = Configure::read('user_config.feedback_link.default_text');
-          echo "<p>";
-          echo $this->Html->link($feedback_text, array('action' => 'provide_feedback',
+        $feedback_enabled = Configure::read('user_config.feedback_link.enabled');
+        if($tutorial['Tutorial']['show_feedback_link'] && $feedback_enabled){
+            $feedback_text = $tutorial['Tutorial']['custom_feedback_link_text'];
+            if(empty($feedback_text))
+                $feedback_text = Configure::read('user_config.feedback_link.default_text');
+            echo "<p><h2>Feedback</h2>";
+            echo $this->Html->link('What did you think of this tutorial?', array('action' => 'provide_feedback',
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
-          echo "</p>";
-	}
+            echo "</p>";
+        }
         ?>
+        <div id="navigation" class="clearfix">
+          <div id="prev-navigation">
+            <a href="#" class="prev browse left ir" title="Previous">Previous</a>
+          </div>
+        </div>
     </div>
 </form>
 <?php

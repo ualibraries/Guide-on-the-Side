@@ -37,11 +37,13 @@ $(document).ready(function() {
 
   $('#scrollable .items').height($('#scrollable .items .step:nth-child(1)').height());
 
+  $('#prev-navigation').hide();
+
   api.onSeek(function() {
     if ($('#scrollable:visible').length != 0) {
       $('#scrollable').scrollTop(0);
       $('#scrollable .items').height($('#scrollable .items .step:nth-child(' + (this.getIndex() + 1) + ')').height());
-      var new_value = 100 * (this.getIndex() / (this.getSize() - 1));
+      var new_value = 100 * (this.getIndex() / (this.getSize() - 2));
       $('#progress').progressbar("option", "value", new_value);
       if (this.getIndex() == 0) {
         $('#tabs').children(':not(:first)').css('background-color', 'gray').css('color', 'white');
