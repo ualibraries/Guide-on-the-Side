@@ -14,5 +14,4 @@ ALTER TABLE `tutorials` ADD `custom_feedback_link_text` varchar(255) DEFAULT NUL
 ALTER TABLE `tutorials` ADD `show_feedback_link` tinyint(1) NOT NULL DEFAULT '1';
 ALTER TABLE `tutorials` ADD `show_chapter_progress` tinyint(1) NOT NULL DEFAULT '1';
 
-ALTER TABLE `users` MODIFY `password` varchar(1024) NOT NULL COMMENT 'password';
 ALTER TABLE `users` MODIFY `deleted` tinyint(1) NOT NULL DEFAULT '0';
