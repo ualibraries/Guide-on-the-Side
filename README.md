@@ -19,11 +19,11 @@ Platform support / dependencies
 -------------------------------------------------------------------------------
 Guide on the Side has been tested on the following platforms:
 
-* Ubuntu Linux 12.04, MySQL 5.5, Apache 2.2, PHP 5.3
+* Ubuntu Linux 12.04, MySQL 5.5, Apache 2.4.7, PHP 5.5
 * Ubuntu Linux 11.10, MySQL 5.1, Apache 2.2, PHP 5.3
 * Red Hat Enterprise Linux 6.3, MySQL 5.1, Apache 2.2, PHP 5.3
-* Red Hat Enterprise Linux 5.6, MySQL 5.0, Apache 2.2, PHP 5.2/5.3
-* Additionally, we've done some basic testing with PHP 5.4 and 5.5.
+* Red Hat Enterprise Linux 5.6, MySQL 5.0, Apache 2.2, PHP 5.5
+* Linux Mint 17.1 Rebecca, MySQL 5.5, Apache 2.4.7, PHP 5.5
 
 PHP must have the following loaded or compiled in:
 
