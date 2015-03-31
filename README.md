@@ -288,4 +288,5 @@ Close, print, dock/undock icons:
 
 Copyright (C) 2011-2013 The Arizona Board of Regents on Behalf of the
 University of Arizona. Developed by Leslie Sult, Justin Spargur,
-Mike Hagedon, and Ginger Bidwell at the University of Arizona Libraries.
+Mike Hagedon, Ginger Bidwell, Gabriel Luethje, and Will Simpson at the 
+University of Arizona Libraries.
