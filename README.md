@@ -286,7 +286,7 @@ Close, print, dock/undock icons:
  - Authored by Mark James - http://famfamfam.com/lab/icons/silk/
  - Used under CC BY 3.0 license - http://creativecommons.org/licenses/by/3.0/
 
-Copyright (C) 2011-2013 The Arizona Board of Regents on Behalf of the
+Copyright (C) 2011-2015 The Arizona Board of Regents on Behalf of the
 University of Arizona. Developed by Leslie Sult, Justin Spargur,
 Mike Hagedon, Ginger Bidwell, Gabriel Luethje, and Will Simpson at the 
 University of Arizona Libraries.
