@@ -11,7 +11,7 @@ class FlexAuthComponent extends AuthComponent {
     //   else, like an unpublished tutorial.
     public $loginRedirect = '/admin';
 
-    function initialize($controller, $settings=array()) {
+    function initialize(Controller $controller) {
         $controller->Auth = $this; 
         
         $this->loginAction = array('plugin' => 'flex_auth', 'controller' => 'flex_auth', 'action' => 'login');
@@ -27,7 +27,7 @@ class FlexAuthComponent extends AuthComponent {
             }
         }
         
-        parent::initialize($controller, $settings);
+        parent::initialize($controller);
     }
     
     function isLoginDataAvailable() {
