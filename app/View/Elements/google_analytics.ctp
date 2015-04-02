@@ -15,7 +15,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', '<?php echo Configure::read('user_config.google_analytics.account_id'); ?>', 'auto');
+  ga('create', '<?php echo Configure::read('user_config.universal_analytics.account_id'); ?>', 'auto');
   ga('send', 'pageview');
 </script>
 <?php elseif (Configure::read('PiwikAnalytics.enabled') && !isset($noGoogleAnalytics)): ?>
