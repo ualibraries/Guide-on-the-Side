@@ -905,6 +905,7 @@ class TutorialsController extends AppController {
 	}  
 	
 	function provide_feedback($id = null, $mode = null) {
+		$this->set('noGoogleAnalytics', true);
 		if (!$id || !is_numeric($id))  {
 			return false;
 		} else {
