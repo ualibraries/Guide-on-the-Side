@@ -8,7 +8,7 @@ Release notes
 * There are changes for config.sample.yml in this version. Back up your existing config.yml file, copy the new config.sample.yml to config.yml, and then manually migrate your configuration settings.
 * Feature: The chapter progress text (e.g. “Step x of y”) can be hidden. Fixes issue #93.
 * Feature: Popup mode.  Tutorials can be opened in popup windows instead of iframes.  Fixes issue #50.
-* Feature: Users can click on images in tutorials to view a larger version of them.  Fixes issue #75.
+* Feature: Magnify images.  Users can click on images in tutorials to view a larger version of them.  Note: this only applies to images uploaded in Guide on the Side version 1.0-beta4.  Images uploaded in previous versions of Guide on the Side must be re-uploaded to use this feature.  Fixes issue #75.
 * Feature: New styles, including improved placement of forward and back arrows for tutorials.  Fixes issue #91.
 * Feature: SMTP support has been added.
 * Feature: Piwik support has been added.  Thanks, @a-sassmannshausen!
