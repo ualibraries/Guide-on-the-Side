@@ -17,7 +17,12 @@ UPGRADING
         
 8. Move your configuration settings, themes, and user-uploaded images into the new version.
 
-9. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
+9. Change permissions of app/webroot/uploads to make it and all sub-folders writable by the web server. Example command (for Unix-like systems):
+
+  chmod -R 777 app/webroot/uploads
+
+
+10. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
    or to find out if your themes need to change.
    If you're not sure whether you need to run database migrations and you have command-line
    access, run the following command from the app folder to determine whether database upgrades are required.
@@ -25,7 +30,7 @@ UPGRADING
 
         ../lib/Cake/Console/cake Migrations.migration status
         
-10. Run database migrations if necessary. If you don't have command-line access, 
+11. Run database migrations if necessary. If you don't have command-line access, 
     there are SQL migrations available in app/Config/Migrations/sql. Note: the old version may stop working at this point.
     If you do have command-line access, run the following command from the app folder. The cake command-line tool will
     then apply all new database migrations.
@@ -33,6 +38,6 @@ UPGRADING
         ../lib/Cake/Console/cake Migrations.migration run all
 
     For more information on the Cake Migrations tool, see https://github.com/CakeDC/migrations
-11. Modify your themes if necessary.
-12. Test to make sure everything still works in the new version.
-13. Archive the old version and move the new version to take its place.
+12. Modify your themes if necessary.
+13. Test to make sure everything still works in the new version.
+14. Archive the old version and move the new version to take its place.
