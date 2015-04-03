@@ -74,7 +74,7 @@ Apache configuration
 Installation procedure (if you're using the pre-built package)
 -------------------------------------------------------------------------------
 1. Download Guide on the Side and unzip it into the appropriate folder on your
-   web server. You should now have a folder called "guide_on_the_side".
+   web server. You should now have a folder called "guide_on_the_side-1.0-beta4".
 2. Create a MySQL database to hold your tutorials. You may call it whatever
    you like, but "guide_on_the_side" is probably a good choice. Remember the
    name you chose, as well as the MySQL username and password. Example:
