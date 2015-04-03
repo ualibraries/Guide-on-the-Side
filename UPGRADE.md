@@ -19,7 +19,7 @@ UPGRADING
 
 9. Change permissions of app/webroot/uploads to make it and all sub-folders writable by the web server. Example command (for Unix-like systems):
 
-  chmod -R 777 app/webroot/uploads
+         chmod -R 777 app/webroot/uploads
 
 
 10. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
