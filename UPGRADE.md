@@ -23,7 +23,7 @@ UPGRADING
 
         ../lib/Cake/Console/cake Migrations.migration status
 
-9. Copy your config.yml, themes, and user-uploaded images into the new version.
+9. Move your configuration settings, themes, and user-uploaded images into the new version.
 10. Run database migrations if necessary. If you don't have command-line access, 
     there are SQL migrations available in app/Config/Migrations/sql. Note: the old version may stop working at this point.
     If you do have command-line access, run the following command from the app folder. The cake command-line tool will
