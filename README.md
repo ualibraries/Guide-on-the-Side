@@ -127,10 +127,8 @@ Installation procedure (if you're using the pre-built package)
     credentials, and other information.  Note that some SMTP servers do not
     require login credentials, so it's possible that you may need to leave the
     `username` and `password` fields blank.
-
-    If you can't or don't want to use an external SMTP server, you can skip the
-    `smtp` section and just fill out the `email` section, making sure that you
-    have `transport` set to `php`.
+    
+    If you're not using an external SMTP server, set `transport` to `php` and leave the `smtp` section blank.
 
 6. Configure your analytics settings (optional).  Guide on the Side supports Universal Analytics, Classic Google Analytics, and Piwik.  To enable analytics for your Guide on the Side installation, go to the respective section of config.yml for your analytics service (`universal_analytics` for Universal Analytics, `google_analytics` for Classic Google Analytics, or `piwik_analytics` for Piwik), set the `enabled` property to `true` and supply the appropriate information and credentials.  If you are unsure if you're using Classic Google Analytics or Universal Analytics, please refer to: https://support.google.com/analytics/answer/4457764?hl=en
 
