@@ -5,7 +5,7 @@ Release notes
 -------------------------------------------------------------------------------
 * The version of CakePHP bundled with the pre-built package has been updated to version 2.6.3.
 * There ARE database schema changes in this version.  You'll need to run migrations to upgrade an existing installation.  If you don't have command line access to PHP, you can use app/Config/Migration/sql/upgrade_1.0-beta3_to_1.0-beta4.sql to make the appropriate schema changes.
-* There have been a number of changes to config.sample.yml.  You may want to consider backing up your existing config.yml file, copying the new config.sample.yml to config.yml, and then manually migrating your configuration settings to avoid missing any of the new directives.
+* There are changes for config.sample.yml in this version. Back up your existing config.yml file, copy the new config.sample.yml to config.yml, and then manually migrate your configuration settings.
 * Feature: The chapter progress text (e.g. “Step x of y”) can be hidden. Fixes issue #93.
 * Feature: Popup mode.  Tutorials can be opened in popup windows instead of iframes.  Fixes issue #50.
 * Feature: Users can click on images in tutorials to view a larger version of them.  Fixes issue #75.
