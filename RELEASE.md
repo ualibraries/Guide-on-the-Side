@@ -14,14 +14,14 @@ Release notes
 * Feature: Piwik support has been added.  Thanks, @a-sassmannshausen!
 * Feature: Added configuration option to disable Lucene.  Thanks, @jaronkk!
 * Feature: CAS support has been added.  Thanks, @jaronkk !
-* Bug: The feedback form has no spam protection.  Fixes issue #113.
-* Bug: Empty alert box appears when you attempt to save an empty question.  Fixes issue #110.
-* Bug: Unpublished tutorials are still index.  Fixes issue #109.
-* Bug: Tutorials indexed multiple times or not at all.
-* Bug: Creators cannot delete quizzes.  Fixes issues #91 and #20.
+* Bug: The feedback form now has spam protection.  Fixes issue #113.
+* Bug: Empty alert box no longer appears when you attempt to save an empty question.  Fixes issue #110.
+* Bug: Unpublished tutorials are no longer still indexed.  Fixes issue #109.
+* Bug: Tutorials are no longer indexed multiple times or not at all.
+* Bug: Creators can now delete quizzes.  Fixes issues #91 and #20.
 * Bug: Describe database migration procedure in UPGRADE.md.  Fixes issue #70.
-* Bug: Links set to open in the right frame are broken in popup mode.  Fixes issue #61.
-* Bug: Tutorial creator can't add question answers and responses in IE, Chrome.  Fixes issue #35.
+* Bug: Links set to open in the right frame are no longer broken in popup mode.  Fixes issue #61.
+* Bug: Tutorial creators can now add question answers and responses in IE, Chrome.  Fixes issue #35.
 * Technical: Reworked database default values to make more sense.  Fixes issue #25.
 
 
