@@ -8,21 +8,24 @@ UPGRADING
    us or submitting patches to make the application more flexible! 
 5. Back up your config.yml file, themes, and user-uploaded images (app/webroot/uploads).
 6. Download the latest version of Guide on the Side and unzip it into a new 
-   location. Alternatively, if you have a previous release checked out (1.0-beta2, 1.0-beta3, etc) and command line   access to Git, you can run git pull --tags and then git checkout <tag_name> to get the latest code.  You may want to do this in a copy of the application as it may stop working until you 
-   run any database migrations.
-7. As in README.md, change permissions of app/tmp in the new version to make it and
+   location. Alternatively, if you have a previous release checked out (1.0-beta2, 1.0-beta3, etc) and command line   access to Git, you can run git pull --tags and then git checkout <tag_name> to get the latest code.  You may want to do this in a copy of the application as it may stop working until you run any database migrations.
+7. If you used git pull --tags and git checkout <tag_name> to update, you'll need to upgrade your version of CakePHP.  Download CakePHP version 2.6.3 (https://github.com/cakephp/cakephp/releases/2.6.3), extract it, and replace the lib/ folder in your Guide on the Side installation with the lib/ folder from the new version of CakePHP.  Example commands (for Unix-like systems):
+
+         rm -rf <guide_on_the_side_directory>/lib
+         mv <unzipped_cakephp_folder>/lib <guide_on_the_side_directory>/
+8. As in README.md, change permissions of app/tmp in the new version to make it and
    all sub-folders writable by the web server. Example command (for Unix-like systems): 
 
         chmod -R 777 app/tmp
         
-8. Move your configuration settings, themes, and user-uploaded images into the new version.
+9. Move your configuration settings, themes, and user-uploaded images into the new version.
 
-9. Change permissions of app/webroot/uploads to make it and all sub-folders writable by the web server. Example command (for Unix-like systems):
+10. Change permissions of app/webroot/uploads to make it and all sub-folders writable by the web server. Example command (for Unix-like systems):
 
          chmod -R 777 app/webroot/uploads
 
 
-10. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
+11. Read any release notes (RELEASE.md) to determine if you need to run database migrations,
    or to find out if your themes need to change.
    If you're not sure whether you need to run database migrations and you have command-line
    access, run the following command from the app folder to determine whether database upgrades are required.
@@ -30,7 +33,7 @@ UPGRADING
 
         ../lib/Cake/Console/cake Migrations.migration status
         
-11. Run database migrations if necessary. If you don't have command-line access, 
+12. Run database migrations if necessary. If you don't have command-line access, 
     there are SQL migrations available in app/Config/Migrations/sql. Note: the old version may stop working at this point.
     If you do have command-line access, run the following command from the app folder. The cake command-line tool will
     then apply all new database migrations.
@@ -38,6 +41,6 @@ UPGRADING
         ../lib/Cake/Console/cake Migrations.migration run all
 
     For more information on the Cake Migrations tool, see https://github.com/CakeDC/migrations
-12. Modify your themes if necessary.
-13. Test to make sure everything still works in the new version.
-14. Archive the old version and move the new version to take its place.
+13. Modify your themes if necessary.
+14. Test to make sure everything still works in the new version.
+15. Archive the old version and move the new version to take its place.
