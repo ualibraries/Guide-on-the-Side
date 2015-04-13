@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var viewportHeight = $(window).height();
 	$('body').append('<div class="gots_modal_image_box"></div>');
 	$('.gots_thumbnail_link').each(function(){
+		$(this).attr('title', 'Click to enlarge this image.');
 		popup_image = '<img src="' + $(this).attr('href') + '">';
 		$('.gots_modal_image_box').append(popup_image);
 	});

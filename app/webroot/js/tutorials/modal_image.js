@@ -5,6 +5,7 @@ $(document).ready(function() {
 	});
 	parent.$('body').append('<div class="gots_modal_image_box"></div>');
 	$('.gots_thumbnail_link').each(function(){
+		$(this).attr('title', 'Click to enlarge this image.');
 		modal_image = '<img src="' + $(this).attr('href') + '">';
 		parent.$('.gots_modal_image_box').append(modal_image);
 	});
