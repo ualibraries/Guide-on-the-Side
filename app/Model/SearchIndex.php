@@ -99,7 +99,7 @@ class SearchIndex extends AppModel {
 		}
 
 		if ($id === false) {
-			return $false;
+			return false;
 		}
 		$conditions = array("id"=>$id);
 		$query = array('conditions' => $conditions, 'recursive' => -1, 'callbacks' => false);
