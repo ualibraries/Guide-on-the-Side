@@ -21,6 +21,9 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
+//Load custom error handler for the command line
+App::uses('GotsError', 'Lib');
+
 // This is to allow themes to be outside the app directory.
 App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
 
