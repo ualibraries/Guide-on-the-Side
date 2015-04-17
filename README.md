@@ -132,12 +132,14 @@ Installation procedure (if you're using the pre-built package)
 
 6. Configure your analytics settings (optional).  Guide on the Side supports Universal Analytics, Classic Google Analytics, and Piwik.  To enable analytics for your Guide on the Side installation, go to the respective section of config.yml for your analytics service (`universal_analytics` for Universal Analytics, `google_analytics` for Classic Google Analytics, or `piwik_analytics` for Piwik), set the `enabled` property to `true` and supply the appropriate information and credentials.  If you are unsure if you're using Classic Google Analytics or Universal Analytics, please refer to: https://support.google.com/analytics/answer/4457764?hl=en
 
-7. Install the database schema by running the following commands from the
+7. Install the database schema and sample content by running the following commands from the
    guide_on_the_side/app folder:
     ```
     ../lib/Cake/Console/cake Migrations.migration run all --plugin Tags
 
     ../lib/Cake/Console/cake Migrations.migration run all
+    
+    ../lib/Cake/Console/cake gots add_demo_tutorials
   ```
    Alternatively, there is an SQL schema available in app/Config/Migration/sql/install.sql.
 
