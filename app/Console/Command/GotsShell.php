@@ -32,7 +32,6 @@ class GotsShell extends AppShell {
 		$this->Question->create();
 		$gs_question_2 = $this->Question->save(compact("Question"));
 
-		$this->out(print_r($wiki_question_1, TRUE));
 		$this->out('Inserting sample tutorial answers...');
 		$answers = array(
 			array(
