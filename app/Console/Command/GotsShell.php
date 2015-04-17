@@ -255,7 +255,6 @@ EOT;
 			$gs_tutorial = $this->Tutorial->save($Tutorial);
 
 			$FinalQuiz = array(
-				'id' => 2,
 				'title' => NULL,
 				'content' => '<p><img class="question" src="questions/view_image/'.$gs_question_2['Question']['id'].'" alt="" /></p>',
 				'certificate' => 1,
