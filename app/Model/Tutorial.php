@@ -520,7 +520,7 @@ class Tutorial extends AppModel {
 			 * Don't reindex Tutorials that have been "soft" deleted
 			 * or are not published or are excluded from the index.
 			 */
-			if(!$tutorial['Tutorial']['deleted'] && $tutorial['Tutorial']['published'] && $tutorial['in_index']){
+			if(!$tutorial['Tutorial']['deleted'] && $tutorial['Tutorial']['published'] && $tutorial['Tutorial']['in_index']){
 				$saveData = array('SearchIndex' => array(
 					'document' => array(
 						array(
