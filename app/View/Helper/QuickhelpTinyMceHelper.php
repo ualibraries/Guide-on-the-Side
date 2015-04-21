@@ -6,7 +6,7 @@ App::import('Helper', 'TinyMCE.TinyMCE');
 //   and specify the configuration for all controllers.
 class QuickhelpTinymceHelper extends TinyMCEHelper {
 
-public function beforeRender() {
+public function beforeRender($viewFile) {
 
     $common_configs = array(
       'mode' => 'textareas',
@@ -52,7 +52,7 @@ public function beforeRender() {
       'QuickHelp_simple' => array_merge($common_configs, $simple_configs),
     );
 
-    parent::beforeRender();
+    parent::beforeRender($viewFile);
     $this->Html->script('tinymce_plugins/phpimage/editor_plugin', false);
     $this->Html->script('tinymce_plugins/quickhelp/editor_plugin', false);
   }
