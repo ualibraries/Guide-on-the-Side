@@ -347,7 +347,7 @@ class Tutorial extends AppModel {
 	public $findMethods = array('published' => true, 'deleted' => true, 'unpublished' => true,
 			'undeleted' => true, 'public' => true);
 
-	public function delete($id = null) {
+	public function delete($id = null, $cascade = true) {
 		if (is_numeric($id)) {
 			$tutorial = $this->findById($id);
 			if (!$tutorial['Tutorial']['deleted']) {
@@ -471,7 +471,7 @@ class Tutorial extends AppModel {
 		return $results;
 	}
 
-	public function afterSave($created) {
+	public function afterSave($created, $options = Array()) {
 		// check published status
 		$tutorial = $this->findById($this->id);
 		if ($tutorial['Tutorial']['tutorial_type_id'] == 2) {	// fix the magic number stuff. There is a constant defined
