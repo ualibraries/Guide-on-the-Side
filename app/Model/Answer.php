@@ -11,7 +11,7 @@ class Answer extends AppModel {
 	
 	var $belongsTo = array('Question');
 
-  function beforeSave() {
+  function beforeSave($options = array()) {
     $this->data['Answer']['answer'] =
       strip_tags($this->data['Answer']['answer'], allowed_tags('strip_tags'));
     $this->data['Answer']['response_heading'] =

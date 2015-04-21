@@ -20,7 +20,7 @@ class Question extends AppModel {
     }
   }
 
-  function beforeSave() {
+  function beforeSave($options = array()) {
     $this->data['Question']['question'] =
       strip_tags($this->data['Question']['question'], allowed_tags('strip_tags'));
     return true;
