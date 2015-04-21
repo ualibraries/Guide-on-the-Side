@@ -95,7 +95,7 @@
             if(empty($feedback_text))
                 $feedback_text = Configure::read('user_config.feedback_link.default_text');
             echo "<p><h2>Feedback</h2>";
-            echo $this->Html->link('What did you think of this tutorial?', array('action' => 'provide_feedback',
+            echo $this->Html->link($feedback_text, array('action' => 'provide_feedback',
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
             echo "</p>";
         }
