@@ -1,6 +1,6 @@
 <?php if ($popup): ?>
 <h1 class="banner"><?php echo $title?></h1>
-<h2>Before You Start...</h2>
+<h2><?php echo __('Before You Start...') ?></h2>
 
     <p>The tutorial is going to pop up on the left, so you'll need to make some room by resizing your current window.</p>
     <h3>Step 1</h3>

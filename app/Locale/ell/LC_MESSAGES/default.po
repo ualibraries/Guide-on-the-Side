@@ -1,0 +1,367 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-06-06 14:49-0600\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/FinalQuizzesController.php:16;39
+msgid "Invalid final quiz"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:26
+msgid "The quiz has been saved"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:30;48
+msgid "The final quiz could not be saved. Please try again."
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:44
+msgid "The final quiz has been saved"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:61
+msgid "Invalid id for final quiz"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:68
+msgid "Final quiz deleted"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:70
+msgid "Final quiz was not deleted"
+msgstr ""
+
+#: Controller/QuestionsController.php:79;168
+msgid "Invalid question"
+msgstr ""
+
+#: Controller/QuestionsController.php:179
+msgid "Invalid id for question"
+msgstr ""
+
+#: Controller/QuestionsController.php:183
+msgid "Question deleted"
+msgstr ""
+
+#: Controller/QuestionsController.php:186
+msgid "Question was not deleted"
+msgstr ""
+
+#: Controller/TutorialsController.php:80;159;171;426;451;502;510;565;626
+msgid "Invalid tutorial"
+msgstr ""
+
+#: Controller/TutorialsController.php:536;585
+msgid "The tutorial has been saved"
+msgstr ""
+
+#: Controller/TutorialsController.php:543
+msgid "The tutorial could not be saved."
+msgstr ""
+
+#: Controller/TutorialsController.php:592;668
+msgid "The tutorial could not be saved. Please try again."
+msgstr ""
+
+#: Controller/TutorialsController.php:640
+msgid "A log message is required. Your tutorial has not been saved."
+msgstr ""
+
+#: Controller/TutorialsController.php:656
+msgid "The tutorial has been saved."
+msgstr ""
+
+#: Controller/TutorialsController.php:691;705;751;769
+msgid "Invalid id for tutorial"
+msgstr ""
+
+#: Controller/TutorialsController.php:696
+msgid "Tutorial deleted"
+msgstr ""
+
+#: Controller/TutorialsController.php:699
+msgid "Tutorial was not deleted"
+msgstr ""
+
+#: Controller/TutorialsController.php:728
+msgid "Revision restored"
+msgstr ""
+
+#: Controller/TutorialsController.php:733
+msgid "Revision was not restored"
+msgstr ""
+
+#: Controller/TutorialsController.php:746
+msgid "Tutorial published!"
+msgstr ""
+
+#: Controller/TutorialsController.php:764
+msgid "Tutorial unpublished!"
+msgstr ""
+
+#: Controller/UsersController.php:33;34;71
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:53;96
+msgid "The user has been saved"
+msgstr ""
+
+#: Controller/UsersController.php:56;99
+msgid "The user could not be saved. Please try again."
+msgstr ""
+
+#: Controller/UsersController.php:115
+msgid "Invalid id for user"
+msgstr ""
+
+#: Controller/UsersController.php:119
+msgid "Don't delete yourself!"
+msgstr ""
+
+#: Controller/UsersController.php:123
+msgid "User deleted"
+msgstr ""
+
+#: Controller/UsersController.php:127
+msgid "User was not deleted"
+msgstr ""
+
+#: Plugin/FlexAuth/Controller/FlexAuthController.php:36
+msgid "Login failed! Please try again."
+msgstr ""
+
+#: View/Elements/paging.ctp:4
+msgid "previous"
+msgstr ""
+
+#: View/Elements/paging.ctp:8
+msgid "next"
+msgstr ""
+
+#: View/FinalQuizzes/add.ctp:1
+msgid "Add Final Quiz"
+msgstr ""
+
+#: View/FinalQuizzes/add.ctp:19
+msgid "Add Quiz"
+msgstr ""
+
+#: View/FinalQuizzes/edit.ctp:1
+msgid "Edit Quiz"
+msgstr ""
+
+#: View/FinalQuizzes/edit.ctp:31
+#: View/Tutorials/edit.ctp:72
+#: View/Tutorials/edit_content.ctp:66
+msgid "Save"
+msgstr ""
+
+#: View/Layouts/institution.ctp:25
+msgid "Guide on the Side: "
+msgstr ""
+
+#: View/Pages/home.ctp:12
+msgid "Your tmp directory is writable."
+msgstr ""
+
+#: View/Pages/home.ctp:16
+msgid "Your tmp directory is NOT writable."
+msgstr ""
+
+#: View/Pages/home.ctp:26
+msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
+msgstr ""
+
+#: View/Pages/home.ctp:30
+msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
+msgstr ""
+
+#: View/Pages/home.ctp:40
+msgid "Your database configuration file is present."
+msgstr ""
+
+#: View/Pages/home.ctp:45
+msgid "Your database configuration file is NOT present."
+msgstr ""
+
+#: View/Pages/home.ctp:47
+msgid "Rename config/database.php.default to config/database.php"
+msgstr ""
+
+#: View/Pages/home.ctp:64
+msgid "Cake is able to connect to the database."
+msgstr ""
+
+#: View/Pages/home.ctp:68
+msgid "Cake is NOT able to connect to the database."
+msgstr ""
+
+#: View/Pages/home.ctp:74
+msgid "Editing this Page"
+msgstr ""
+
+#: View/Pages/home.ctp:77
+msgid "To change the content of this page, edit: %s\n\t\tTo change its layout, edit: %s\n\t\tYou can also add some CSS styles for your pages at: %s"
+msgstr ""
+
+#: View/Tutorials/add.ctp:38
+msgid "Create"
+msgstr ""
+
+#: View/Tutorials/index.ctp:2
+msgid "Tutorials"
+msgstr ""
+
+#: View/Tutorials/index.ctp:5
+msgid "Create a tutorial"
+msgstr ""
+
+#: View/Tutorials/index.ctp:27
+msgid "Edit"
+msgstr ""
+
+#: View/Tutorials/index.ctp:28
+msgid "Delete"
+msgstr ""
+
+#: View/Tutorials/index.ctp:29
+msgid "Are you sure you want to delete tutorial %s?"
+msgstr ""
+
+#: View/Tutorials/view.ctp:3
+msgid "Before You Start..."
+msgstr "πριν ἀρχῇ..."
+
+#: View/Users/add.ctp:12
+msgid "Add user"
+msgstr ""
+
+#: View/Users/add.ctp:14
+#: View/Users/edit.ctp:42
+msgid "Cancel"
+msgstr ""
+
+#: View/Users/edit.ctp:11
+msgid "Delete user"
+msgstr ""
+
+#: View/Users/edit.ctp:17
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+#: View/Users/edit.ctp:40
+msgid "Save user"
+msgstr ""
+
+#: View/Users/index.ctp:2
+msgid "User Management"
+msgstr ""
+
+#: View/Users/index.ctp:5
+msgid "<< Return to tutorial index"
+msgstr ""
+
+#: View/Users/index.ctp:9
+msgid "Create a new user"
+msgstr ""
+
+#: View/Users/view.ctp:2
+msgid "User"
+msgstr ""
+
+#: View/Users/view.ctp:4
+msgid "Attribute"
+msgstr ""
+
+#: View/Users/view.ctp:9
+msgid "username"
+msgstr ""
+
+#: View/Users/view.ctp:14
+msgid "Role"
+msgstr ""
+
+#: View/Users/view.ctp:19
+msgid "Auth Method"
+msgstr ""
+
+#: View/Users/view.ctp:27
+msgid "Actions"
+msgstr ""
+
+#: View/Users/view.ctp:29
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/view.ctp:30
+msgid "Delete User"
+msgstr ""
+
+#: View/Users/view.ctp:30
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: View/Users/view.ctp:31
+msgid "List Users"
+msgstr ""
+
+#: View/Users/view.ctp:32
+msgid "New User"
+msgstr ""
+
+#: Model/Answer.php:validation for field answer
+msgid "This field cannot be left blank."
+msgstr ""
+
+#: Model/Question.php:validation for field question
+msgid "You must supply a question."
+msgstr ""
+
+#: Model/Tutorial.php:validation for field title
+msgid "Tutorials must have titles!"
+msgstr ""
+
+#: Model/Tutorial.php:validation for field title
+msgid "checkTitleLength"
+msgstr ""
+
+#: Model/Tutorial.php:validation for field contact_email
+msgid "This is not an email address."
+msgstr ""
+
+#: Model/Tutorial.php:validation for field user_url
+msgid "Tutorial URL must be unique."
+msgstr ""
+
+#: Model/Tutorial.php:validation for field user_url
+msgid "Tutorial URL may only contain lowercase letters, numbers, and dashes."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password may not be empty."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Passwords do not match."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password must have at least one uppercase letter, one lowercase letter, and one number."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password must be at least 10 characters long."
+msgstr ""
+
