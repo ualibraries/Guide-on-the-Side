@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-06-06 14:49-0600\n"
+"POT-Creation-Date: 2015-06-13 18:30-0600\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -1158,12 +1158,197 @@ msgstr ""
 msgid "Invalid argument #1: %s is not a valid %s identifyer."
 msgstr ""
 
+#: View/Definitions/add.ctp:7
+msgid "This is required."
+msgstr ""
+
+#: View/Elements/acknowledgement.ctp:3
+msgid "Guide on the Side"
+msgstr ""
+
+#: View/Elements/acknowledgement.ctp:8
+msgid "University of Arizona Libraries"
+msgstr ""
+
+#: View/Elements/acknowledgement.ctp:15
+msgid "Powered by %s from the %s"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:9
+msgid "Single-page view"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:15
+msgid "All steps on one page"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:25
+msgid "Undock"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:26
+msgid "Dock"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:28
+msgid "Close"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:35
+msgid "Go to the beginning"
+msgstr ""
+
 #: View/Elements/paging.ctp:4
 msgid "previous"
 msgstr ""
 
 #: View/Elements/paging.ctp:8
 msgid "next"
+msgstr ""
+
+#: View/Elements/table_of_contents.ctp:3
+msgid "Contents"
+msgstr ""
+
+#: View/Elements/table_of_contents.ctp:16
+#: View/Elements/tutorial_content.ctp:50
+msgid "Quiz"
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:3
+msgid "Contact information"
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:4
+msgid "Name: "
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:5
+msgid "Email: "
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:6
+msgid "Phone: "
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:10
+msgid "%d of %d"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:19;23;67;71;137;141
+msgid "Previous"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:29;33;77;81
+msgid "Next"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:94
+msgid "Certificate"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:99
+msgid "Please enter your name and email address to retrieve a copy of your completed quiz."
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:103
+msgid "Your name:"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:104
+msgid "Your name"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:109
+msgid "Email address(es):"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:110
+msgid "Email addresses"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:112
+msgid "You can enter multiple email addresses separated by commas. If you are doing this for a class, you may need to enter your instructor's email address also."
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:120
+msgid "Print / Send email"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:128
+msgid "Feedback"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:3
+msgid "Feedback link"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:5
+msgid "Show feedback link"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:16
+msgid "Custom text:"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:20
+msgid "Optional. If left blank, the default text \"%s\" will appear."
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:3
+msgid "Metadata"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:6
+msgid "Project SAILS Skill Sets"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:13
+msgid "Learning Goals"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:17
+msgid "check all that apply; See the %s for help."
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:22
+msgid "Audiences"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:24
+msgid "Keywords"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:25
+msgid "Resource Types"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:26;28
+msgid "check all that apply"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:27
+msgid "Subjects"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:31
+msgid "Creative Commons License: "
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:34
+msgid "BY-NC-SA"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:39
+msgid "Accessible version URL:"
+msgstr ""
+
+#: View/Elements/tutorial_title.ctp:5
+msgid "Tutorial Title: "
+msgstr ""
+
+#: View/Elements/tutorial_title.ctp:8
+msgid "%d characters remaining."
 msgstr ""
 
 #: View/FinalQuizzes/add.ctp:1

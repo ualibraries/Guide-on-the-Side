@@ -7,7 +7,7 @@
                 if (!empty($step['chapter'])) {
                     echo "<h2>" . $step['chapter'] . "</h2>";
                     if ($step['total_steps_in_chapter'] > 1 && $tutorial['Tutorial']['show_chapter_progress']) {
-                        echo "<span class='step-number'>" . $step['step_num_within_chapter'] . ' of ' . $step['total_steps_in_chapter'] . "</span>";
+                        echo "<span class='step-number'>" . __('%d of %d', $step['step_num_within_chapter'], $step['total_steps_in_chapter']) . "</span>";
                     }
                 }
             }
@@ -15,10 +15,24 @@
     ?>
     <div id="navigation" class="clearfix">
       <div id="prev-navigation">
-        <a href="#" class="prev browse left ir" title="Previous">Previous</a>
+			<?php echo $this->Html->link(
+				__('Previous'),
+				'#',
+				array(
+					'class' => array('prev', 'browse', 'left', 'ir'),
+					'title' => __('Previous')
+				)
+			) ?>
       </div>
       <div id="next-navigation">
-        <a href="#" class="next browse right ir" title="Next">Next</a>
+			<?php echo $this->Html->link(
+				__('Next'),
+				'#',
+				array(
+					'class' => array('next', 'browse', 'right', 'ir'),
+					'title' => __('Next')
+				)
+			) ?>
     </div>
   <!--    Section X of Y -->
     </div>
@@ -33,7 +47,7 @@
             $index = $key + count($steps);
             echo "<div class='step no-feedback' id='step-$index'>";
             echo "<h2>";
-            echo "Quiz";
+            echo __('Quiz');
             if (!empty($step['chapter']) || !empty($step['step'])) {
 
                 if (!empty($step['chapter'])) {
@@ -49,10 +63,24 @@
 ?>
     <div id="navigation" class="clearfix">
       <div id="prev-navigation">
-        <a href="#" class="prev browse left ir" title="Previous">Previous</a>
+			<?php echo $this->Html->link(
+				__('Previous'),
+				'#',
+				array(
+					'class' => array('prev', 'browse', 'left', 'ir'),
+					'title' => __('Previous')
+				)
+			) ?>
       </div>
       <div id="next-navigation">
-        <a href="#" class="next browse right ir" title="Next">Next</a>
+			<?php echo $this->Html->link(
+				__('Next'),
+				'#',
+				array(
+					'class' => array('next', 'browse', 'right', 'ir'),
+					'title' => __('Next')
+				)
+			) ?>
     </div>
   <!--    Section X of Y -->
     </div>
@@ -63,30 +91,33 @@
     <div class="step">
         <?php
         if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
-            echo "<h2>Certificate</h2>";
+            echo '<h2>' . __('Certificate') . '</h2>';
         }
 
         if (($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate'])
             && $tutorial['Tutorial']['certificate_email_self']) {
-            echo "<p>Please enter your name and email address to retrieve a copy of your completed quiz.</p>";
+            echo '<p>' . __('Please enter your name and email address to retrieve a copy of your completed quiz.') . '</p>';
         }
 
         if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
-            echo $this->Form->input('certificate_name', array('label' => 'Your name:',
-                'placeholder' => 'Your name', 'class' => 'certificate_name'));
+            echo $this->Form->input('certificate_name', array('label' => __('Your name:'),
+                'placeholder' => __('Your name'), 'class' => 'certificate_name'));
         }
 
         if (($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate'])
             && $tutorial['Tutorial']['certificate_email_self']) {
-            echo $this->Form->input('certificate_email', array('label' => 'Email address(es):',
-                'placeholder' => 'Email addresses', 'class' => 'certificate_email'));
-            echo "<p class='field-description'>You can enter multiple email addresses separated by commas. If you are doing this for a class, you may need to enter your instructor's email address also.</p>";
+            echo $this->Form->input('certificate_email', array('label' => __('Email address(es):'),
+                'placeholder' => __('Email addresses'), 'class' => 'certificate_email'));
+            echo "<p class='field-description'>" .
+					__('You can enter multiple email addresses separated by commas. If you are doing this for a class, you may need to enter your instructor\'s email address also.') .
+					"</p>"
+				;
         }
 
         if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
             echo "<input value='{$tutorial['Tutorial']['id']}' name='tutorial_id' type='hidden' />";
             echo "<input value='{$tutorial['FinalQuiz']['id']}' name='quiz_id' type='hidden' />";
-            echo "<input value='Print / Send email' type='submit' name='submit' />";
+            echo "<input value='" . __('Print / Send email') . "' type='submit' name='submit' />";
         }
 
         $feedback_enabled = Configure::read('user_config.feedback_link.enabled');
@@ -94,7 +125,7 @@
             $feedback_text = $tutorial['Tutorial']['custom_feedback_link_text'];
             if(empty($feedback_text))
                 $feedback_text = Configure::read('user_config.feedback_link.default_text');
-            echo "<p><h2>Feedback</h2>";
+            echo "<p><h2>" . __('Feedback') . "</h2>";
             echo $this->Html->link($feedback_text, array('action' => 'provide_feedback',
             $tutorial['Tutorial']['id']), array('id' => 'provide-feedback'));
             echo "</p>";
@@ -102,7 +133,14 @@
         ?>
         <div id="navigation" class="clearfix">
           <div id="prev-navigation">
-            <a href="#" class="prev browse left ir" title="Previous">Previous</a>
+				 <?php echo $this->Html->link(
+					 __('Previous'),
+					 '#',
+					 array(
+						 'class' => array('prev', 'browse', 'left', 'ir'),
+						 'title' => __('Previous')
+					 )
+				 ) ?>
           </div>
         </div>
     </div>

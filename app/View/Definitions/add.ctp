@@ -4,7 +4,7 @@
   echo $this->Form->input('link text',
     array(
       'between' => '<br />',
-      'after' => '<br />This is required.'
+      'after' => '<br />' . __('This is required.')
     )
   );
 
