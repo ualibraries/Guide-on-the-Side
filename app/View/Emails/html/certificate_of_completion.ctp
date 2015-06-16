@@ -10,13 +10,13 @@
     echo "<div id='dialog-flash'>";
     echo $this->Session->flash();
     echo $this->Session->flash('email');
-    echo "You may want to print this for your records.";
+    echo __('You may want to print this for your records.');
     echo "</div>";
   }
   ?>
   <div id="email-print-wrapper">
   <h2>
-    Completion Certificate for <?php echo $title ?>
+    <?php echo __('Completion Certificate for %s', $title) ?>
   </h2>
 
 

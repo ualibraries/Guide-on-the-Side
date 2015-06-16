@@ -1,6 +1,6 @@
 <h2><?php echo __('Add Final Quiz'); ?></h2>
 
-<?php echo $this->Html->link('<< Return to tutorial', array('controller' => 'tutorials',
+<?php echo $this->Html->link(__('<< Return to tutorial'), array('controller' => 'tutorials',
   'action' => 'edit_content', $this->params['named']['tutorial'])) ?>
 
 <div class="finalQuizzes form">

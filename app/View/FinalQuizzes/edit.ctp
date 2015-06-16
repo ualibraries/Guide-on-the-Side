@@ -1,14 +1,14 @@
 <h2><?php echo __('Edit Quiz'); ?></h2>
 
-<?php echo $this->Html->link('<< Return to tutorial', array('controller' => 'tutorials',
+<?php echo $this->Html->link(__('<< Return to tutorial'), array('controller' => 'tutorials',
   'action' => 'edit_content', $this->params['named']['tutorial'])) ?>
 
 <div class="actions">
    <div>
       <?php
-      echo $this->Html->link('Delete quiz',
+      echo $this->Html->link(__('Delete quiz'),
          array('action' => 'delete', $this->data['FinalQuiz']['id']), array('class' => 'big-button'),
-         'Are you sure you want to delete your quiz?');
+         __('Are you sure you want to delete your quiz?'));
       ?>
    </div>
 </div>

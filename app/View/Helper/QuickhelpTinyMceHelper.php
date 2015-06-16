@@ -24,7 +24,7 @@ public function beforeRender($viewFile) {
       'content_css' => "http://fonts.googleapis.com/css?family=PT+Sans|Crimson Text," .
         "{$this->webroot}css/tinymce_content.css",
       'document_base_url' => $this->webroot,
-      'theme_advanced_link_targets' => "Site (right) frame=site-frame",
+      'theme_advanced_link_targets' => __('Site (right) frame') . "=site-frame",
       'keep_styles' => false,
       'convert_urls' => false,
       'theme_advanced_resizing_use_cookie' => true,
