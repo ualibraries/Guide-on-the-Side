@@ -1,6 +1,6 @@
 <div class="users form">
 <?php echo $this->Form->create('User');?>
-  <h2>Add User</h2>
+  <h2><?php echo __('Add User') ?></h2>
 	<?php
 		echo $this->Form->input('username');
     if ($hasLoginForm) {
