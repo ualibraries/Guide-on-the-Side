@@ -104,7 +104,7 @@ class TutorialsController extends AppController {
 			$popup = $this->params['popup'];
 		}
 		$this->set(compact('title', 'link_toc', 'quiz_index', 'has_quiz', 'site_url', 'site_title', 'popup'));
-		$this->set('title_for_layout' , $title . ' Single-Page View');
+		$this->set('title_for_layout' , $title . " " . __('Single-Page View'));
 
 		$this->layout = 'public';
 	}
@@ -272,7 +272,7 @@ class TutorialsController extends AppController {
 						$parsed_query = Zend_Search_Lucene_Search_QueryParser::parse($query);
 					} catch (Zend_Search_Lucene_Exception $e) {
 						// Why can't I catch Zend_Search_Lucene_Search_QueryParserException?
-						$this->Session->setFlash("We're not sure what you mean. Are your search terms correct?");
+						$this->Session->setFlash(__('We\'re not sure what you mean. Are your search terms correct?'));
 						$this->redirect(array('action' => 'search', 'term' => Sanitize::paranoid($query, array(" "))));
 					}
 				}
@@ -313,7 +313,7 @@ class TutorialsController extends AppController {
 
 			} catch (Zend_Search_Lucene_Exception $e) {
 				// Why can't I catch Zend_Search_Lucene_Search_QueryParserException?
-				$this->Session->setFlash("We're not sure what you mean. Are your search terms correct?");
+				$this->Session->setFlash(__('We\'re not sure what you mean. Are your search terms correct?'));
 				$this->redirect(array('action' => 'search', 'query' => $query));
 			}
 
@@ -596,7 +596,7 @@ class TutorialsController extends AppController {
 		$this->Tutorial->recursive = 1; // get quiz
 		$this->data = $this->Tutorial->findById($id);
 		if (!$this->data) {
-			$this->Session->setFlash("That tutorial doesn't exist.");
+			$this->Session->setFlash(__('That tutorial doesn\'t exist.'));
 			$this->redirect(array('action' => 'index'));
 		}
 
@@ -647,7 +647,7 @@ class TutorialsController extends AppController {
 				if ($this->Tutorial->save($this->request->data)) {
 					if ($this->RequestHandler->isAjax()) {
 						$error = array(
-							'message' => 'The tutorial has been saved.',
+							'message' => __('The tutorial has been saved.'),
 							'success' => true
 						);
 						echo json_encode($error);
@@ -659,7 +659,7 @@ class TutorialsController extends AppController {
 				} else {
 					if ($this->RequestHandler->isAjax()) {
 						$error = array(
-							'message' => 'The tutorial could not be saved. Please try again.',
+							'message' => __('The tutorial could not be saved. Please try again.'),
 							'success' => false
 						);
 						echo json_encode($error);
@@ -722,7 +722,7 @@ class TutorialsController extends AppController {
 		$tutorial['Tutorial']['deleted'] = false;
 		$tutorial['FinalQuiz']['no_revision'] = true;
 		// TODO: preserve user_url
-		$this->Tutorial->log_message = "Restored from revision $revision_id";
+		$this->Tutorial->log_message = __('Restored from revision %d', $revision_id);
 		$this->Tutorial->user_id = $this->Session->read('Auth.User.id');
 		if ($this->Tutorial->saveAll($tutorial)) {
 			$this->Session->setFlash(__('Revision restored'));
@@ -740,7 +740,7 @@ class TutorialsController extends AppController {
 			if ($this->Tutorial->publish($id)) {
 				if ($this->RequestHandler->isAjax()) {
 					$this->layout = 'ajax';
-					echo "Published";
+					echo __('Published');
 					exit();
 				} else {
 					$this->Session->setFlash(__('Tutorial published!'));
@@ -782,12 +782,12 @@ class TutorialsController extends AppController {
 				$string .= ': ' . $text;
 			}
 		} elseif ($type == 'step') {
-			$string = 'Page break';
+			$string = __('Page break');
 			if (!empty($text)) {
 				$string .= ': ' . $text;
 			}
 		} else {
-			$string = 'Image creation error!';
+			$string = __('Image creation error!');
 		}
 
 		$string = wordwrap(strip_tags($string), $this->number_of_characters, '\n', true);
@@ -867,10 +867,10 @@ class TutorialsController extends AppController {
 		if ($type == 'one-line' || $type == 'multi-line') {
 			$string = ucfirst($type);
 			if (!empty($text)) {
-				$string .= ' free response: ' . $text;
+				$string .= ' ' . __('free response') . ': ' . $text;
 			}
 		} else {
-			$string = 'Image creation error!';
+			$string = __('Image creation error!');
 		}
 
 		$string = wordwrap(strip_tags($string), $this->number_of_characters, '\n', true);
@@ -917,15 +917,15 @@ class TutorialsController extends AppController {
 
 			if (!empty($this->data)) {
 				$email_success = true;
-				$body = "From: " . htmlentities($this->data['Tutorial']['from_name']) .
-					"<br>Email: " . htmlentities($this->data['Tutorial']['from_email']) .
+				$body = __('From') . ': ' . htmlentities($this->data['Tutorial']['from_name']) .
+					"<br>" . __('Email') . ": " . htmlentities($this->data['Tutorial']['from_email']) .
 					"<br><br>" .
 					htmlentities($this->data['Tutorial']['comment']);
 				$tutorialUrl = Router::url(array('action' => $action, $id), true);
-				$body .= "<p>This feedback was sent from $tutorialUrl</p>";
+				$body .= "<p>" . __('This feedback was sent from %s', $tutorialUrl) . "</p>";
 				
 				$message = new CakeEmail('default');
-				$message->subject("Feedback for {$tutorial['Tutorial']['title']} tutorial");
+				$message->subject(__('Feedback for %s tutorial', $tutorial['Tutorial']['title']));
 				$message->emailFormat('html');
 					
 				$to_array = explode(',', Configure::read('user_config.email.send_all_feedback_to'));
@@ -957,7 +957,7 @@ class TutorialsController extends AppController {
 
 	function view_certificate() {
 		if (empty($this->request->data)) {
-			return 'This certificate cannot be generated.';
+			return __('This certificate cannot be generated.');
 		} else {
 			$is_tutorial = false;
 			$is_quiz = false;
@@ -1014,7 +1014,7 @@ class TutorialsController extends AppController {
 				$this->set('title', $subject);
 							
 				$message = new CakeEmail('default');
-				$message->subject("Certificate of Completion for $subject");
+				$message->subject(__('Certificate of Completion for %s', $subject));
 				$message->template('certificate_of_completion');
 				$message->emailFormat('html');
 				$message->viewVars($this->viewVars);
@@ -1040,19 +1040,18 @@ class TutorialsController extends AppController {
 				$this->set('dialog', true);
 
 				if (empty($to_array)) {
-						$this->Session->setFlash('This certificate could not be emailed because no email addresses' . 
-								' were supplied.');
+						$this->Session->setFlash(__('This certificate could not be emailed because no email addresses were supplied.'));
 				} else {
 						if (true === $email_success) {
-							$this->Session->setFlash('The following message was sent.');
+							$this->Session->setFlash(__('The following message was sent.'));
 						} else {
-							$this->Session->setFlash('The following message could <strong>not</strong> be sent.');
+							$this->Session->setFlash(__('The following message could <strong>not</strong> be sent.'));
 						}
 				}
 				
 				return $this->render('certificate_of_completion');
 			} else {
-				return 'This certificate cannot be generated.';
+				return __('This certificate cannot be generated.');
 			}
 		}
 	}

@@ -75,11 +75,11 @@ class UsersController extends AppController {
           if ($user_is_self) { // don't allow user to change own username or role
             $user = $this->User->findById($id);
             if (isset($this->request->data['User']['username'])) {
-              $this->Session->setFlash("Don't change yourself. I like you the way you are.");
+              $this->Session->setFlash(__('Don\'t change yourself. I like you the way you are.'));
               $this->request->data['User']['username'] = $user['User']['username'];
             }
             if (isset($this->request->data['User']['role_id'])) {
-              $this->Session->setFlash("Don't change yourself. I like you the way you are.");
+              $this->Session->setFlash(__('Don\'t change yourself. I like you the way you are.'));
               $this->request->data['User']['role_id'] = $user['User']['role_id'];
             }
           }
@@ -94,7 +94,7 @@ class UsersController extends AppController {
 			$this->request->data = $this->User->read(null, $id);
 		}
         if (!$hasLoginForm && $user_is_self) {
-          $this->Session->setFlash("Don't change yourself. I like you the way you are.");
+          $this->Session->setFlash(__('Don\'t change yourself. I like you the way you are.'));
           $this->redirect(array('action' => 'index'));
         }
 		$roles = $this->User->Role->find('list');

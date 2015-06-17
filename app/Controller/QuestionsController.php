@@ -85,8 +85,8 @@ class QuestionsController extends AppController {
 	function get_immediate_feedback($tutorial_id = null) {
 		if (!$tutorial_id || !is_numeric($tutorial_id)) {
 			$correct = false;
-			$response_heading = 'Incorrect';
-			$response = "We missed something... did you answer the question?";
+			$response_heading = __('Incorrect');
+			$response = __('We missed something... did you answer the question?');
 		} else {
 			if (isset($this->request->data['questions']) && !empty($this->request->data['questions'])) {
 				$question_id = array_keys($this->request->data['questions']);
@@ -106,23 +106,23 @@ class QuestionsController extends AppController {
 				$correct = ($user_answer == $question['Question']['correct_answer']);
 				if (empty($response)) {
 					if ($correct) {
-						$response = 'That is correct!';
+						$response = __('That is correct!');
 					} else {
-						$response = 'That is not correct.';
+						$response = __('That is not correct.');
 					}
 				}
 				$response_heading = $question['Answer'][$user_answer]['response_heading'];
 				if (empty($response_heading)) {
 					if ($correct) {
-						$response_heading = 'Correct';
+						$response_heading = __('Correct');
 					} else {
-						$response_heading = 'Incorrect';
+						$response_heading = __('Incorrect');
 					}
 				}
 			} else {
 				$correct = false;
-				$response_heading = 'Incorrect';
-				$response = "We missed something... did you answer the question?";
+				$response_heading = __('Incorrect');
+				$response = __('We missed something... did you answer the question?');
 			}
 		}
 		echo json_encode(compact('correct', 'response', 'response_heading'));
@@ -157,7 +157,7 @@ class QuestionsController extends AppController {
 			}
 		}
 		$this->layout = 'tinymce_dialog';
-		$this->set('title_for_layout', 'Question');
+		$this->set('title_for_layout', __('Question'));
 	}
 
 	function edit($id = null) {
