@@ -28,15 +28,6 @@ class UsersController extends AppController {
 		$this->set('users', $this->paginate());
 	}
 
-	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid user'));
-			$this->Session->setFlash(__('Invalid user'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('user', $this->User->read(null, $id));
-	}
-
 	function add() {
         $hasLoginForm = !$this->Auth->user('noLoginForm');
 
