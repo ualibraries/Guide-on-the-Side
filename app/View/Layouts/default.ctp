@@ -66,10 +66,10 @@
       <?php
         if ($this->Session->check('Auth.User.username')) {
           echo "You are logged in as {$this->Session->read('Auth.User.username')}. ";
-          echo '[' . $this->Html->link('Admin index', array('controller' => 'tutorials', 'action' => 'index')) . '] ';
+          echo '[' . $this->Html->link('Admin index', array('plugin' => '', 'controller' => 'tutorials', 'action' => 'index')) . '] ';
           if ($show_password_link) {
             echo '[';
-            echo $this->Html->link('Change password', array('controller' => 'users',
+            echo $this->Html->link('Change password', array('plugin' => '', 'controller' => 'users',
                 'action' => 'edit', $this->Session->read('Auth.User.id')));
             echo '] ';
           }
