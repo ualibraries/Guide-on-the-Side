@@ -31,6 +31,7 @@ public function beforeRender($viewFile) {
       'paste_remove_styles' => true,
       'paste_remove_spans' => true,
       'paste_text_sticky' => true,
+		'language' => Configure::read('user_config.language.editor_language'),
     );
 
     $tutorial_configs = array(
@@ -53,7 +54,13 @@ public function beforeRender($viewFile) {
     );
 
     parent::beforeRender($viewFile);
-    $this->Html->script('tinymce_plugins/phpimage/editor_plugin', false);
-    $this->Html->script('tinymce_plugins/quickhelp/editor_plugin', false);
+
+	 echo $this->Html->scriptBlock("tinymce.PluginManager.load('phpimage', '" .
+		Router::url('/') . Configure::read('App.jsBaseUrl') .
+		"tinymce_plugins/phpimage/editor_plugin.js');", array('inline' => false));
+
+    echo $this->Html->scriptBlock("tinymce.PluginManager.load('quickhelp', '" .
+		Router::url('/') . Configure::read('App.jsBaseUrl') .
+		"tinymce_plugins/quickhelp/editor_plugin.js');", array('inline' => false));
   }
 }
