@@ -2,7 +2,7 @@
     <div id="navbar" class="clearfix">
         <nav class="mode-switch">
             <ul>
-                <li class="active">Step-by-step</li>
+                <li class="active"><?php echo __('Step-by-step') ?></li>
                 <li>
                     <?php
                     echo $this->Html->link(

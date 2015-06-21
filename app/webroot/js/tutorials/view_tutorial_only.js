@@ -75,24 +75,30 @@ $(document).ready(function() {
   $('#email_and_print').submit(function() {
     var postData = $(this).serialize();
     $.post(cakephp.webroot + 'tutorials/view_certificate/', postData, function(returnData) {
-      var dialog = '<div id="email-print" style="display: none" title="Results">' + returnData + '</div>'
+      var dialog = '<div id="email-print" style="display: none" title="' + cakephp.i18n.results + '">' + returnData + '</div>'
       parent.$('body').append(dialog);
       parent.$('#email-print').dialog({
         modal : true,
         autoOpen : false,
         draggable : false,
-        buttons : {
-          Print : function() {
-            parent.window.print();
+        buttons : [
+          {
+            text : cakephp.i18n.print,
+            click : function() {
+              parent.window.print();
+            }
           },
-          Close : function() {
-            var this_element = parent.$('#email-print');
-            this_element.dialog("close");
-            this_element.dialog("destroy");
-            this_element.remove();
-            parent.$('body').removeClass('print-certificate');
+          {
+            text : cakephp.i18n.close,
+            click : function() {
+              var this_element = parent.$('#email-print');
+              this_element.dialog("close");
+              this_element.dialog("destroy");
+              this_element.remove();
+              parent.$('body').removeClass('print-certificate');
+            }
           }
-        },
+        ],
         width: (parent.cakephp.popup) ? $(window).width() : 700,
         height : (parent.cakephp.popup) ? $(window).height() : 'auto',
         left: (parent.cakephp.popup) ? '0px' : 'auto',
@@ -162,12 +168,12 @@ $(document).ready(function() {
             var action = form.attr('action');
             $.post(action, postData, function(data) {
               if (data == 'success') {
-                alert('Your feedback has been sent.');
+                alert(cakephp.i18n.feedback_sent);
 
                 this_element.dialog("close");
               } else {
                 this_element.contents().find('form').append(
-                '<div class="message">Your feedback was <strong>not</strong> sent. Please try again later.</div>'
+                  '<div class="message">' + cakephp.i18n.feedback_not_sent + '</div>'
                 );
               }
             });
@@ -198,7 +204,7 @@ $(document).ready(function() {
 
   // Quiz questions don't have pop-ups. Is this being checked at the backend? That could be problematic if
   //   you copy and paste from a tutorial into a quiz.
-  $('#scrollable :not(.no-feedback) > .answers').append("<button type='button'>Check Answer</button>");
+  $('#scrollable :not(.no-feedback) > .answers').append("<button type='button'>" + cakephp.i18n.check_answer + "</button>");
 
   // Since we've inserted HTML, adjust the height
   $('#scrollable .items').height($('#scrollable .items .step:nth-child(1)').height());

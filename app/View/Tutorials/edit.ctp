@@ -26,7 +26,7 @@
     );
 
     $this->QuickhelpTinyMce->editor('QuickHelp_simple');
-    echo $this->Form->input('description', array('class' => 'mceQuickHelpSimple'));
+    echo $this->Form->input('description', array('label' => __('Description'), 'class' => 'mceQuickHelpSimple'));
 
     echo $this->element('tutorial_common');
 

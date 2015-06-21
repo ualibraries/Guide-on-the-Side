@@ -22,7 +22,7 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo __('Guide on the Side: '); ?>
+		<?php echo __('Guide on the Side') . ': '; ?>
 		<?php echo $title_for_layout; ?>
 	</title>
   <base href="<?php echo $this->Html->url('/', true) ?>" />

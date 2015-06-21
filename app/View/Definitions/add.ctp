@@ -3,6 +3,7 @@
   echo $this->Form->create('Definition');
   echo $this->Form->input('link text',
     array(
+		'label' => __('Link text'),
       'between' => '<br />',
       'after' => '<br />' . __('This is required.')
     )
