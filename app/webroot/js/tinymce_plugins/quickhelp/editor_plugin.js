@@ -6,6 +6,12 @@
  */
 
 (function() {
+  // Prevent trying to load translation files that don't exist.
+  var availableLanguages = ['en', 'nn'];
+  if (availableLanguages.indexOf(tinymce.settings.language) != -1) {
+    tinymce.PluginManager.requireLangPack('quickhelp');
+  }
+
   tinymce.create('tinymce.plugins.QuickhelpPlugin', {
     /**
      * Initializes the plugin, this will be executed after the plugin has been created.
@@ -16,9 +22,6 @@
      * @param {string} url Absolute URL to where the plugin is located.
      */
     init : function(ed, url) {
-      // the url param seems to not work ... is it because this is an external plugin?
-      url = cakephp.jsroot + 'tinymce_plugins/quickhelp/';
-
       // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('qhInlineQuiz');
       ed.addCommand('qhQuestion', function() {
         img_placeholder = ed.selection.getContent();
@@ -76,27 +79,27 @@
 
       // Register quickhelp inline quiz button
       ed.addButton('qhBtnQuestion', {
-        title : 'Insert question',
+        title : 'quickhelp.insert_question',
         cmd : 'qhQuestion',
-        image : url + 'question-button.png'
+        image : url + '/question-button.png'
       });
 
       ed.addButton('qhBtnHeading', {
-        title : 'Insert chapter heading or page break',
+        title : 'quickhelp.insert_heading',
         cmd : 'qhHeading',
-        image : url + 'chapter-button.png'
+        image : url + '/chapter-button.png'
       });
 
       ed.addButton('qhBtnDefinition', {
-        title : 'Insert definition box',
+        title : 'quickhelp.insert_definition_box',
         cmd : 'qhDefinition',
-        image : url + 'definition-button.png'
+        image : url + '/definition-button.png'
       });
 
       ed.addButton('qhBtnTextBox', {
-        title : 'Insert free response box',
+        title : 'quickhelp.insert_text_box',
         cmd : 'qhTextBox',
-        image : url + 'text-box-button.png'
+        image : url + '/text-box-button.png'
       });
 
       // Add a node change handler, selects the button in the UI when a image is selected
