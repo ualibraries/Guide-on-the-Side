@@ -22,7 +22,7 @@
     echo "</fieldset>";
     echo $this->Form->input('popup', array(
 		'label' => __('Popup mode'),
-		'after' => '<p class="field-description">' . __('Use popup mode when your right frame starting URL is not working' . '</p>')
+		'after' => '<p class="field-description">' . __('Use popup mode when your right frame starting URL is not working') . '</p>')
 	 );
     echo $this->Form->input(
 	    'show_chapter_progress',
