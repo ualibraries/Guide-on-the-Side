@@ -255,6 +255,9 @@ msgstr ""
 msgid "Login failed! Please try again."
 msgstr ""
 
+msgid "Welcome. Let's make some tutorials!"
+msgstr ""
+
 #: Plugin/TinyMCE/View/Helper/TinyMCEHelper.php:68
 msgid "Invalid TinyMCE configuration preset %s"
 msgstr ""
@@ -593,6 +596,15 @@ msgstr ""
 msgid "Change password"
 msgstr ""
 
+msgid "Log in"
+msgstr ""
+
+msgid "Request access"
+msgstr ""
+
+msgid "Your account (%s) does not have permission to access this page."
+msgstr ""
+
 #: View/Layouts/default.ctp:77
 #: View/Layouts/institution.ctp:71
 #: View/Layouts/popup.ctp:77
@@ -606,6 +618,9 @@ msgstr ""
 #: View/Questions/add.ctp:22
 #: View/Questions/edit.ctp:26
 msgid "Answer text"
+msgstr ""
+
+msgid "Answer"
 msgstr ""
 
 #: View/Questions/add.ctp:26
@@ -1056,6 +1071,9 @@ msgstr ""
 
 #: View/Users/edit.ctp:17
 msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Username"
 msgstr ""
 
 #: View/Users/edit.ctp:29
