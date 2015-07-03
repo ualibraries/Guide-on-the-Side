@@ -1,12 +1,11 @@
-# LANGUAGE translation of CakePHP Application
-# Copyright YEAR NAME <EMAIL@ADDRESS>
-#
-# Magnus Enger <magnus@enger.priv.no>, 2015.
+# Norwegian Bokmål translation of CakePHP Application
+# Copyright 2015 Magnus Enger <magnus@enger.priv.no>
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-06-20 22:30-0600\n"
-"PO-Revision-Date: 2015-06-23 20:52-0700\n"
+"PO-Revision-Date: 2015-07-03 07:43-0700\n"
 "Last-Translator: Magnus Enger <magnus@enger.priv.no>\n"
 "Language-Team: Norwegian Bokmål <>\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +14,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: nb\n"
 "X-Generator: Poedit 1.5.4\n"
+
+#: View/Errors/error500.ctp:1
+msgid "Error"
+msgstr "Feil"
+
+msgid "Guide on the Side has encountered an error -- sorry about that! Please let us know about it."
+msgstr "Guide on the Side har støtt på et problem - vi beklager! Fortell oss gjerne hva som skjedde."
+
+msgid "Not Found"
+msgstr "Ikke funnet"
+
+msgid "Oops! That page is not available."
+msgstr "Den siden er dessverre ikke tilgjengelig."
 
 #: Controller/DefinitionsController.php:12
 msgid "Definition"
