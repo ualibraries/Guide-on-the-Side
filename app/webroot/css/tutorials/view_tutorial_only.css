@@ -83,7 +83,7 @@ a:active {
   top: 50%;
   margin-top: -12px;
   border: solid 12px #585858;
-  border-style: dotted solid;
+  border-style: double solid;
 }
 #navigation a.prev:before{
   right: 100%;
