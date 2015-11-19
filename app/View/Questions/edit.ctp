@@ -11,7 +11,7 @@
 
   echo "<table id='answers'>";
   echo "<thead>";
-  echo $this->Html->tableHeaders(array('', 'Answer', 'Correct?', 'Response text'));
+  echo $this->Html->tableHeaders(array('', __('Answer'), __('Correct?'), __('Response text')));
   echo "</thead>";
   echo "<tbody>";
 
@@ -23,13 +23,13 @@
     }
     $answer_fields[$i] = array(
       "<div class='ui-icon ui-icon-arrowthick-2-n-s'>&nbsp;</div>",
-      $this->Form->input("Answer.$i.answer", array('label' => false, 'placeholder' => 'Answer text')),
+      $this->Form->input("Answer.$i.answer", array('label' => false, 'placeholder' => __('Answer text'))),
       // value 0 is not obvious, I know. Because the radio is split, I had to trick Cake into not creating hidden radio
       //   fields. According to the cookbook, setting value does it.
       $this->Form->radio('correct_answer', array($i => ''),
         array('value' => 0, 'legend' => false, 'checked' => $checked, 'label' => false)),
-      $this->Form->input("Answer.$i.response_heading", array('label' => false, 'div' => false, 'placeholder' => 'Response heading'/*, 'class' => 'mceQuickHelpSimple'*/)).
-      $this->Form->input("Answer.$i.response", array('label' => false, 'div' => false, 'placeholder' => 'Response text')),
+      $this->Form->input("Answer.$i.response_heading", array('label' => false, 'div' => false, 'placeholder' => __('Response heading')/*, 'class' => 'mceQuickHelpSimple'*/)).
+      $this->Form->input("Answer.$i.response", array('label' => false, 'div' => false, 'placeholder' => __('Response text'))),
       $this->Html->link('&nbsp;', '#', array('class' => 'ui-icon ui-icon-circle-close remove-answer')),
       $this->Form->hidden("Answer.$i.order", array('label' => false, 
         'value' => $i)),

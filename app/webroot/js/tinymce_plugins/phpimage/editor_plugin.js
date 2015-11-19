@@ -5,9 +5,6 @@
  * @copyright Copyright � 2004-2008, Moxiecode Systems AB, All rights reserved.
  */
 (function() {
-	// Load plugin specific language pack
-	tinymce.PluginManager.requireLangPack('phpimage');
-
 	tinymce.create('tinymce.plugins.PhpImagePlugin', {
 		init : function(ed, url) {
 			// Register commands

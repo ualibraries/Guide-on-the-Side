@@ -9,7 +9,7 @@ class TextBoxesController extends AppController {
 
   function add() {
     $this->layout = 'tinymce_dialog';
-    $this->set('title_for_layout', 'Free response');
+    $this->set('title_for_layout', __('Free response'));
   }
 
 }

@@ -1,0 +1,1160 @@
+# Norwegian Bokmål translation of CakePHP Application
+# Copyright 2015 Magnus Enger <magnus@enger.priv.no>
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-06-20 22:30-0600\n"
+"PO-Revision-Date: 2015-07-03 07:43-0700\n"
+"Last-Translator: Magnus Enger <magnus@enger.priv.no>\n"
+"Language-Team: Norwegian Bokmål <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nb\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: View/Errors/error500.ctp:1
+msgid "Error"
+msgstr "Feil"
+
+msgid "Guide on the Side has encountered an error -- sorry about that! Please let us know about it."
+msgstr "Guide on the Side har støtt på et problem - vi beklager! Fortell oss gjerne hva som skjedde."
+
+msgid "Not Found"
+msgstr "Ikke funnet"
+
+msgid "Oops! That page is not available."
+msgstr "Den siden er dessverre ikke tilgjengelig."
+
+#: Controller/DefinitionsController.php:12
+msgid "Definition"
+msgstr "Definisjon"
+
+#: Controller/FinalQuizzesController.php:16;39
+msgid "Invalid final quiz"
+msgstr "Ugyldig avsluttende quiz"
+
+#: Controller/FinalQuizzesController.php:26
+msgid "The quiz has been saved"
+msgstr "Quizzen har blitt lagret"
+
+#: Controller/FinalQuizzesController.php:30;48
+msgid "The final quiz could not be saved. Please try again."
+msgstr "Den avsluttende quizzen kunne ikke lagres. Prøv igjen. "
+
+#: Controller/FinalQuizzesController.php:44
+msgid "The final quiz has been saved"
+msgstr "Den avsluttende quizzen har blitt lagret"
+
+#: Controller/FinalQuizzesController.php:61
+msgid "Invalid id for final quiz"
+msgstr "Ugyldig ID for avsluttende quiz"
+
+#: Controller/FinalQuizzesController.php:68
+msgid "Final quiz deleted"
+msgstr "Avsluttede quiz slettet"
+
+#: Controller/FinalQuizzesController.php:70
+msgid "Final quiz was not deleted"
+msgstr "Avsluttende quiz ble ikke slettet"
+
+#: Controller/HeadingsController.php:12
+msgid "Heading"
+msgstr "Overskrift"
+
+#: Controller/QuestionsController.php:79;168
+msgid "Invalid question"
+msgstr "Ugyldig spørsmål"
+
+#: Controller/QuestionsController.php:88;119;124
+msgid "Incorrect"
+msgstr "Ikke korrekt"
+
+#: Controller/QuestionsController.php:89;125
+msgid "We missed something... did you answer the question?"
+msgstr "Vi mangler noe... svarte du på spørsmålet?"
+
+#: Controller/QuestionsController.php:109
+msgid "That is correct!"
+msgstr "Det er riktig! "
+
+#: Controller/QuestionsController.php:111
+msgid "That is not correct."
+msgstr "Det er ikke riktig."
+
+#: Controller/QuestionsController.php:117
+msgid "Correct"
+msgstr "Riktig"
+
+#: Controller/QuestionsController.php:160
+msgid "Question"
+msgstr "Spørsmål"
+
+#: Controller/QuestionsController.php:179
+msgid "Invalid id for question"
+msgstr "Ugyldig ID for spørsmål"
+
+#: Controller/QuestionsController.php:183
+msgid "Question deleted"
+msgstr "Spørsmål slettet"
+
+#: Controller/QuestionsController.php:186
+msgid "Question was not deleted"
+msgstr "Spørsmålet ble ikke slettet"
+
+#: Controller/TextBoxesController.php:12
+msgid "Free response"
+msgstr "Fritt svar"
+
+#: Controller/TutorialsController.php:80;159;171;426;451;502;510;565;626
+msgid "Invalid tutorial"
+msgstr "Ugyldig leksjon"
+
+#: Controller/TutorialsController.php:107
+msgid "Single-Page View"
+msgstr "Én-side visning"
+
+#: Controller/TutorialsController.php:275;316
+msgid "We're not sure what you mean. Are your search terms correct?"
+msgstr "Vi er ikker sikker på hva du mener. Er søkeordene riktige? "
+
+#: Controller/TutorialsController.php:536;585
+msgid "The tutorial has been saved"
+msgstr "Leksjonen har blitt lagret"
+
+#: Controller/TutorialsController.php:543
+msgid "The tutorial could not be saved."
+msgstr "Leksjonen kunne ikke lagres."
+
+#: Controller/TutorialsController.php:592;662;668
+msgid "The tutorial could not be saved. Please try again."
+msgstr "Leksjonen kunne ikke lagres. Prøv igjen. "
+
+#: Controller/TutorialsController.php:599
+msgid "That tutorial doesn't exist."
+msgstr "Leksjonen finnes ikke. "
+
+#: Controller/TutorialsController.php:640
+msgid "A log message is required. Your tutorial has not been saved."
+msgstr "En logg-melding er påkrevet. Leksjonen har ikke blitt lagret."
+
+#: Controller/TutorialsController.php:650;656
+msgid "The tutorial has been saved."
+msgstr "Leksjonen har blitt lagret."
+
+#: Controller/TutorialsController.php:691;705;751;769
+msgid "Invalid id for tutorial"
+msgstr "Ugyldig ID for leksjon"
+
+#: Controller/TutorialsController.php:696
+msgid "Tutorial deleted"
+msgstr "Leksjon slettet"
+
+#: Controller/TutorialsController.php:699
+msgid "Tutorial was not deleted"
+msgstr "Leksjonen ble ikke slettet"
+
+#: Controller/TutorialsController.php:725
+msgid "Restored from revision %d"
+msgstr "Gjenopprettet fra versjon %d"
+
+#: Controller/TutorialsController.php:728
+msgid "Revision restored"
+msgstr "Versjon gjenopprettet"
+
+#: Controller/TutorialsController.php:733
+msgid "Revision was not restored"
+msgstr "Versjonen ble ikke gjenopprettet"
+
+#: Controller/TutorialsController.php:743
+msgid "Published"
+msgstr "Publisert"
+
+#: Controller/TutorialsController.php:746
+msgid "Tutorial published!"
+msgstr "Leksjon publisert!"
+
+#: Controller/TutorialsController.php:764
+msgid "Tutorial unpublished!"
+msgstr "Leksjon av-publisert! "
+
+#: Controller/TutorialsController.php:785 View/Headings/add.ctp:6
+msgid "Page break"
+msgstr "Sideskift"
+
+#: Controller/TutorialsController.php:790;873
+msgid "Image creation error!"
+msgstr "Feil ved oppretting av bilde!"
+
+#: Controller/TutorialsController.php:870
+msgid "free response"
+msgstr "fritt svar"
+
+#: Controller/TutorialsController.php:920
+msgid "From"
+msgstr "Fra"
+
+#: Controller/TutorialsController.php:921
+msgid "Email"
+msgstr "Epost"
+
+#: Controller/TutorialsController.php:925
+msgid "This feedback was sent from %s"
+msgstr "Denne tilbakemeldingen ble sendt fra %s"
+
+#: Controller/TutorialsController.php:928
+msgid "Feedback for %s tutorial"
+msgstr "Tilbakemelding på leksjon %s"
+
+#: Controller/TutorialsController.php:960;1054
+msgid "This certificate cannot be generated."
+msgstr "Beviset kan ikke genereres."
+
+#: Controller/TutorialsController.php:1017
+msgid "Certificate of Completion for %s"
+msgstr "Bevis for gjennomføring av %s"
+
+#: Controller/TutorialsController.php:1043
+msgid ""
+"This certificate could not be emailed because no email addresses were "
+"supplied."
+msgstr ""
+"Beviset kunne ikke sendes med epost fordi det ikke ble oppgitt noen "
+"epostadresse."
+
+#: Controller/TutorialsController.php:1046
+msgid "The following message was sent."
+msgstr "Følgende melding ble sendt."
+
+#: Controller/TutorialsController.php:1048
+msgid "The following message could <strong>not</strong> be sent."
+msgstr "Følgende melding kunne <strong>ikke</strong> ikke sendes."
+
+#: Controller/UsersController.php:44;87
+msgid "The user has been saved"
+msgstr "Brukeren har blitt lagret"
+
+#: Controller/UsersController.php:47;90
+msgid "The user could not be saved. Please try again."
+msgstr "Brukeren kunne ikke lagres. Prøv igjen. "
+
+#: Controller/UsersController.php:62
+msgid "Invalid user"
+msgstr "Ugyldig bruker"
+
+#: Controller/UsersController.php:78;82;97
+msgid "Don't change yourself. I like you the way you are."
+msgstr "Ikke endre deg selv. Jeg liker deg slik du er. "
+
+#: Controller/UsersController.php:106
+msgid "Invalid id for user"
+msgstr "Ugyldig ID for bruker"
+
+#: Controller/UsersController.php:110
+msgid "Don't delete yourself!"
+msgstr "Ikke slett deg selv! "
+
+#: Controller/UsersController.php:114
+msgid "User deleted"
+msgstr "Bruker slettet"
+
+#: Controller/UsersController.php:118
+msgid "User was not deleted"
+msgstr "Brukeren ble ikke slettet"
+
+#: Plugin/Datasources/Model/Datasource/ArraySource.php:97
+msgid "No records found in model."
+msgstr "Ingen poster ble funnet i modellen."
+
+#: Plugin/FlexAuth/Controller/FlexAuthController.php:36
+msgid "Login failed! Please try again."
+msgstr "Feil ved innlogging. Prøv igjen. "
+
+msgid "Welcome. Let's make some tutorials!"
+msgstr "Velkommen. La oss lage noen leksjoner! "
+
+#: Plugin/TinyMCE/View/Helper/TinyMCEHelper.php:68
+msgid "Invalid TinyMCE configuration preset %s"
+msgstr "Ugyldig konfigurasjon for TinyMCE %s"
+
+#: View/Definitions/add.ctp:6
+msgid "Link text"
+msgstr "Lenketekst"
+
+#: View/Definitions/add.ctp:7
+msgid "This is required."
+msgstr "Dette er påkrevet."
+
+#: View/Elements/acknowledgement.ctp:3 View/Layouts/institution.ctp:81
+msgid "Guide on the Side"
+msgstr "Guide on the Side"
+
+#: View/Elements/acknowledgement.ctp:8
+msgid "University of Arizona Libraries"
+msgstr "University of Arizona Libraries"
+
+#: View/Elements/acknowledgement.ctp:15
+msgid "Powered by %s from the %s"
+msgstr "Laget med %s fra %s"
+
+#: View/Elements/on_the_side.ctp:5
+msgid "Step-by-step"
+msgstr "Steg-for-steg"
+
+#: View/Elements/on_the_side.ctp:9 View/Tutorials/view_single_page.ctp:16
+msgid "Single-page view"
+msgstr "Én-side visning"
+
+#: View/Elements/on_the_side.ctp:15
+msgid "All steps on one page"
+msgstr "Alle skritt på en side"
+
+#: View/Elements/on_the_side.ctp:25
+msgid "Undock"
+msgstr "Koble fra"
+
+#: View/Elements/on_the_side.ctp:26
+msgid "Dock"
+msgstr "Fest"
+
+#: View/Elements/on_the_side.ctp:28
+msgid "Close"
+msgstr "Lukk"
+
+#: View/Elements/on_the_side.ctp:35
+msgid "Go to the beginning"
+msgstr "Gå til starten"
+
+#: View/Elements/paging.ctp:4
+msgid "previous"
+msgstr "forrige"
+
+#: View/Elements/paging.ctp:8
+msgid "next"
+msgstr "neste"
+
+#: View/Elements/table_of_contents.ctp:3
+msgid "Contents"
+msgstr "Innhold"
+
+#: View/Elements/table_of_contents.ctp:16
+#: View/Elements/tutorial_content.ctp:50
+msgid "Quiz"
+msgstr "Quiz"
+
+#: View/Elements/tutorial_common.ctp:3
+msgid "Contact information"
+msgstr "Kontakt-informasjon"
+
+#: View/Elements/tutorial_common.ctp:4
+msgid "Name: "
+msgstr "Navn: "
+
+#: View/Elements/tutorial_common.ctp:5
+msgid "Email: "
+msgstr "Epost: "
+
+#: View/Elements/tutorial_common.ctp:6
+msgid "Phone: "
+msgstr "Telefon: "
+
+#: View/Elements/tutorial_content.ctp:10
+msgid "%d of %d"
+msgstr "%d av %d"
+
+#: View/Elements/tutorial_content.ctp:19;23;67;71;137;141
+msgid "Previous"
+msgstr "Forrige"
+
+#: View/Elements/tutorial_content.ctp:29;33;77;81
+msgid "Next"
+msgstr "Neste"
+
+#: View/Elements/tutorial_content.ctp:94
+msgid "Certificate"
+msgstr "Bevis"
+
+#: View/Elements/tutorial_content.ctp:99
+msgid ""
+"Please enter your name and email address to retrieve a copy of your "
+"completed quiz."
+msgstr ""
+"Legg inn navn og epostadresse for å få en kopi av den fullførte quizzen."
+
+#: View/Elements/tutorial_content.ctp:103
+msgid "Your name:"
+msgstr "Ditt navn: "
+
+#: View/Elements/tutorial_content.ctp:104
+msgid "Your name"
+msgstr "Ditt navn"
+
+#: View/Elements/tutorial_content.ctp:109
+msgid "Email address(es):"
+msgstr "Epostadresse(r): "
+
+#: View/Elements/tutorial_content.ctp:110
+msgid "Email addresses"
+msgstr "Epostadresser"
+
+#: View/Elements/tutorial_content.ctp:112
+msgid ""
+"You can enter multiple email addresses separated by commas. If you are doing "
+"this for a class, you may need to enter your instructor's email address also."
+msgstr ""
+"Du kan legge inn flere epostadresser adskilt med komma. Dersom du gjør dette "
+"for en klasse kan det være at du også må legge inn epostadressen til den som "
+"har faget. "
+
+#: View/Elements/tutorial_content.ctp:120
+msgid "Print / Send email"
+msgstr "Skriv ut / Send epost"
+
+#: View/Elements/tutorial_content.ctp:128
+msgid "Feedback"
+msgstr "Tilbakemelding"
+
+#: View/Elements/tutorial_feedback_link.ctp:3
+msgid "Feedback link"
+msgstr "Tilbakemeldingslenke"
+
+#: View/Elements/tutorial_feedback_link.ctp:5
+msgid "Show feedback link"
+msgstr "Vis tilbakemeldingslenke"
+
+#: View/Elements/tutorial_feedback_link.ctp:16
+msgid "Custom text:"
+msgstr "Valgfri tekst:"
+
+#: View/Elements/tutorial_feedback_link.ctp:20
+msgid "Optional. If left blank, the default text \"%s\" will appear."
+msgstr "Valgfri. Om dette feltet er tomt vil standard-teksten «%s» vises."
+
+#: View/Elements/tutorial_metadata.ctp:3
+msgid "Metadata"
+msgstr "Metadata"
+
+#: View/Elements/tutorial_metadata.ctp:6
+msgid "Project SAILS Skill Sets"
+msgstr "Project SAILS Skill Sets"
+
+#: View/Elements/tutorial_metadata.ctp:13
+#: View/Tutorials/view_information.ctp:99
+msgid "Learning Goals"
+msgstr "Læringsmål"
+
+#: View/Elements/tutorial_metadata.ctp:17
+msgid "check all that apply; See the %s for help."
+msgstr "kryss av alle som passer; se %s for hjelp."
+
+#: View/Elements/tutorial_metadata.ctp:22
+msgid "Audiences"
+msgstr "Målgrupper"
+
+#: View/Elements/tutorial_metadata.ctp:24
+#: View/Tutorials/view_information.ctp:87
+msgid "Keywords"
+msgstr "Nøkkelord"
+
+#: View/Elements/tutorial_metadata.ctp:25
+#: View/Tutorials/view_information.ctp:111
+msgid "Resource Types"
+msgstr "Ressurstyper"
+
+#: View/Elements/tutorial_metadata.ctp:26;28
+msgid "check all that apply"
+msgstr "kryss av for alle som passer"
+
+#: View/Elements/tutorial_metadata.ctp:27
+#: View/Tutorials/view_information.ctp:75
+msgid "Subjects"
+msgstr "Emner"
+
+#: View/Elements/tutorial_metadata.ctp:31
+msgid "Creative Commons License: "
+msgstr "Creative Commons License: "
+
+#: View/Elements/tutorial_metadata.ctp:34
+msgid "BY-NC-SA"
+msgstr "BY-NC-SA"
+
+#: View/Elements/tutorial_metadata.ctp:39
+msgid "Accessible version URL:"
+msgstr "URL for universelt utformet versjon: "
+
+#: View/Elements/tutorial_title.ctp:5
+msgid "Tutorial Title: "
+msgstr "Leksjonstittel: "
+
+#: View/Elements/tutorial_title.ctp:8
+msgid "%d characters remaining."
+msgstr "%d tegn gjenstår."
+
+#: View/Emails/html/certificate_of_completion.ctp:13
+msgid "You may want to print this for your records."
+msgstr "Du vil kanskje skrive den ut for ettertiden. "
+
+#: View/Emails/html/certificate_of_completion.ctp:19
+msgid "Completion Certificate for %s"
+msgstr "Fullføringsbevis for %s"
+
+#: View/Emails/html/certificate_of_completion.ctp:24
+msgid "Name"
+msgstr "Navn"
+
+#: View/Emails/html/certificate_of_completion.ctp:25
+msgid "Date"
+msgstr "Dato"
+
+#: View/Emails/html/certificate_of_completion.ctp:26
+msgid "Time"
+msgstr "Tid"
+
+#: View/Emails/html/certificate_of_completion.ctp:32
+msgid "Your %s results"
+msgstr "Dine %s resultater"
+
+#: View/Emails/html/certificate_of_completion.ctp:33
+msgid "Score"
+msgstr "Poeng"
+
+#: View/Emails/html/certificate_of_completion.ctp:35
+msgid "%d out of %d"
+msgstr "%d av %d"
+
+#: View/Emails/html/certificate_of_completion.ctp:45
+msgid "Correct?"
+msgstr "Riktig?"
+
+#: View/Emails/html/certificate_of_completion.ctp:53
+msgid "No"
+msgstr "Nei"
+
+#: View/Emails/html/certificate_of_completion.ctp:55
+msgid "Yes"
+msgstr "Ja"
+
+#: View/Emails/html/certificate_of_completion.ctp:59
+msgid "nothing"
+msgstr "ingenting"
+
+#: View/Emails/html/certificate_of_completion.ctp:83
+msgid "Your free responses"
+msgstr "Ditt frie svar"
+
+#: View/Emails/html/certificate_of_completion.ctp:87
+msgid "Prompt &amp; Answer"
+msgstr "Ledetekst &amp; Svar"
+
+#: View/Emails/html/certificate_of_completion.ctp:98
+msgid "no answer given"
+msgstr "ikke noe svar angitt"
+
+#: View/FinalQuizzes/add.ctp:1
+msgid "Add Final Quiz"
+msgstr "Legg til avslutningsquiz"
+
+#: View/FinalQuizzes/add.ctp:3 View/FinalQuizzes/edit.ctp:3
+msgid "<< Return to tutorial"
+msgstr "<< Tilbake til opplæring"
+
+#: View/FinalQuizzes/add.ctp:19
+msgid "Add Quiz"
+msgstr "Legg til quiz"
+
+#: View/FinalQuizzes/edit.ctp:1
+msgid "Edit Quiz"
+msgstr "Edre quiz"
+
+#: View/FinalQuizzes/edit.ctp:9
+msgid "Delete quiz"
+msgstr "Slett quiz"
+
+#: View/FinalQuizzes/edit.ctp:11
+msgid "Are you sure you want to delete your quiz?"
+msgstr "Er du sikker på at du ønsker å slette denne quizzen? "
+
+#: View/FinalQuizzes/edit.ctp:31 View/Tutorials/edit.ctp:75
+#: View/Tutorials/edit_content.ctp:68 View/Tutorials/edit_external.ctp:22
+msgid "Save"
+msgstr "Lagre"
+
+#: View/Headings/add.ctp:6
+msgid "Chapter heading (also causes a page break)"
+msgstr "Overskrift (sørger også for sideskift)"
+
+#: View/Headings/add.ctp:9 View/TextBoxes/add.ctp:11
+msgid "Type"
+msgstr "Type"
+
+#: View/Headings/add.ctp:13
+msgid "Title: "
+msgstr "Tittel: "
+
+#: View/Helper/QuickhelpTinyMceHelper.php:27
+msgid "Site (right) frame"
+msgstr "(Høyre) ramme/frame"
+
+#: View/Layouts/default.ctp:68 View/Layouts/institution.ctp:62
+#: View/Layouts/popup.ctp:68
+msgid "You are logged in as %s."
+msgstr "Du er logget inn som %s. "
+
+#: View/Layouts/default.ctp:69 View/Layouts/institution.ctp:63
+#: View/Layouts/popup.ctp:69
+msgid "Admin index"
+msgstr "Admin index"
+
+#: View/Layouts/default.ctp:72 View/Layouts/institution.ctp:66
+#: View/Layouts/popup.ctp:72
+msgid "Change password"
+msgstr "Endre passord"
+
+msgid "Log in"
+msgstr "Logg inn"
+
+msgid "Request access"
+msgstr "Be om tilgang"
+
+msgid "Your account (%s) does not have permission to access this page."
+msgstr "Kontoen din (%s) har ikke tilgang til denne siden."
+
+#: View/Layouts/default.ctp:77 View/Layouts/institution.ctp:71
+#: View/Layouts/popup.ctp:77
+msgid "Log out"
+msgstr "Logg ut"
+
+#: View/Questions/add.ctp:15
+msgid "Response"
+msgstr "Svar"
+
+#: View/Questions/add.ctp:22 View/Questions/edit.ctp:26
+msgid "Answer text"
+msgstr "Svartekst"
+
+msgid "Answer"
+msgstr "Svar"
+
+#: View/Questions/add.ctp:26 View/Questions/edit.ctp:31
+msgid "Response heading"
+msgstr "Overskrift i svar"
+
+#: View/Questions/add.ctp:27 View/Questions/edit.ctp:14;32
+msgid "Response text"
+msgstr "Svartekst"
+
+#: View/TextBoxes/add.ctp:7
+msgid "A free response box with one line for input"
+msgstr "En énlinjes tekstboks for fritt svar"
+
+#: View/TextBoxes/add.ctp:8
+msgid "A free response box with multiple lines for input"
+msgstr "En tekstboks med flere linjer, for fritt svar "
+
+#: View/TextBoxes/add.ctp:15
+msgid "Prompt *: "
+msgstr "Ledetekst *: "
+
+#: View/TextBoxes/add.ctp:16
+msgid "Initial (placeholder) text: "
+msgstr "Midlertidig (plassholder-)tekst"
+
+#: View/Tutorials/add.ctp:3
+msgid "Create Tutorial"
+msgstr "Opprett leksjon"
+
+#: View/Tutorials/add.ctp:9 View/Tutorials/add_external.ctp:9
+#: View/Tutorials/edit.ctp:21
+msgid "Published URL: "
+msgstr "Publisert URL: "
+
+#: View/Tutorials/add.ctp:19 View/Tutorials/edit.ctp:35
+msgid "Starting location"
+msgstr "Startposisjon"
+
+#: View/Tutorials/add.ctp:20 View/Tutorials/edit.ctp:36
+msgid "Page title: "
+msgstr "Sidetittel"
+
+#: View/Tutorials/add.ctp:21 View/Tutorials/edit.ctp:37
+msgid "URL: "
+msgstr "URL: "
+
+#: View/Tutorials/add.ctp:24 View/Tutorials/edit.ctp:40
+msgid "Popup mode"
+msgstr "Popup-modus"
+
+#: View/Tutorials/add.ctp:25
+msgid "Use popup mode when your right frame starting URL is not working</p>"
+msgstr "Bruk popup-modus når start-URLen i høyre ramme ikke fungerer</p>"
+
+#: View/Tutorials/add.ctp:30 View/Tutorials/edit.ctp:46
+msgid "Show Chapter Progress"
+msgstr "Vis fremdrift i avsnitt"
+
+#: View/Tutorials/add.ctp:32 View/Tutorials/edit.ctp:47
+msgid "Show how far a user is in a chapter (e.g. \"2 of 3\")"
+msgstr "Vis hvor langt brukeren har kommet i avsnittet (feks «2 av 3»)"
+
+#: View/Tutorials/add.ctp:35
+msgid "Include table of contents"
+msgstr "Ta med innholdsfortegnelse"
+
+#: View/Tutorials/add.ctp:41 View/Tutorials/add_external.ctp:25
+msgid "Create"
+msgstr "Opprett"
+
+#: View/Tutorials/add_external.ctp:2
+msgid "Create Link to External Tutorial"
+msgstr "Opprett lenke til ekstern leksjon"
+
+#: View/Tutorials/add_external.ctp:11
+msgid "Available in public index"
+msgstr "Tilgjengelig i offentlig innholdsfortegnelse"
+
+#: View/Tutorials/add_external.ctp:16 View/Tutorials/edit_external.ctp:16
+msgid "Non-QuickHelp tutorial information"
+msgstr "Non-QuickHelp tutorial information"
+
+#: View/Tutorials/add_external.ctp:17
+msgid "Source path: "
+msgstr "Kildesti: "
+
+#: View/Tutorials/add_external.ctp:18
+msgid "Tutorial creation time:"
+msgstr "Tidspunkt for oppretting: "
+
+#: View/Tutorials/add_external.ctp:19
+msgid "Tutorial last revised time:"
+msgstr "Tidspunkt for endring: "
+
+#: View/Tutorials/edit.ctp:3
+msgid "Edit Tutorial Information"
+msgstr "Endre Leksjonsinformasjon"
+
+#: View/Tutorials/edit.ctp:13
+msgid "Changing this will break any existing links!"
+msgstr "Endrer du dette vil eksisterende lenker slutte å fungere"
+
+#: View/Tutorials/edit.ctp:29
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: View/Tutorials/edit.ctp:41
+msgid "Use popup mode when your right frame starting URL is not working"
+msgstr "Bruk popup-modus når start-URLen i høyre ramme ikke fungerer"
+
+#: View/Tutorials/edit.ctp:50
+msgid "Link table of contents"
+msgstr "Lenke til innholdsfortegnelse"
+
+#: View/Tutorials/edit.ctp:58
+msgid "Certificates"
+msgstr "Bevis"
+
+#: View/Tutorials/edit.ctp:59
+msgid "Include a tutorial certificate"
+msgstr "Ta med et leksjonsbevis"
+
+#: View/Tutorials/edit.ctp:62
+msgid "Include a quiz certificate"
+msgstr "Ta med et quiz-bevis"
+
+#: View/Tutorials/edit.ctp:68
+msgid "Allow user to send to additional email addresses"
+msgstr "Tillat brukerne å sende til flere epostadresser"
+
+#: View/Tutorials/edit.ctp:69
+msgid "Send all certificates to: "
+msgstr "Send alle bevis til: "
+
+#: View/Tutorials/edit_content.ctp:4
+msgid "Edit \"%s\" Tutorial Content"
+msgstr "Endre innhold i leksjon «%s»"
+
+#: View/Tutorials/edit_content.ctp:6 View/Users/index.ctp:5
+msgid "<< Return to tutorial index"
+msgstr "<< Tilbake til leksjonens innholdsfortegnelse"
+
+#: View/Tutorials/edit_content.ctp:11
+msgid "Unpublish"
+msgstr "Av-publisér"
+
+#: View/Tutorials/edit_content.ctp:13
+msgid ""
+"Unpublishing will prevent users from seeing this tutorial. Are you sure you "
+"want to do this?"
+msgstr ""
+"Av-publisering vil sørge for at brukerne ikke ser denne leksjonen. Er du "
+"sikker på at du vil gjøre dette?"
+
+#: View/Tutorials/edit_content.ctp:15
+msgid "Publish"
+msgstr "Publisér"
+
+#: View/Tutorials/edit_content.ctp:22
+msgid "Edit information"
+msgstr "Endre informasjon"
+
+#: View/Tutorials/edit_content.ctp:27
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+#: View/Tutorials/edit_content.ctp:35
+msgid "Edit quiz"
+msgstr "Endre quiz"
+
+#: View/Tutorials/edit_content.ctp:39
+msgid "Add quiz"
+msgstr "Legg til quiz"
+
+#: View/Tutorials/edit_content.ctp:60
+msgid " Give a reason for your revision"
+msgstr " Oppgi en grunn for endringen"
+
+#: View/Tutorials/edit_content.ctp:62
+msgid " (required)"
+msgstr " (påkrevet)"
+
+#: View/Tutorials/edit_content.ctp:65
+msgid "Log message: "
+msgstr "Loggmelding: "
+
+#: View/Tutorials/edit_external.ctp:2
+msgid "Edit Link to External Tutorial"
+msgstr "Endre lenke til ekstern leksjon"
+
+#: View/Tutorials/edit_external.ctp:9
+msgid "Published URL:"
+msgstr "Publisert URL: "
+
+#: View/Tutorials/edit_external.ctp:10
+msgid "Available in public index?"
+msgstr "Synlig i offentlig innholdsfortegnelse?"
+
+#: View/Tutorials/edit_external.ctp:17
+msgid "Path to Source path"
+msgstr "Sti til kildesti"
+
+#: View/Tutorials/edit_external.ctp:18
+msgid "Tutorial creation time"
+msgstr "Tidspunkt for oppretting"
+
+#: View/Tutorials/edit_external.ctp:19
+msgid "Tutorial last revised time"
+msgstr "Tidspunkt for endring"
+
+#: View/Tutorials/index.ctp:2
+msgid "Tutorials"
+msgstr "Leksjoner"
+
+#: View/Tutorials/index.ctp:5
+msgid "Create a tutorial"
+msgstr "Opprett en leksjon"
+
+#: View/Tutorials/index.ctp:9;27
+msgid "Edit"
+msgstr "Endre"
+
+#: View/Tutorials/index.ctp:28
+msgid "Delete"
+msgstr "Slett"
+
+#: View/Tutorials/index.ctp:29
+msgid "Are you sure you want to delete tutorial %s?"
+msgstr "Er du sikker på at du ønsker å slette leksjonen «%s»?"
+
+#: View/Tutorials/index.ctp:39
+msgid "View the public interface"
+msgstr "Vis det offentlige grensesnittet"
+
+#: View/Tutorials/index.ctp:45
+msgid "Manage users"
+msgstr "Brukeradmin"
+
+#: View/Tutorials/provide_feedback.ctp:5
+msgid "Name (optional): "
+msgstr "Navn (valgfritt):"
+
+#: View/Tutorials/provide_feedback.ctp:6
+msgid "Email (optional): "
+msgstr "Epost (valgfritt):"
+
+#: View/Tutorials/provide_feedback.ctp:7
+msgid "Comment: "
+msgstr "Kommentar: "
+
+#: View/Tutorials/provide_feedback.ctp:11
+msgid "If you're human, don't fill this out."
+msgstr "Ikke fyll ut dette dersom du er et menneske."
+
+#: View/Tutorials/public_index.ctp:17
+msgid "[information]"
+msgstr "[informasjon]"
+
+#: View/Tutorials/search.ctp:11
+msgid "We didn't find any tutorials! Try removing some filters."
+msgstr "Vi fant ingen leksjoner! Prøv å ta bort noen filtre. "
+
+#: View/Tutorials/search.ctp:31 View/Tutorials/search_simple.ctp:172
+#: View/Tutorials/view.ctp:10 View/Tutorials/view_information.ctp:149
+msgid "Start tutorial"
+msgstr "Start leksjon"
+
+#: View/Tutorials/search.ctp:35
+msgid "more information"
+msgstr "mer informasjon"
+
+#: View/Tutorials/search.ctp:35
+msgid "More information"
+msgstr "Mer informasjon"
+
+#: View/Tutorials/search.ctp:47
+msgid "Keywords: "
+msgstr "Nøkkelord: "
+
+#: View/Tutorials/search_simple.ctp:15
+msgid "Learning Goal"
+msgstr "Læringsmål"
+
+#: View/Tutorials/search_simple.ctp:47
+msgid "Resource Type"
+msgstr "Ressurstype"
+
+#: View/Tutorials/search_simple.ctp:116
+msgid "Start over"
+msgstr "Start på nytt"
+
+#: View/Tutorials/view.ctp:3
+msgid "Before You Start..."
+msgstr "Før du begynner..."
+
+#: View/Tutorials/view.ctp:5
+msgid ""
+"The tutorial is going to pop up on the left, so you'll need to make some "
+"room by resizing your current window."
+msgstr ""
+"Leksjonen vil dukke opp på venstre side, så du må lage litt mere plass ved å "
+"endre størrelsen på vinduet. "
+
+#: View/Tutorials/view.ctp:6
+msgid "Step 1"
+msgstr "Trinn 1"
+
+#: View/Tutorials/view.ctp:7
+msgid "Go to the upper right corner of your browser and resize this window."
+msgstr ""
+"Endre størrelsen på vinduet ved hjelp av knappene i nettleserens øvre hjørne."
+
+#: View/Tutorials/view.ctp:8
+msgid "Please resize your window"
+msgstr "Endre størrelse på vinduet"
+
+#: View/Tutorials/view.ctp:8
+msgid "Resize your window"
+msgstr "Endre størrelse på vinduet"
+
+#: View/Tutorials/view.ctp:9
+msgid "Step 2"
+msgstr "Trinn 2"
+
+#: View/Tutorials/view.ctp:36
+msgid "You are viewing an older version of this tutorial. You may:"
+msgstr "Du ser på en eldre versjon av denne leksjonen. Du kan: "
+
+#: View/Tutorials/view.ctp:38
+msgid "View the current version"
+msgstr "Se den oppdaterte versjonen"
+
+#: View/Tutorials/view.ctp:39
+msgid "Make this version the current one"
+msgstr "Gjør denne versjonen til den gjeldende"
+
+#: View/Tutorials/view.ctp:41
+msgid "Get rid of this message"
+msgstr "Bli kvitt denne meldingen"
+
+#: View/Tutorials/view.ctp:52
+msgid "Display Help"
+msgstr "Vis hjelp"
+
+#: View/Tutorials/view_information.ctp:29
+msgid "<< Return to tutorial list"
+msgstr "<< Tilbake til leksjonslista"
+
+#: View/Tutorials/view_information.ctp:31
+msgid "Return to search results << "
+msgstr "Tilbake til søkeresultat << "
+
+#: View/Tutorials/view_information.ctp:43
+msgid "URL"
+msgstr "URL"
+
+#: View/Tutorials/view_information.ctp:49
+msgid "Format"
+msgstr "Format"
+
+#: View/Tutorials/view_information.ctp:55
+msgid "Author"
+msgstr "Forfatter"
+
+#: View/Tutorials/view_information.ctp:61
+msgid "Contact Person"
+msgstr "Kontaktperson"
+
+#: View/Tutorials/view_information.ctp:122
+msgid "Creative Commons License"
+msgstr "Creative Commons License"
+
+#: View/Tutorials/view_information.ctp:134
+msgid "Created"
+msgstr "Opprettet"
+
+#: View/Tutorials/view_information.ctp:141
+msgid "Last Revised"
+msgstr "Sist endret"
+
+#: View/Tutorials/view_information.ctp:155
+msgid "Start accessible version >> "
+msgstr "Start universelt utformet versjon >> "
+
+#: View/Tutorials/view_single_page.ctp:12
+msgid "One step per page"
+msgstr "Et trinn per side"
+
+#: View/Tutorials/view_single_page.ctp:23
+msgid ""
+"Open %s in another browser window to work through this tutorial side by side."
+msgstr ""
+"Åpne %s i et ytt nettleservindu for å gå gjennom denne leksjonen side ved "
+"side."
+
+#: View/Tutorials/view_single_page.ctp:37
+#: View/Tutorials/view_tutorial_only.ctp:11
+msgid "Your feedback has been sent."
+msgstr "Tilbakemeldingen din har blitt sendt."
+
+#: View/Tutorials/view_single_page.ctp:38
+#: View/Tutorials/view_tutorial_only.ctp:12
+msgid "Check answer"
+msgstr "Sjekk svar"
+
+#: View/Tutorials/view_single_page.ctp:39
+#: View/Tutorials/view_tutorial_only.ctp:13
+msgid "Your feedback was <strong>not</strong> sent. Please try again later."
+msgstr ""
+"Tilbakemeldingen din ble <strong>ikke </strong> sendt. Prøv igjen senere. "
+
+#: View/Tutorials/view_single_page.ctp:40
+#: View/Tutorials/view_tutorial_only.ctp:14
+msgid "Results"
+msgstr "Resultater"
+
+#: View/Tutorials/view_single_page.ctp:41
+#: View/Tutorials/view_tutorial_only.ctp:15
+msgid "Print"
+msgstr "Skriv ut"
+
+#: View/Users/add.ctp:3
+msgid "Add User"
+msgstr "Legg til bruker"
+
+#: View/Users/add.ctp:12
+msgid "Add user"
+msgstr "Legg til bruker"
+
+#: View/Users/add.ctp:14 View/Users/edit.ctp:42
+msgid "Cancel"
+msgstr "Avslutt"
+
+#: View/Users/edit.ctp:4
+msgid "Change Password"
+msgstr "Endre passord"
+
+#: View/Users/edit.ctp:6
+msgid "Edit User"
+msgstr "Endre bruker"
+
+#: View/Users/edit.ctp:11
+msgid "Delete user"
+msgstr "Slett bruker"
+
+#: View/Users/edit.ctp:17
+msgid "Are you sure you want to delete %s?"
+msgstr "Er du sikker på at du vil slette %s?"
+
+msgid "Username"
+msgstr "Brukernavn"
+
+#: View/Users/edit.ctp:29
+msgid "Password"
+msgstr "Passord"
+
+#: View/Users/edit.ctp:30
+msgid "Leave blank to keep."
+msgstr "La stå tomt for å beholde eksisterende."
+
+#: View/Users/edit.ctp:31
+msgid "Password Confirmation"
+msgstr "Bekreft passord"
+
+#: View/Users/edit.ctp:40
+msgid "Save user"
+msgstr "Lagre bruker"
+
+#: View/Users/index.ctp:2
+msgid "User Management"
+msgstr "Brukeradmin"
+
+#: View/Users/index.ctp:9
+msgid "Create a new user"
+msgstr "Opprett ny bruker"
+
+#: View/Users/index.ctp:12
+msgid "Edit a user"
+msgstr "Endre bruker"
+
+#: Model/Answer.php:validation for field answer
+msgid "This field cannot be left blank."
+msgstr "Dette feltet kan ikke være tomt."
+
+#: Model/Question.php:validation for field question
+msgid "You must supply a question."
+msgstr "Du må oppgi et spørsmål."
+
+#: Model/Tutorial.php:validation for field title
+msgid "Tutorials must have titles!"
+msgstr "Leksjoner må ha titler!"
+
+#: Model/Tutorial.php:validation for field contact_email
+msgid "This is not an email address."
+msgstr "Dette ser ikke ut som en epostadresse."
+
+#: Model/Tutorial.php:validation for field user_url
+msgid "Tutorial URL must be unique."
+msgstr "Leksjons-URLen må være unik."
+
+#: Model/Tutorial.php:validation for field user_url
+msgid "Tutorial URL may only contain lowercase letters, numbers, and dashes."
+msgstr "Leksjons-URLen kan bare inneholde små bokstaver, tall og bindestreker."
+
+#: Model/User.php:validation for field password
+msgid "Password may not be empty."
+msgstr "Passord kan ikke være tomt."
+
+#: Model/User.php:validation for field password
+msgid "Passwords do not match."
+msgstr "Passordene stemmer ikke over ens."
+
+#: Model/User.php:validation for field password
+msgid ""
+"Password must have at least one uppercase letter, one lowercase letter, and "
+"one number."
+msgstr ""
+"Passordet må inneholde minst en stor og en liten bokstav, pluss et tall."
+
+#: Model/User.php:validation for field password
+msgid "Password must be at least 10 characters long."
+msgstr "Passordet må være 10 tegn langt. "

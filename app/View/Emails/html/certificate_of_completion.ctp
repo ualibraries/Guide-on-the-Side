@@ -10,33 +10,29 @@
     echo "<div id='dialog-flash'>";
     echo $this->Session->flash();
     echo $this->Session->flash('email');
-    echo "You may want to print this for your records.";
+    echo __('You may want to print this for your records.');
     echo "</div>";
   }
   ?>
   <div id="email-print-wrapper">
   <h2>
-    Completion Certificate for <?php echo $title ?>
+    <?php echo __('Completion Certificate for %s', $title) ?>
   </h2>
 
 
 
-  <p><span class="label">Name:</span> <?php echo $name ?> </p>
-  <p><span class="label">Date:</span> <?php echo $date ?></p>
-  <p><span class="label">Time:</span> <?php echo $time ?></p>
+  <p><span class="label"><?php echo __('Name') ?>:</span> <?php echo $name ?> </p>
+  <p><span class="label"><?php echo __('Date') ?>:</span> <?php echo $date ?></p>
+  <p><span class="label"><?php echo __('Time') ?>:</span> <?php echo $time ?></p>
   
   
   
     <?php foreach (array('tutorial' => $tutorial_grades, 'quiz' => $quiz_grades) as $type => $grades) { ?>
       <?php if (!empty($grades)) { ?>
-      <h3>Your <?php echo $type ?> results</h3>
-      <p><span class="label">Score:</span>
+      <h3><?php echo __('Your %s results', $type) ?></h3>
+      <p><span class="label"><?php echo __('Score') ?>:</span>
 
-      <?php echo $grades['score'] ?>
-
-      out of
-
-      <?php echo $grades['total'] ?>
+      <?php echo __('%d out of %d', $grades['score'], $grades['total']) ?>
 
       (<?php echo round(($grades['score'] / $grades['total']) * 100, 2) ?>%)
       </p>
@@ -45,8 +41,8 @@
             <thead>
               <tr>
                 <th class="question-number">#</th>
-                <th class="question-text">Question</th>
-                <th class="question-eval">Correct?</th>
+                <th class="question-text"><?php echo __('Question') ?></th>
+                <th class="question-eval"><?php echo __('Correct?') ?></th>
               </tr>
             </thead>
             <tbody>
@@ -54,13 +50,13 @@
               $altrow = 0;
               foreach($grades as $order => $detail) {
                 if (is_numeric($order)) {
-                  $correct = 'No';
+                  $correct = __('No');
                   if ($detail['user_correct']) {
-                    $correct = 'Yes';
+                    $correct = __('Yes');
                   }
                   $answer = $detail['user_answer'];
                   if (empty($detail['user_answer'])) {
-                    $answer = 'nothing';
+                    $answer = __('nothing');
                   }
                   $question_number = $order + 1; 
                   $altrow_class = '';
@@ -84,11 +80,11 @@
   <?php } ?>
   
   <?php if (count($free_responses) > 0): ?>
-      <h3>Your free responses</h3>
+      <h3><?php echo __('Your free responses') ?></h3>
       <table>
         <thead>
           <tr>
-            <th class="free-response question-text">Prompt &amp; Answer</th>
+            <th class="free-response question-text"><?php echo __('Prompt &amp; Answer') ?></th>
           </tr>
         </thead>
         <tbody>
@@ -99,7 +95,7 @@
                   <dt><?php echo $prompt[0] ?></dt>
                   <dd>
                     <?php echo 
-                      (!empty($free_response[$prompt[0]])) ? $free_response[$prompt[0]] : "no answer given" 
+                      (!empty($free_response[$prompt[0]])) ? $free_response[$prompt[0]] : __('no answer given')
                     ?> 
                   </dd>
                 </td>

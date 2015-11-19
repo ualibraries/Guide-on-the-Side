@@ -12,7 +12,7 @@ echo "<div class='facet-container'>";
 echo "<h4>Filter</h4>";
 
 echo "<div class='facet'>";
-echo "<h5>Learning Goal</h5>";
+echo '<h5>' . __('Learning Goal') . '</h5>';
 $selectedLGArray = explode('|', $selectedLearningGoals);
 if (!empty($selectedLearningGoals)) {
   $selectedLearningGoals .= '|';
@@ -44,7 +44,7 @@ if (!empty($removableLearningGoals)) {
 echo "</div>";
 
 echo "<div class='facet'>";
-echo "<h5>Resource Type</h5>";
+echo '<h5>' . __('Resource Type') . '</h5>';
 $selectedRTArray = explode('|', $selectedResourceTypes);
 if (!empty($selectedResourceTypes)) {
   $selectedResourceTypes .= '|';
@@ -113,7 +113,7 @@ echo $message;
 //}
 echo '. ';
 if (!empty($this->params['named'])) {
-  echo $this->Html->link('Start over', array('action' => 'search'));
+  echo $this->Html->link(__('Start over'), array('action' => 'search'));
   echo '.';
 }
 
@@ -169,7 +169,7 @@ foreach($tutorials as $tutorial) {
   echo ' [' . $this->Html->link("more information", $link_params, array('class' => 'more-info-link')) .']';
   echo "</p>";
 
-  echo $this->Html->link('Start tutorial &#0187;',
+  echo $this->Html->link(__('Start tutorial') . ' &#0187;',
     array('action' => 'view', $tutorial['Tutorial']['id']),
     array('target' => '_blank', 'escape' => false)
   );

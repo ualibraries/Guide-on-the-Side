@@ -26,9 +26,9 @@
 <?php $link_params = array_merge(array('action' => 'search'), $this->params['named']) ?>
 <p><?php 
   if (empty($this->params['named'])) {
-    echo $this->Html->link('<< Return to tutorial list', $link_params);
+    echo $this->Html->link(__('<< Return to tutorial list'), $link_params);
   } else {
-    echo $this->Html->link('Return to search results << ', $link_params);     
+    echo $this->Html->link(__('Return to search results << '), $link_params);
   }
 ?></p>
 
@@ -40,25 +40,25 @@
 endif ?>
 <?php if (isset($url) && !empty($url)): ?>
 <div class='field-container'>
-  <div class="field-name">URL: </div>
+  <div class="field-name"><?php echo __('URL') ?>: </div>
   <div class="field-value"><?php echo $this->Html->link($url) ?></div>
 </div>
 <?php endif; ?>
 <?php if (isset($tutorial['Tutorial']['format']) && !empty($tutorial['Tutorial']['format'])): ?>
 <div class='field-container'>
-  <div class="field-name">Format: </div>
+  <div class="field-name"><?php echo __('Format') ?>: </div>
   <div class="field-value"><?php echo $tutorial['Tutorial']['format'] ?></div>
 </div>
 <?php endif ?>
 <?php if (isset($tutorial['Tutorial']['author']) && !empty($tutorial['Tutorial']['author'])): ?>
 <div class='field-container'>
-  <div class="field-name">Author: </div>
+  <div class="field-name"><?php echo __('Author') ?>: </div>
   <div class="field-value"><?php echo $tutorial['Tutorial']['author'] ?></div>
 </div>
 <?php endif ?>
 <?php if (isset($tutorial['Tutorial']['contact_name']) && !empty($tutorial['Tutorial']['contact_name'])): ?>
 <div class='field-container'>
-  <div class="field-name">Contact Person: </div>
+  <div class="field-name"><?php echo __('Contact Person') ?>: </div>
   <div class="field-value">
     <?php
     if (isset($tutorial['Tutorial']['contact_email']) && !empty($tutorial['Tutorial']['contact_email'])):
@@ -72,7 +72,7 @@ endif ?>
 <?php endif ?>
 <?php if (!empty($tutorial['Subject'])): ?>
 <div class='field-container'>
-  <div class="field-name">Subjects: </div>
+  <div class="field-name"><?php echo __('Subjects') ?>: </div>
   <div class="field-value">
     <?php
     echo implode(', ', Set::format($tutorial, '{0}', array('Subject.{n}.name', 'Subject.{n}.id')));
@@ -84,7 +84,7 @@ endif ?>
   $tagFormat = $this->Html->link('{0}', '/tutorials/search/keyword:{1}'); ?>
 
   <div class='field-container'>
-    <div class="field-name">Keywords:</div>
+    <div class="field-name"><?php echo __('Keywords') ?>:</div>
     <div class="field-value">
       <?php
       echo join(', ', Set::format($tutorial, $tagFormat, array('Tag.{n}.name', 'Tag.{n}.id')));
@@ -96,7 +96,7 @@ endif ?>
   $learningGoalFormat = $this->Html->link('{0}', '/tutorials/search/learning_goal:{1}');?>
 
   <div class='field-container'>
-    <div class="field-name">Learning Goals:</div>
+    <div class="field-name"><?php echo __('Learning Goals') ?>:</div>
     <div class="field-value">
       <?php
       echo join(', ', Set::format($tutorial, $learningGoalFormat, array('LearningGoal.{n}.name', 'LearningGoal.{n}.id')));
@@ -108,7 +108,7 @@ endif ?>
   $resourceTypeFormat = $this->Html->link('{0}', '/tutorials/search/resource_type:{1}');?>
 
   <div class='field-container'>
-    <div class="field-name">Resource Types:</div>
+    <div class="field-name"><?php echo __('Resource Types') ?>: </div>
     <div class="field-value">
       <?php
       echo join(', ', Set::format($tutorial, $resourceTypeFormat, array('ResourceType.{n}.name', 'ResourceType.{n}.id')));
@@ -119,7 +119,7 @@ endif ?>
 
 <?php if (!empty($tutorial['Tutorial']['licensing'])): ?>
   <div class='field-container'>
-    <div class="field-name"><?php echo $this->Html->link('Creative Commons License',
+    <div class="field-name"><?php echo $this->Html->link(__('Creative Commons License'),
        'http://creativecommons.org/licenses/', array('target' => '_blank')) ?>:</div>
     <div class="field-value">
       <?php
@@ -131,14 +131,14 @@ endif ?>
 
 <?php if ($created != '0000-00-00 00:00:00'): ?>
   <div class='field-container'>
-    <div class="field-name">Created: </div>
+    <div class="field-name"><?php echo __('Created') ?>: </div>
     <div class="field-value"><?php echo $this->Time->timeAgoInWords($created, array('format' => 'F j, Y')) ?></div>
   </div>
 <?php endif ?>
 
 <?php if ($last_modified != '0000-00-00 00:00:00'): ?>
   <div class='field-container'>
-    <div class="field-name">Last Revised: </div>
+    <div class="field-name"><?php echo __('Last Revised') ?>: </div>
     <div class="field-value">
       <?php echo $this->Time->timeAgoInWords($last_modified, array('format' => 'F j, Y')) ?>
     </div>
@@ -146,12 +146,12 @@ endif ?>
 <?php endif ?>
 
 <div class="start-tutorial">
-  <?php echo $this->Html->link('Start tutorial', $url, array('class' => 'simple-button')) ?>
+  <?php echo $this->Html->link(__('Start tutorial'), $url, array('class' => 'simple-button')) ?>
 </div>
 
 <?php if (isset($tutorial['Tutorial']['accessible_version_url']) &&
    !empty($tutorial['Tutorial']['accessible_version_url'])):
      echo "<div class='start-tutorial'>";
-     echo $this->Html->link('Start accessible version >> ', $tutorial['Tutorial']['accessible_version_url']);
+     echo $this->Html->link(__('Start accessible version >> '), $tutorial['Tutorial']['accessible_version_url']);
      echo "</div>";
 endif ?>

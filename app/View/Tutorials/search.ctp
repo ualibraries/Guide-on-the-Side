@@ -7,7 +7,8 @@ if ($count > 0) {
   echo $this->element('paging');
 
 } else {
-  echo "<br />We didn't find any tutorials! Try removing some filters.";
+  echo '<br />';
+  echo __('We didn\'t find any tutorials! Try removing some filters.');
 }
 
 echo "<ul id='tutorial-list'>";
@@ -27,11 +28,11 @@ foreach($tutorials as $tutorial) {
   echo $this->Html->link(
     $title,
     array('action' => 'view', $tutorial['Tutorial']['tutorial_id']),
-    array('target' => '_blank', 'escape' => false, 'title' => 'Start tutorial')
+    array('target' => '_blank', 'escape' => false, 'title' => __('Start tutorial'))
   );
   echo ' ';
   $link_params = array_merge(array('action' => 'view_information', $tutorial['Tutorial']['tutorial_id']), $this->params['named']);
-  echo $this->Html->link("more information", $link_params, array('class' => 'more-info-link', 'title' => 'More information'));
+  echo $this->Html->link(__('more information'), $link_params, array('class' => 'more-info-link', 'title' => __('More information')));
   echo "</h4>";
   echo "<p>";
   $word = '';
@@ -43,7 +44,7 @@ foreach($tutorials as $tutorial) {
       echo $description;
     }
     if (!empty($tags)) {
-      echo " Keywords: ";
+      echo __('Keywords: ');
       echo $tags;
     }
   }

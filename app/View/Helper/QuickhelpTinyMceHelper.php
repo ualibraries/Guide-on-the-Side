@@ -24,13 +24,14 @@ public function beforeRender($viewFile) {
       'content_css' => "http://fonts.googleapis.com/css?family=PT+Sans|Crimson Text," .
         "{$this->webroot}css/tinymce_content.css",
       'document_base_url' => $this->webroot,
-      'theme_advanced_link_targets' => "Site (right) frame=site-frame",
+      'theme_advanced_link_targets' => __('Site (right) frame') . "=site-frame",
       'keep_styles' => false,
       'convert_urls' => false,
       'theme_advanced_resizing_use_cookie' => true,
       'paste_remove_styles' => true,
       'paste_remove_spans' => true,
       'paste_text_sticky' => true,
+		'language' => Configure::read('user_config.language.editor_language'),
     );
 
     $tutorial_configs = array(
@@ -53,7 +54,13 @@ public function beforeRender($viewFile) {
     );
 
     parent::beforeRender($viewFile);
-    $this->Html->script('tinymce_plugins/phpimage/editor_plugin', false);
-    $this->Html->script('tinymce_plugins/quickhelp/editor_plugin', false);
+
+	 echo $this->Html->scriptBlock("tinymce.PluginManager.load('phpimage', '" .
+		Router::url('/') . Configure::read('App.jsBaseUrl') .
+		"tinymce_plugins/phpimage/editor_plugin.js');", array('inline' => false));
+
+    echo $this->Html->scriptBlock("tinymce.PluginManager.load('quickhelp', '" .
+		Router::url('/') . Configure::read('App.jsBaseUrl') .
+		"tinymce_plugins/quickhelp/editor_plugin.js');", array('inline' => false));
   }
 }

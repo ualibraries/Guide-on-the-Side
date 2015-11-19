@@ -1,5 +1,5 @@
 // can't use $(document).ready() here for some reason. tinyMCEPopup.onInit.add() works, though.
-function add_start() {
+function add_start(ed) {
 
   var update_order = function() {
     $('#answers > tbody > tr').each(function(index) {
@@ -69,7 +69,7 @@ function add_start() {
       $(this).parent().parent().remove();
       update_order();
     } else {
-      alert('You must have at least two answers.');
+      alert(ed.getLang('quickhelp.two_answers'));
     }
     return false;
   };
@@ -102,5 +102,6 @@ var add_edit_form_submit = function() {
   return false;
 };
 
+tinyMCEPopup.requireLangPack();
 tinyMCEPopup.onInit.add(add_start);
 

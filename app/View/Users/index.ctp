@@ -9,7 +9,7 @@
 	<?php echo $this->Html->link(__('Create a new user'), array('action' => 'add'),
     array('id' => 'create', 'class' => 'big-button')); ?>
 
-  <h2 id="edit">Edit a user</h2>
+  <h2 id="edit"><?php echo __('Edit a user') ?></h2>
   <div id="user-list" class="paginated-list">
     <?php
     $i = 0;
@@ -21,7 +21,7 @@
     ?>
     <div<?php echo $class;?>>
 
-        <?php echo $this->Html->link(__($user['User']['username']),
+        <?php echo $this->Html->link($user['User']['username'],
           array('action' => 'edit', $user['User']['id'])); ?>
         (<?php echo $user['Role']['name'] ?>)
 
