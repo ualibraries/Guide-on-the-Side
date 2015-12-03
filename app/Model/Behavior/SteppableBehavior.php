@@ -90,9 +90,9 @@ class SteppableBehavior extends ModelBehavior {
                 }
               } else { // it's not a step heading, it's content
                 $step_content = $step_or_heading;
-                
-                // invalid HTML caused by splitting the HTML into steps can break QuickHelp, 
-                //   esp. in IE8. Using Tidy is highly recommended to prevent this, 
+
+                // invalid HTML caused by splitting the HTML into steps can break QuickHelp,
+                //   esp. in IE8. Using Tidy is highly recommended to prevent this,
                 //   but we don't want to prevent people from trying to use it if they're brave.
                 if (extension_loaded('tidy')) {
                   $tidy_config = array(
@@ -112,12 +112,12 @@ class SteppableBehavior extends ModelBehavior {
                 $step_content = $this->_parseTextBoxes($step_content);
                 $step_content = $this->_parseImages($step_content);
                 $step_content = $this->_parseImageLinks($step_content);
-                
+
                 $step_num_within_chapter++;
-                
+
                 $steps[] = array(
-                  'chapter' => $chapter_heading, 
-                  'step' => $step_heading, 
+                  'chapter' => $chapter_heading,
+                  'step' => $step_heading,
                   'content' => $step_content,
                   'step_num_within_chapter' => $step_num_within_chapter,
                   'total_steps_in_chapter' => $total_steps_in_chapter,
@@ -137,7 +137,7 @@ class SteppableBehavior extends ModelBehavior {
     }
     return true;
   }
-  
+
   protected function _parseQuestions($step_content) {
     // preg_replace_callback() is dumb. I wanted to use it here, but it wasn't working out.
     //   Oh, and I'm pretty sure create_function() is evil.
@@ -174,7 +174,7 @@ class SteppableBehavior extends ModelBehavior {
       //   hasMany between Question and Answer
       foreach($all_questions as $order => $question_id) {
         $question = $Model->Question->read(null, $question_id);
-        $grades[$order]['question'] = $question['Question']['question'];
+        $grades[$order]['question'] = $this->_parseImages($question['Question']['question'], true);
         $grades[$order]['correct_answer'] = $question['Answer'][$question['Question']['correct_answer']]['answer'];
         if (array_key_exists($question_id, $answers)) {
           $grades[$order]['user_answer'] = $question['Answer'][$answers[$question_id]]['answer'];
@@ -185,7 +185,7 @@ class SteppableBehavior extends ModelBehavior {
           $grades[$order]['response'] = "";
           $grades[$order]['user_correct'] = false;
         }
-        
+
         if ($grades[$order]['user_correct']) {
           $grades['score']++;
         }
@@ -197,7 +197,7 @@ class SteppableBehavior extends ModelBehavior {
 
     return $grades;
   }
-  
+
   public function getQuestionIds(&$Model, $id = null) {
     if ($id && is_numeric($id)) {
       $conditions = array(
@@ -211,14 +211,19 @@ class SteppableBehavior extends ModelBehavior {
     return array();
   }
 
-  protected function _parseImages($step_content) {
+  /**
+   * Replaces relative src attributes with absolute paths.  Optionally prepends the full base URL.
+   *
+   * @param string $step_content HTML with relative img src paths
+   * @param boolean $full If true, the full base URL will be prepended to the result.
+   * @return string The modified html
+   */
+  protected function _parseImages($step_content, $full = false) {
     $image_pattern = '/(\<img[^>]*src\=")(uploads\/(images|thumbnails)\/[^\"]*"[^>]*\>)/';
-    // The following is the only way I could figure out to get the webroot from the model.
-    //   It assumes this is being called from index.php.
-    $replacement_pattern = '$1' . Router::url('/') . '$2';
+    // Router::url() assumes this is being called from index.php.
+    $prepend = Router::url('/', $full);
+    $replacement_pattern = '$1' . $prepend . '$2';
     $step_content = preg_replace($image_pattern, $replacement_pattern, $step_content, -1, $count);
-//    debug($step_content);
-//    debug($count);
     return $step_content;
   }
 
@@ -253,13 +258,13 @@ class SteppableBehavior extends ModelBehavior {
   protected function _parseDefinitions($step_content, $display_definition_boxes = false) {
     $definition_pattern = '/\<img[^>]*class\="definition"[^>]*src\="tutorials\/view_definition_image\/([^\/]+)\/([^"]+)"[^>]*>/';
     if ($display_definition_boxes) {
-      $step_content = preg_replace_callback($definition_pattern, array($this, '_generateDefinitionPrintHTML'), 
+      $step_content = preg_replace_callback($definition_pattern, array($this, '_generateDefinitionPrintHTML'),
           $step_content);
     } else {
-      $step_content = preg_replace_callback($definition_pattern, array($this, '_generateDefinitionHTML'), 
+      $step_content = preg_replace_callback($definition_pattern, array($this, '_generateDefinitionHTML'),
           $step_content);
     }
-    
+
     return $step_content;
   }
 
@@ -268,7 +273,7 @@ class SteppableBehavior extends ModelBehavior {
     $step_content = preg_replace_callback($text_box_pattern, array($this, '_generateTextBoxHTML'), $step_content);
     return $step_content;
   }
-  
+
   protected function _generateTextBoxHTML($matches) {
     $uuid = $this->uuid();
     $type = htmlentities($matches[1], ENT_QUOTES, 'UTF-8');
@@ -280,11 +285,11 @@ class SteppableBehavior extends ModelBehavior {
     if ('one-line' == $type) {
         return "<label for='$name'>$prompt<br /><input placeholder='$placeholder' class='text-box' name='$name' /></label>";
     } elseif ('multi-line' == $type) {
-        return "<label for='$name'>$prompt<br /><textarea placeholder='$placeholder' " . 
+        return "<label for='$name'>$prompt<br /><textarea placeholder='$placeholder' " .
             "class='text-box' name='$name'></textarea></label>";
     }
-  }  
-  
+  }
+
   // http://www.php.net/manual/en/function.uniqid.php#94959
   // UUID version 4
   protected function uuid() {
