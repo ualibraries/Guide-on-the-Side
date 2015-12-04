@@ -7,7 +7,7 @@
 
 (function() {
   // Prevent trying to load translation files that don't exist.
-  var availableLanguages = ['en', 'nb'];
+  var availableLanguages = ['en', 'nb', 'no'];
   if (availableLanguages.indexOf(tinymce.settings.language) != -1) {
     tinymce.PluginManager.requireLangPack('quickhelp');
   }
