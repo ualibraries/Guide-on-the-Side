@@ -9,7 +9,7 @@ class DefinitionsController extends AppController {
 
   function add() {
     $this->layout = 'tinymce_dialog';
-    $this->set('title_for_layout', 'Definition');
+    $this->set('title_for_layout', __('Definition'));
 	}
 
   function beforeFilter() {

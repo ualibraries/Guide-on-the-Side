@@ -13,12 +13,12 @@
       $mailto .= "&body=".rawurlencode($body);
       ?>
       <p>
-        Your account (<?php echo $username; ?>) does not have permission to access this page.<br>
-        <?php echo $this->Html->link("Request access", $mailto); ?>
+        <?php echo __('Your account (%s) does not have permission to access this page.', $username) ?><br>
+        <?php echo $this->Html->link(__('Request access'), $mailto); ?>
       </p>
       <p>
-        <?php echo $this->Html->link('Log out', Router::url('/logout', true))?>
+        <?php echo $this->Html->link(__('Log out'), Router::url('/logout', true))?>
       </p>
 <?php else: ?>
-    <?php echo $this->Html->link('Log out', Router::url('/logout', true))?>
+    <?php echo $this->Html->link(__('Log out'), Router::url('/logout', true))?>
 <?php endif;?>

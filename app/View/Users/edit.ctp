@@ -1,9 +1,9 @@
 <div class="users form">
 <?php echo $this->Form->create('User');
   if ($user_is_self) {
-    echo "<h2>Change Password</h2>";
+    echo "<h2>" . __('Change Password') . "</h2>";
   } else {
-    echo "<h2>Edit User</h2>";
+    echo "<h2>" . __('Edit User') . "</h2>";
   } ?>
   <?php if (!$user_is_self): ?>
     <div class="actions">
@@ -26,9 +26,9 @@
       echo $this->Form->input('username');
     }
     if ($hasLoginForm) {
-		  echo $this->Form->input('password', array('label' => 'Password', 'type' => 'password',
-        'value' => '', 'after' => 'Leave blank to keep.'));
- 		  echo $this->Form->input('password_confirmation', array('label' => 'Password Confirmation', 'type' => 'password',
+		  echo $this->Form->input('password', array('label' => __('Password'), 'type' => 'password',
+        'value' => '', 'after' => __('Leave blank to keep.')));
+ 		  echo $this->Form->input('password_confirmation', array('label' => __('Password Confirmation'), 'type' => 'password',
         'value' => ''));
     }
     if (!$user_is_self) {

@@ -1,6 +1,10 @@
 application_title: Guide on the Side
 theme: GuideOnTheSide
 
+language:
+  app_language: eng
+  editor_language: en
+
 feedback_link:
   enabled: true
   default_text: "What did you think of this tutorial?"

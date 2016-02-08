@@ -14,7 +14,7 @@
     );
     echo ' ';
     echo $this->Html->link(
-      '[information]',
+      __('[information]'),
       array('action' => 'view_information', $tutorial['Tutorial']['id'])
     );
     echo "</li>";

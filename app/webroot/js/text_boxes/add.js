@@ -1,13 +1,13 @@
 
 // can't use $(document).ready() here for some reason. tinyMCEPopup.onInit.add() works, though.
-function start() {
+function start(ed) {
 
   img_placeholder = tinyMCEPopup.editor.selection.getContent();
   if (img_placeholder != '') {
     regex = /tutorials\/view_text_box_image\/([^/]+)\/([^/]+)\/([^'"]*?)['"]/;
     matches = regex.exec(img_placeholder);
     if (matches != null) {
-      $('#insert').attr('value', 'Update');
+      $('#insert').attr('value', ed.getLang('quickhelp.update'));
       type = matches[1].QH_decodeURIComponent();
       prompt = matches[2].QH_decodeURIComponent();
       placeholder = matches[3].QH_decodeURIComponent();
@@ -29,7 +29,7 @@ function start() {
         tinyMCEPopup.editor.execCommand('mceInsertContent', false, img);
         tinyMCEPopup.close();
     } else {
-        alert('Please fill out the "prompt" field. We need a way to identify the user\'s answer in the certificate.');
+        alert(ed.getLang('quickhelp.fill_out_prompt'));
     }
 
     return false;
@@ -40,4 +40,5 @@ function start() {
   });
 }
 
+tinyMCEPopup.requireLangPack();
 tinyMCEPopup.onInit.add(start);

@@ -1,0 +1,1145 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-06-20 22:30-0600\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/DefinitionsController.php:12
+msgid "Definition"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:16;39
+msgid "Invalid final quiz"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:26
+msgid "The quiz has been saved"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:30;48
+msgid "The final quiz could not be saved. Please try again."
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:44
+msgid "The final quiz has been saved"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:61
+msgid "Invalid id for final quiz"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:68
+msgid "Final quiz deleted"
+msgstr ""
+
+#: Controller/FinalQuizzesController.php:70
+msgid "Final quiz was not deleted"
+msgstr ""
+
+#: Controller/HeadingsController.php:12
+msgid "Heading"
+msgstr ""
+
+#: Controller/QuestionsController.php:79;168
+msgid "Invalid question"
+msgstr ""
+
+#: Controller/QuestionsController.php:88;119;124
+msgid "Incorrect"
+msgstr ""
+
+#: Controller/QuestionsController.php:89;125
+msgid "We missed something... did you answer the question?"
+msgstr ""
+
+#: Controller/QuestionsController.php:109
+msgid "That is correct!"
+msgstr ""
+
+#: Controller/QuestionsController.php:111
+msgid "That is not correct."
+msgstr ""
+
+#: Controller/QuestionsController.php:117
+msgid "Correct"
+msgstr ""
+
+#: Controller/QuestionsController.php:160
+msgid "Question"
+msgstr ""
+
+#: Controller/QuestionsController.php:179
+msgid "Invalid id for question"
+msgstr ""
+
+#: Controller/QuestionsController.php:183
+msgid "Question deleted"
+msgstr ""
+
+#: Controller/QuestionsController.php:186
+msgid "Question was not deleted"
+msgstr ""
+
+#: Controller/TextBoxesController.php:12
+msgid "Free response"
+msgstr ""
+
+#: Controller/TutorialsController.php:80;159;171;426;451;502;510;565;626
+msgid "Invalid tutorial"
+msgstr ""
+
+#: Controller/TutorialsController.php:107
+msgid "Single-Page View"
+msgstr ""
+
+#: Controller/TutorialsController.php:275;316
+msgid "We're not sure what you mean. Are your search terms correct?"
+msgstr ""
+
+#: Controller/TutorialsController.php:536;585
+msgid "The tutorial has been saved"
+msgstr ""
+
+#: Controller/TutorialsController.php:543
+msgid "The tutorial could not be saved."
+msgstr ""
+
+#: Controller/TutorialsController.php:592;662;668
+msgid "The tutorial could not be saved. Please try again."
+msgstr ""
+
+#: Controller/TutorialsController.php:599
+msgid "That tutorial doesn't exist."
+msgstr ""
+
+#: Controller/TutorialsController.php:640
+msgid "A log message is required. Your tutorial has not been saved."
+msgstr ""
+
+#: Controller/TutorialsController.php:650;656
+msgid "The tutorial has been saved."
+msgstr ""
+
+#: Controller/TutorialsController.php:691;705;751;769
+msgid "Invalid id for tutorial"
+msgstr ""
+
+#: Controller/TutorialsController.php:696
+msgid "Tutorial deleted"
+msgstr ""
+
+#: Controller/TutorialsController.php:699
+msgid "Tutorial was not deleted"
+msgstr ""
+
+#: Controller/TutorialsController.php:725
+msgid "Restored from revision %d"
+msgstr ""
+
+#: Controller/TutorialsController.php:728
+msgid "Revision restored"
+msgstr ""
+
+#: Controller/TutorialsController.php:733
+msgid "Revision was not restored"
+msgstr ""
+
+#: Controller/TutorialsController.php:743
+msgid "Published"
+msgstr ""
+
+#: Controller/TutorialsController.php:746
+msgid "Tutorial published!"
+msgstr ""
+
+#: Controller/TutorialsController.php:764
+msgid "Tutorial unpublished!"
+msgstr ""
+
+#: Controller/TutorialsController.php:785
+#: View/Headings/add.ctp:6
+msgid "Page break"
+msgstr ""
+
+#: Controller/TutorialsController.php:790;873
+msgid "Image creation error!"
+msgstr ""
+
+#: Controller/TutorialsController.php:870
+msgid "free response"
+msgstr ""
+
+#: Controller/TutorialsController.php:920
+msgid "From"
+msgstr ""
+
+#: Controller/TutorialsController.php:921
+msgid "Email"
+msgstr ""
+
+#: Controller/TutorialsController.php:925
+msgid "This feedback was sent from %s"
+msgstr ""
+
+#: Controller/TutorialsController.php:928
+msgid "Feedback for %s tutorial"
+msgstr ""
+
+#: Controller/TutorialsController.php:960;1054
+msgid "This certificate cannot be generated."
+msgstr ""
+
+#: Controller/TutorialsController.php:1017
+msgid "Certificate of Completion for %s"
+msgstr ""
+
+#: Controller/TutorialsController.php:1043
+msgid "This certificate could not be emailed because no email addresses were supplied."
+msgstr ""
+
+#: Controller/TutorialsController.php:1046
+msgid "The following message was sent."
+msgstr ""
+
+#: Controller/TutorialsController.php:1048
+msgid "The following message could <strong>not</strong> be sent."
+msgstr ""
+
+#: Controller/UsersController.php:44;87
+msgid "The user has been saved"
+msgstr ""
+
+#: Controller/UsersController.php:47;90
+msgid "The user could not be saved. Please try again."
+msgstr ""
+
+#: Controller/UsersController.php:62
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:78;82;97
+msgid "Don't change yourself. I like you the way you are."
+msgstr ""
+
+#: Controller/UsersController.php:106
+msgid "Invalid id for user"
+msgstr ""
+
+#: Controller/UsersController.php:110
+msgid "Don't delete yourself!"
+msgstr ""
+
+#: Controller/UsersController.php:114
+msgid "User deleted"
+msgstr ""
+
+#: Controller/UsersController.php:118
+msgid "User was not deleted"
+msgstr ""
+
+#: Plugin/Datasources/Model/Datasource/ArraySource.php:97
+msgid "No records found in model."
+msgstr ""
+
+#: Plugin/FlexAuth/Controller/FlexAuthController.php:36
+msgid "Login failed! Please try again."
+msgstr ""
+
+msgid "Welcome. Let's make some tutorials!"
+msgstr ""
+
+#: Plugin/TinyMCE/View/Helper/TinyMCEHelper.php:68
+msgid "Invalid TinyMCE configuration preset %s"
+msgstr ""
+
+#: View/Definitions/add.ctp:6
+msgid "Link text"
+msgstr ""
+
+#: View/Definitions/add.ctp:7
+msgid "This is required."
+msgstr ""
+
+#: View/Elements/acknowledgement.ctp:3
+#: View/Layouts/institution.ctp:81
+msgid "Guide on the Side"
+msgstr ""
+
+#: View/Elements/acknowledgement.ctp:8
+msgid "University of Arizona Libraries"
+msgstr ""
+
+#: View/Elements/acknowledgement.ctp:15
+msgid "Powered by %s from the %s"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:5
+msgid "Step-by-step"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:9
+#: View/Tutorials/view_single_page.ctp:16
+msgid "Single-page view"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:15
+msgid "All steps on one page"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:25
+msgid "Undock"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:26
+msgid "Dock"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:28
+msgid "Close"
+msgstr ""
+
+#: View/Elements/on_the_side.ctp:35
+msgid "Go to the beginning"
+msgstr ""
+
+#: View/Elements/paging.ctp:4
+msgid "previous"
+msgstr ""
+
+#: View/Elements/paging.ctp:8
+msgid "next"
+msgstr ""
+
+#: View/Elements/table_of_contents.ctp:3
+msgid "Contents"
+msgstr ""
+
+#: View/Elements/table_of_contents.ctp:16
+#: View/Elements/tutorial_content.ctp:50
+msgid "Quiz"
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:3
+msgid "Contact information"
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:4
+msgid "Name: "
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:5
+msgid "Email: "
+msgstr ""
+
+#: View/Elements/tutorial_common.ctp:6
+msgid "Phone: "
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:10
+msgid "%d of %d"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:19;23;67;71;137;141
+msgid "Previous"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:29;33;77;81
+msgid "Next"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:94
+msgid "Certificate"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:99
+msgid "Please enter your name and email address to retrieve a copy of your completed quiz."
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:103
+msgid "Your name:"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:104
+msgid "Your name"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:109
+msgid "Email address(es):"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:110
+msgid "Email addresses"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:112
+msgid "You can enter multiple email addresses separated by commas. If you are doing this for a class, you may need to enter your instructor's email address also."
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:120
+msgid "Print / Send email"
+msgstr ""
+
+#: View/Elements/tutorial_content.ctp:128
+msgid "Feedback"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:3
+msgid "Feedback link"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:5
+msgid "Show feedback link"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:16
+msgid "Custom text:"
+msgstr ""
+
+#: View/Elements/tutorial_feedback_link.ctp:20
+msgid "Optional. If left blank, the default text \"%s\" will appear."
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:3
+msgid "Metadata"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:6
+msgid "Project SAILS Skill Sets"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:13
+#: View/Tutorials/view_information.ctp:99
+msgid "Learning Goals"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:17
+msgid "check all that apply; See the %s for help."
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:22
+msgid "Audiences"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:24
+#: View/Tutorials/view_information.ctp:87
+msgid "Keywords"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:25
+#: View/Tutorials/view_information.ctp:111
+msgid "Resource Types"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:26;28
+msgid "check all that apply"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:27
+#: View/Tutorials/view_information.ctp:75
+msgid "Subjects"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:31
+msgid "Creative Commons License: "
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:34
+msgid "BY-NC-SA"
+msgstr ""
+
+#: View/Elements/tutorial_metadata.ctp:39
+msgid "Accessible version URL:"
+msgstr ""
+
+#: View/Elements/tutorial_title.ctp:5
+msgid "Tutorial Title: "
+msgstr ""
+
+#: View/Elements/tutorial_title.ctp:8
+msgid "characters remaining."
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:13
+msgid "You may want to print this for your records."
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:19
+msgid "Completion Certificate for %s"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:24
+msgid "Name"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:25
+msgid "Date"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:26
+msgid "Time"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:32
+msgid "Your %s results"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:33
+msgid "Score"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:35
+msgid "%d out of %d"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:45
+msgid "Correct?"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:53
+msgid "No"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:55
+msgid "Yes"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:59
+msgid "nothing"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:83
+msgid "Your free responses"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:87
+msgid "Prompt &amp; Answer"
+msgstr ""
+
+#: View/Emails/html/certificate_of_completion.ctp:98
+msgid "no answer given"
+msgstr ""
+
+#: View/FinalQuizzes/add.ctp:1
+msgid "Add Final Quiz"
+msgstr ""
+
+#: View/FinalQuizzes/add.ctp:3
+#: View/FinalQuizzes/edit.ctp:3
+msgid "<< Return to tutorial"
+msgstr ""
+
+#: View/FinalQuizzes/add.ctp:19
+msgid "Add Quiz"
+msgstr ""
+
+#: View/FinalQuizzes/edit.ctp:1
+msgid "Edit Quiz"
+msgstr ""
+
+#: View/FinalQuizzes/edit.ctp:9
+msgid "Delete quiz"
+msgstr ""
+
+#: View/FinalQuizzes/edit.ctp:11
+msgid "Are you sure you want to delete your quiz?"
+msgstr ""
+
+#: View/FinalQuizzes/edit.ctp:31
+#: View/Tutorials/edit.ctp:75
+#: View/Tutorials/edit_content.ctp:68
+#: View/Tutorials/edit_external.ctp:22
+msgid "Save"
+msgstr ""
+
+#: View/Headings/add.ctp:6
+msgid "Chapter heading (also causes a page break)"
+msgstr ""
+
+#: View/Headings/add.ctp:9
+#: View/TextBoxes/add.ctp:11
+msgid "Type"
+msgstr ""
+
+#: View/Headings/add.ctp:13
+msgid "Title: "
+msgstr ""
+
+#: View/Helper/QuickhelpTinyMceHelper.php:27
+msgid "Site (right) frame"
+msgstr ""
+
+#: View/Layouts/default.ctp:68
+#: View/Layouts/institution.ctp:62
+#: View/Layouts/popup.ctp:68
+msgid "You are logged in as %s."
+msgstr ""
+
+#: View/Layouts/default.ctp:69
+#: View/Layouts/institution.ctp:63
+#: View/Layouts/popup.ctp:69
+msgid "Admin index"
+msgstr ""
+
+#: View/Layouts/default.ctp:72
+#: View/Layouts/institution.ctp:66
+#: View/Layouts/popup.ctp:72
+msgid "Change password"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Request access"
+msgstr ""
+
+msgid "Your account (%s) does not have permission to access this page."
+msgstr ""
+
+#: View/Layouts/default.ctp:77
+#: View/Layouts/institution.ctp:71
+#: View/Layouts/popup.ctp:77
+msgid "Log out"
+msgstr ""
+
+#: View/Questions/add.ctp:15
+msgid "Response"
+msgstr ""
+
+#: View/Questions/add.ctp:22
+#: View/Questions/edit.ctp:26
+msgid "Answer text"
+msgstr ""
+
+msgid "Answer"
+msgstr ""
+
+#: View/Questions/add.ctp:26
+#: View/Questions/edit.ctp:31
+msgid "Response heading"
+msgstr ""
+
+#: View/Questions/add.ctp:27
+#: View/Questions/edit.ctp:14;32
+msgid "Response text"
+msgstr ""
+
+#: View/TextBoxes/add.ctp:7
+msgid "A free response box with one line for input"
+msgstr ""
+
+#: View/TextBoxes/add.ctp:8
+msgid "A free response box with multiple lines for input"
+msgstr ""
+
+#: View/TextBoxes/add.ctp:15
+msgid "Prompt *: "
+msgstr ""
+
+#: View/TextBoxes/add.ctp:16
+msgid "Initial (placeholder) text: "
+msgstr ""
+
+#: View/Tutorials/add.ctp:3
+msgid "Create Tutorial"
+msgstr ""
+
+#: View/Tutorials/add.ctp:9
+#: View/Tutorials/add_external.ctp:9
+#: View/Tutorials/edit.ctp:21
+msgid "Published URL: "
+msgstr ""
+
+#: View/Tutorials/add.ctp:19
+#: View/Tutorials/edit.ctp:35
+msgid "Starting location"
+msgstr ""
+
+#: View/Tutorials/add.ctp:20
+#: View/Tutorials/edit.ctp:36
+msgid "Page title: "
+msgstr ""
+
+#: View/Tutorials/add.ctp:21
+#: View/Tutorials/edit.ctp:37
+msgid "URL: "
+msgstr ""
+
+#: View/Tutorials/add.ctp:24
+#: View/Tutorials/edit.ctp:40
+msgid "Popup mode"
+msgstr ""
+
+#: View/Tutorials/add.ctp:25
+msgid "Use popup mode when your right frame starting URL is not working</p>"
+msgstr ""
+
+#: View/Tutorials/add.ctp:30
+#: View/Tutorials/edit.ctp:46
+msgid "Show Chapter Progress"
+msgstr ""
+
+#: View/Tutorials/add.ctp:32
+#: View/Tutorials/edit.ctp:47
+msgid "Show how far a user is in a chapter (e.g. \"2 of 3\")"
+msgstr ""
+
+#: View/Tutorials/add.ctp:35
+msgid "Include table of contents"
+msgstr ""
+
+#: View/Tutorials/add.ctp:41
+#: View/Tutorials/add_external.ctp:25
+msgid "Create"
+msgstr ""
+
+#: View/Tutorials/add_external.ctp:2
+msgid "Create Link to External Tutorial"
+msgstr ""
+
+#: View/Tutorials/add_external.ctp:11
+msgid "Available in public index"
+msgstr ""
+
+#: View/Tutorials/add_external.ctp:16
+#: View/Tutorials/edit_external.ctp:16
+msgid "Non-QuickHelp tutorial information"
+msgstr ""
+
+#: View/Tutorials/add_external.ctp:17
+msgid "Source path: "
+msgstr ""
+
+#: View/Tutorials/add_external.ctp:18
+msgid "Tutorial creation time:"
+msgstr ""
+
+#: View/Tutorials/add_external.ctp:19
+msgid "Tutorial last revised time:"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:3
+msgid "Edit Tutorial Information"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:13
+msgid "Changing this will break any existing links!"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:29
+msgid "Description"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:41
+msgid "Use popup mode when your right frame starting URL is not working"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:50
+msgid "Link table of contents"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:58
+msgid "Certificates"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:59
+msgid "Include a tutorial certificate"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:62
+msgid "Include a quiz certificate"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:68
+msgid "Allow user to send to additional email addresses"
+msgstr ""
+
+#: View/Tutorials/edit.ctp:69
+msgid "Send all certificates to: "
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:4
+msgid "Edit \"%s\" Tutorial Content"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:6
+#: View/Users/index.ctp:5
+msgid "<< Return to tutorial index"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:11
+msgid "Unpublish"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:13
+msgid "Unpublishing will prevent users from seeing this tutorial. Are you sure you want to do this?"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:15
+msgid "Publish"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:22
+msgid "Edit information"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:27
+msgid "Preview"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:35
+msgid "Edit quiz"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:39
+msgid "Add quiz"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:60
+msgid " Give a reason for your revision"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:62
+msgid " (required)"
+msgstr ""
+
+#: View/Tutorials/edit_content.ctp:65
+msgid "Log message: "
+msgstr ""
+
+#: View/Tutorials/edit_external.ctp:2
+msgid "Edit Link to External Tutorial"
+msgstr ""
+
+#: View/Tutorials/edit_external.ctp:9
+msgid "Published URL:"
+msgstr ""
+
+#: View/Tutorials/edit_external.ctp:10
+msgid "Available in public index?"
+msgstr ""
+
+#: View/Tutorials/edit_external.ctp:17
+msgid "Path to Source path"
+msgstr ""
+
+#: View/Tutorials/edit_external.ctp:18
+msgid "Tutorial creation time"
+msgstr ""
+
+#: View/Tutorials/edit_external.ctp:19
+msgid "Tutorial last revised time"
+msgstr ""
+
+#: View/Tutorials/index.ctp:2
+msgid "Tutorials"
+msgstr ""
+
+#: View/Tutorials/index.ctp:5
+msgid "Create a tutorial"
+msgstr ""
+
+#: View/Tutorials/index.ctp:9;27
+msgid "Edit"
+msgstr ""
+
+#: View/Tutorials/index.ctp:28
+msgid "Delete"
+msgstr ""
+
+#: View/Tutorials/index.ctp:29
+msgid "Are you sure you want to delete tutorial %s?"
+msgstr ""
+
+#: View/Tutorials/index.ctp:39
+msgid "View the public interface"
+msgstr ""
+
+#: View/Tutorials/index.ctp:45
+msgid "Manage users"
+msgstr ""
+
+#: View/Tutorials/provide_feedback.ctp:5
+msgid "Name (optional): "
+msgstr ""
+
+#: View/Tutorials/provide_feedback.ctp:6
+msgid "Email (optional): "
+msgstr ""
+
+#: View/Tutorials/provide_feedback.ctp:7
+msgid "Comment: "
+msgstr ""
+
+#: View/Tutorials/provide_feedback.ctp:11
+msgid "If you're human, don't fill this out."
+msgstr ""
+
+#: View/Tutorials/public_index.ctp:17
+msgid "[information]"
+msgstr ""
+
+#: View/Tutorials/search.ctp:11
+msgid "We didn't find any tutorials! Try removing some filters."
+msgstr ""
+
+#: View/Tutorials/search.ctp:31
+#: View/Tutorials/search_simple.ctp:172
+#: View/Tutorials/view.ctp:10
+#: View/Tutorials/view_information.ctp:149
+msgid "Start tutorial"
+msgstr ""
+
+#: View/Tutorials/search.ctp:35
+msgid "more information"
+msgstr ""
+
+#: View/Tutorials/search.ctp:35
+msgid "More information"
+msgstr ""
+
+#: View/Tutorials/search.ctp:47
+msgid "Keywords: "
+msgstr ""
+
+#: View/Tutorials/search_simple.ctp:15
+msgid "Learning Goal"
+msgstr ""
+
+#: View/Tutorials/search_simple.ctp:47
+msgid "Resource Type"
+msgstr ""
+
+#: View/Tutorials/search_simple.ctp:116
+msgid "Start over"
+msgstr ""
+
+#: View/Tutorials/view.ctp:3
+msgid "Before You Start..."
+msgstr ""
+
+#: View/Tutorials/view.ctp:5
+msgid "The tutorial is going to pop up on the left, so you'll need to make some room by resizing your current window."
+msgstr ""
+
+#: View/Tutorials/view.ctp:6
+msgid "Step 1"
+msgstr ""
+
+#: View/Tutorials/view.ctp:7
+msgid "Go to the upper right corner of your browser and resize this window."
+msgstr ""
+
+#: View/Tutorials/view.ctp:8
+msgid "Please resize your window"
+msgstr ""
+
+#: View/Tutorials/view.ctp:8
+msgid "Resize your window"
+msgstr ""
+
+#: View/Tutorials/view.ctp:9
+msgid "Step 2"
+msgstr ""
+
+#: View/Tutorials/view.ctp:36
+msgid "You are viewing an older version of this tutorial. You may:"
+msgstr ""
+
+#: View/Tutorials/view.ctp:38
+msgid "View the current version"
+msgstr ""
+
+#: View/Tutorials/view.ctp:39
+msgid "Make this version the current one"
+msgstr ""
+
+#: View/Tutorials/view.ctp:41
+msgid "Get rid of this message"
+msgstr ""
+
+#: View/Tutorials/view.ctp:52
+msgid "Display Help"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:29
+msgid "<< Return to tutorial list"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:31
+msgid "Return to search results << "
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:43
+msgid "URL"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:49
+msgid "Format"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:55
+msgid "Author"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:61
+msgid "Contact Person"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:122
+msgid "Creative Commons License"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:134
+msgid "Created"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:141
+msgid "Last Revised"
+msgstr ""
+
+#: View/Tutorials/view_information.ctp:155
+msgid "Start accessible version >> "
+msgstr ""
+
+#: View/Tutorials/view_single_page.ctp:12
+msgid "One step per page"
+msgstr ""
+
+#: View/Tutorials/view_single_page.ctp:23
+msgid "Open %s in another browser window to work through this tutorial side by side."
+msgstr ""
+
+#: View/Tutorials/view_single_page.ctp:37
+#: View/Tutorials/view_tutorial_only.ctp:11
+msgid "Your feedback has been sent."
+msgstr ""
+
+#: View/Tutorials/view_single_page.ctp:38
+#: View/Tutorials/view_tutorial_only.ctp:12
+msgid "Check answer"
+msgstr ""
+
+#: View/Tutorials/view_single_page.ctp:39
+#: View/Tutorials/view_tutorial_only.ctp:13
+msgid "Your feedback was <strong>not</strong> sent. Please try again later."
+msgstr ""
+
+#: View/Tutorials/view_single_page.ctp:40
+#: View/Tutorials/view_tutorial_only.ctp:14
+msgid "Results"
+msgstr ""
+
+#: View/Tutorials/view_single_page.ctp:41
+#: View/Tutorials/view_tutorial_only.ctp:15
+msgid "Print"
+msgstr ""
+
+#: View/Users/add.ctp:3
+msgid "Add User"
+msgstr ""
+
+#: View/Users/add.ctp:12
+msgid "Add user"
+msgstr ""
+
+#: View/Users/add.ctp:14
+#: View/Users/edit.ctp:42
+msgid "Cancel"
+msgstr ""
+
+#: View/Users/edit.ctp:4
+msgid "Change Password"
+msgstr ""
+
+#: View/Users/edit.ctp:6
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/edit.ctp:11
+msgid "Delete user"
+msgstr ""
+
+#: View/Users/edit.ctp:17
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+#: View/Users/edit.ctp:29
+msgid "Password"
+msgstr ""
+
+#: View/Users/edit.ctp:30
+msgid "Leave blank to keep."
+msgstr ""
+
+#: View/Users/edit.ctp:31
+msgid "Password Confirmation"
+msgstr ""
+
+#: View/Users/edit.ctp:40
+msgid "Save user"
+msgstr ""
+
+#: View/Users/index.ctp:2
+msgid "User Management"
+msgstr ""
+
+#: View/Users/index.ctp:9
+msgid "Create a new user"
+msgstr ""
+
+#: View/Users/index.ctp:12
+msgid "Edit a user"
+msgstr ""
+
+#: Model/Answer.php:validation for field answer
+msgid "This field cannot be left blank."
+msgstr ""
+
+#: Model/Question.php:validation for field question
+msgid "You must supply a question."
+msgstr ""
+
+#: Model/Tutorial.php:validation for field title
+msgid "Tutorials must have titles!"
+msgstr ""
+
+#: Model/Tutorial.php:validation for field contact_email
+msgid "This is not an email address."
+msgstr ""
+
+#: Model/Tutorial.php:validation for field user_url
+msgid "Tutorial URL must be unique."
+msgstr ""
+
+#: Model/Tutorial.php:validation for field user_url
+msgid "Tutorial URL may only contain lowercase letters, numbers, and dashes."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password may not be empty."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Passwords do not match."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password must have at least one uppercase letter, one lowercase letter, and one number."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password must be at least 10 characters long."
+msgstr ""

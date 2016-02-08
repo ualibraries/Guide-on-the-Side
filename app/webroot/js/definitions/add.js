@@ -1,12 +1,12 @@
 
 // can't use $(document).ready() here for some reason. tinyMCEPopup.onInit.add() works, though.
-function start() {
+function start(ed) {
   img_placeholder = tinyMCEPopup.editor.selection.getContent();
   if (img_placeholder != '') {
     regex = /tutorials\/view_definition_image\/([^/]+)\/([^'"]*?)['"]/;
     matches = regex.exec(img_placeholder);
     if (matches != null) {
-      $('#insert').attr('value', 'Update');
+      $('#insert').attr('value', ed.getLang('update'));
       link_text = matches[1];
       link_text = link_text.QH_decodeURIComponent();
       definition = matches[2];
@@ -35,4 +35,5 @@ function start() {
   });
 }
 
+tinyMCEPopup.requireLangPack();
 tinyMCEPopup.onInit.add(start);

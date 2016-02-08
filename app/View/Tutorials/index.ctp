@@ -6,7 +6,7 @@
       array('id' => 'create', 'class' => 'big-button'));
   ?>
 
-  <h2 id="edit">Edit</h2>
+  <h2 id="edit"><?php echo __('Edit') ?></h2>
 
   <div id="tutorial-list" class="paginated-list">
   <?php
@@ -26,7 +26,7 @@
 		<div class="actions">
 			<?php echo $this->Html->link(__('Edit'), array('action' => $tutorial['Tutorial']['edit_action'], $tutorial['Tutorial']['id'])); ?>
 			<?php echo $this->Html->link(__('Delete'), array('action' => 'delete', $tutorial['Tutorial']['id']), null, 
-        sprintf(__('Are you sure you want to delete tutorial %s?'), $tutorial['Tutorial']['title'])); ?>
+         __('Are you sure you want to delete tutorial %s?', $tutorial['Tutorial']['title'])); ?>
 		</div>
 	</div>
   <?php endforeach ?>
@@ -36,13 +36,13 @@
 
   <div>
   <?php
-    echo $this->Html->link('View the public interface', array('action' => 'search'), array('target' => '_blank'));
+    echo $this->Html->link(__('View the public interface'), array('action' => 'search'), array('target' => '_blank'));
   ?>
   </div>
   
   <?php
   if ($is_admin) {
-    echo $this->Html->link('Manage users', array('controller' => 'users'));
+    echo $this->Html->link(__('Manage users'), array('controller' => 'users'));
   }
 
   ?>

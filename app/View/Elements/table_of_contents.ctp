@@ -1,6 +1,6 @@
 <?php if ($link_toc && !empty($chapters)): ?>
     <div id="table-of-contents">
-        <h2 class="ir">Contents</h2>
+        <h2 class="ir"><?php echo __('Contents') ?></h2>
         <ul>
             <?php
             foreach ($chapters as $index => $chapter) {
@@ -13,7 +13,7 @@
             if ($has_quiz) {
                 echo "<li>";
                 echo "<a href='#step-{$quiz_index}' id='toc-step-{$quiz_index}' class='toc-entry'>";
-                echo "Quiz";
+                echo __('Quiz');
                 echo "</a>";
                 echo "</li>";
             }

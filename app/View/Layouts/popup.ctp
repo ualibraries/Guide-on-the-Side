@@ -65,16 +65,16 @@
       <div id="userinfo">
       <?php
         if ($this->Session->check('Auth.User.username')) {
-          echo "You are logged in as {$this->Session->read('Auth.User.username')}. ";
-          echo '[' . $this->Html->link('Admin index', array('controller' => 'tutorials', 'action' => 'index')) . '] ';
+          echo __('You are logged in as %s.', $this->Session->read('Auth.User.username'));
+          echo '[' . $this->Html->link(__('Admin index'), array('controller' => 'tutorials', 'action' => 'index')) . '] ';
           if ($show_password_link) {
             echo '[';
-            echo $this->Html->link('Change password', array('controller' => 'users',
+            echo $this->Html->link(__('Change password'), array('controller' => 'users',
                 'action' => 'edit', $this->Session->read('Auth.User.id')));
             echo '] ';
           }
           echo '[';
-          echo $this->Html->link('Log out', '/logout');
+          echo $this->Html->link(__('Log out'), '/logout');
           echo ']';
         }
 

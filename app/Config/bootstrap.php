@@ -117,3 +117,4 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
   Configure::write('GoogleAnalytics.enabled', Configure::read('user_config.google_analytics.enabled'));
   Configure::write('UniversalAnalytics.enabled', Configure::read('user_config.universal_analytics.enabled'));
   Configure::write('PiwikAnalytics.enabled', Configure::read('user_config.piwik_analytics.enabled'));
+  Configure::write('Config.language', Configure::read('user_config.language.app_language'));

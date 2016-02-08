@@ -4,23 +4,23 @@
       <li>
         <?php
         echo $this->Html->link(
-          'Step-by-step',
+          __('Step-by-step'),
           array(
             'action' => $popup ? 'view_step_by_step_only' : 'view',
             $tutorial['Tutorial']['id']
           ),
-          array('title' => 'One step per page')
+          array('title' => __('One step per page'))
         );
         ?>
       </li>
-      <li class="active">Single-page view</li>
+      <li class="active"><?php echo __('Single-page view') ?></li>
     </ul>
   </nav>
 </div>
 
 <h1 id="title"><?php echo $title ?></h1>
 <?php if (!$popup): ?>
-    <p>Open <a href="<?php echo $site_url ?>" target="site-frame"><?php echo $site_title ?></a> in another browser window to work through this tutorial side by side.</p>
+    <p><?php echo __('Open %s in another browser window to work through this tutorial side by side.', "<a href='$site_url' target='site-frame'>$site_title</a></p>") ?>
 <?php endif ?>
 
 <?php echo $this->element('table_of_contents') ?>
@@ -33,3 +33,12 @@
 
 <?php
   echo $this->Html->scriptBlock("cakephp.tutorial_id = {$tutorial['Tutorial']['id']};");
+  $i18n = array(
+	  'feedback_sent' => __('Your feedback has been sent.'),
+	  'check_answer' => __('Check answer'),
+	  'feedback_not_sent' => __('Your feedback was <strong>not</strong> sent. Please try again later.'),
+	  'results' => __('Results'),
+	  'print' => __('Print'),
+	  'close' => __('Close'),
+  );
+  echo $this->Html->scriptBlock('cakephp.i18n = ' . json_encode($i18n) . ';');
