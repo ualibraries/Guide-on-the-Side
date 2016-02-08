@@ -489,8 +489,8 @@ msgid "Tutorial Title: "
 msgstr "Leksjonstittel: "
 
 #: View/Elements/tutorial_title.ctp:8
-msgid "%d characters remaining."
-msgstr "%d tegn gjenstår."
+msgid "characters remaining."
+msgstr "tegn gjenstår."
 
 #: View/Emails/html/certificate_of_completion.ctp:13
 msgid "You may want to print this for your records."
