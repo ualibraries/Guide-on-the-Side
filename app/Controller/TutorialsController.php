@@ -932,7 +932,7 @@ class TutorialsController extends AppController {
 				$to_array[] = $tutorial['Tutorial']['contact_email'];
 
 				foreach ($to_array as $to) {
-						$message->addBcc($to);
+						$message->addBcc(trim($to));
 				}
 				
 				try {
@@ -1025,7 +1025,7 @@ class TutorialsController extends AppController {
 						unset($to_array[$key]);
 						continue;
 					}
-					$message->addBcc($to);
+					$message->addBcc(trim($to));
 				}
 
 				try {
