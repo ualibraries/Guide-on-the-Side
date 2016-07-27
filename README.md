@@ -185,7 +185,7 @@ pulling from GitHub if you install that way.
    command:
 
   ```
-   git checkout 1.0-beta3
+   git checkout 1.0-beta4
   ```
 3. CakePHP is not included in our GitHub repository, so download it and place
    the lib folder into your Guide on the Side root. CakePHP 2.6.x is known to
