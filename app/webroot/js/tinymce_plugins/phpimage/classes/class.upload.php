@@ -2433,10 +2433,10 @@ class upload {
                         if (strlen($mime = @exec("file -bi ".escapeshellarg($this->file_src_pathname))) != 0) {
                             $this->log .= '&nbsp;&nbsp;&nbsp;&nbsp;MIME returned as ' . $mime . '<br />';
                             if (strpos($mime, ';') !== FALSE) {
-                                $temp = split(';', $mime);
+                                $temp = explode(';', $mime);
                                 $this->file_src_mime = $temp[0];
                             } else if (strpos($mime, ' ') !== FALSE) {
-                                $temp = split(' ', $mime);
+                                $temp = explode(' ', $mime);
                                 $this->file_src_mime = $temp[0];
                             } else {
                                 $this->file_src_mime = trim($mime);
