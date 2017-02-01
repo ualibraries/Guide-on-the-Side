@@ -44,3 +44,9 @@ UPGRADING
 13. Modify your themes if necessary.
 14. Test to make sure everything still works in the new version.
 15. Archive the old version and move the new version to take its place.
+16. Delete the cache files in app/tmp/cache/models, app/tmp/cache/persistent, and app/tmp/cache/views.  Example command (for Unix-like systems):
+```
+rm -rf app/tmp/cache/models/*
+rm -rf app/tmp/cache/persistent/*
+rm -rf app/tmp/cache/views/*
+```
