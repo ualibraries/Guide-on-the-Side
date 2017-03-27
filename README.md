@@ -8,7 +8,7 @@ Guide on the Side is a freely available tool created by the University of
 Arizona Libraries that allows librarians to quickly and easily create online,
 interactive tutorials that are based on the principles of authentic and active
 learning. An example can be viewed here:
-http://www.library.arizona.edu/applications/quickHelp/tutorial/searching-the-ua-library-catalog. 
+http://www.library.arizona.edu/applications/quickHelp/tutorial/searching-the-ua-library-catalog.
 
 Please join the discussion of Guide on the Side on our
 [Google Group](https://groups.google.com/forum/?fromgroups#!forum/gots-discuss)!
@@ -37,7 +37,7 @@ PHP must have the following loaded or compiled in:
 * mbstring (--enable-mbstring). This is supplied
   by the php-mbstring package in Red Hat Linux.
 * JSON support. Some Linux distributions removed JSON support from their
-  PHP 5.5 packages. This is supplied by the php5-json package in Ubuntu. 
+  PHP 5.5 packages. This is supplied by the php5-json package in Ubuntu.
 
 Other requirements:
 
@@ -52,7 +52,7 @@ Other requirements:
   http://php.net/manual/en/mail.configuration.php.
 * date.timezone must be properly set in php.ini.
 * PHP should have the ability to run on the command line during installation
-  and upgrading. This is used to install the database schema. If you don't 
+  and upgrading. This is used to install the database schema. If you don't
   have access to PHP at the command line, you can try using the SQL migration at
   app/Config/Migration/sql/install.sql.  
 
@@ -78,34 +78,34 @@ Installation procedure (if you're using the pre-built package)
 2. Create a MySQL database to hold your tutorials. You may call it whatever
    you like, but "guide_on_the_side" is probably a good choice. Remember the
    name you chose, as well as the MySQL username and password. Example:
-  ```
+   ```sql
     mysql> CREATE DATABASE guide_on_the_side;
 
     mysql> GRANT ALL ON guide_on_the_side.*
              TO gots_user@localhost IDENTIFIED BY 'my_password';
-```
+   ```
 3. Copy config.sample.yml to config.yml.
 4. Open config.yml in a text editor.  Change the `database` settings to match
    your credentials from step 2, for example:
 
- ```
-   database:
-    datasource: Database/Mysql
-    host: localhost
-    login: gots_user
-    password: my_password
-    database: guide_on_the_side
-  ```
+   ```yaml
+     database:
+      datasource: Database/Mysql
+      host: localhost
+      login: gots_user
+      password: my_password
+      database: guide_on_the_side
+    ```
 5. Configure your email settings in config.yml.  Guide on the Side supports two
    options for sending email: using an external SMTP server or sending email
-   directly from the application server hosting your Guide on the Side 
+   directly from the application server hosting your Guide on the Side
    installation.
 
    Using an external SMTP server is recommended in most cases.  To configure
    Guide on the Side to use an external SMTP server, edit your config.yml
    like so:
 
-   ```
+    ```yaml
       email:
         # smtp (recommended) or php
         transport: smtp
@@ -123,6 +123,7 @@ Installation procedure (if you're using the pre-built package)
         # none, ssl, or tls
         encryption: tls
     ```
+
     Contact your SMTP server administrator for the correct host, ports,
     credentials, and other information.  Note that some SMTP servers do not
     require login credentials, so it's possible that you may need to leave the
@@ -132,29 +133,28 @@ Installation procedure (if you're using the pre-built package)
 
 6. Configure your analytics settings (optional).  Guide on the Side supports Universal Analytics, Classic Google Analytics, and Piwik.  To enable analytics for your Guide on the Side installation, go to the respective section of config.yml for your analytics service (`universal_analytics` for Universal Analytics, `google_analytics` for Classic Google Analytics, or `piwik_analytics` for Piwik), set the `enabled` property to `true` and supply the appropriate information and credentials.  If you are unsure if you're using Classic Google Analytics or Universal Analytics, please refer to: https://support.google.com/analytics/answer/4457764?hl=en
 
-7. Install the database schema and sample content by running the following commands from the
-   guide_on_the_side/app folder:
+7. Install the database schema and sample content by running the following commands from the guide_on_the_side/app folder:
     ```
-    ../lib/Cake/Console/cake Migrations.migration run all --plugin Tags
+      ../lib/Cake/Console/cake Migrations.migration run all --plugin Tags
 
-    ../lib/Cake/Console/cake Migrations.migration run all
-    
-    ../lib/Cake/Console/cake gots add_demo_tutorials
-  ```
+      ../lib/Cake/Console/cake Migrations.migration run all
+
+      ../lib/Cake/Console/cake gots add_demo_tutorials
+    ```
    Alternatively, there is an SQL schema available in app/Config/Migration/sql/install.sql.
 
 8. Change permissions of app/tmp to make it and all sub-folders writable by
    the web server. Example command (for Unix-like systems):
-  ```
+   ```
     chmod -R 777 app/tmp
-  ```
+   ```
    You're encouraged to make the permissions more restrictive than this example.
 
 9. Change permissions of app/webroot/uploads to make it and all sub-folders writable by
    the web server. Example command (for Unix-like systems):
-  ```
-    chmod -R 777 app/webroot/uploads
-  ```
+   ```
+     chmod -R 777 app/webroot/uploads
+    ```
    You're encouraged to make the permissions more restrictive than this example.
 
 10. If all went as planned, the public interface should now be available at
@@ -177,30 +177,27 @@ pulling from GitHub if you install that way.
 
 1. Clone Guide on the Side from GitHub into the appropriate folder on your web
    server. Example command:
-
-  ```
-   git clone https://github.com/ualibraries/Guide-on-the-Side.git guide_on_the_side
-  ```
+    ```
+     git clone https://github.com/ualibraries/Guide-on-the-Side.git guide_on_the_side
+    ```
 2. Check out the latest tag. To see a list of tags, run git tag. Example
    command:
-
-  ```
-   git checkout 1.0-beta4
-  ```
+    ```
+     git checkout 1.0-beta4
+    ```
 3. CakePHP is not included in our GitHub repository, so download it and place
    the lib folder into your Guide on the Side root. CakePHP 2.6.x is known to
    work. Example command:
+    ```
+     mv <unzipped_cakephp_folder>/lib guide_on_the_side/
+    ```
 
-  ```
-   mv <unzipped_cakephp_folder>/lib guide_on_the_side/
-  ```
-  
 4. Now follow the pre-built package instructions starting at step 2.
 
 User Feedback
 -------------
 At the end of each tutorial, Guide on the Side gives users the ability to give feedback by displaying a link that reads "What did you think of this tutorial?".  When clicked, the link will open a modal popup that will allow the user to send feedback to the tutorial's creator.  The text of this link can be changed and the link itself can be suppressed entirely by editing the `feeback_link` section of config.yml, e.g.
-```
+```yaml
 feedback_link:
   enabled: true
   default_text: "My custom feedback text"
@@ -212,7 +209,7 @@ By default, Guide on the Side uses a local authentication system, but it can be 
 
 To use an external authentication service, open config.yml in a text editor and find the `authentication` section.  Change `method` to the appropriate value for your authentication service and add the correct configuration options to the corresponding section.  For example, to enable Shibboleth, you'd want to do something like this:
 
-```
+```yaml
 authentication:
   # local, shibboleth, or cas
   method: shibboleth
@@ -288,5 +285,5 @@ Close, print, dock/undock icons:
 
 Copyright (C) 2011-2015 The Arizona Board of Regents on Behalf of the
 University of Arizona. Developed by Leslie Sult, Justin Spargur,
-Mike Hagedon, Ginger Bidwell, Gabriel Luethje, and Will Simpson at the 
+Mike Hagedon, Ginger Bidwell, Gabriel Luethje, and Will Simpson at the
 University of Arizona Libraries.
