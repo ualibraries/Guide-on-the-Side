@@ -106,28 +106,28 @@ Installation procedure (if you're using the pre-built package)
    like so:
 
    ```
-  email:
-    # smtp (recommended) or php 
-    transport: smtp
-    send_from: no-reply@example.com
-    send_all_feedback_to: admin@example.com 
-    log: false
-    
-# only if you chose smtp above
-  smtp:
-    host: smtpgate.email.example.com 
-    port: 587
-    username: 
-    password: 
-    timeout: 30
-    # none, ssl, or tls
-    encryption: tls
+      email:
+        # smtp (recommended) or php
+        transport: smtp
+        send_from: no-reply@example.com
+        send_all_feedback_to: admin@example.com
+        log: false
+
+      # only if you chose smtp above
+      smtp:
+        host: smtpgate.email.example.com
+        port: 587
+        username:
+        password:
+        timeout: 30
+        # none, ssl, or tls
+        encryption: tls
     ```
     Contact your SMTP server administrator for the correct host, ports,
     credentials, and other information.  Note that some SMTP servers do not
     require login credentials, so it's possible that you may need to leave the
     `username` and `password` fields blank.
-    
+
     If you're not using an external SMTP server, set `transport` to `php` and leave the `smtp` section blank.
 
 6. Configure your analytics settings (optional).  Guide on the Side supports Universal Analytics, Classic Google Analytics, and Piwik.  To enable analytics for your Guide on the Side installation, go to the respective section of config.yml for your analytics service (`universal_analytics` for Universal Analytics, `google_analytics` for Classic Google Analytics, or `piwik_analytics` for Piwik), set the `enabled` property to `true` and supply the appropriate information and credentials.  If you are unsure if you're using Classic Google Analytics or Universal Analytics, please refer to: https://support.google.com/analytics/answer/4457764?hl=en
