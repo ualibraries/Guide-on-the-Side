@@ -156,7 +156,9 @@ Installation procedure (if you're using the pre-built package)
      chmod -R 777 app/webroot/uploads
     ```
    You're encouraged to make the permissions more restrictive than this example.
-   ##Note for Red Hat Enterprise Linux/CentOS Users
+   
+   Note for Red Hat Enterprise Linux/CentOS Users
+   ----------------------------------------------
    To ensure that Apache has the proper permissions, you may need to also run:
    ```
    chcon -t httpd_sys_rw_content_t app/tmp -R
