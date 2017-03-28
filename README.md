@@ -156,6 +156,13 @@ Installation procedure (if you're using the pre-built package)
      chmod -R 777 app/webroot/uploads
     ```
    You're encouraged to make the permissions more restrictive than this example.
+   ##Note for Red Hat Enterprise Linux/CentOS Users
+   To ensure that Apache has the proper permissions, you may need to also run:
+   ```
+   chcon -t httpd_sys_rw_content_t app/tmp -R
+   chcon -t httpd_sys_rw_content_t app/webroot/uploads -R
+   ```
+   These commands configure SELinux to allow the Apache user access to `app/tmp` and `app/webroot/uploads`.
 
 10. If all went as planned, the public interface should now be available at
    http://your.domain/guide_on_the_side/ (assuming the folder you unzipped to
