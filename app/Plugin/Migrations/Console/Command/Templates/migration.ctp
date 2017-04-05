@@ -1,18 +1,12 @@
 <?php
 /**
- * CakePHP Migrations
- *
- * Copyright 2009 - 2013, Cake Development Corporation
- *                        1785 E. Sahara Avenue, Suite 490-423
- *                        Las Vegas, Nevada 89104
+ * Copyright 2009 - 2014, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright 2009 - 2013, Cake Development Corporation
- * @link      http://codaset.com/cakedc/migrations/
- * @package   plugns.migrations
- * @license   MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @copyright Copyright 2009 - 2014, Cake Development Corporation (http://cakedc.com)
+ * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 echo "<?php\n";
 ?>
@@ -22,15 +16,13 @@ class <?php echo $class; ?> extends CakeMigration {
  * Migration description
  *
  * @var string
- * @access public
  */
-	public $description = '';
+	public $description = '<?php echo $name; ?>';
 
 /**
  * Actions to be performed
  *
  * @var array $migration
- * @access public
  */
 	public $migration = array(
 <?php echo $migration; ?>
@@ -39,9 +31,8 @@ class <?php echo $class; ?> extends CakeMigration {
 /**
  * Before migration callback
  *
- * @param string $direction, up or down direction of migration process
- * @return boolean Should process continue
- * @access public
+ * @param string $direction Direction of migration process (up or down)
+ * @return bool Should process continue
  */
 	public function before($direction) {
 		return true;
@@ -50,9 +41,8 @@ class <?php echo $class; ?> extends CakeMigration {
 /**
  * After migration callback
  *
- * @param string $direction, up or down direction of migration process
- * @return boolean Should process continue
- * @access public
+ * @param string $direction Direction of migration process (up or down)
+ * @return bool Should process continue
  */
 	public function after($direction) {
 		return true;

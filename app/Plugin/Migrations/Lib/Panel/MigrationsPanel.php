@@ -22,9 +22,6 @@ App::import('Lib', 'Migrations.MigrationVersion');
  *    'panels' => array('Migrations.migrations')
  * ));
  * @@@
- *
- * @package migrations
- * @subpackage migrations.vendors
  */
 class MigrationsPanel extends DebugPanel {
 
@@ -57,8 +54,9 @@ class MigrationsPanel extends DebugPanel {
 	public $output = '';
 
 /**
- * beforeRender Callback
+ * BeforeRender Callback
  *
+ * @param Controller $controller Current controller
  * @return array
  */
 	public function beforeRender(Controller $controller) {
