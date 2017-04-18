@@ -73,14 +73,18 @@
 			) ?>
       </div>
       <div id="next-navigation">
-			<?php echo $this->Html->link(
-				__('Next'),
-				'#',
-				array(
-					'class' => array('next', 'browse', 'right', 'ir'),
-					'title' => __('Next')
-				)
-			) ?>
+			<?php
+            if($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate'] || $tutorial['Tutorial']['show_feedback_link']) {
+                echo $this->Html->link(
+                    __('Next'),
+                    '#',
+                    array(
+                        'class' => array('next', 'browse', 'right', 'ir'),
+                        'title' => __('Next')
+                    )
+                );
+            }
+			?>
     </div>
   <!--    Section X of Y -->
     </div>
