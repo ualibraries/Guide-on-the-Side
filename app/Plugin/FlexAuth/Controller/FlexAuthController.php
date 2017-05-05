@@ -9,6 +9,7 @@ class FlexAuthController extends FlexAuthAppController {
     
     public function login() {
         $authMethod = Configure::read('user_config.authentication.method');
+        $this->response->header('X-Frame-Options', 'DENY');
         
         if (!empty($authMethod)) {
             $url = str_replace(array('%HOST%'), array($_SERVER['SERVER_NAME']), 
