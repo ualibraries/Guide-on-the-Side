@@ -9,8 +9,9 @@ class FlexAuthController extends FlexAuthAppController {
     
     public function login() {
         $authMethod = Configure::read('user_config.authentication.method');
-        $this->response->header('X-Frame-Options', 'DENY');
-        
+        //$this->response->header('Content-Security-Policy', 'default-src \'self\' \'unsafe-inline\'' .
+        //  'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+        $this->response->header('Content-Security-Policy', 'child-src \'none\'; script-src \'self\' \'unsafe-inline\' http://ajax.googleapis.com');
         if (!empty($authMethod)) {
             $url = str_replace(array('%HOST%'), array($_SERVER['SERVER_NAME']), 
                 Configure::read("user_config.$authMethod.login_url")) . 
