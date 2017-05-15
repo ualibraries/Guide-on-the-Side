@@ -74,7 +74,8 @@ class TutorialsController extends AppController {
 		$this->set('tutorials', $this->paginate());
 	}
 
-	function view_single_page($id = null) {
+    function view_single_page($id = null) {
+	  $this->response->header('Content-Security-Policy', 'child-src \'self\'; script-src \'self\' \'unsafe-inline\' http://ajax.googleapis.com');
 		$tutorial = $this->getTutorial($id);
 		if (!$this->Auth->user() && !$tutorial['Tutorial']['published']) {
 			$this->Session->setFlash(__('Invalid tutorial'));
