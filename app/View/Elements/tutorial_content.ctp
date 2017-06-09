@@ -16,7 +16,7 @@
     <div id="navigation" class="clearfix">
       <div id="prev-navigation">
 			<?php echo $this->Html->link(
-				__('Previous'),
+				__(''),
 				'#',
 				array(
 					'class' => array('prev', 'browse', 'left', 'ir'),
@@ -26,7 +26,7 @@
       </div>
       <div id="next-navigation">
 			<?php echo $this->Html->link(
-				__('Next'),
+				__(''),
 				'#',
 				array(
 					'class' => array('next', 'browse', 'right', 'ir'),
@@ -68,7 +68,7 @@
 				'#',
 				array(
 					'class' => array('prev', 'browse', 'left', 'ir'),
-					'title' => __('Previous')
+					'title' => __('')
 				)
 			) ?>
       </div>
@@ -78,7 +78,7 @@
 				'#',
 				array(
 					'class' => array('next', 'browse', 'right', 'ir'),
-					'title' => __('Next')
+					'title' => __('')
 				)
 			) ?>
     </div>
@@ -138,7 +138,7 @@
 					 '#',
 					 array(
 						 'class' => array('prev', 'browse', 'left', 'ir'),
-						 'title' => __('Previous')
+						 'title' => __('')
 					 )
 				 ) ?>
           </div>
