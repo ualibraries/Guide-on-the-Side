@@ -16,7 +16,7 @@
     <div id="navigation" class="clearfix">
       <div id="prev-navigation">
 			<?php echo $this->Html->link(
-				__(''),
+				'',
 				'#',
 				array(
 					'class' => array('prev', 'browse', 'left', 'ir'),
@@ -26,7 +26,7 @@
       </div>
       <div id="next-navigation">
 			<?php echo $this->Html->link(
-				__(''),
+				'',
 				'#',
 				array(
 					'class' => array('next', 'browse', 'right', 'ir'),
@@ -64,7 +64,7 @@
     <div id="navigation" class="clearfix">
       <div id="prev-navigation">
 			<?php echo $this->Html->link(
-				__(''),
+				'',
 				'#',
 				array(
 					'class' => array('prev', 'browse', 'left', 'ir'),
@@ -76,7 +76,7 @@
 			<?php
             if($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate'] || $tutorial['Tutorial']['show_feedback_link']) {
                 echo $this->Html->link(
-                    __(''),
+                    '',
                     '#',
                     array(
                         'class' => array('next', 'browse', 'right', 'ir'),
@@ -138,7 +138,7 @@
         <div id="navigation" class="clearfix">
           <div id="prev-navigation">
 				 <?php echo $this->Html->link(
-					 __(''),
+					 '',
 					 '#',
 					 array(
 						 'class' => array('prev', 'browse', 'left', 'ir'),
