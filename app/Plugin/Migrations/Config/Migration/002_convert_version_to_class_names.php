@@ -5,7 +5,6 @@ class ConvertVersionToClassNames extends CakeMigration {
  * Migration description
  *
  * @var string
- * @access public
  */
 	public $description = 'Convert version to classNames';
 
@@ -13,7 +12,6 @@ class ConvertVersionToClassNames extends CakeMigration {
  * Actions to be performed
  *
  * @var array $migration
- * @access public
  */
 	public $migration = array(
 		'up' => array(
@@ -36,7 +34,6 @@ class ConvertVersionToClassNames extends CakeMigration {
  * Records to be migrated
  *
  * @var array
- * @access public
  */
 	public $records = array();
 
@@ -44,20 +41,18 @@ class ConvertVersionToClassNames extends CakeMigration {
  * Mappings to the records
  *
  * @var array
- * @access public
  */
 	public $mappings = array();
 
 /**
  * Before migration callback
  *
- * @param string $direction, up or down direction of migration process
- * @return boolean Should process continue
- * @access public
+ * @param string $direction Direction of migration process (up or down)
+ * @return bool Should process continue
  * @throws InternalErrorException
  */
 	public function before($direction) {
-		if ($direction == 'down') {
+		if ($direction === 'down') {
 			throw new InternalErrorException(__d('migrations', 'Sorry, I can\'t downgrade. Why would you want that anyways?'));
 		}
 
@@ -73,9 +68,8 @@ class ConvertVersionToClassNames extends CakeMigration {
 /**
  * After migration callback
  *
- * @param string $direction, up or down direction of migration process
- * @return boolean Should process continue
- * @access public
+ * @param string $direction Direction of migration process (up or down)
+ * @return bool Should process continue
  */
 	public function after($direction) {
 		$this->upgradeRecords();
@@ -110,10 +104,10 @@ class ConvertVersionToClassNames extends CakeMigration {
  * Check if every plugin is loaded/reachable, we need access to them
  *
  * @throws MissingPluginException
- * @return void 
+ * @return void
  */
 	public function checkPlugins() {
-		$types = Set::extract('/' . $this->Version->Version->alias . '/type', $this->records);
+		$types = Hash::extract($this->records, '{n}.' . $this->Version->Version->alias . '.type');
 		$types = $plugins = array_unique($types);
 
 		// Remove app from it

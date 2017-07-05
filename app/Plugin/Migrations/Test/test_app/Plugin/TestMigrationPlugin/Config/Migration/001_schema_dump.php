@@ -5,7 +5,6 @@ class M4af6d40056b04408808500cb58157726 extends CakeMigration {
  * Migration description
  *
  * @var string
- * @access public
  */
 	public $description = 'Version 001 (schema dump) of TestMigrationPlugin';
 
@@ -13,7 +12,6 @@ class M4af6d40056b04408808500cb58157726 extends CakeMigration {
  * Actions to be performed
  *
  * @var array $migration
- * @access public
  */
 	public $migration = array(
 		'up' => array(),
@@ -23,9 +21,8 @@ class M4af6d40056b04408808500cb58157726 extends CakeMigration {
 /**
  * Before migration callback
  *
- * @param string $direction, up or down direction of migration process
- * @return boolean Should process continue
- * @access public
+ * @param string $direction Direction of migration process (up or down)
+ * @return bool Should process continue
  */
 	public function before($direction) {
 		return true;
@@ -34,9 +31,8 @@ class M4af6d40056b04408808500cb58157726 extends CakeMigration {
 /**
  * After migration callback
  *
- * @param string $direction, up or down direction of migration process
- * @return boolean Should process continue
- * @access public
+ * @param string $direction Direction of migration process (up or down)
+ * @return bool Should process continue
  */
 	public function after($direction) {
 		return true;
