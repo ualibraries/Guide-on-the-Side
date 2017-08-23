@@ -23,6 +23,10 @@ class ZendSearchLuceneSource extends DataSource {
 
 	protected $sources = array('search_indices');
 
+	protected $_queriesLog  = '';
+	protected $_queriesCnt  = 0;
+	protected $_queriesTime = 0;
+
 	private $__index = null;
 
 
