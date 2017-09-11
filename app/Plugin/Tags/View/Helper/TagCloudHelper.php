@@ -1,13 +1,15 @@
 <?php
 /**
- * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
+App::uses('AppHelper', 'View/Helper');
 
 /**
  * Tag cloud helper
@@ -27,7 +29,7 @@ class TagCloudHelper extends AppHelper {
 /**
  * Method to output a tag-cloud formatted based on the weight of the tags
  *
- * @param array $tags
+ * @param array $tags Tag data array
  * @param array $options Display options. Valid keys are:
  * 	- shuffle: true to shuffle the tag list, false to display them in the same order than passed [default: true]
  *  - extract: Set::extract() compatible format string. Path to extract weight values from the $tags array [default: {n}.Tag.weight]
@@ -35,8 +37,9 @@ class TagCloudHelper extends AppHelper {
  *  - after: string to be displayed after each generated link. "%size%" will be replaced with tag size calculated from the weight [default: empty]
  *  - maxSize: size of the heaviest tag [default: 160]
  *  - minSize: size of the lightest tag [default: 80]
- *  - url: an array containing the default url
+ *  - url: an array containing the default URL
  *  - named: the named parameter used to send the tag [default: by]
+ *  - paramType: the type of URL parameters used (named or querystring) [default: named]
  * @return string
  */
 	public function display($tags = null, $options = array()) {
@@ -54,7 +57,8 @@ class TagCloudHelper extends AppHelper {
 			'url' => array(
 				'controller' => 'search'
 			),
-			'named' => 'by'
+			'named' => 'by',
+			'paramType' => 'named'
 		);
 		$options = array_merge($defaults, $options);
 
@@ -74,21 +78,42 @@ class TagCloudHelper extends AppHelper {
 
 		$cloud = null;
 		foreach ($tags as $tag) {
-			$options['url'][$options['named']] = $tag[$options['tagModel']]['keyname'];
+			$data = Set::extract(array($tag), $options['extract']);
+			$tagWeight = array_pop($data);
 
-			$size = $options['minSize'] + (($tag[$options['tagModel']]['weight'] - $minWeight) * (($options['maxSize'] - $options['minSize']) / ($spread)));
-			$size = ceil($size);
+			$size = $options['minSize'] + (($tagWeight - $minWeight) * (($options['maxSize'] - $options['minSize']) / ($spread)));
+			$size = $tag[$options['tagModel']]['size'] = ceil($size);
 
 			$cloud .= $this->_replace($options['before'], $size);
-			$cloud .= $this->Html->link($tag[$options['tagModel']]['name'], $options['url'], array('id' => 'tag-' . $tag[$options['tagModel']]['id'])) . ' ';
+			$cloud .= $this->Html->link($tag[$options['tagModel']]['name'], $this->_tagUrl($tag, $options), array('id' => 'tag-' . $tag[$options['tagModel']]['id'])) . ' ';
 			$cloud .= $this->_replace($options['after'], $size);
 		}
+
 		return $cloud;
+	}
+
+/**
+ * Generates the URL for a tag
+ *
+ * @param array $tag Tag data array
+ * @param array $options Display options
+ * @return array|string
+ */
+	protected function _tagUrl($tag, $options) {
+		if ($options['paramType'] === 'named') {
+			$options['url'][$options['named']] = $tag[$options['tagModel']]['keyname'];
+		} else {
+			$options['url']['?'][$options['named']] = $tag[$options['tagModel']]['keyname'];
+		}
+
+		return $options['url'];
 	}
 
 /**
  * Replaces %size% in strings with the calculated "size" of the tag
  *
+ * @param string $string Before or after string
+ * @param float $size Calculated size
  * @return string
  */
 	protected function _replace($string, $size) {
