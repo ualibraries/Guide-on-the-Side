@@ -5,6 +5,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
   public $theme = 'GuideOnTheSide';
+  public $paginate = array();
 
   // GD settings
   var $padding = 10; // not the CSS padding, but the padding inside the image

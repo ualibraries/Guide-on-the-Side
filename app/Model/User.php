@@ -40,7 +40,7 @@ class User extends AppModel {
   }
 
   function beforeValidate($options = array()) {
-    if ($this->data['User']['keep_password']) {
+    if (isset($this->data['User']['keep_password']) && $this->data['User']['keep_password']) {
       // don't validate and don't let the password be set
       unset($this->validate['password']);
       unset($this->data['User']['password']);
