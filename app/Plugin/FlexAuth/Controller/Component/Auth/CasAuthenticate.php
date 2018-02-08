@@ -56,7 +56,7 @@ class CasAuthenticate extends BaseAuthenticate {
 
     public function getUser($request = null) {
         $username = $this->determineUsername();
-        if (username) {
+        if ($username) {
             return $this->_findUser($username);
         } else {
             return false;
