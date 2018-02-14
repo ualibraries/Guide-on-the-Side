@@ -528,11 +528,11 @@ class TutorialsController extends AppController {
 		//$this->Tutorial->FinalQuiz->useDbConfig = 'default';
 	}
 
-	function add() {
+	public function add() {
 		if (!empty($this->data)) {
-			$this->Tutorial->create();
-			$this->data['Revision']['message'] = 'created';
+			$this->data = array_merge($this->data, array('Revision' => array('message' => 'created')));
 			$this->Tutorial->user_id = $this->Session->read('Auth.User.id');
+			$this->Tutorial->create();
 			if ($this->Tutorial->save($this->data)) {
 				$this->Session->setFlash(__('The tutorial has been saved'));
 				if ($this->data['Tutorial']['tutorial_type_id'] == TUTORIAL_TYPE_SIDEBYSIDE) {
@@ -776,7 +776,7 @@ class TutorialsController extends AppController {
 		$this->layout = 'image';
 
 		$text = QH_urldecode($text);
-		
+
 		if ($type == 'chapter') {
 			$string = ucfirst($type);
 			if (!empty($text)) {
@@ -841,7 +841,7 @@ class TutorialsController extends AppController {
 		} else {
 			$box_width = $this->padding * 2 + $this->number_of_characters * $this->character_width;
 		}
-		
+
 		$image = imagecreatetruecolor($box_width, $box_height);
 		$background = imagecolorallocate($image, 128, 194, 120);
 
@@ -864,7 +864,7 @@ class TutorialsController extends AppController {
 		$this->layout = 'image';
 
 		$text = QH_urldecode($prompt);
-		
+
 		if ($type == 'one-line' || $type == 'multi-line') {
 			$string = ucfirst($type);
 			if (!empty($text)) {
@@ -887,10 +887,10 @@ class TutorialsController extends AppController {
 
 		$black = imagecolorallocate($image, 0, 0, 0);
 		$white = imagecolorallocate($image, 255, 255, 255);
-		
+
 		imagefill($image, 0, 0, $white);
 		imagerectangle($image, 0, 0, $box_width - 1, $box_height - 1, $black);
-		
+
 		$y = $this->padding + $this->character_height;
 		foreach ($text as $line) {
 			imagettftext($image, $this->font_size, 0, $this->padding, $y, $black, APP . 'Lib/unifont_5.1.20080907.ttf', $line);
@@ -901,8 +901,8 @@ class TutorialsController extends AppController {
 		imagepng($image);
 		imagedestroy($image);
 		$this->autoRender = false;
-	}  
-	
+	}
+
 	function provide_feedback($id = null, $mode = null) {
 		$this->set('noGoogleAnalytics', true);
 		if (!$id || !is_numeric($id))  {
@@ -924,18 +924,18 @@ class TutorialsController extends AppController {
 					htmlentities($this->data['Tutorial']['comment']);
 				$tutorialUrl = Router::url(array('action' => $action, $id), true);
 				$body .= "<p>" . __('This feedback was sent from %s', $tutorialUrl) . "</p>";
-				
+
 				$message = new CakeEmail('default');
 				$message->subject(__('Feedback for %s tutorial', $tutorial['Tutorial']['title']));
 				$message->emailFormat('html');
-					
+
 				$to_array = explode(',', Configure::read('user_config.email.send_all_feedback_to'));
 				$to_array[] = $tutorial['Tutorial']['contact_email'];
 
 				foreach ($to_array as $to) {
 						$message->addBcc(trim($to));
 				}
-				
+
 				try {
 						// haddress ("Honeypot address") is the honeypot field.
 						// If it's filled out, pretend to send, but don't really.
@@ -946,9 +946,9 @@ class TutorialsController extends AppController {
 						exit();
 				} catch (Exception $e) {
 						echo $e->getMessage();
-						exit();    
-				} 
-								
+						exit();
+				}
+
 			} else {
 				$this->layout = 'public';
 				$this->set(compact('tutorial', 'mode'));
@@ -964,7 +964,7 @@ class TutorialsController extends AppController {
 			$is_quiz = false;
 			$this->set('tutorial_grades', array());
 			$this->set('quiz_grades', array());
-			
+
 			if (array_key_exists('tutorial_id', $this->request->data) && is_numeric($this->request->data['tutorial_id'])) {
 				$tutorial = $this->Tutorial->read(null, $this->request->data['tutorial_id']);
 				if ($tutorial['Tutorial']['certificate']) {
@@ -973,16 +973,16 @@ class TutorialsController extends AppController {
 						if (!isset($this->request->data['questions'])) {
 							$this->request->data['questions'] = array();
 						}
-						$this->set('tutorial_grades', $this->Tutorial->grade($this->request->data['tutorial_id'], 
+						$this->set('tutorial_grades', $this->Tutorial->grade($this->request->data['tutorial_id'],
 								$this->request->data['questions']));
-				}   
+				}
 			}
-			
+
 			if (!isset($this->request->data['free-response'])) {
 				$this->request->data['free-response'] = array();
 			}
 			$this->set('free_responses', $this->request->data['free-response']);
-			
+
 			if (array_key_exists('quiz_id', $this->request->data) && is_numeric($this->request->data['quiz_id'])) {
 				$final_quiz = $this->Tutorial->FinalQuiz->read(null, $this->request->data['quiz_id']);
 				if ($final_quiz['FinalQuiz']['certificate']) {
@@ -994,7 +994,7 @@ class TutorialsController extends AppController {
 						$this->set('quiz_grades', $this->Tutorial->FinalQuiz->grade($this->request->data['quiz_id'], $this->request->data['questions']));
 				}
 			}
-			
+
 			// parse supplied email fields
 
 			if ($is_tutorial || $is_quiz) {
@@ -1008,18 +1008,18 @@ class TutorialsController extends AppController {
 					}
 					$to_string .= $this->request->data['certificate_email'];
 				}
-				
+
 				$this->set('date', date('F j, Y'));
 				$this->set('time', date('g:ia'));
 				$this->set('name', Sanitize::paranoid($this->request->data['certificate_name'], array(' ')));
 				$this->set('title', $subject);
-							
+
 				$message = new CakeEmail('default');
 				$message->subject(__('Certificate of Completion for %s', $subject));
 				$message->template('certificate_of_completion');
 				$message->emailFormat('html');
 				$message->viewVars($this->viewVars);
-				
+
 				$to_array = explode(',', $to_string);
 				foreach ($to_array as $key => $to) {
 					if ($to == 'Emailaddresses' || empty($to)) {
@@ -1034,7 +1034,7 @@ class TutorialsController extends AppController {
 						$email_success = true;
 				} catch (Exception $e) {
 						$email_success = $e->getMessage();
-				} 
+				}
 
 				$this->viewPath = 'Emails/html';
 				$this->layout = 'Emails/html/default';
@@ -1049,7 +1049,7 @@ class TutorialsController extends AppController {
 							$this->Session->setFlash(__('The following message could <strong>not</strong> be sent.'));
 						}
 				}
-				
+
 				return $this->render('certificate_of_completion');
 			} else {
 				return __('This certificate cannot be generated.');

@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
@@ -18,20 +18,15 @@
 class ArticleFixture extends CakeTestFixture {
 
 /**
- * name property
- *
- * @var string 'AnotherArticle'
- */
-	public $name = 'Article';
-
-/**
  * fields property
  *
  * @var array
  */
 	public $fields = array(
-		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
-		'title' => array('type' => 'string', 'null' => false));
+		'id' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 36),
+		'title' => array('type' => 'string', 'null' => false),
+		'user_id' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 36)
+	);
 
 /**
  * records property
@@ -41,11 +36,18 @@ class ArticleFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 'article-1',
-			'title' => 'First Article'),
+			'title' => 'First Article',
+			'user_id' => 'user-1'
+		),
 		array(
 			'id' => 'article-2',
-			'title' => 'Second Article'),
+			'title' => 'Second Article',
+			'user_id' => 'user-2'
+		),
 		array(
 			'id' => 'article-3',
-			'title' => 'Third Article'));
+			'title' => 'Third Article',
+			'user_id' => 'user-3'
+		)
+	);
 }

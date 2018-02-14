@@ -7,3 +7,4 @@ app/tmp/logs/*.log
 app/webroot/uploads
 /nbproject/private/
 .idea
+.DS_Store

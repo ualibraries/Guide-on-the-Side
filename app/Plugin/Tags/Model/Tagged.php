@@ -1,13 +1,14 @@
 <?php
 /**
- * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+App::uses('TagsAppModel', 'Tags.Model');
 
 /**
  * Tagged model
@@ -16,13 +17,6 @@
  * @subpackage tags.models
  */
 class Tagged extends TagsAppModel {
-
-/**
- * Name
- *
- * @var string
- */
-	public $name = 'Tagged';
 
 /**
  * Table that is used
@@ -38,7 +32,8 @@ class Tagged extends TagsAppModel {
  */
 	public $findMethods = array(
 		'cloud' => true,
-		'tagged' => true);
+		'tagged' => true
+	);
 
 /**
  * belongsTo associations
@@ -47,25 +42,27 @@ class Tagged extends TagsAppModel {
  */
 	public $belongsTo = array(
 		'Tag' => array(
-			'className' => 'Tags.Tag'));
+			'className' => 'Tags.Tag'
+		)
+	);
 
 /**
  * Returns a tag cloud
  *
  * The result contains a "weight" field which has a normalized size of the tag
- * occurrence set. The min and max size can be set by passing 'minSize" and
- * 'maxSize' to the query. This value can be used in the view to controll the
+ * occurrence set. The min and max size can be set by passing 'minSize' and
+ * 'maxSize' to the query. This value can be used in the view to control the
  * size of the tag font.
  *
+ * @param string $state State string ('before' or 'after')
+ * @param array $query Query array
+ * @param array $results Result set for 'after' state
  * @todo Ideas to improve this are welcome
- * @param string $state
- * @param array $query
- * @param array $results
  * @return array
  * @link https://github.com/CakeDC/tags/issues/10
  */
 	public function _findCloud($state, $query, $results = array()) {
-		if ($state == 'before') {
+		if ($state === 'before') {
 			// Support old code without the occurrence cache
 			if (!$this->Tag->hasField('occurrence') || isset($query['occurrenceCache']) && $query['occurrenceCache'] === false) {
 				$fields = 'Tagged.tag_id, Tag.id, Tag.identifier, Tag.name, Tag.keyname, Tag.weight, COUNT(*) AS occurrence';
@@ -88,7 +85,8 @@ class Tagged extends TagsAppModel {
 				'contain' => 'Tag',
 				'conditions' => array(),
 				'fields' => $fields,
-				'group' => $groupBy);
+				'group' => $groupBy
+			);
 
 			foreach ($query as $key => $value) {
 				if (!empty($value)) {
@@ -135,22 +133,24 @@ class Tagged extends TagsAppModel {
 
 /**
  * Find all the Model entries tagged with a given tag
- * 
+ *
  * The query must contain a Model name, and can contain a 'by' key with the Tag keyname to filter the results
+ *
  * <code>
  * $this->Article->Tagged->find('tagged', array(
  *		'by' => 'cakephp',
  *		'model' => 'Article'));
- * </code
+ * </code>
  *
- * @TODO Find a way to populate the "magic" field Article.tags
- * @param string $state
- * @param array $query
- * @param array $results
+ * @param string $state State string ('before' or 'after')
+ * @param array $query Query array
+ * @param array $results Result set for 'after' state
+ * @todo Find a way to populate the "magic" field Article.tags
+ * @throws InvalidArgumentException if recursive setting is -1
  * @return mixed Query array if state is before, array of results or integer (count) if state is after
  */
 	public function _findTagged($state, $query, $results = array()) {
-		if ($state == 'before') {
+		if ($state === 'before') {
 			if (isset($query['model']) && $Model = ClassRegistry::init($query['model'])) {
 				$this->bindModel(array(
 					'belongsTo' => array(
@@ -159,7 +159,11 @@ class Tagged extends TagsAppModel {
 							'foreignKey' => 'foreign_key',
 							'type' => 'INNER',
 							'conditions' => array(
-								$this->alias . '.model' => $Model->alias)))), false);
+								$this->alias . '.model' => $Model->alias
+							)
+						)
+					)
+				), false);
 
 				if (!isset($query['recursive'])) {
 					$query['recursive'] = 0;
@@ -173,7 +177,11 @@ class Tagged extends TagsAppModel {
 					$query['fields'] = "COUNT(DISTINCT $Model->alias.$Model->primaryKey)";
 					$this->Behaviors->Containable->setup($this, array('autoFields' => false));
 				} else {
-					$query['fields'][] = "DISTINCT " . join(',', $this->getDataSource()->fields($Model));
+					if ($query['fields'] === null) {
+						$query['fields'][] = "DISTINCT " . join(',', $this->getDataSource()->fields($Model));
+					} else {
+						array_unshift($query['fields'], "DISTINCT " . join(',', $this->getDataSource()->fields($Model)));
+					}
 				}
 
 				if (!empty($query['by'])) {

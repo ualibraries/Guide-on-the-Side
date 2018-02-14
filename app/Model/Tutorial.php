@@ -80,7 +80,7 @@ class Tutorial extends AppModel {
 		// Why isn't this field always included? Probably because it's not in the post data.
 		$full_data = $this->findById($this->id);
 
-		if ($full_data['Tutorial']['tutorial_type_id'] == 1) { // Side-by-side (QuickHelp) tutorials
+		if (isset($full_data['Tutorial']) && $full_data['Tutorial']['tutorial_type_id'] == 1) { // Side-by-side (QuickHelp) tutorials
 			$maxlength = $sidebysideLimit;
 			$error = "Titles of QuickHelp tutorials cannot be longer than $maxlength characters.";
 		} else {

@@ -47,7 +47,7 @@ class CsvImportBehavior extends ModelBehavior {
  * @param array $settigs list of settings to be used for this model
  * @return void
  */
-	public function setup(Model &$Model, $settings = array()) {
+	public function setup(Model $Model, $settings = array()) {
 		if (!isset($this->settings[$Model->alias])) {
 			$this->settings[$Model->alias] = array(
 				'delimiter' => ';',

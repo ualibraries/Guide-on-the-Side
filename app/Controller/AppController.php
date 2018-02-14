@@ -4,8 +4,9 @@ App::uses('Controller', 'Controller');
 
 class AppController extends Controller {
 
-  public $theme = 'GuideOnTheSide';  
-  
+  public $theme = 'GuideOnTheSide';
+  public $paginate = array();
+
   // GD settings
   var $padding = 10; // not the CSS padding, but the padding inside the image
   var $character_width = 8;
@@ -29,15 +30,18 @@ class AppController extends Controller {
     $this->helpers[] = 'Js';
 
     // provide the role to all actions
-    $role_id = $this->Auth->user('role_id');
-    $this->loadModel('Role');
-    $this->Role->recursive = 0;
-    $role = $this->Role->findById($role_id);
-    $this->Session->write('Role', $role['Role']);
+    $is_logged_in = $this->Auth->user();
+    if ($is_logged_in) {
+        $role_id = $this->Auth->user('role_id');
+        $this->loadModel('Role');
+        $this->Role->recursive = 0;
+        $role = $this->Role->findById($role_id);
+        $this->Session->write('Role', $role['Role']);
+    }
 
     $this->set('is_admin', $this->Session->read('Role.name') == 'admin');
     $this->set('show_password_link', !$this->Auth->user('noLoginForm'));
-    
+
     if ($theme = Configure::read('user_config.theme')) {
       $this->theme = $theme;
     }
