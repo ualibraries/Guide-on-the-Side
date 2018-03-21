@@ -7,3 +7,8 @@ app/tmp/logs/*.log
 app/webroot/uploads
 /nbproject/private/
 .idea
+
+# Docs
+_site
+.sass-cache
+.jekyll-metadata
