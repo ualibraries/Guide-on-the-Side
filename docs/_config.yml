@@ -23,7 +23,7 @@ github_username:  ualibraries
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-minimal
+theme: jekyll-theme-slate
 plugins:
   - jekyll-feed
 
