@@ -9,6 +9,5 @@ app/webroot/uploads
 .idea
 
 # Docs
-_site
 .sass-cache
 .jekyll-metadata
