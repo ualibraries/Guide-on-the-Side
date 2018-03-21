@@ -13,7 +13,7 @@ http://www.library.arizona.edu/applications/quickHelp/tutorial/searching-the-ua-
 Please join the discussion of Guide on the Side on our
 [Google Group](https://groups.google.com/forum/?fromgroups#!forum/gots-discuss)!
 
-More information can be found on the [Guide on the Side website](http://code.library.arizona.edu/gots).
+More information can be found on the [Guide on the Side website](https://ualibraries.github.io/Guide-on-the-Side/about.html).
 
 Platform support / dependencies
 -------------------------------------------------------------------------------
