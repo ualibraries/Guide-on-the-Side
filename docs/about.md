@@ -20,7 +20,7 @@ Contact us to request a demo acount: <a href="mailto:lbry-gots@distribution.ariz
 
 <p>Already have a demo account? <a href="http://code.library.arizona.edu/gots-demo/admin">Sign in here</a>.</p>
 <h2>Get this for your Library</h2>
-<p>To install the application at your institution, you need the skills, access and resources that are common to installing a web application. Specific requirements and more detailed information on that is available in <a href="https://github.com/ualibraries/Guide-on-the-Side/blob/master/README.md#about">the README file</a>. If you&rsquo;re in Arizona and you&rsquo;re not able to host the application at your institution, we may be able to help. Please <a href="http://code.library.arizona.edu/contact">contact us</a> for more details.</p>
+<p>To install the application at your institution, you need the skills, access and resources that are common to installing a web application. Specific requirements and more detailed information on that is available in <a href="https://github.com/ualibraries/Guide-on-the-Side/blob/master/README.md#about">the README file</a>. If you&rsquo;re in Arizona and you&rsquo;re not able to host the application at your institution, we may be able to help. Please send us an email at <a href="mailto:lbry-gots@distribution.arizona.edu"> for more details.</p>
 <p>We&rsquo;ve developed a <a href="/node/19">user guide</a> to help you get started and a <a href="/node/20">style guide</a> that can help ensure a consistent experience across all tutorials at your institution.</p>
 <p>Ready to go?</p>
 <p><a class="action-button" href="https://github.com/ualibraries/Guide-on-the-Side/releases/download/1.0-beta4/guide_on_the_side-1.0-beta4.zip">Download our packaged 1.0-beta4</a><br />
