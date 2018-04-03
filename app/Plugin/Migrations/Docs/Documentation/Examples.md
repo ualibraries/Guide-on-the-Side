@@ -10,10 +10,37 @@ Creating a new migration file.
 cake Migrations.migration generate
 ```
 
+If you want specify the migration name you can use ```--name``` parameter.
+
+```
+cake Migrations.migration generate --name 'the migration name'
+```
+
 If you want import all tables regardless if it has a model or not you can use ```-f``` (force) parameter.
 
 ```
 cake Migrations.migration generate -f
+```
+
+If you want to force the comparison between schema file and database you can use ```--compare``` parameter.
+
+```
+cake Migrations.migration generate --compare
+```
+
+**Note:** *The comparison can be made on a double-handed path. Between the (modified) schema and the database, and also
+between the (modified) database and the schema.*
+
+If you want to show the migration preview you can use  ```--preview``` parameter.
+
+```
+cake Migrations.migration generate --preview
+```
+
+If you want to prevent the migration preview you can use  ```--no-preview``` parameter.
+
+```
+cake Migrations.migration generate --no-preview
 ```
 
 Running All Pending Migrations
