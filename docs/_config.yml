@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Guide on the Side
-email: lbry-gots@distribution.arizona.edu
+email: lbry-gots@email.arizona.edu
 description: >- # this means to ignore newlines until "baseurl:"
   Guide on the Side helps you to quickly and easily create online, interactive tutorials based on the principles of authentic and active learning.
 baseurl: "/Guide-on-the-Side" # the subpath of your site, e.g. /blog
