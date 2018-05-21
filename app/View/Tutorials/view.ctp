@@ -1,14 +1,44 @@
 <?php if ($popup): ?>
+<?php echo $this->Html->css('resize_elements'); ?>
+
+<div class="aria-dialog visuallyhidden" role="dialog">
+    <?php
+        $single_page_tutorial_url = $this->Html->url(
+            array(
+            'action' => 'view_single_page',
+            $id,
+            $revision_id
+            )
+        );
+    ?>
+    <a href="<?php echo $single_page_tutorial_url; ?>"><?php echo __('Start tutorial') ?></a>
+</div>
+
+<div class="resize_elements" aria-hidden="true">
+    <div class="overlay"></div>
+    <div class="resize_video">
+        <div class="modal-gif-bg">
+            <img class="modal-gif" src="<?php echo $this->webroot; ?>img/resize.gif?cache=<?php echo rand(); ?>" />
+        </div>
+        <h2 class="gif-overlay">Set up your tutorial to look like this</h2>
+        <div class="got-it-link-wrapper">
+            <a class="got-it-link simple-button modal-button" href="#">Click here to start</a>
+        </div>
+    </div>
+    <div class="resize_arrow">
+        <h2>Shrink your browser window until it takes up about half of your screen &#9658;</h2>
+    </div>
+    <div class="move_arrow">
+        <h2>Awesome! Now drag your browser window to the right. &#9658;</h2>
+    </div>
+    <div class="done_prompt">
+        <h2>Perfect! Now you're ready to go.</h2>
+        <a class="popup-link simple-button" href="<?php echo $site_url ?>"><?php echo __('Start tutorial') ?></a>
+    </div>
+</div>
 <h1 class="banner"><?php echo $title?></h1>
-<h2><?php echo __('Before You Start...') ?></h2>
-
-    <p><?php echo __('The tutorial is going to pop up on the left, so you\'ll need to make some room by resizing your current window.') ?></p>
-    <h3><?php echo __('Step 1') ?></h3>
-    <p><?php echo __('Go to the upper right corner of your browser and resize this window.') ?></p>
-    <div><?php echo $this->Html->image("resize.png", array('alt' => __('Please resize your window'), 'title' => __('Resize your window'), 'id' => 'resize-screenshot')) ?></div>
-    <h3><?php echo __('Step 2') ?></h3>
-    <p><a id="popup-link" class="simple-button" href="<?php echo $site_url ?>"><?php echo __('Start tutorial') ?></a></p>
-
+<h2><?php echo __('Click to continue to your tutorial') ?></h2>
+<p><a class="popup-link simple-button" aria-hidden="true" href="<?php echo $site_url ?>"><?php echo __('Start tutorial') ?></a></p>
    <?php
   echo $this->Html->scriptBlock(
     "cakephp.site_url = '{$site_url}';" .

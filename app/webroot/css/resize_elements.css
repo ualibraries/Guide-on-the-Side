@@ -1,0 +1,147 @@
+.overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: black;
+    opacity: 0.75
+}
+.resize_arrow,
+.done_prompt,
+.move_arrow {
+    display: none;
+    position: absolute;
+    top:0;
+    z-index: 11;
+    background: #6A80A8;
+    color: white;
+    padding: 10px;
+}
+
+.resize_arrow {
+    right: 0;
+    z-index: 14;
+}
+
+.move_arrow {
+    right: 0;
+}
+
+.done_prompt {
+    background: #EF4056;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1em;
+    text-align: center;
+}
+
+.resize_video .simple-button,
+.done_prompt .simple-button {
+    float: none;
+    text-align: center;
+    background: #1E5288;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.resize_video {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+
+.gif-overlay,
+.got-it-link-wrapper {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.gif-overlay {
+    top: 20%;
+    text-shadow: 2px 2px 2px #000000;
+    font-size: 2em;
+    color: #FFF;
+    text-align: center;
+}
+
+.got-it-link-wrapper {
+    top: 40%;
+    z-index: 50;
+    text-align: center;
+}
+
+.resize_elements .popup-link,
+.resize_elements .got-it-link {
+    float: none;
+    display: inline-block;
+    font-weight: bold;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.resize_elements .got-it-link:after,
+.resize_elements .popup-link:after {
+    display: none;
+}
+
+.modal-gif {
+    width: 100%;
+}
+
+.modal-gif-bg {
+    background: #000000;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* 1 */
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+    white-space: inherit;
+}
+
+.aria-dialog {
+    z-index: 1000;
+}
