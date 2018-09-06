@@ -91,7 +91,7 @@ $(document).ready(function() {
       }
   });
 
-  var revision_info_height = $('#revision-infoin the timeline, the prototypes mentioned jan 16-19 are what you create during the january workshop that week. you create the prototypes that day and present them at the end of the day. so there’s nothing to do between now and then. hope that clarifies, and let us know if you have other questions!').outerHeight();
+  var revision_info_height = $('#revision-info').outerHeight();
 
   $('#site-frame').css('top', revision_info_height);
   $('#draggable').css('top', revision_info_height);
