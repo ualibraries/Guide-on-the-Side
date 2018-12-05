@@ -39,7 +39,7 @@ class User extends AppModel {
     return $passes;
   }
 
-  function beforeValidate() {
+  function beforeValidate($options = array()) {
     if ($this->data['User']['keep_password']) {
       // don't validate and don't let the password be set
       unset($this->validate['password']);
@@ -47,7 +47,7 @@ class User extends AppModel {
     }
   }
 
-  function beforeSave() {
+  function beforeSave($options = array()) {
     if (!$this->data['User']['keep_password']) {
       $this->data['User']['password'] = sha1(Configure::read('Security.salt') . $this->data['User']['password']);
     }
@@ -62,7 +62,7 @@ class User extends AppModel {
     return $queryData;
   }
 
-  public function delete($id = null) {
+  public function delete($id = null, $cascade = true) {
     if (is_numeric($id)) {
       $user = $this->findById($id);
       if (!$user['User']['deleted']) {
