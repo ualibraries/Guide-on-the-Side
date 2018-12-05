@@ -12,7 +12,7 @@
 /**
  * I18nCountry Class
  */
-class I18nCountry extends Object {
+class I18nCountry extends CakeObject {
 
 /**
  * Translated country names

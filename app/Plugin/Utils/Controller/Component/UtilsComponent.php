@@ -17,14 +17,14 @@
  * @package utils
  * @subpackage utils.controllers.components
  */
-class UtilsComponent extends Object {
+class UtilsComponent extends CakeObject {
 
 /**
  * Controller
  *
  * @var mixed $controller
- */ 
-	public $controller; 
+ */
+	public $controller;
 
 /**
  * Startup Callback

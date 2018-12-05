@@ -20,7 +20,7 @@
 App::import('Core', 'HttpSocket');
 App::import('Lib', 'Xmlrpc.Xmlrpc');
 
-class PingbacksComponent extends Object {
+class PingbacksComponent extends CakeObject {
 /**
  * Components that are required
  *

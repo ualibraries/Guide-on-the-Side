@@ -17,7 +17,7 @@
  * @package utils
  * @subpackage utils.controllers.components
  */
-class FormPreserverComponent extends Object {
+class FormPreserverComponent extends CakeObject {
 /**
  * Components that are required
  *
@@ -109,7 +109,7 @@ class FormPreserverComponent extends Object {
 						$Controller->Session->setFlash($this->redirectMessage);
 					}
 
-					// Code from AuthComponent to store the redirect url so the user get redirected 
+					// Code from AuthComponent to store the redirect url so the user get redirected
 					// to the correct location after a successful login
 					if (isset($Controller->Auth)) {
 						$url = '';
