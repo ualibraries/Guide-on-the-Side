@@ -1,12 +1,10 @@
 <?php
-App::uses('LookupableBehavior', 'Utils.Model/Behavior');
 
 /**
  * Post Test Model
  */
 class Post extends CakeTestModel {
 	public $useTable = 'posts';
-	//public $actsAs = array('Utils.Lookupable');
 	public $alias = 'Post';
 	public $belongsTo = array(
 		'Article');
@@ -32,7 +30,7 @@ class LookupableTest extends CakeTestCase {
  * @return void
  * @access public
  */
-	public function startTest() {
+	public function setUp() {
 		$this->Post = new Post();
 	}
 
@@ -42,7 +40,7 @@ class LookupableTest extends CakeTestCase {
  * @return void
  * @access public
  */
-	public function endTest() {
+	public function tearDown() {
 		unset($this->Post);
 		ClassRegistry::flush();
 	}
@@ -54,7 +52,7 @@ class LookupableTest extends CakeTestCase {
  * @access public
  */
 	public function testAddRecordAndLookup() {
-		$this->Post->Behaviors->attach('Utils.Lookupable', array(
+		$this->Post->Behaviors->load('Utils.Lookupable', array(
 			'types' => array(
 				'Article')));
 		$this->Post->create();
@@ -70,7 +68,7 @@ class LookupableTest extends CakeTestCase {
 			'conditions' => array(
 				'Article.title' => 'Im looked up!')));
 		$this->assertTrue(is_array($result));
-		$this->assertEqual($result['Article']['title'], 'Im looked up!');
+		$this->assertEquals($result['Article']['title'], 'Im looked up!');
 
 		// another post with the same before created article
 		$this->Post->create();
@@ -78,8 +76,7 @@ class LookupableTest extends CakeTestCase {
 			'Post' => array(
 				'title' => 'foobar123',
 				'article_title' => 'Im looked up!')));
-		$this->assertEqual($firstResult['Post']['article_id'], $secondResult['Post']['article_id']);
+		$this->assertEquals($firstResult['Post']['article_id'], $secondResult['Post']['article_id']);
 	}
 
 }
-?>

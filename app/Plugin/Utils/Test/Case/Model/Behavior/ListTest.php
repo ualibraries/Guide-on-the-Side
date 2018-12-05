@@ -1,4 +1,5 @@
 <?php
+
 class UsersAddon extends CakeTestModel {
 /**
  * Name
@@ -42,7 +43,7 @@ class ListTest extends CakeTestCase {
 /**
  * Holds the instance of the model
  *
- * @var mixed $UsersAddon
+ * @var UsersAddon $UsersAddon
  * @access public
  */
 	public $UsersAddon = null;
@@ -62,7 +63,7 @@ class ListTest extends CakeTestCase {
  */
 	public function setUp() {
 		$this->UsersAddon = ClassRegistry::init('UsersAddon');
-		$this->UsersAddon->Behaviors->attach('Utils.List', array(
+		$this->UsersAddon->Behaviors->load('Utils.List', array(
 			'positionColumn' => 'position',
 			'scope' => 'user_id'));
 	}
@@ -85,7 +86,7 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testMoveUp() {
-		$result = $this->UsersAddon->moveUp('149e7472-a9ab-11dd-be1d-00e018bfb339');
+		$result = $this->UsersAddon->moveUp('useraddon-2');
 		$this->assertTrue(!empty($result));
 
 		$result = $this->UsersAddon->moveUp('non-existing-uuid');
@@ -99,7 +100,7 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testMoveDown() {
-		$result = $this->UsersAddon->moveDown('149e7472-a9ab-11dd-be1d-00e018bfb339');
+		$result = $this->UsersAddon->moveDown('useraddon-2');
 		$this->assertTrue(!empty($result));
 
 		$result = $this->UsersAddon->moveDown('non-existing-uuid');
@@ -113,8 +114,23 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testInsertAt() {
-		$result = $this->UsersAddon->insertAt(1, '1857670e-a9ab-11dd-b579-00e018bfb339');
+		$result = $this->UsersAddon->insertAt(1, 'useraddon-3');
 		$this->assertTrue(!empty($result));
+		$result = $this->UsersAddon->read('position', 'useraddon-3');
+		$this->assertEquals($result['UsersAddon']['position'], 1);
+
+		// insert somewhere in the middle
+		$result = $this->UsersAddon->insertAt(2, 'useraddon-3');
+		$this->assertTrue(!empty($result));
+		$result = $this->UsersAddon->read('position', 'useraddon-3');
+		$this->assertEquals($result['UsersAddon']['position'], 2);
+
+		// insert at last position
+		$position = $this->UsersAddon->find('count');
+		$result = $this->UsersAddon->insertAt($position, 'useraddon-3');
+		$this->assertTrue(!empty($result));
+		$result = $this->UsersAddon->read('position', 'useraddon-3');
+		$this->assertEquals($result['UsersAddon']['position'], $position);
 	}
 
 /**
@@ -124,9 +140,9 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testMoveToBottom() {
-		$this->UsersAddon->moveToBottom('0fab7f82-a9ab-11dd-8943-00e018bfb339');
-		$result = $this->UsersAddon->read('position', '0fab7f82-a9ab-11dd-8943-00e018bfb339');
-		$this->assertEqual($result['UsersAddon']['position'], 3);
+		$this->UsersAddon->moveToBottom('useraddon-1');
+		$result = $this->UsersAddon->read('position', 'useraddon-1');
+		$this->assertEquals($result['UsersAddon']['position'], 3);
 	}
 
 /**
@@ -136,9 +152,9 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testMoveToTop() {
-		$this->UsersAddon->moveToTop('1857670e-a9ab-11dd-b579-00e018bfb339');
-		$result = $this->UsersAddon->read('position', '1857670e-a9ab-11dd-b579-00e018bfb339');
-		$this->assertEqual($result['UsersAddon']['position'], 1);
+		$this->UsersAddon->moveToTop('useraddon-3');
+		$result = $this->UsersAddon->read('position', 'useraddon-3');
+		$this->assertEquals($result['UsersAddon']['position'], 1);
 	}
 
 /**
@@ -148,10 +164,10 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testIsFirst() {
-		$result = $this->UsersAddon->isFirst('0fab7f82-a9ab-11dd-8943-00e018bfb339');
+		$result = $this->UsersAddon->isFirst('useraddon-1');
 		$this->assertTrue($result);
 
-		$result = $this->UsersAddon->isFirst('1857670e-a9ab-11dd-b579-00e018bfb339');
+		$result = $this->UsersAddon->isFirst('useraddon-3');
 		$this->assertFalse($result);
 	}
 
@@ -162,10 +178,10 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testIsLast() {
-		$result = $this->UsersAddon->isLast('1857670e-a9ab-11dd-b579-00e018bfb339');
+		$result = $this->UsersAddon->isLast('useraddon-3');
 		$this->assertTrue($result);
 
-		$result = $this->UsersAddon->isLast('0fab7f82-a9ab-11dd-8943-00e018bfb339');
+		$result = $this->UsersAddon->isLast('useraddon-1');
 		$this->assertFalse($result);
 	}
 
@@ -176,16 +192,61 @@ class ListTest extends CakeTestCase {
  * @access public
  */
 	public function testCallbacks() {
-		$this->UsersAddon->Behaviors->detach('Utils.List');
-		$this->UsersAddon->Behaviors->attach('Utils.List', array(
+		$this->UsersAddon->Behaviors->unload('Utils.List');
+		$this->UsersAddon->Behaviors->load('Utils.List', array(
 			'positionColumn' => 'position',
 			'scope' => 'user_id',
 			'callbacks' => false,
 			'validate' => false));
 		$this->UsersAddon->beforeSaveFalse = false;
-		$result = $this->UsersAddon->moveDown('149e7472-a9ab-11dd-be1d-00e018bfb339');
+		$result = $this->UsersAddon->moveDown('useraddon-1');
 		$this->assertTrue(!empty($result));
 	}
 
+/**
+ * Tests that insert into list set position to end of list.
+ *
+ * @return void
+ * @access public
+ */
+	public function testAutoInsertAtEndOfList() {
+		$data = array(
+			'UsersAddon' => array(
+				'addon_id' => 'addon-4',
+				'user_id' => 'user-1',
+				'active' => 1));
+		$this->UsersAddon->beforeSaveFalse = true;
+		$this->UsersAddon->create($data);
+		$result = $this->UsersAddon->save($data);
+		$this->assertTrue(!empty($result));
+		$this->assertEquals($result['UsersAddon']['position'], 4);
+	}
+
+/**
+ * Tests that insert into list set position to end of list.
+ *
+ * @return void
+ * @access public
+ */
+	public function testAutoInsertAtTopOfList() {
+		$this->UsersAddon->Behaviors->unload('Utils.List');
+		$this->UsersAddon->Behaviors->load('Utils.List', array(
+			'positionColumn' => 'position',
+			'addToTop' => true,
+			'scope' => 'user_id'));
+		$data = array(
+			'UsersAddon' => array(
+				'addon_id' => 'addon-5',
+				'user_id' => 'user-1',
+				'active' => 1));
+		$this->UsersAddon->beforeSaveFalse = true;
+		$this->UsersAddon->create($data);
+		$result = $this->UsersAddon->save($data);
+		$this->assertTrue(!empty($result));
+		$this->assertEquals($result['UsersAddon']['position'], 1);
+		$userAddons = $this->UsersAddon->find('all', array('order' => 'position'));
+		$userAddons = Set::combine($userAddons, '/UsersAddon/id', '/UsersAddon/position');
+		$this->assertEquals(array_values($userAddons), range(1,4));
+	}
+
 }
-?>

@@ -40,7 +40,15 @@ class ArticlesTestController extends Controller {
 }
 
 
-class PrgComponentTest extends CakeTestCase {
+class ArchiveComponentTest extends CakeTestCase {
+
+/**
+ * Controller object instance
+ *
+ * @var Controller
+ */
+	public $Controller;
+
 /**
  * Fixtures
  *
@@ -48,14 +56,16 @@ class PrgComponentTest extends CakeTestCase {
  * @access public
  */
 	public $fixtures = array(
-		'plugin.utils.article');
+		'plugin.utils.article'
+	);
+
 /**
  * setUp method
  *
  * @access public
  * @return void
  */
-	function startTest() {
+	public function setUp() {
 		$this->Controller = new ArticlesTestController();
 		$this->Controller->constructClasses();
 		$this->Controller->params = array(
@@ -63,7 +73,7 @@ class PrgComponentTest extends CakeTestCase {
 			'pass' => array(),
 			'url' => array());
 		$this->Controller->modelClass = 'Article';
-		$this->Controller->Archive = new ArchiveComponent;
+		$this->Controller->Archive = new ArchiveComponent($this->Controller->Components);
 		$this->Controller->Archive->startup($this->Controller);
 	}
 
@@ -73,7 +83,7 @@ class PrgComponentTest extends CakeTestCase {
  * @access public
  * @return void
  */
-	function endTest() {
+	public function tearDown() {
 		unset($this->Controller);
 		ClassRegistry::flush();
 	}
@@ -86,11 +96,10 @@ class PrgComponentTest extends CakeTestCase {
  */
 	public function testArchiveLinks() {
 		$result = $this->Controller->Archive->archiveLinks();
-		$this->assertEqual($result[0], array(
+		$this->assertEquals($result[0], array(
 			'year' => 2007,
 			'month' => 03,
 			'count' => 3));
 	}
 
 }
-?>

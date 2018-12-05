@@ -1,5 +1,5 @@
 <?php
-App::uses('CsvImportBehavior', 'Utils.Model/Behavior');
+App::import('Behavior', 'Utils.CsvImport');
 
 /**
  * Content Test Model
@@ -12,7 +12,6 @@ class Content extends CakeTestModel {
  * Content Test Model
  */
 class ImportObserver {
-
 	public function onImportRow($data) {}
 	public function listen($action, $data) {}
 }
@@ -38,14 +37,14 @@ class CsvImportTest extends CakeTestCase {
  * @var array
  * @access public
  */
-	public $fixtures = array('plugin.utils.content');
+	public $fixtures = array('plugin.utils.content', 'plugin.utils.comment');
 
 /**
  * Creates the model instance
  *
  * @return void
  */
-	public function startTest() {
+	public function setUp() {
 		$this->Content = new Content();
 	}
 
@@ -54,7 +53,7 @@ class CsvImportTest extends CakeTestCase {
  *
  * @return void
  */
-	public function endTest() {
+	public function tearDown() {
 		unset($this->Content);
 		unset($this->Behavior);
 		ClassRegistry::flush();
@@ -67,10 +66,14 @@ class CsvImportTest extends CakeTestCase {
  * @return void
  */
 	public function testImportCSVNoFile() {
-		$this->Content->Behaviors->attach('Utils.CsvImport');
-		$this->expectException();
-		$this->expectError();
-		$this->Content->importCSV('/unexistent/file');
+		$this->Content->Behaviors->load('Utils.CsvImport');
+		// $this->expectException();
+		// $this->expectError();
+		try {
+			$this->Content->importCSV('/unexistent/file');
+			$this->fail();
+		} catch (Exception $ex) {
+		}
 	}
 	
 /**
@@ -80,14 +83,39 @@ class CsvImportTest extends CakeTestCase {
  * @return void
  */
 	public function testImportCSV() {
-		$this->Content->Behaviors->attach('Utils.CsvImport');
+		$this->Content->Behaviors->load('Utils.CsvImport');
 		$path = App::pluginPath('Utils');
-		$result = $this->Content->importCSV($path . 'Test' . DS . 'test_app' . DS . 'tmp' . DS . 'test1.csv');
+		$result = $this->Content->importCSV($path . 'Test' . DS . 'tmp' . DS . 'test1.csv');
 		$this->assertTrue($result);
 
 		$records = $this->Content->find('all', array('order' => 'created DESC', 'limit' => 2));
 		$titles = Set::extract('/Content/title', $records);
-		$this->assertEqual($titles, array('Unearthed rare monster in london', 'Another Title'));
+		$this->assertEquals($titles, array('Unearthed rare monster in london', 'Another Title'));
+		
+		$permalinks = Set::extract('/Content/permalink', $records);
+		$this->assertEquals($permalinks, array(13444555, 'A permalink'));
+	}
+
+/**
+ * testImportCSVWithHasMany
+ *
+ * @access public
+ * @return void
+ */
+	public function testImportCSVWithHasMany() {
+		$this->Content->bindModel(array(
+			'hasMany' => array(
+				'Comment'
+			)
+		), false);
+		$this->Content->Behaviors->load('Utils.CsvImport');
+		$path = App::pluginPath('Utils');
+		$result = $this->Content->importCSV($path . 'Test' . DS . 'tmp' . DS . 'test2.csv');
+		$this->assertTrue($result);
+
+		$records = $this->Content->find('all', array('order' => 'created DESC', 'limit' => 2));
+		$titles = Set::extract('/Comment/body', $records);
+		$this->assertEqual($titles, array('really? how strange?', 'very good read'));
 		
 		$permalinks = Set::extract('/Content/permalink', $records);
 		$this->assertEqual($permalinks, array(13444555, 'A permalink'));
@@ -101,14 +129,14 @@ class CsvImportTest extends CakeTestCase {
  */
 	public function testImportCSVWithCallback() {
 		$this->Content = new ContentCallback();
-		$this->Content->Behaviors->attach('Utils.CsvImport');
+		$this->Content->Behaviors->load('Utils.CsvImport');
 		$path = App::pluginPath('Utils');
-		$result = $this->Content->importCSV($path . 'Test' . DS . 'test_app' . DS . 'tmp' . DS . 'test1.csv');
+		$result = $this->Content->importCSV($path . 'Test' . DS . 'tmp' . DS . 'test1.csv');
 		$this->assertTrue($result);
 
 		$records = $this->Content->find('all', array('order' => 'created DESC', 'limit' => 2));
 		$types = Set::extract('/ContentCallback/type', $records);
-		$this->assertEqual($types, array('Article-modified', 'Book-modified'));
+		$this->assertEquals($types, array('Article-modified', 'Book-modified'));
 	}
 
 /**
@@ -118,15 +146,15 @@ class CsvImportTest extends CakeTestCase {
  * @return void
  */
 	public function testImportCSVWithFixedData() {
-		$this->Content->Behaviors->attach('Utils.CsvImport');
+		$this->Content->Behaviors->load('Utils.CsvImport');
 		$path = App::pluginPath('Utils');
 		$fixed = array('Content' => array('parent_id' => 10));
-		$result = $this->Content->importCSV($path . 'Test' . DS . 'test_app' . DS . 'tmp' . DS . 'test1.csv', $fixed);
+		$result = $this->Content->importCSV($path . 'Test' . DS . 'tmp' . DS . 'test1.csv', $fixed);
 		$this->assertTrue($result);
 
 		$records = $this->Content->find('all', array('order' => 'created DESC', 'limit' => 2));
 		$parents = Set::extract('/Content/parent_id', $records);
-		$this->assertEqual($parents, array(10, 10));
+		$this->assertEquals($parents, array(10, 10));
 	}
 
 /**
@@ -136,19 +164,19 @@ class CsvImportTest extends CakeTestCase {
  * @return void
  */
 	public function testImportCSVWithValidation() {
-		$this->Content->Behaviors->attach('Utils.CsvImport');
+		$this->Content->Behaviors->load('Utils.CsvImport');
 		$path = App::pluginPath('Utils');
 		$this->Content->validate = array(
 			'title' => array(
 				'long' => array('rule' => array('minLength', 100))));
-		$result = $this->Content->importCSV($path . 'Test' . DS . 'test_app' . DS . 'tmp' . DS . 'test1.csv');
+		$result = $this->Content->importCSV($path . 'Test' . DS . 'tmp' . DS . 'test1.csv');
 		$this->assertFalse($result);
 		$errors = $this->Content->getImportErrors();
 		$expected = array(
 			array('validation' => array('title' => array('long'))),
 			array('validation' => array('title' => array('long')))
 		);
-		$this->assertEqual($errors, $expected);
+		$this->assertEquals($errors, $expected);
 	}
 
 /**
@@ -158,20 +186,20 @@ class CsvImportTest extends CakeTestCase {
  * @return void
  */
 	public function testImportCSVWithSomeErrors() {
-		$this->Content->Behaviors->attach('Utils.CsvImport');
+		$this->Content->Behaviors->load('Utils.CsvImport');
 		$path = App::pluginPath('Utils');
 		$this->Content->validate = array(
 			'type' => array(
 				'list' => array('rule' => array('inList', array('Article')))));
 				
-		$result = $this->Content->importCSV($path . 'Test' . DS . 'test_app' . DS . 'tmp' . DS . 'test1.csv', array(), true);
-		$this->assertEqual($result, array(0)); // The numbers of the rows that were saved
+		$result = $this->Content->importCSV($path . 'Test' . DS . 'tmp' . DS . 'test1.csv', array(), true);
+		$this->assertEquals($result, array(0)); // The numbers of the rows that were saved
 
 		$errors = $this->Content->getImportErrors();
 		$expected = array(
 			1 => array('validation' => array('type' => array('list'))) // the index 1 indicates the number of the failing row
 		);
-		$this->assertEqual($errors, $expected);
+		$this->assertEquals($errors, $expected);
 	}
 
 /**
@@ -183,16 +211,15 @@ class CsvImportTest extends CakeTestCase {
 	public function testListeners() {
 		$mock = $this->getMock('ImportObserver');
 		$path = App::pluginPath('Utils');
-		$this->Content->Behaviors->attach('Utils.CsvImport');
+		$this->Content->Behaviors->load('Utils.CsvImport');
 		$this->Content->attachImportListener($mock);
 		$this->Content->attachImportListener(array(&$mock, 'listen'));
-		$mock->expects($this->any())
-			->method('onImportRow')
-			->will($this->returnValue(2));
-		$mock->expects($this->any())
-			->method('listen')
-			->will($this->returnValue(2));
-		$result = $this->Content->importCSV($path . 'Test' . DS . 'test_app' . DS . 'tmp' . DS . 'test1.csv');
+
+		$mock->expects($this->exactly(2))->method('onImportRow');
+		$mock->expects($this->exactly(2))->method('listen');
+
+		$result = $this->Content->importCSV($path . 'Test' . DS . 'tmp' . DS . 'test1.csv');
 		$this->assertTrue($result);
 	}
+
 }

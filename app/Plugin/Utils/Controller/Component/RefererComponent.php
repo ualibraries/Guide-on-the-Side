@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
@@ -17,30 +17,31 @@
  * @package utils
  * @subpackage utils.controllers.components
  */
-class RefererComponent extends Object {
+class RefererComponent extends Component {
 
 /**
  * Controller object instance
  *
- * @var array actions
+ * @var Controller
  */
 	public $Controller;
 
 /**
- * Intialize Callback
+ * Initialize Callback
  *
- * @param object Controller object
+ * @param Controller object
  */
-	public function initialize(&$controller) {
+	public function initialize(Controller $controller) {
 		$this->Controller = $controller;
 	} 
 
 /**
  * Startup Callback
  *
- * @param object Controller object
+ * @param Controller object
  */
-	public function startup(&$controller) {
+	public function startup(Controller $controller) {
+		$this->Controller = $controller;
 		$this->setReferer();
 	}
 
@@ -50,8 +51,8 @@ class RefererComponent extends Object {
  * @param string $default
  */
 	public function setReferer($default = null) {
-		if (empty($this->Controller->data['Data']['referer'])) {
-			$referer = $this->Controller->referer();
+		if (empty($this->Controller->request->data['Data']['referer'])) {
+			$referer = $this->Controller->request->referer();
 
 			if ($referer == '/' && !empty($default)) {
 				$referer = $default;
@@ -61,7 +62,7 @@ class RefererComponent extends Object {
 				}
 			}
 		} else {
-			$referer = $this->Controller->data['Data']['referer'];
+			$referer = $this->Controller->request->data['Data']['referer'];
 		}
 		$this->Controller->set(compact('referer'));
 	}
@@ -76,9 +77,9 @@ class RefererComponent extends Object {
  */
 	public function redirect($url, $status = null, $exit = true) {
 		if (isset($this->Controller->data['Data']['referer'])) {
-			$referer = $this->Controller->data['Data']['referer'];
+			$referer = $this->Controller->request->data['Data']['referer'];
 		} else {
-			$referer = $this->Controller->referer();
+			$referer = $this->Controller->request->referer();
 		}
 
 		if (strlen($referer) == 0 || $referer == '/') {
