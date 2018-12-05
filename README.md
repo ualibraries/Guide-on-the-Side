@@ -196,7 +196,7 @@ pulling from GitHub if you install that way.
     ```
 3. CakePHP is not included in our GitHub repository, so download it and place
    the lib folder into your Guide on the Side root. CakePHP 2.6.x is known to
-   work. Example command:
+   work. For PHP 7.2, you need to download CakePHP 2.9 and above. Example command:
     ```
      mv <unzipped_cakephp_folder>/lib guide_on_the_side/
     ```
