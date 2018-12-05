@@ -1,8 +1,8 @@
 /* @override http://localhost/mark_story/site/debug_kit/css/debug_toolbar.css */
 #debug-kit-toolbar {
 	position: fixed;
-	top: 0px;
-	right:0px;
+	top: 0;
+	right:0;
 	width: 100%;
 	height: 1%;
 	overflow: visible;
@@ -22,6 +22,8 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
+	border-radius: 8px 0 0 8px;
 }
 #debug-kit-toolbar .panel-tab {
 	clear: none;
@@ -64,22 +66,12 @@
 	padding: 4px;
 }
 #debug-kit-toolbar .panel-tab a.edit-value {
-    float: none;
-    display: inline;
+	float: none;
+	display: inline;
 }
 
-/* Hovering over link shows tab, useful for no js  */
-#debug-kit-toolbar .panel-tab a:hover + .panel-content,
-#debug-kit-toolbar .panel-tab a + .panel-content:hover {
-	display: block;
-}
 #debug-kit-toolbar .panel-tab.icon a {
-	-webkit-border-top-left-radius: 8px 8px;
-	-webkit-border-bottom-left-radius: 8px 8px;
-	-moz-border-radius-topleft: 8px;
-	-moz-border-radius-bottomleft: 8px;
-	border-radius-topleft: 8px;
-	border-radius-bottomleft: 8px;
+	border-radius: 8px 0 0 8px;
 }
 #debug-kit-toolbar .panel-tab.icon img {
 	display:block;
@@ -91,11 +83,11 @@
 	text-align: left;
 	width: auto;
 	top:28px;
-	right:0px;
+	right:0;
 	background: #fff;
 	color: #000;
 	width:100%;
-	box-shadow:0px 5px 6px rgba(0, 0, 0, 0.5);
+	box-shadow:0 5px 6px rgba(0, 0, 0, 0.5);
 	height: 200px;
 	overflow: hidden;
 }
@@ -103,10 +95,10 @@
 #debug-kit-toolbar .panel-resize-region {
 	padding:15px;
 	position: absolute;
-	top: 0px;
+	top: 0;
 	bottom: 14px;
-	left: 0px;
-	right: 0px;
+	left: 0;
+	right: 0;
 	overflow: auto;
 }
 
@@ -123,8 +115,6 @@
 	-moz-text-shadow: 1px 1px #eee;
 }
 #debug-kit-toolbar .ui-button {
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
 #debug-kit-toolbar .ui-button:hover {
@@ -138,9 +128,9 @@
 	height:14px;
 	line-height: 14px;
 	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 #debug-kit-toolbar .panel-toggle {
 	float: right;
@@ -161,18 +151,18 @@
 #debug-kit-toolbar .panel-content {
 	display: none;
 }
-.panel-content p {
+#debug-kit-toolbar .panel-content p {
 	margin: 1em 0;
 }
-.panel-content h2 {
+#debug-kit-toolbar .panel-content h2 {
 	padding: 0;
 	margin-top:0;
 }
-.panel-content h3 {
+#debug-kit-toolbar .panel-content h3 {
 	padding: 0;
 	margin-top: 1em;
 }
-.panel-content .info {
+#debug-kit-toolbar .panel-content .info {
 	padding: 4px;
 	border-top: 1px dashed #6c6cff;
 	border-bottom: 1px dashed #6c6cff;
@@ -223,6 +213,7 @@
 	background: -moz-linear-gradient(top, #d4d4d4, #c1c1c1);
 	color: #222;
 	font-weight: bold;
+	line-height: 16px;
 }
 #debug-kit-toolbar .debug-table tr:nth-child(2n) td {
 	background: #f6f6f6;
@@ -253,55 +244,55 @@
 	list-style:none;
 	list-style-image:none;
 }
-.neat-array {
+#debug-kit-toolbar .neat-array {
 	padding: 1px 2px 1px 20px;
 	background: #CE9E23;
 	list-style: none;
 	margin: 0 0 1em 0;
 }
-.neat-array .neat-array {
+#debug-kit-toolbar .neat-array .neat-array {
 	padding: 0 0 0 20px;
 	margin: 0;
 	border-top:1px solid #CE9E23;
 }
-.neat-array li {
+#debug-kit-toolbar .neat-array li {
 	background: #FEF6E5;
 	border-top: 1px solid #CE9E23;
 	border-bottom: 1px solid #CE9E23;
 	margin: 0;
 	line-height: 1.5em;
 }
-.neat-array li:hover {
+#debug-kit-toolbar .neat-array li:hover {
 	background: #fff;
 }
-.neat-array li strong {
+#debug-kit-toolbar .neat-array li strong {
 	padding: 0 8px;
 	font-weight: bold;
 }
 
 
 /* expandable sections */
-.neat-array li.expandable {
+#debug-kit-toolbar .neat-array li.expandable {
 	cursor: pointer;
 }
-.neat-array .expanded {
+#debug-kit-toolbar .neat-array .expanded {
 	border-bottom:0;
 }
-.neat-array li.expandable.expanded > strong:before {
+#debug-kit-toolbar .neat-array li.expandable.expanded > strong:before {
 	content: 'v ';
 }
-.neat-array li.expandable.collapsed > strong:before,
-.neat-array li.expandable.expanded .expandable.collapsed > strong:before {
+#debug-kit-toolbar .neat-array li.expandable.collapsed > strong:before,
+#debug-kit-toolbar .neat-array li.expandable.expanded .expandable.collapsed > strong:before {
 	content: '> ';
 }
-.neat-array li {
+#debug-kit-toolbar .neat-array li {
 	cursor: default;
 }
 
 #debug-kit-toolbar .debug-kit-graph-bar,
 #debug-kit-toolbar .debug-kit-graph-bar-value {
 	margin: 0;
-	padding: 0px;
+	padding: 0;
 	border: none;
 	overflow: hidden;
 	height: 10px;
@@ -320,40 +311,43 @@
 }
 
 /* Sql Log */
-#sql_log-tab td,
-#sql_log-tab .slow-query-container p {
+#sqllog-tab td,
+#sqllog-tab .slow-query-container p {
 	font-family: Monaco, 'Consolas', "Courier New", Courier, monospaced;
 }
-#debug-kit-toolbar #sql_log-tab a.show-slow {
+#debug-kit-toolbar #sqllog-tab a.show-slow {
 	display:block;
 	margin: 3px;
 	float:none;
 }
-#sql_log-tab .slow-query-container p {
+#sqllog-tab .slow-query-container p {
 	display:block;
 	clear:both;
 	margin: 20px 0 5px;
 }
-#debug-kit-toolbar #sql_log-tab .panel-content-data a {
+#debug-kit-toolbar #sqllog-tab .panel-content-data a {
 	background: none;
 	border:none;
 }
-#sql_log-tab .slow-query {
+#sqllog-tab .slow-query {
 	background:#e79302;
 	font-size:9px;
 	color:#fff;
 	padding: 2px;
 	white-space:nowrap;
 }
-#sql_log-tab input[type=submit] {
+#sqllog-tab input[type=submit] {
 	border: 0;
 	background: transparent;
 	cursor: pointer;
 	font-size: 12px;
 	font-family: Monaco, 'Consolas', "Courier New", Courier, monospaced;
 }
-#sql_log-tab input[type=submit]:hover {
+#sqllog-tab input[type=submit]:hover {
 	color: darkred;
+}
+#debug-kit-toolbar .alert-duplicate {
+	color: red;
 }
 
 /* previous panels */
@@ -377,4 +371,12 @@
 #debug-kit-toolbar #history-tab a.loading:after {
 	content : ' Loading...';
 	font-style:italic;
+}
+
+/* Minimized mode */
+#debug-kit-toolbar.minimized {
+	opacity: 0.75;
+}
+#debug-kit-toolbar.minimized:hover {
+	opacity: inherit;
 }

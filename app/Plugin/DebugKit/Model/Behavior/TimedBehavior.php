@@ -1,24 +1,24 @@
 <?php
 /**
- * DebugKit TimedBehavior
- *
- * PHP versions 5
- *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org
- * @package       debug_kit
- * @subpackage    debug_kit.models.behaviors
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
  * @since         DebugKit 1.3
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-App::uses('DebugKitDebugger', 'DebugKit.Lib');
 
+App::uses('DebugTimer', 'DebugKit.Lib');
+
+/**
+ * Class TimedBehavior
+ *
+ * @since         DebugKit 1.3
+ */
 class TimedBehavior extends ModelBehavior {
 
 /**
@@ -38,11 +38,11 @@ class TimedBehavior extends ModelBehavior {
 /**
  * Setup the behavior and import required classes.
  *
- * @param object $Model Model using the behavior
+ * @param \Model|object $Model Model using the behavior
  * @param array $settings Settings to override for model.
  * @return void
  */
-	public function setup($Model, $settings = null) {
+	public function setup(Model $Model, $settings = null) {
 		if (is_array($settings)) {
 			$this->settings[$Model->alias] = array_merge($this->_defaults, $settings);
 		} else {
@@ -53,48 +53,51 @@ class TimedBehavior extends ModelBehavior {
 /**
  * beforeFind, starts a timer for a find operation.
  *
- * @param Model $Model
+ * @param Model $Model The model.
  * @param array $queryData Array of query data (not modified)
- * @return boolean true
+ * @return bool true
  */
-	public function beforeFind($Model, $queryData){
-		DebugKitDebugger::startTimer($Model->alias . '_find', $Model->alias . '->find()');
+	public function beforeFind(Model $Model, $queryData) {
+		DebugTimer::start($Model->alias . '_find', $Model->alias . '->find()');
 		return true;
 	}
 
 /**
  * afterFind, stops a timer for a find operation.
  *
- * @param Model $Model
+ * @param Model $Model The mdoel.
  * @param array $results Array of results
- * @return boolean true.
+ * @param bool $primary Whether this model is being queried directly (vs. being queried as an association)
+ * @return bool true.
  */
-	public function afterFind($Model, $results){
-		DebugKitDebugger::stopTimer($Model->alias . '_find');
+	public function afterFind(Model $Model, $results, $primary = false) {
+		DebugTimer::stop($Model->alias . '_find');
 		return true;
 	}
 
 /**
  * beforeSave, starts a time before a save is initiated.
  *
- * @param Model $Model
- * @return boolean true
+ * @param Model $Model The model.
+ * @param array $options The options.
+ * @return bool Always true.
  */
-	public function beforeSave($Model){
-		DebugKitDebugger::startTimer($Model->alias . '_save', $Model->alias . '->save()');
+	public function beforeSave(Model $Model, $options = array()) {
+		DebugTimer::start($Model->alias . '_save', $Model->alias . '->save()');
 		return true;
 	}
 
 /**
  * afterSave, stop the timer started from a save.
  *
- * @param string $Model
- * @param string $created
- * @return void
+ * @param \Model $Model The model.
+ * @param string $created True if this save created a new record.
+ * @param array $options The options.
+ * @return bool Always true.
  */
-	public function afterSave($Model, $created) {
-		DebugKitDebugger::stopTimer($Model->alias . '_save');
+	public function afterSave(Model $Model, $created, $options = array()) {
+		DebugTimer::stop($Model->alias . '_save');
 		return true;
 	}
- }
 
+}

@@ -1,24 +1,28 @@
 <?php
 /**
- * DebugTimer Test Case File
+ * DebugTimer Test Case
  *
- * PHP versions 5
+ * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org
- * @package       debug_kit
- * @subpackage    debug_kit.Test.Case.Lib
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
  * @since         debug_kit 2.0
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 App::uses('DebugTimer', 'DebugKit.Lib');
 
+/**
+ * Class DebugTimerTest
+ *
+ * @since         debug_kit 2.0
+ */
 class DebugTimerTest extends CakeTestCase {
 
 /**
@@ -46,11 +50,11 @@ class DebugTimerTest extends CakeTestCase {
 		sleep(1);
 		$this->assertTrue(DebugTimer::stop('test2'));
 		$elapsed = DebugTimer::elapsedTime('test2');
-		$expected = strpos(PHP_OS, 'WIN') === false ? 0.999: 0.95; // Windows timer's precision is bad
+		$expected = stripos(PHP_OS, 'win') === false ? 0.999: 0.95; // Windows timer's precision is bad
 		$this->assertTrue($elapsed >= $expected);
 
 		DebugTimer::start('test3');
-		$this->assertIdentical(DebugTimer::elapsedTime('test3'), 0);
+		$this->assertEquals(DebugTimer::elapsedTime('test3'), 0);
 		$this->assertFalse(DebugTimer::stop('wrong'));
 	}
 
@@ -65,7 +69,7 @@ class DebugTimerTest extends CakeTestCase {
 		$this->assertTrue(DebugTimer::stop());
 		$timers = DebugTimer::getAll();
 
-		$this->assertEquals(2, count($timers));
+		$this->assertCount(2, $timers);
 		end($timers);
 		$key = key($timers);
 		$lineNo = __LINE__ - 8;
@@ -94,8 +98,8 @@ class DebugTimerTest extends CakeTestCase {
 
 		$timers = DebugTimer::getAll();
 		$this->assertEquals(3, count($timers), 'incorrect number of timers %s');
-		$firstTimerLine = __LINE__ -9;
-		$secondTimerLine = __LINE__ -8;
+		$firstTimerLine = __LINE__ - 9;
+		$secondTimerLine = __LINE__ - 8;
 		$file = Debugger::trimPath(__FILE__);
 
 		$this->assertTrue(isset($timers[$file . ' line ' . $firstTimerLine]), 'first timer is not set %s');
@@ -157,7 +161,7 @@ class DebugTimerTest extends CakeTestCase {
 		DebugTimer::stop('test2');
 		$timers = DebugTimer::getAll();
 
-		$this->assertEquals(3, count($timers));
+		$this->assertCount(3, $timers);
 		$this->assertTrue(is_float($timers['test1']['time']));
 		$this->assertTrue(isset($timers['test1']['message']));
 		$this->assertTrue(isset($timers['test2']['message']));
