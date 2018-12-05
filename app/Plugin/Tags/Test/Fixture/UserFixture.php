@@ -10,12 +10,12 @@
  */
 
 /**
- * ArticleFixture
+ * UserFixture
  *
  * @package tags
  * @subpackage tags.tests.fixtures
  */
-class ArticleFixture extends CakeTestFixture {
+class UserFixture extends CakeTestFixture {
 
 /**
  * fields property
@@ -24,8 +24,8 @@ class ArticleFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 36),
-		'title' => array('type' => 'string', 'null' => false),
-		'user_id' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 36)
+		'name' => array('type' => 'string', 'null' => false),
+		'article_id' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 36)
 	);
 
 /**
@@ -35,19 +35,20 @@ class ArticleFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => 'article-1',
-			'title' => 'First Article',
-			'user_id' => 'user-1'
+			'id' => 'user-1',
+			'name' => 'CakePHP',
+			'article_id' => 'article-1'
 		),
 		array(
-			'id' => 'article-2',
-			'title' => 'Second Article',
-			'user_id' => 'user-2'
+			'id' => 'user-2',
+			'name' => 'Second User',
+			'article_id' => 'article-2'
 		),
 		array(
-			'id' => 'article-3',
-			'title' => 'Third Article',
-			'user_id' => 'user-3'
+			'id' => 'user-3',
+			'name' => 'Third User',
+			'article_id' => 'article-3'
 		)
 	);
+
 }
