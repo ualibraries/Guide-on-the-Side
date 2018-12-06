@@ -98,7 +98,7 @@ class ZendSearchLuceneSource extends DataSource {
 		foreach ($fields as $i => $field) {
 			$doc = $this->__createSearchDocument();
 			foreach ($values[$i] as $key => $val) {
-				$doc->addField(Zend_Search_Lucene_Field::$val['type']($val['key'], strip_tags($val['value']), 'utf-8'));
+				$doc->addField(Zend_Search_Lucene_Field::{$val['type']}($val['key'], strip_tags($val['value']), 'utf-8'));
 			}
 			$this->__index->addDocument($doc);
 		}
