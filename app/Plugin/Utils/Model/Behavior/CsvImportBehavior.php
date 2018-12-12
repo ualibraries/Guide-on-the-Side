@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
@@ -44,10 +44,10 @@ class CsvImportBehavior extends ModelBehavior {
  * Initializes this behavior for the model $Model
  *
  * @param Model $Model
- * @param array $settigs list of settings to be used for this model
+ * @param array $settings
  * @return void
  */
-	public function setup(Model &$Model, $settings = array()) {
+	public function setup(Model $Model, $settings = array()) {
 		if (!isset($this->settings[$Model->alias])) {
 			$this->settings[$Model->alias] = array(
 				'delimiter' => ';',
@@ -84,11 +84,11 @@ class CsvImportBehavior extends ModelBehavior {
  */
 	protected function _getHeader(Model &$Model, SplFileObject $handle) {
 		if ($this->settings[$Model->alias]['hasHeader'] === true) {
-        	$header = $this->_getCSVLine($Model, $handle);
-        } else {
-        	$header = array_keys($Model->schema());
-        }
-        return $header;
+			$header = $this->_getCSVLine($Model, $handle);
+		} else {
+			$header = array_keys($Model->schema());
+		}
+		return $header;
 	}
 
 /**
@@ -113,8 +113,12 @@ class CsvImportBehavior extends ModelBehavior {
 			foreach ($header as $k => $col) {
 				// get the data field from Model.field
 				if (strpos($col, '.') !== false) {
-					list($model,$field) = explode('.',$col);
-					$data[$model][$field]= (isset($row[$k])) ? $row[$k] : '';
+					$keys = explode('.', $col);
+					if (isset($keys[2])) {
+						$data[$keys[0]][$keys[1]][$keys[2]]= (isset($row[$k])) ? $row[$k] : '';
+					} else {
+						$data[$keys[0]][$keys[1]]= (isset($row[$k])) ? $row[$k] : '';
+					}
 				} else {
 					$data[$Model->alias][$col]= (isset($row[$k])) ? $row[$k] : '';
 				}

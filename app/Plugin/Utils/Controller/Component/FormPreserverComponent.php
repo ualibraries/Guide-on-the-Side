@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
@@ -17,7 +17,7 @@
  * @package utils
  * @subpackage utils.controllers.components
  */
-class FormPreserverComponent extends Object {
+class FormPreserverComponent extends CakeObject {
 /**
  * Components that are required
  *
@@ -109,7 +109,7 @@ class FormPreserverComponent extends Object {
 						$Controller->Session->setFlash($this->redirectMessage);
 					}
 
-					// Code from AuthComponent to store the redirect url so the user get redirected 
+					// Code from AuthComponent to store the redirect url so the user get redirected
 					// to the correct location after a successful login
 					if (isset($Controller->Auth)) {
 						$url = '';

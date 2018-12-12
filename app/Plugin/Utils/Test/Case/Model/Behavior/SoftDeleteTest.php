@@ -1,17 +1,16 @@
 <?php
 /**
- * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::uses('Model', 'Model');
-App::uses('Behavior', 'Model');
-App::uses('SoftDeleteBehavior', 'Utils.Model/Behavior');
+App::import('Behavior', 'Utils.SoftDelete');
+// App::uses('SoftDelete', 'Utils.Model/Behavior/SoftDelete');
 
 /**
  * SoftDeleteTestBehavior
@@ -19,8 +18,8 @@ App::uses('SoftDeleteBehavior', 'Utils.Model/Behavior');
  * @package default
  * @author Predominant
  */
-class SoftDeleteTestBehavior extends SoftDeleteBehavior {
-}
+// class SoftDeleteTestBehavior extends SoftDeleteBehavior {
+// }
 
 /**
  * SoftDeletedPost
@@ -42,7 +41,7 @@ class SoftDeletedPost extends CakeTestModel {
  *
  * @var array
  */
-	public $actsAs = array('SoftDeleteTest');
+	public $actsAs = array('Utils.SoftDelete');
 
 /**
  * Alias
@@ -69,9 +68,8 @@ class SoftDeleteTest extends CakeTestCase {
  *
  * @return void
  */
-	public function startTest() {
+	public function setUp() {
 		$this->Post = new SoftDeletedPost();
-		$this->Behavior = new SoftDeleteTestBehavior();
 	}
 
 /**
@@ -79,9 +77,8 @@ class SoftDeleteTest extends CakeTestCase {
  *
  * @return void
  */
-	public function endTest() {
+	public function tearDown() {
 		unset($this->Post);
-		unset($this->Behavior);
 		ClassRegistry::flush();
 	}
 
@@ -92,15 +89,50 @@ class SoftDeleteTest extends CakeTestCase {
  */
 	public function testSoftDelete() {
 		$data = $this->Post->read(null, 1);
-		$this->assertEqual($data[$this->Post->alias][$this->Post->primaryKey], 1);
+		$this->assertEquals($data[$this->Post->alias][$this->Post->primaryKey], 1);
 		$result = $this->Post->delete(1);
 		$this->assertFalse($result);
 		$data = $this->Post->read(null, 1);
-		$this->assertFalse($data);
-		$this->Post->Behaviors->detach('SoftDeleteTest');
+		$this->assertTrue(empty($data));
+		$this->Post->Behaviors->unload('SoftDelete');
 		$data = $this->Post->read(null, 1);
-		$this->assertEqual($data['Post']['deleted'], 1);
-		$this->assertEqual($data['Post']['updated'], $data['Post']['deleted_date']);
+		$this->assertEquals($data['Post']['deleted'], true);
+		$this->assertEquals($data['Post']['updated'], $data['Post']['deleted_date']);
+	}
+
+/**
+ * testSoftDeleteWhenModelDataIsEmpty
+ *
+ * @return void
+ */
+	public function testSoftDeleteWhenModelDataIsEmpty() {
+		$data = $this->Post->find('first', array('conditions' => array($this->Post->primaryKey => 1)));
+		$this->assertEquals($data[$this->Post->alias][$this->Post->primaryKey], 1);
+		$this->assertTrue(empty($this->Post->data));
+		$result = $this->Post->delete(1);
+		$this->assertFalse($result);
+		$data = $this->Post->read(null, 1);
+		$this->assertTrue(empty($data));
+		$this->Post->Behaviors->unload('SoftDelete');
+		$data = $this->Post->read(null, 1);
+		$this->assertEquals($data['Post']['deleted'], true);
+		$this->assertEquals($data['Post']['updated'], $data['Post']['deleted_date']);
+	}
+
+/**
+ * testSoftDeleteUsingIdThatDoesNotExist
+ *
+ * @return void
+ */
+	public function testSoftDeleteUsingIdThatDoesNotExist() {
+		$data = $this->Post->read(null, 222);
+		$this->assertTrue(empty($data));
+		$result = $this->Post->delete(222);
+		$this->assertFalse($result); // consistent with Model->delete()
+		// previous implementation would try to create a new record
+		$this->Post->Behaviors->unload('SoftDelete');
+		$data = $this->Post->read(null, 222);
+		$this->assertTrue(empty($data));
 	}
 
 /**
@@ -112,8 +144,9 @@ class SoftDeleteTest extends CakeTestCase {
 		$data = $this->Post->read(null, 1);
 		$result = $this->Post->delete(1);
 		$result = $this->Post->undelete(1);
+		$this->Post->Behaviors->unload('SoftDelete');
 		$data = $this->Post->read(null, 1);
-		$this->assertEqual($data['Post']['deleted'], 0);
+		$this->assertEquals($data['Post']['deleted'], false);
 	}
 
 /**
@@ -122,40 +155,33 @@ class SoftDeleteTest extends CakeTestCase {
  * @return void
  */
 	public function testSoftDeletePurge() {
-		$this->Post->Behaviors->disable('SoftDeleteTest');
+		$this->Post->Behaviors->disable('SoftDelete');
 		$data = $this->Post->read(null, 3);
 		$this->assertTrue(!empty($data));
-		$this->Post->Behaviors->enable('SoftDeleteTest');
+		$this->Post->Behaviors->enable('SoftDelete');
 		$data = $this->Post->read(null, 3);
-		$this->assertFalse($data);
+		$this->assertTrue(empty($data));
 		$count = $this->Post->purgeDeletedCount();
-		$this->assertEqual($count, 1);
+		$this->assertEquals($count, 1);
 		$this->Post->purgeDeleted();
-		
+
 		$data = $this->Post->read(null, 3);
-		$this->assertFalse($data);
-		$this->Post->Behaviors->disable('SoftDeleteTest');
+		$this->assertTrue(empty($data));
+		$this->Post->Behaviors->disable('SoftDelete');
 		$data = $this->Post->read(null, 3);
-		$this->assertFalse($data);
+		$this->assertTrue(empty($data));
 	}
-		
-		// $result = $this->Model->read();
-		// $this->assertEqual($result['SoftDeletedPost']['slug'], 'fourth_Post');
 
-		///Should not update
-		// $this->Model->saveField('title', 'Fourth Post (Part 1)');
-		// $result = $this->Model->read();
-		// $this->assertEqual($result['SoftDeletedPost']['slug'], 'fourth_Post');
-
-		////Should update
-		// $this->Model->Behaviors->SluggableTest->settings['SoftDeletedPost']['update'] = true;
-		// $this->Model->saveField('title', 'Fourth Post (Part 2)');
-		// $result = $this->Model->read();
-		// $this->assertEqual($result['SoftDeletedPost']['slug'], 'fourth_Post_part_2');
-
-		////Updating the item should not update the slug
-		// $this->Model->saveField('body', 'Here goes the content.');
-		// $result = $this->Model->read();
-		// $this->assertEqual($result['SoftDeletedPost']['slug'], 'fourth_Post_part_2');
+	public function testExistsAndNotDeleted() {
+		$data = $this->Post->read(null, 1);
+		$this->assertEquals($data[$this->Post->alias][$this->Post->primaryKey], 1);
+		$result = $this->Post->delete(1);
+		$this->assertFalse($result);
+		$data = $this->Post->read(null, 1);
+		$this->assertTrue(empty($data));
+		$this->assertFalse($this->Post->existsAndNotDeleted(1));
+		$this->Post->undelete(1);
+		$this->assertTrue($this->Post->existsAndNotDeleted(1));
+	}
 
 }

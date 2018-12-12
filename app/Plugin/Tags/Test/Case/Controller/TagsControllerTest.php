@@ -1,17 +1,16 @@
 <?php
 /**
- * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::import('Controller', 'Tags.Tags');
-App::import('Controller', 'Tags.TagsAppController');
-App::import('Model', 'Tags.Tag');
+App::uses('TagsController', 'Tags.Controller');
+App::uses('TagsAppController', 'Tags.Controller');
 
 /**
  * TestTagsController
@@ -24,7 +23,7 @@ class TestTagsController extends TagsController {
 /**
  * Auto render
  *
- * @var boolean
+ * @var bool
  */
 	public $autoRender = false;
 
@@ -38,6 +37,9 @@ class TestTagsController extends TagsController {
 /**
  * Override controller method for testing
  *
+ * @param string|array $url URL to redirect to (copied to `$this->redirectUrl`)
+ * @param int $status Optional HTTP status code (eg: 404)
+ * @param bool $exit If true, exit() will be called after the redirect
  * @return void
  */
 	public function redirect($url, $status = null, $exit = true) {
@@ -47,11 +49,14 @@ class TestTagsController extends TagsController {
 /**
  * Override controller method for testing
  *
+ * @param string $view View to use for rendering
+ * @param string $layout Layout to use
  * @return void
  */
-	public function render($action = null, $layout = null, $file = null) {
-		$this->renderedView = $action;
+	public function render($view = null, $layout = null) {
+		$this->renderedView = $view;
 	}
+
 }
 
 /**
@@ -69,7 +74,8 @@ class TagsControllerTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'plugin.tags.tagged',
-		'plugin.tags.tag');
+		'plugin.tags.tag'
+	);
 
 /**
  * Tags Controller Instance
@@ -84,10 +90,12 @@ class TagsControllerTest extends CakeTestCase {
  * @return void
  */
 	public function setUp() {
+		parent::setUp();
 		$this->Tags = new TestTagsController(new CakeRequest(null, false));
 		$this->Tags->params = array(
 			'named' => array(),
-			'url' => array());
+			'url' => array()
+		);
 		$this->Tags->constructClasses();
 		$this->Tags->Session = $this->getMock('SessionComponent', array(), array(), '', false);
 	}
@@ -98,6 +106,7 @@ class TagsControllerTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
+		parent::tearDown();
 		unset($this->Tags);
 	}
 
@@ -128,10 +137,10 @@ class TagsControllerTest extends CakeTestCase {
 	public function testView() {
 		$this->Tags->view('cakephp');
 		$this->assertTrue(!empty($this->Tags->viewVars['tag']));
-		$this->assertEqual($this->Tags->viewVars['tag']['Tag']['keyname'], 'cakephp');
+		$this->assertEquals($this->Tags->viewVars['tag']['Tag']['keyname'], 'cakephp');
 
 		$this->Tags->view('invalid-key-name!');
-		$this->assertEqual($this->Tags->redirectUrl, '/');
+		$this->assertEquals($this->Tags->redirectUrl, '/');
 	}
 
 /**
@@ -142,10 +151,10 @@ class TagsControllerTest extends CakeTestCase {
 	public function testAdminView() {
 		$this->Tags->admin_view('cakephp');
 		$this->assertTrue(!empty($this->Tags->viewVars['tag']));
-		$this->assertEqual($this->Tags->viewVars['tag']['Tag']['keyname'], 'cakephp');
+		$this->assertEquals($this->Tags->viewVars['tag']['Tag']['keyname'], 'cakephp');
 
 		$this->Tags->admin_view('invalid-key-name!');
-		$this->assertEqual($this->Tags->redirectUrl, '/');
+		$this->assertEquals($this->Tags->redirectUrl, '/');
 	}
 
 /**
@@ -166,20 +175,19 @@ class TagsControllerTest extends CakeTestCase {
 	public function testAdminDelete() {
 		$this->Tags->Session->expects($this->at(0))
 			->method('setFlash')
-			->with($this->equalTo('Invalid Tag.'))
+			->with($this->equalTo(__d('tags', 'Invalid Tag.')))
 			->will($this->returnValue(true));
 
 		$this->Tags->Session->expects($this->at(1))
 			->method('setFlash')
-			->with($this->equalTo('Tag deleted.'))
+			->with($this->equalTo(__d('tags', 'Tag deleted.')))
 			->will($this->returnValue(true));
-		
 
 		$this->Tags->admin_delete('WRONG-ID!!!');
-		$this->assertEqual($this->Tags->redirectUrl, array('action' => 'index'));
+		$this->assertEquals($this->Tags->redirectUrl, array('action' => 'index'));
 
 		$this->Tags->admin_delete('tag-1');
-		$this->assertEqual($this->Tags->redirectUrl, array('action' => 'index'));
+		$this->assertEquals($this->Tags->redirectUrl, array('action' => 'index'));
 	}
 
 /**
@@ -190,9 +198,20 @@ class TagsControllerTest extends CakeTestCase {
 	public function testAdminAdd() {
 		$this->Tags->data = array(
 			'Tag' => array(
-				'tags' => 'tag1, tag2, tag3'));
+				'tags' => 'tag1, tag2, tag3'
+			)
+		);
 		$this->Tags->admin_add();
-		$this->assertEqual($this->Tags->redirectUrl, array('action' => 'index'));
+		$this->assertEquals($this->Tags->redirectUrl, array('action' => 'index'));
+
+		// adding same tags again.
+		$this->Tags->data = array(
+			'Tag' => array(
+				'tags' => 'tag1, tag2, tag3'
+			)
+		);
+		$this->Tags->admin_add();
+		$this->assertEquals($this->Tags->redirectUrl, array('action' => 'index'));
 	}
 
 /**
@@ -204,23 +223,27 @@ class TagsControllerTest extends CakeTestCase {
 		$this->Tags->admin_edit('tag-1');
 		$tag = array(
 			'Tag' => array(
-				'id'  => 'tag-1',
-				'identifier'  => null,
-				'name'  => 'CakePHP',
-				'keyname'  => 'cakephp',
+				'id' => 'tag-1',
+				'identifier' => null,
+				'name' => 'CakePHP',
+				'keyname' => 'cakephp',
 				'occurrence' => 1,
 				'article_occurrence' => 1,
-				'created'  => '2008-06-02 18:18:11',
-				'modified'  => '2008-06-02 18:18:37'));
+				'created' => '2008-06-02 18:18:11',
+				'modified' => '2008-06-02 18:18:37'
+			)
+		);
 
-		$this->assertEqual($this->Tags->data, $tag);
+		$this->assertEquals($this->Tags->data, $tag);
 
 		$this->Tags->data = array(
 			'Tag' => array(
 				'id' => 'tag-1',
-				'name' => 'CAKEPHP'));
+				'name' => 'CAKEPHP'
+			)
+		);
 		$this->Tags->admin_edit('tag-1');
 
-		$this->assertEqual($this->Tags->redirectUrl, array('action' => 'index'));
+		$this->assertEquals($this->Tags->redirectUrl, array('action' => 'index'));
 	}
 }

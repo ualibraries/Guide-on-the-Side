@@ -1,14 +1,15 @@
 <?php
 /**
- * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-App::uses('Model', 'AppModel');
+App::uses('AppModel', 'Model');
+
 /**
  * Tags Plugin AppModel
  *
@@ -22,14 +23,15 @@ class TagsAppModel extends AppModel {
  * @var array
  */
 	public $actsAs = array(
-		'Containable');
+		'Containable'
+	);
 
 /**
  * Customized paginateCount method
  *
- * @param array
- * @param integer
- * @param array
+ * @param array $conditions Query conditions
+ * @param int $recursive Recursive setting
+ * @param array $extra Extra settings
  * @return array
  */
 	public function paginateCount($conditions = array(), $recursive = 0, $extra = array()) {
@@ -44,4 +46,5 @@ class TagsAppModel extends AppModel {
 			return $this->find('count', array_merge($parameters, $extra));
 		}
 	}
+
 }

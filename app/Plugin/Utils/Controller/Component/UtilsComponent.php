@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
@@ -17,22 +17,22 @@
  * @package utils
  * @subpackage utils.controllers.components
  */
-class UtilsComponent extends Object {
+class UtilsComponent extends CakeObject {
 
 /**
  * Controller
  *
  * @var mixed $controller
- */ 
-	public $controller; 
+ */
+	public $controller;
 
 /**
  * Startup Callback
  *
  * @param object Controller object
  */
-	public function startup(&$controller) {
-		$this->controller = &$controller;
+	public function startup(Controller $controller) {
+		$this->controller = $controller;
 	}
 
 /**

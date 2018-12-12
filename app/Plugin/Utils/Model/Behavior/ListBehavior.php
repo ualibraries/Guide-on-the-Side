@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
@@ -35,15 +35,17 @@ class ListBehavior extends ModelBehavior {
 		'positionColumn' => 'position',
 		'scope' => '',
 		'validate' => false,
-		'callbacks' => false);
+		'addToTop' => false,
+		'callbacks' => false
+	);
 
 /**
  * Setup
  *
- * @param object AppModel
+ * @param Model $model
  * @param array $config
  */
-	public function setup($model, $config = array()) {
+	public function setup(Model $model, $config = array()) {
 		$settings = array_merge($this->_defaults, $config);
 		$this->settings[$model->alias] = $settings;
 	}
@@ -53,13 +55,18 @@ class ListBehavior extends ModelBehavior {
  *
  * Overriden to transparently manage setting the item position to the end of the list
  *
- * @param AppModel $model
+ * @param Model $model
+ * @param array $options
  * @return boolean True to continue, false to abort the save
  */
-	public function beforeSave($model) {
+	public function beforeSave(Model $model, $options = array()) {
 		extract($this->settings[$model->alias]);
 		if (empty($model->data[$model->alias][$model->primaryKey])) {
-			$this->__addToListBottom($model);
+			if ($addToTop) {
+				$this->__addToListTop($model);
+			} else {
+				$this->__addToListBottom($model);
+			}
 		}
 		return true;
 	}
@@ -69,10 +76,11 @@ class ListBehavior extends ModelBehavior {
  *
  * Will delete the current item from list and update position of all items after one
  *
- * @param AppModel $model
+ * @param Model $model
+ * @param boolean $cascade
  * @return boolean True to continue, false to abort the delete
  */
-	public function beforeDelete($model) {
+	public function beforeDelete(Model $model, $cascade = true) {
 		$dataStore = $model->data;
 		$model->recursive = 0;
 		$model->read(null,$model->id);
@@ -83,34 +91,14 @@ class ListBehavior extends ModelBehavior {
 	}
 
 /**
- *  SetById method. Check is model innitialized.
- *
- *  If $id is defined read record from model with this primary key value
- *
- * @param AppModel $model
- * @param ID $id  - value of model primary key to read
- * @return boolean True if model initialized, false if no info in $model->data exists.
- */
-	private function __setById($model, $id = null, $checkId = true) {
-		if (!isset($id)) {
-			if ($checkId) {
-				return isset($model->data[$model->alias][$model->primaryKey]);
-			} else {
-				return isset($model->data[$model->alias]);
-			}
-		} else {
-			return $model->read(null, $id);
-		}
-	}
-
-/**
  *  Set new position of selected item for model
  *
- * @param AppModel $model
+ * @param Model $model
  * @param int $position new position of item in list
- * @param ID $id  - value of model primary key to read
+ * @param string $id  - value of model primary key to read
+ * @return bool
  */
-	public function insertAt($model, $position = 1, $id = null) {
+	public function insertAt(Model $model, $position = 1, $id = null) {
 		if (!$this->__setById($model, $id, false)) {
 			return false;
 		}
@@ -120,16 +108,17 @@ class ListBehavior extends ModelBehavior {
 /**
  * Swap positions with the next lower item, if one exists.
  *
- * @param AppModel $model
+ * @param Model $model
  * @param ID $id  - value of model primary key to read
+ * @return bool
  */
-	public function moveLower($model, $id = null) {
+	public function moveLower(Model $model, $id = null) {
 		if (!$this->__setById($model, $id)) {
 	 		return false;
 		}
 		$lowerItem = $this->lowerItem($model);
 		if ($lowerItem == null) {
-			return;
+			return true;
 		}
 
 		/* @todo: add transaction */
@@ -140,23 +129,24 @@ class ListBehavior extends ModelBehavior {
 		return $this->_incrementPosition($model);
 		/* @todo: add transaction */
 	}
-	public function moveDown($model, $id = null) {
+	public function moveDown(Model $model, $id = null) {
 		return $this->moveLower($model, $id);
 	}
 
 /**
  * Swap positions with the next higher item, if one exists.
  *
- * @param AppModel $model
+ * @param Model $model
  * @param string $id UUID value of model primary key
+ * @return bool
  */
-	public function moveHigher($model, $id = null) {
+	public function moveHigher(Model $model, $id = null) {
 		if (!$this->__setById($model, $id)) {
 			return false;
 		}
 		$higherItem = $this->higherItem($model);
 		if ($higherItem == null) {
-			return;
+			return true;
 		}
 
 		/* @todo: add transaction */
@@ -173,9 +163,9 @@ class ListBehavior extends ModelBehavior {
  *
  * @param string $model 
  * @param string $id 
- * @return void
+ * @return bool
  */
-	public function moveUp($model, $id = null) {
+	public function moveUp(Model $model, $id = null) {
 		return $this->moveHigher($model, $id);
 	}
 
@@ -183,10 +173,11 @@ class ListBehavior extends ModelBehavior {
  * Move to the bottom of the list. If the item is already in the list, the items below it have their
  * position adjusted accordingly.
  *
- * @param AppModel $model
+ * @param Model $model
  * @param string $id UUID value of model primary key
+ * @return bool
  */
-	public function moveToBottom($model, $id = null) {
+	public function moveToBottom( Model$model, $id = null) {
 		if (!$this->__setById($model, $id)) {
 			return false;
 		}
@@ -203,10 +194,11 @@ class ListBehavior extends ModelBehavior {
  * Move to the top of the list. If the item is already in the list, the items above it have their
  * position adjusted accordingly.
  *
- * @param AppModel $model
- * @param ID $id  - value of model primary key to read
+ * @param Model $model
+ * @param string $id  - value of model primary key to read
+ * @return bool
  */
-	 public function moveToTop($model, $id = null) {
+	 public function moveToTop(Model $model, $id = null) {
 		if (!$this->__setById($model, $id)) {
 			return false;
 		}
@@ -221,11 +213,11 @@ class ListBehavior extends ModelBehavior {
 
 /**
  * Removes an item from the list
- * @param AppModel $model
+ * @param Model $model
  * @param string $id UUID
  * @return mixed
  */
-	public function removeFromList($model, $id = null) {
+	public function removeFromList(Model $model, $id = null) {
 		if (!$this->__setById($model, $id)) {
 			return false;
 		}
@@ -233,9 +225,121 @@ class ListBehavior extends ModelBehavior {
 	}
 
 /**
+ * Return true if this object is the first in the list.
+ *
+ * @param Model $model
+ * @param string $id
+ * @return bool
+ */
+	public function isFirst(Model $model, $id = null) {
+		if (!$this->__setById($model, $id)) {
+			return false;
+		}
+		extract($this->settings[$model->alias]);
+		if (!$this->isInList($model)) {
+			return false;
+		}
+		return $model->data[$model->alias][$positionColumn] == 1;
+	}
+
+/**
+ * Check if the item is the last on in the list
+ *
+ * @param Model $model
+ * @param string $id UUID
+ * @return boolean return true if this object is the last in the list.
+ */
+	public function isLast(Model $model, $id = null) {
+		if (!$this->__setById($model, $id)) {
+			return false;
+		}
+		extract($this->settings[$model->alias]);
+		if (!$this->isInList($model)) {
+			return false;
+		}
+		return $model->data[$model->alias][$positionColumn] == $this->__bottomPositionInList($model);
+	}
+
+/**
+ * Return the next higher item in the list
+ *
+ * @param Model $model
+ * @param string $id UUID
+ * @return array
+ */
+	public function higherItem(Model $model, $id = null) {
+		if (!$this->__setById($model, $id)) {
+			return false;
+		}
+		extract($this->settings[$model->alias]);
+		if (!$this->isInList($model)) {
+			return null;
+		}
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
+		return $model->find('first', array('conditions' => array($this->__scopeCondition($model), $model->alias . '.' . $positionColumn => $model->data[$model->alias][$positionColumn] - 1), 'recursive' => 0));
+	}
+
+/**
+ * Return the next lower item in the list.
+ *
+ * @param Model $model
+ * @param string $id UUID
+ * @return mixed
+ */
+	public function lowerItem(Model $model, $id = null) {
+		if (!$this->__setById($model, $id)) {
+			return false;
+		}
+		extract($this->settings[$model->alias]);
+		if (!$this->isInList($model)) {
+			return null;
+		}
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
+		return $model->find('first', array('conditions' => array($this->__scopeCondition($model), $model->alias . '.' . $positionColumn => $model->data[$model->alias][$positionColumn] + 1), 'recursive' => 0));
+	}
+
+/**
+ * Return true if item in the list.
+ *
+ * @param Model $model
+ * @return bool
+ */
+	public function isInList($model) {
+		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
+		if (empty($model->data[$model->alias][$positionColumn])) {
+			return false;
+		}
+		return !($model->data[$model->alias][$positionColumn] == null);
+	}
+
+/**
+ * Repair list method
+ *
+ * @param object AppModel
+ * @return boolean
+ */
+	public function fixListOrder($model) {
+		extract($this->settings[$model->alias]);
+		$data = $model->find('all', array(
+			'conditions' => $this->__scopeCondition($model),
+			'order' => array($model->alias . '.' . $positionColumn => 'asc'),
+			'recursive' => -1));
+		$position = 1;
+		foreach ($data as $row) {
+			$model->id = $row[$model->alias][$model->primaryKey];
+			$model->saveField($positionColumn, $position, array(
+			'validate' => $validate,
+			'callbacks' => $callbacks));
+			$position += 1;
+		}
+	}
+
+/**
  * Increase the position of this item without adjusting the rest of the list.
  *
- * @param AppModel $model
+ * @param Model $model
+ * @return mixed
  */
 	protected function _incrementPosition($model) {
 		if (!$this->isInList($model)) {
@@ -251,7 +355,8 @@ class ListBehavior extends ModelBehavior {
 /**
  * Decrease the position of this item without adjusting the rest of the list.
  *
- * @param AppModel $model
+ * @param Model $model
+ * @return mixed
  */
 	protected function _decrementPosition($model) {
 		if (!$this->isInList($model)) {
@@ -265,91 +370,10 @@ class ListBehavior extends ModelBehavior {
 	}
 
 /**
- * Return true if this object is the first in the list.
- *
- * @param AppModel $model
- */
-	public function isFirst($model, $id = null) {
-		if (!$this->__setById($model, $id)) {
-			return false;
-		}
-		extract($this->settings[$model->alias]);
-		if (!$this->isInList($model)) {
-			return false;
-		}
-		return $model->data[$model->alias][$positionColumn] == 1;
-	}
-
-/**
- * Check if the item is the last on in the list
- *
- * @param AppModel $model
- * @param string $id UUID
- * @return boolean return true if this object is the last in the list.
- */
-	public function isLast($model, $id = null) {
-		if (!$this->__setById($model, $id)) {
-			return false;
-		}
-		extract($this->settings[$model->alias]);
-		if (!$this->isInList($model)) {
-			return false;
-		}
-		return $model->data[$model->alias][$positionColumn] == $this->__bottomPositionInList($model);
-	}
-
-/**
- * Return the next higher item in the list
- *
- * @param AppModel $model
- * @param string $id UUID
- * @return array
- */
-	public function higherItem($model, $id = null) {
-		if (!$this->__setById($model, $id)) {
-			return false;
-		}
-		extract($this->settings[$model->alias]);
-		if (!$this->isInList($model)) {
-			return null;
-		}
-		return $model->find('first', array('conditions' => array($this->__scopeCondition($model), $model->alias . '.' . $positionColumn => $model->data[$model->alias][$positionColumn] - 1), 'recursive' => 0));
-	}
-
-/**
- * Return the next lower item in the list.
- *
- * @param AppModel $model
- * @param string $id UUID
- */
-	public function lowerItem($model, $id = null) {
-		if (!$this->__setById($model, $id)) {
-			return false;
-		}
-		extract($this->settings[$model->alias]);
-		if (!$this->isInList($model)) {
-			return null;
-		}
-		return $model->find('first', array('conditions' => array($this->__scopeCondition($model), $model->alias . '.' . $positionColumn => $model->data[$model->alias][$positionColumn] + 1), 'recursive' => 0));
-	}
-
-/**
- * Return true if item in the list.
- *
- * @param AppModel $model
- */
-	public function isInList($model) {
-		extract($this->settings[$model->alias]);
-		if (empty($model->data[$model->alias][$positionColumn])) {
-			return false;
-		}
-		return !($model->data[$model->alias][$positionColumn] == null);
-	}
-
-/**
  * Add aditional conditions to make scope of list.
  *
- * @param AppModel $model
+ * @param Model $model
+ * @return array
  */
    private function __scopeCondition($model) {
 		extract($this->settings[$model->alias]);
@@ -360,8 +384,14 @@ class ListBehavior extends ModelBehavior {
 			}
 			$scopes[$model->alias . '.' . $scope] = $model->data[$model->alias][$scope];
 		} elseif (is_array($scope)) {
-			foreach ($scope as $scopeEl) {
-				$scopes[$model->alias . '.' . $scopeEl] = $model->data[$model->alias][$scopeEl];
+			foreach ($scope as $k => $v) {
+				if (is_numeric($k)) {
+					$scopeEl = $v;
+					$v = $model->data[$model->alias][$scopeEl];
+				} else {
+					$scopeEl = $k;
+				}
+				$scopes[$model->alias . '.' . $scopeEl] = $v;
 			}
 		}
 		return $scopes;
@@ -370,7 +400,7 @@ class ListBehavior extends ModelBehavior {
 /**
  * Add to list top
  *
- * @param AppModel $model 
+ * @param Model $model 
  * @return mixed
  */
 	private function __addToListTop($model) {
@@ -380,25 +410,26 @@ class ListBehavior extends ModelBehavior {
 /**
  * Add to list bottom
  *
- * @param AppModel $model 
+ * @param Model $model 
  * @return mixed
  */
 	private function __addToListBottom($model) {
 		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
 		$model->data[$model->alias][$positionColumn] = $this->__bottomPositionInList($model) + 1;
 	}
 
 /**
  * Bottom position in list
  *
- * @param AppModel $model 
+ * @param Model $model 
  * @param string $except 
  * @return void
  */
-	private function __bottomPositionInList($model, $except = null) {
+	private function __bottomPositionInList(Model $model, $except = null) {
 		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
 		$item = $this->__bottomItem($model, $except);
-
 		if (!empty($item) && isset($item[$model->alias][$positionColumn])) {
 			return $item[$model->alias][$positionColumn];
 		} else {
@@ -409,11 +440,11 @@ class ListBehavior extends ModelBehavior {
 /**
  * Bottom Item
  *
- * @param AppModel $model 
+ * @param Model $model 
  * @param string $except 
  * @return mixed
  */
-	private function __bottomItem($model, $except = null) {
+	private function __bottomItem(Model $model, $except = null) {
 		extract($this->settings[$model->alias]);
 		$conditions = $this->__scopeCondition($model);
 		if (is_string($conditions)) {
@@ -423,17 +454,21 @@ class ListBehavior extends ModelBehavior {
 			$conditions = array_merge($conditions, array($model->alias . '.' . $model->primaryKey . ' != ' => $except[$model->alias][$model->primaryKey]));
 		}
 		$model->recursive = 0;
-		return $model->find($conditions, null, array($model->alias . '.' . $positionColumn => 'DESC'));
+		$options = array(
+			'conditions' => $conditions,
+			'order' => array($model->alias . '.' . $positionColumn => 'DESC'));
+		return $model->find('first', $options);
 	}
 
 /**
  * Assume Bottom position
  *
- * @param AppModel $model 
+ * @param Model $model 
  * @return boolean
  */
 	private function __assumeBottomPosition($model) {
 		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
 		$model->data[$model->alias][$positionColumn] = $this->__bottomPositionInList($model, $model->data)+1;
 		return $model->save(null, array(
 			'validate' => $validate,
@@ -443,11 +478,12 @@ class ListBehavior extends ModelBehavior {
 /**
  * Pre-check for first list record
  *
- * @param AppModel $model 
+ * @param Model $model 
  * @return boolean
  */
 	private function __assumeTopPosition($model) {
 		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
 		$model->data[$model->alias][$positionColumn] = 1;
 		return $model->save(null, array(
 			'validate' => $validate,
@@ -457,11 +493,11 @@ class ListBehavior extends ModelBehavior {
 /**
  * This has the effect of moving all the higher items up one.
  *
- * @param AppModel $model
+ * @param Model $model
  * @param integer $position
  * @return boolean
  */
-	private function __decrementPositionsOnHigherItems($model, $position) {
+	private function __decrementPositionsOnHigherItems(Model $model, $position) {
 		extract($this->settings[$model->alias]);
 		return $model->updateAll(
 			array($model->alias . '.' . $positionColumn => $model->alias . '.' . $positionColumn . '-1'),
@@ -478,6 +514,7 @@ class ListBehavior extends ModelBehavior {
 	private function __decrementPositionsOnLowerItems($model) {
 		if (!$this->isInList($model)) return;
 		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
 		return $model->updateAll(
 			array($model->alias . '.' . $positionColumn => $model->alias . '.' . $positionColumn . ' - 1'),
 			array($this->__scopeCondition($model), $model->alias . '.' . $positionColumn . ' > ' =>  $model->data[$model->alias][$positionColumn])
@@ -493,6 +530,7 @@ class ListBehavior extends ModelBehavior {
 	private function __incrementPositionsOnHigherItems($model) {
 		if (!$this->isInList($model)) return;
 		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
 		return $model->updateAll(
 			array($model->alias . '.' . $positionColumn => $model->alias . '.' . $positionColumn . '+1'),
 			array($this->__scopeCondition($model), $model->alias . '.' . $positionColumn . ' < ' => $model->data[$model->alias][$positionColumn])
@@ -506,8 +544,9 @@ class ListBehavior extends ModelBehavior {
  * @param integer
  * @return boolean
  */
-	private function __incrementPositionsOnLowerItems($model, $position) {
+	private function __incrementPositionsOnLowerItems(Model $model, $position) {
 		extract($this->settings[$model->alias]);
+		$positionColumn = $this->settings[$model->alias]['positionColumn'];
 		return $model->updateAll(
 			array($model->alias . '.' . $positionColumn => $model->alias . '.' . $positionColumn . '+1'),
 			array($this->__scopeCondition($model), $model->alias . '.' . $positionColumn . ' >= ' => $position)
@@ -523,18 +562,20 @@ class ListBehavior extends ModelBehavior {
 	private function __incrementPositionsOnAllItems($model) {
 		extract($this->settings[$model->alias]);
 		return $model->updateAll(
-			array($model->alias . '.' . $positionColumn => $model->data[$model->alias][$positionColumn] + 1),
+			array($model->alias . '.' . $positionColumn => $model->alias . '.' . $positionColumn . '+1'),
 			array($this->__scopeCondition($model))
 		);
+
     }
 
 /**
  * Inserts an item on a certain position
  *
- * @param object AppModel
+ * @param Model $model
+ * @param $position
  * @return boolean
  */
-	private function __insertAtPosition($model, $position) {
+	private function __insertAtPosition(Model $model, $position) {
 		extract($this->settings[$model->alias]);
 
 		$data = $model->data;
@@ -556,4 +597,27 @@ class ListBehavior extends ModelBehavior {
 		}
 		return $result;
 	}
+
+/**
+ *  SetById method. Check is model innitialized.
+ *
+ *  If $id is defined read record from model with this primary key value
+ *
+ * @param Model $model
+ * @param string $id  - value of model primary key to read
+ * @param bool $checkId
+ * @return boolean True if model initialized, false if no info in $model->data exists.
+ */
+	private function __setById(Model $model, $id = null, $checkId = true) {
+		if (!isset($id)) {
+			if ($checkId) {
+				return isset($model->data[$model->alias][$model->primaryKey]);
+			} else {
+				return isset($model->data[$model->alias]);
+			}
+		} else {
+			return $model->read(null, $id);
+		}
+	}
+
 }

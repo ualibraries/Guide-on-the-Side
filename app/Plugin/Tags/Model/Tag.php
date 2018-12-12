@@ -1,13 +1,14 @@
 <?php
 /**
- * Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009-2014, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+App::uses('TagsAppModel', 'Tags.Model');
 
 /**
  * Tag model
@@ -18,13 +19,6 @@
 class Tag extends TagsAppModel {
 
 /**
- * Name
- *
- * @var string $name
- */
-	public $name = 'Tag';
-
-/**
  * hasMany associations
  *
  * @var array
@@ -32,7 +26,9 @@ class Tag extends TagsAppModel {
 	public $hasMany = array(
 		'Tagged' => array(
 			'className' => 'Tags.Tagged',
-			'foreignKey' => 'tag_id'));
+			'foreignKey' => 'tag_id'
+		)
+	);
 
 /**
  * HABTM associations
@@ -47,42 +43,63 @@ class Tag extends TagsAppModel {
  * @var array
  */
 	public $validate = array(
-		'name' => array('rule' => 'notEmpty'),
-		'keyname' => array('rule' => 'notEmpty'));
+		'name' => array('rule' => 'notBlank'),
+		'keyname' => array('rule' => 'notBlank')
+	);
+
+/**
+ * Custom validation for keeping BC to CakePHP version below 2.7
+ *
+ * @param array $check
+ * @return bool
+ */
+	public function notBlank($check) {
+		$value = array_values($check);
+		$value = $value[0];
+		if (method_exists('Validation', 'notBlank')) {
+			return Validation::notBlank($value);
+		} else {
+			// below 2.7
+			return Validation::notEmpty($value);
+		}
+	}
 
 /**
  * Returns the data for a single tag
  *
- * @param string keyname
+ * @param string $keyName Tag key name
+ * @throws CakeException
  * @return array
  */
 	public function view($keyName = null) {
 		$result = $this->find('first', array(
 			'conditions' => array(
-				$this->alias . '.keyname' => $keyName)));
+				$this->alias . '.keyname' => $keyName
+			)
+		));
 
 		if (empty($result)) {
-			throw new Exception(__d('tags', 'Invalid Tag.'));
+			throw new CakeException(__d('tags', 'Invalid Tag.'));
 		}
 		return $result;
 	}
 
-
 /**
  * Pre-populates the tag table with entered tags
  *
- * @param array post data, should be Contoller->data
- * @return boolean
+ * @param array $postData Post data, should be Contoller->data
+ * @return bool
  */
 	public function add($postData = null) {
 		if (isset($postData[$this->alias]['tags'])) {
-			$this->Behaviors->attach('Tags.Taggable', array(
+			$this->Behaviors->load('Tags.Taggable', array(
 				'resetBinding' => true,
-				'automaticTagging' => false));
+				'automaticTagging' => false
+			));
 			$this->Tag = $this;
 			$result = $this->saveTags($postData[$this->alias]['tags'], false, false);
 			unset($this->Tag);
-			$this->Behaviors->detach('Tags.Taggable');
+			$this->Behaviors->unload('Tags.Taggable');
 			return $result;
 		}
 	}
@@ -90,19 +107,22 @@ class Tag extends TagsAppModel {
 /**
  * Edits an existing tag, allows only to modify upper/lowercased characters
  *
- * @param string tag uuid
- * @param array controller post data usually $this->request->data
+ * @param string $tagId Tag UUID
+ * @param array $postData Controller post data usually $this->request->data
+ * @throws CakeException
  * @return mixed True on successfully save else post data as array
  */
 	public function edit($tagId = null, $postData = null) {
 		$tag = $this->find('first', array(
 			'contain' => array(),
 			'conditions' => array(
-				$this->alias . '.' . $this->primaryKey => $tagId)));
+				$this->alias . '.' . $this->primaryKey => $tagId
+			)
+		));
 
 		$this->set($tag);
 		if (empty($tag)) {
-			throw new Exception(__d('tags', 'Invalid Tag.'));
+			throw new CakeException(__d('tags', 'Invalid Tag.'));
 		}
 
 		if (!empty($postData[$this->alias]['name'])) {
@@ -119,4 +139,5 @@ class Tag extends TagsAppModel {
 			}
 		}
 	}
+
 }

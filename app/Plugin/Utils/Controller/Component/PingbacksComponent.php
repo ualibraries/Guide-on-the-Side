@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
@@ -20,7 +20,7 @@
 App::import('Core', 'HttpSocket');
 App::import('Lib', 'Xmlrpc.Xmlrpc');
 
-class PingbacksComponent extends Object {
+class PingbacksComponent extends CakeObject {
 /**
  * Components that are required
  *
@@ -47,7 +47,7 @@ class PingbacksComponent extends Object {
  *
  * @param object Controller object
  */
-	public function initialize(&$controller) {
+	public function initialize(Controller $controller) {
 		$this->Socket = new HttpSocket();
 		$this->controller = $controller;
 	}

@@ -2,28 +2,26 @@
 /**
  * Included Files Element
  *
- * PHP versions 5
+ * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org
- * @package       debug_kit
- * @subpackage    debug_kit.views.elements
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
  * @since         DebugKit 2.0
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  **/
 ?>
 <h2> <?php echo __d('debug_kit', 'Included Files'); ?></h2>
 
 <h4>Include Paths</h4>
 <?php
-	foreach($content['paths'] as $i => $path) {
-		if(strstr($path, CAKE)) {
+	foreach ($content['paths'] as $i => $path) {
+		if (strstr($path, CAKE)) {
 			$content['paths'][$i] = '-> ' . $path;
 			break;
 		}
@@ -33,4 +31,4 @@
 ?>
 
 <h4>Included Files</h4>
-<?php echo $this->Toolbar->makeNeatArray($content); ?>
+<?php echo $this->Toolbar->makeNeatArray($content);

@@ -35,11 +35,11 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
   App::import('Vendor', 'sfYaml', array('file' => 'symfony-yaml' . DS . 'lib' . DS . 'sfYaml.php'));
   // config.yml can live in the app directory or parallel to it.
   if (file_exists(APP . DS . 'config.yml')) {
-    Configure::write('user_config', sfYaml::load(APP . DS . 'config.yml'));  
+    Configure::write('user_config', sfYaml::load(APP . DS . 'config.yml'));
   } else {
     Configure::write('user_config', sfYaml::load(ROOT . DS . 'config.yml'));
   }
-  
+
 
   // Wacky en/decoding goodies, also in common.js
   function QH_urldecode($string) {
@@ -100,7 +100,7 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
   }
 
   spl_autoload_register('__autoload');
-  
+
   App::import('Vendor', 'StandardAnalyzer',
     array('file' => 'StandardAnalyzer' . DS . 'Analyzer' . DS . 'Standard' . DS . 'English.php'));
 
@@ -110,11 +110,28 @@ App::build(array('View' => array(ROOT . DS . 'themes' . DS)));
   Configure::write('Dispatcher.filters', array(
       'AssetDispatcher',
       'CacheDispatcher'
-  ));  
-  
-//  $revision_message = Configure::read('user_config.require_revision_message'); 
+  ));
+
+//  $revision_message = Configure::read('user_config.require_revision_message');
   Configure::write('require_revision_message', false);
   Configure::write('GoogleAnalytics.enabled', Configure::read('user_config.google_analytics.enabled'));
   Configure::write('UniversalAnalytics.enabled', Configure::read('user_config.universal_analytics.enabled'));
   Configure::write('PiwikAnalytics.enabled', Configure::read('user_config.piwik_analytics.enabled'));
   Configure::write('Config.language', Configure::read('user_config.language.app_language'));
+
+/**
+ * Configures default file logging options
+ * For CakePHP >= 2.5
+ * https://book.cakephp.org/2.0/en/appendices/2-5-migration-guide.html#logging
+ */
+App::uses('CakeLog', 'Log');
+CakeLog::config('debug', array(
+	'engine' => 'File',
+	'types' => array('notice', 'info', 'debug'),
+	'file' => 'debug',
+));
+CakeLog::config('error', array(
+	'engine' => 'File',
+	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
+	'file' => 'error',
+));

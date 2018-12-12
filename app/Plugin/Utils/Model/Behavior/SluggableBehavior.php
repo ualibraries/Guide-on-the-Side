@@ -1,16 +1,16 @@
 <?php
 /**
- * Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright 2007-2010, Cake Development Corporation (http://cakedc.com)
+ * @copyright Copyright 2009 - 2013, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::import('Core', 'Multibyte');
-App::uses('ModelBehavior', 'Model');
+
+App::uses('Multibyte', 'I18n');
 
 /**
  * Utils Plugin
@@ -53,13 +53,15 @@ class SluggableBehavior extends ModelBehavior {
 		'length' => 255,
 		'unique' => true,
 		'update' => false,
-		'trigger' => false);
+		'trigger' => false
+	);
 
 /**
  * Initiate behaviour
  *
- * @param object $Model
+ * @param Model $Model
  * @param array $settings
+ * @return void
  */
 	public function setup(Model $Model, $settings = array()) {
 		$this->settings[$Model->alias] = array_merge($this->_defaults, $settings);
@@ -68,9 +70,11 @@ class SluggableBehavior extends ModelBehavior {
 /**
  * beforeSave callback
  *
- * @param object $Model
+ * @param Model $Model
+ * @param array $options
+ * @return boolean
  */
-	public function beforeSave(Model $Model) {
+	public function beforeSave(Model $Model, $options = array()) {
 		$settings = $this->settings[$Model->alias];
 		if (is_string($this->settings[$Model->alias]['trigger'])) {
 			if ($Model->{$this->settings[$Model->alias]['trigger']} != true) {
@@ -87,12 +91,16 @@ class SluggableBehavior extends ModelBehavior {
 		}
 
 		$slug = $Model->data[$Model->alias][$settings['label']];
-		if (method_Exists($Model, 'beforeSlugGeneration')) {
+		if (method_exists($Model, 'beforeSlugGeneration')) {
 			$slug = $Model->beforeSlugGeneration($slug, $settings['separator']);
 		}
 
 		$settings = $this->settings[$Model->alias];
-		$slug = $this->multibyteSlug($Model, $slug, $settings['separator']);
+		if (method_exists($Model, 'multibyteSlug')) {
+			$slug = $Model->multibyteSlug($slug, $settings['separator']);
+		} else {
+			$slug = $this->multibyteSlug($Model, $slug);
+		}
 
 		if ($settings['unique'] === true || is_array($settings['unique'])) {
 			$slug = $this->makeUniqueSlug($Model, $slug);
@@ -102,17 +110,16 @@ class SluggableBehavior extends ModelBehavior {
 			$Model->whitelist[] = $settings['slug'];
 		}
 		$Model->data[$Model->alias][$settings['slug']] = $slug;
-		
 		return true;
 	}
 
 /**
- * Searche if the slug already exists and if yes increments it
+ * Search if the slug already exists and if yes increments it
  *
- * @param object $Model
- * @param string the raw slug
+ * @param Model $Model
+ * @param string $slug The raw slug
  * @return string The incremented unique slug
- * 
+ *
  */
 	public function makeUniqueSlug(Model $Model, $slug = '') {
 		$settings = $this->settings[$Model->alias];
@@ -139,6 +146,10 @@ class SluggableBehavior extends ModelBehavior {
 
 		if (!empty($duplicates)) {
 			$duplicates = Set::extract($duplicates, '{n}.' . $Model->alias . '.' . $settings['slug']);
+			if (!in_array($slug, $duplicates)) {
+				return $slug;
+			}
+
 			$startSlug = $slug;
 			$index = 1;
 
@@ -152,7 +163,7 @@ class SluggableBehavior extends ModelBehavior {
 		}
 		return $slug;
 	}
-	
+
 /**
  * Generates a slug from a (multibyte) string
  *
