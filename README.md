@@ -1,6 +1,8 @@
 Guide on the Side
 =================
 
+**Important**: The University of Arizona Libraries will no longer provide support for Guide on the Side. The code will remain openly available; however, UAL can no longer provide code fixes or upgrades.
+
 About
 -------------------------------------------------------------------------------
 
