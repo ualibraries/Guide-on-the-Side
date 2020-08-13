@@ -183,7 +183,7 @@ Installation procedure (if you want to clone from GitHub)
 -------------------------------------------------------------------------------
 If you'd prefer to get Guide on the Side by cloning directly from GitHub, there
 are a couple extra steps. Note that the pre-built package from
-code.library.arizona.edu does come as a git clone, so you can still upgrade by
+https://ualibraries.github.io/Guide-on-the-Side/about.html does come as a git clone, so you can still upgrade by
 pulling from GitHub if you install that way.
 
 1. Clone Guide on the Side from GitHub into the appropriate folder on your web

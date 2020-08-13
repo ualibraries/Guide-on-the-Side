@@ -1,7 +1,7 @@
 <?php
 	$gotsLink = $this->Html->link(
 		__('Guide on the Side'),
-		'//code.library.arizona.edu/gots',
+		'//github.com/ualibraries/Guide-on-the-Side',
 		array('target' => '_blank')
 	);
 	$uaLink = $this->Html->link(
